@@ -33,7 +33,7 @@ Resources: chapter `08_SIMD.qmd` from last year's course; documentation
   access, divergent branches, computations where the bottleneck is *memory* rather than
   computation.
 - **Intrinsics** (C/C++): functions mapping to SIMD instructions (`_mm_add_ps`,
-  `_mm256_fma_ps`…) — useful to know in order to understand, not needed in Python.
+  `_mm256_fma_ps`…); useful to know in order to understand, not needed in Python.
 
 ## Exercises
 

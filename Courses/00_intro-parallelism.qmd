@@ -3,10 +3,10 @@ title: "Introduction to Parallelism"
 subtitle: "Basic concepts, laws, and taxonomy"
 ---
 
-**Introductory module** — common to both tracks, covered at the start of the semester. It
+**Introductory module**: common to both tracks, covered at the start of the semester. It
 provides the vocabulary used everywhere else. Full resource: chapter
-`02_Parallel-intro.qmd` from last year's course — use it as-is or have your AI tutor
-"teach" it to you.
+`02_Parallel-intro.qmd` from last year's course; use it as-is or have your AI tutor "teach"
+it to you.
 
 ## Notions to master
 
@@ -42,7 +42,7 @@ provides the vocabulary used everywhere else. Full resource: chapter
 
 - **Gustafson's law**: when the problem size grows with the number of units (*weak*
   scaling), the speedup can stay nearly linear.
-- **Flynn's taxonomy**: SISD, SIMD, MISD, MIMD — relates the level of parallelism
+- **Flynn's taxonomy**: SISD, SIMD, MISD, MIMD relate the level of parallelism
   (instruction, thread, task) to hardware and software.
 - **Multi-processing vs multi-threading**: exclusive vs shared memory, inter-process
   communication vs in-process calls, creation cost, concurrency level (OS vs

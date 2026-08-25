@@ -1,14 +1,14 @@
 # Prerequisites
 
-For this module you need **two basic tools** — a code editor and a Python environment
-manager — plus, for [Track A](teaching-design.qmd), access to a language model. All the
+For this module you need **two basic tools** (a code editor and a Python environment
+manager), plus, for [Track A](teaching-design.qmd), access to a language model. All the
 options below are free; the effective limits of each offer are given (verified on
 25/08/2026).
 
 ## Editor: Zed
 
 **[Zed](https://zed.dev/)** is the editor used in the labs. It is free, fast, and includes a
-code assistant (*Agent*) that can be connected to any OpenAI-compatible API — including the
+code assistant (*Agent*) that can be connected to any OpenAI-compatible API, including the
 free offers described below.
 
 - Installation: <https://zed.dev/> (macOS, Linux, Windows).
@@ -39,7 +39,7 @@ uv run --with dependance script.py
 ## Track A tooling: an AI tutor
 
 Track A requires access to a large language model (LLM). Three options, **all free**,
-depending on your hardware and preferences — the kick-off survey distributed in session will
+depending on your hardware and preferences; the kick-off survey distributed in session will
 help us calibrate this choice.
 
 ### Option 1 — OpenRouter API (recommended)
@@ -54,13 +54,13 @@ OpenAI-compatible API.
    - URL: `https://openrouter.ai/api/v1`
    - Key: your OpenRouter key
    - Model: open the [*Free Models* collection](https://openrouter.ai/models?fmt=free) and
-     copy the identifier of a model whose ID ends with `:free` (as of 25/08/2026: 17 models —
+     copy the identifier of a model whose ID ends with `:free` (as of 25/08/2026: 17 models,
      e.g. `z-ai/glm-5.2:free`, `cohere/north-mini-code:free`, `google/gemma-4-31b-it:free`,
      `nvidia/nemotron-3-ultra-550b-a55b:free`). The catalog **changes often**: if a model
      disappears, the Free Models page lists the replacement. You can configure several models
      and switch from one to the other in the *Agent* panel.
 
-**Effective limits (25/08/2026)** — the cap applies to the *number of requests*, not to
+**Effective limits (25/08/2026)**. The cap applies to the *number of requests*, not to
 tokens:
 
 | Limit | Free account | After buying ≥ $10 of credits |
@@ -69,23 +69,23 @@ tokens:
 | Requests per minute | 20 | 20 |
 | Requests per day | 50 | 1,000 |
 
-- The daily quota rises to **1,000/day** as soon as the account has bought **at least $10 of
-  credits once** (credits never expire) — the increase stays even if the balance drops back
-  to zero. A single $10 top-up on a class account is therefore enough.
+- The daily quota rises to **1,000/day** as soon as the account has bought at least $10 of
+  credits once (credits never expire); the increase stays even if the balance drops back to
+  zero. A single $10 top-up on a class account is therefore enough.
 - Free models are served at **low priority**: waiting may occur at peak hours, and the
-  `:free` model catalog **changes regularly** (some disappear, others appear) — hence the
-  value of configuring several models.
+  `:free` model catalog changes regularly (some disappear, others appear); hence the value
+  of configuring several models.
 - Failed requests (429 = limit reached) **count** towards the daily quota.
-- In **tokens**, OpenRouter imposes **no** global quota on free models: the size of a
-  request is bounded by the model's **context window** (as of 25/08/2026: from 64k to 1M
-  tokens, e.g. `z-ai/glm-5.2:free` in 256k, `nvidia/nemotron-3-ultra-550b-a55b:free` in 1M)
-  and the throughput (tokens/min) is set by each provider — often reduced at peak hours. Only
-  the *request* counters (20/min, 50/day) are authoritative at the OpenRouter level.
+- In tokens, OpenRouter imposes no global quota on free models: the size of a request is
+  bounded by the model's **context window** (as of 25/08/2026: from 64k to 1M tokens, e.g.
+  `z-ai/glm-5.2:free` in 256k, `nvidia/nemotron-3-ultra-550b-a55b:free` in 1M) and the
+  throughput (tokens/min) is set by each provider, often reduced at peak hours. Only the
+  *request* counters (20/min, 50/day) are authoritative at the OpenRouter level.
 - Check the **data policy** of each provider: some free endpoints may train on your
   exchanges. Avoid sending sensitive data to them.
 
-> **If each student creates their own** OpenRouter account (2 minutes), each gets their own
-> 50 requests/day — this is the simplest and safest option for a class.
+> If each student creates their own OpenRouter account (2 minutes), each gets their own 50
+> requests/day; this is the simplest and safest option for a class.
 
 ### Option 2 — Mistral API (free key)
 
@@ -94,21 +94,21 @@ Small, Medium, Large, Codestral, Magistral…), no credit card, but with a **pho
 verification**.
 
 1. Create an account at <https://console.mistral.ai/home> and grab an **API key**. A valid
-   phone number is required — warn the instructor if this is a problem.
+   phone number is required; warn the instructor if this is a problem.
 2. In Zed, add an *OpenAI-compatible* provider:
    - URL: `https://api.mistral.ai/v1`
    - Key: your Mistral key
    - Model: `mistral-small-latest` (reasoning enabled with `reasoning_effort: "high"`, see
      the troubleshooting below) or `mistral-medium-3-5` (more powerful, same mechanism).
 
-**Effective limits (Experiment plan)** — **approximate and unpublished** figures (exact in
-the console, *Limits* section): about **1 billion tokens/month**, **~500,000 tokens/min** per
-model and **~1 request/s per API key** (2 req/min according to some sources). The detailed
-quotas vary by model *group* (e.g. magistral: 20,000 tokens/min, 10 req/min). This plan is
-meant for experimentation, not production.
+**Effective limits (Experiment plan)**: approximate and unpublished figures (exact in the
+console, *Limits* section); about 1 billion tokens/month, ~500,000 tokens/min per model and
+~1 request/s per API key (2 req/min according to some sources). The detailed quotas vary by
+model group (e.g. magistral: 20,000 tokens/min, 10 req/min). This plan is meant for
+experimentation, not production.
 
-**Data**: free-plan requests **may be used to train** Mistral models (retention ~30 days, cf.
-their privacy policy) — do not send sensitive code or exchanges.
+**Data**: free-plan requests may be used to train Mistral models (retention ~30 days, cf.
+their privacy policy); do not send sensitive code or exchanges.
 
 For reasoning models, see the troubleshooting below.
 
@@ -130,25 +130,25 @@ Three frequent causes:
 
 1. **You use a model that does not reason, or an outdated name.** Reasoning is now
    *adjustable* and is triggered by the `reasoning_effort` parameter:
-   - Concerned models: `mistral-small-latest` and `mistral-medium-3-5` — they think **only
+   - Concerned models: `mistral-small-latest` and `mistral-medium-3-5`; they think **only
      if** you send `reasoning_effort: "high"` (default = `"none"`: no thinking).
    - The `magistral-*-latest` names ("native" reasoning, always on) are **deprecated** at
      Mistral (25/08/2026): `magistral-small-latest` now resolves to `mistral-small-latest`,
      with adjustable reasoning. Prefer `mistral-small-latest` with `reasoning_effort: "high"`.
-   - The other models (Large, Codestral…) have **no** reasoning mode: sending them
+   - The other models (Large, Codestral…) have no reasoning mode: sending them
      `reasoning_effort` causes an **HTTP 422** error.
-2. **The parameter is misplaced.** `reasoning_effort` is a **root-level** field of the Chat
+2. **The parameter is misplaced.** `reasoning_effort` is a root-level field of the Chat
    Completions request body (not in `extra_body`, not in a message).
 3. **The response format changes.** With `reasoning_effort: "high"`, `message.content`
-   becomes a **list of chunks** (`ThinkChunk` — the trace, then `TextChunk` — the answer)
-   instead of a string. Code that reads `content` as a string "shows nothing" or crashes.
+   becomes a **list of chunks** (`ThinkChunk` for the trace, then `TextChunk` for the
+   answer) instead of a string. Code that reads `content` as a string "shows nothing" or crashes.
    Two useful details:
    - **In streaming, `delta.content` changes shape**: a list of `ThinkChunk` during the
      reflection, then a mixed list (end of `ThinkChunk` + first `TextChunk`) at the
      transition, then a plain string for the final answer. Code that always expects the same
      type "shows nothing" without crashing.
-   - **Be tolerant about chunking**: depending on the model, the answer may contain
-     **empty** `ThinkChunk`s interleaved within `TextChunk`s (a bug reported on
+   - **Be tolerant about chunking**: depending on the model, the answer may contain empty
+     `ThinkChunk`s interleaved within `TextChunk`s (a bug reported on
      `magistral-medium-latest`). Keep only the text of the `TextChunk`s and ignore the rest.
    - **In multi-turn, send back in the history the complete assistant message (with its
      trace)**: removing the `ThinkChunk` of previous turns degrades quality noticeably.
@@ -183,15 +183,14 @@ curl https://api.mistral.ai/v1/chat/completions \
   -d '{"model":"mistral-small-latest","reasoning_effort":"high","messages":[{"role":"user","content":"Explain the concept of a lock."}]}'
 ```
 
-**In Zed**: declare Mistral as an *OpenAI-compatible* provider
-(`https://api.mistral.ai/v1`) and, for the model, **set `reasoning_effort` to `"high"` in its
-configuration** (`available_models` in the *Agent* settings). This setting activates the
-thinking and asks Zed to display the trace in the panel. On older versions of Zed,
-`reasoning_effort` could not be forwarded for OpenAI-compatible providers (bug fixed since) —
-update Zed if the thinking does not show. Note that Mistral returns the trace **in
-`message.content`** (chunks), not as a dedicated field: a tool that expects a plain string
-may display "nothing". To see the trace in all circumstances, use a script (as above) or
-Mistral **Le Chat**.
+**In Zed**: declare Mistral as an OpenAI-compatible provider
+(`https://api.mistral.ai/v1`) and, for the model, set `reasoning_effort` to `"high"` in its
+configuration (`available_models` in the Agent settings). This setting activates the thinking
+and asks Zed to display the trace in the panel. On older versions of Zed, `reasoning_effort`
+could not be forwarded for OpenAI-compatible providers (bug fixed since); update Zed if the
+thinking does not show. Mistral returns the trace in `message.content` (chunks), not as a
+dedicated field: a tool that expects a plain string may display "nothing". To see the trace
+in all circumstances, use a script (as above) or Mistral Le Chat.
 
 ## Collaborative editing
 
@@ -201,6 +200,6 @@ the others join it with the link. Sessions may use this feature or the module's 
 
 ## Running `multiprocessing`/`asyncio` in Jupyter
 
-Under macOS, `multiprocessing` requires the *spawn* method in Jupyter notebooks — a fix that
+Under macOS, `multiprocessing` requires the *spawn* method in Jupyter notebooks; a fix that
 requires kernel-specific settings. The most robust approach is to run your scripts with
 `uv run` rather than in a notebook cell; the details are covered in the lab if needed.

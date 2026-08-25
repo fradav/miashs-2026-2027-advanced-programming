@@ -5,17 +5,17 @@
 > also useful to Track B students to *understand* what the other group does during the
 > reciprocal observation.
 
-## Why configure, and not just use?
+## Why configure the tutor?
 
-A "raw" chatbot is often a poor teacher: it **gives answers directly**, which shortcuts the
-construction of understanding, and it **hallucinates**, meaning it produces false claims with
+A "raw" chatbot is often a poor teacher: it gives answers directly, which shortcuts the
+construction of understanding, and it **hallucinates**, producing false claims with
 confidence.
 
 A good Socratic tutor, by contrast:
 
 - does not give the answer: it **questions** and guides;
-- **supports** (scaffolding): it breaks down, rephrases, gives a hint at the right moment;
-- **preserves your agency**: you do the reasoning, it does not reason in your place;
+- supports (scaffolding): it breaks down, rephrases, gives a hint at the right moment;
+- preserves your agency: you do the reasoning, it does not reason in your place;
 - adapts: when you show an error, it adjusts its scaffolding.
 
 To configure this behavior, you must **understand the material as well as the pedagogy**:

@@ -4,12 +4,12 @@ subtitle: "What to remember, and where to start"
 ---
 
 This page recaps the thread of the module and serves as a **navigation map** for the
-autonomous work. It does not replace the modules: it helps you *situate* each concept.
+autonomous work. It complements the modules: it helps you situate each concept.
 
 ## The thread: parallelism is not free
 
-The single theme of the course fits in one sentence: **parallelizing = decomposing to speed
-up, but every decomposition has a cost** (scheduling, communication, memory,
+The single theme of the course fits in one sentence: parallelizing means decomposing to
+speed up, but every decomposition has a cost (scheduling, communication, memory,
 synchronization). The speed curve is never linear in the number of workers.
 
 ```mermaid
@@ -42,13 +42,13 @@ flowchart TD
 
 ## Cross-cutting watch points
 
-- **Python's GIL** only blocks *threads* on CPU-bound work; asyncio is for I/O,
+- **Python's GIL** only blocks threads on CPU-bound work; asyncio is for I/O,
   multiprocessing is for CPU-bound work.
 - **Always measure** before and after: only timing (with the cost of transfers for the GPU)
   justifies an architecture choice.
-- **A lock is not a magic wand**: it protects a critical section but introduces waiting and a
+- **A lock serializes a critical section**: it prevents races but introduces waiting and a
   risk of *deadlock*.
-- **Shared state is the enemy of parallelism**: prefer *pure* tasks (no mutation, no side
+- **Shared state is the enemy of parallelism**: prefer pure tasks (no mutation, no side
   effects) as recommended by Dask best practices.
 
 ## Indicative deadlines
@@ -69,5 +69,5 @@ flowchart TD
 2. **Choose your hardware** (see `prerequisites.qmd` to install the tooling, online or local
    LLM depending on your machine).
 3. **Write your learning plan** (template in `learning-plan.qmd`): it sets the order and the
-   success criteria — it is your roadmap.
+   success criteria; it is your roadmap.
 4. **Module 0 first**, then M1 → M2 → M3, and depending on your objectives M4 → M5 → M6.

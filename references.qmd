@@ -3,7 +3,7 @@ title: "References"
 subtitle: "Readings to understand the pedagogical framework and the technique"
 ---
 
-## Why this design — theoretical framework
+## Why this design: theoretical framework
 
 The references below ground the module's pedagogical design (see
 [teaching-design.qmd](teaching-design.qmd) and [ai-tutor.qmd](ai-tutor.qmd)). They are given
@@ -14,14 +14,14 @@ a part of your reflexive report.
   [@vygotsky1978mind], and students take part in designing their own track
   [@bovill2011co_creators; @cook_sather2014partners; @aldinhe2023co_constructing], in the
   tradition of critical pedagogy [@freire1970pedagogy].
-- **Learning contracts**: how to write objectives, sequencing and success criteria — the
+- **Learning contracts**: how to write objectives, sequencing and success criteria; the
   Waterloo Centre for Teaching Excellence factsheet
   [@waterloo2023learning_contracts].
 - **Learning by teaching with AI**: teaching an agent structures learning
   [@schmucker2024ruffle]; conversational tutoring best practices preserve the student's
   agency and integrate knowledge tracing [@arxiv2026path_conversational]; a randomized
   trial (N=194) suggests that well-designed AI tutoring can outperform active learning in
-  class [@nature2025ai_tutoring_rct] — a result to be confirmed.
+  class [@nature2025ai_tutoring_rct]; a result to be confirmed.
 - **Dialogue and reflexivity**: dialogic pedagogy applied to LLMs [@beale2025dialogic].
 
 ## Documented limits of AI in education
@@ -43,7 +43,7 @@ The module treats these limits as objects of work, not taboos:
 
 ## Official technical resources
 
-The primary reference for the technique remains the official documentation — your tutor
+The primary reference for the technique remains the official documentation; your tutor
 (Track A) and your own research (Track B) must always be checkable against it.
 
 - Asynchronous Python: [`asyncio`](https://docs.python.org/3/library/asyncio.html)

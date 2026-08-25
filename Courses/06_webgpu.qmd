@@ -18,7 +18,7 @@ year's course; official documentation [WebGPU](https://gpuweb.github.io/gpuweb/)
 
 - **WebGPU**: a JavaScript API that exposes the GPU to the browser (the replacement of
   WebGL for computation); you write compute *shaders* in **WGSL**, a language close to
-  Rust/C — no native driver to install, a recent browser is enough.
+  Rust/C; no native driver to install, a recent browser is enough.
 - **Basic pipeline**: `navigator.gpu.requestAdapter()` → `requestDevice()` →
   `device.createBuffer()` → `createBindGroup()` → `createComputePipeline()` → you *encode*
   a `compute pass` → `device.queue.submit()`. Buffers are typed, aligned, with explicit
@@ -26,10 +26,10 @@ year's course; official documentation [WebGPU](https://gpuweb.github.io/gpuweb/)
 - **WGSL**: `@compute`, `@workgroup_size`, variables in *storage* or *uniform* memory,
   mathematical functions; **workgroups / invocations** management analogous to CUDA
   blocks/threads (module 5).
-- **Exemplary math**: matrix multiplication (matmul) is the classic benchmark — you
+- **Exemplary math**: matrix multiplication (matmul) is the classic benchmark; you
   compare naive and *tiled* (per-block reuse) versions on the GPU.
 - **Limits**: bound by the GPU, no long-running massive computation (browser session),
-  CPU↔GPU transfers always present — the same *throughput* questions as in module 5, but
+  CPU↔GPU transfers always present; the same *throughput* questions as in module 5, but
   inside a web page.
 
 ## Exercises

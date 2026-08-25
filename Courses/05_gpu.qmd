@@ -7,8 +7,8 @@ Objectives (observable criteria):
 
 - Explain how a **GPU** architecture differs from a CPU (von Neumann, "control traded for
   arithmetic power") and the notion of **latency vs throughput**.
-- Describe the memory hierarchy: registers, *shared memory*, global memory, CPU cache —
-  and the cost of **CPU ↔ GPU transfers**.
+- Describe the memory hierarchy: registers, *shared memory*, global memory, CPU cache, and
+  the cost of **CPU ↔ GPU transfers**.
 - Run a simple computation on GPU with **CuPy** (API close to numpy) and with
   **numba-CUDA** (`@cuda.jit`), measuring the copy cost.
 
@@ -47,7 +47,7 @@ Resources: chapter `09_GPU-Caching-etc.qmd` from last year's course; documentati
 2. **numba-CUDA kernel**: write a `@cuda.jit` vector-addition kernel, launch it on a
    suitable grid (block size), compare with CuPy. Compute the *number of blocks* needed to
    cover $n$.
-3. **Latency vs throughput**: build a demonstration (diagram or analogy of your choice —
+3. **Latency vs throughput**: build a demonstration (diagram or analogy of your choice:
    toll booth, pizzas, assembly line) and make a peer or your tutor understand it.
    Formalize in 3 sentences why more *concurrency* hides latency.
 4. **Transfers**: a computation chaining 20 small GPU operations with a copy between each

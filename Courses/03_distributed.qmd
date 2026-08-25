@@ -28,12 +28,12 @@ from last year's course; official documentation
   distributed).
 - **`dask.delayed`**: turns a function into a *task* evaluated lazily; the graph nests and
   `.compute()` orchestrates the dependencies.
-- **Ray**: **actor** model — state preserved between calls (`@ray.remote` on a class) and
+- **Ray**: actor model, state preserved between calls (`@ray.remote` on a class), plus
   *futures*; designed for stateful services and large-scale parallelism.
-- **`delayed` best practices**: call `delayed` on the *function*, not on the result; do
-  not **mutate inputs**; avoid **global state** and **side effects**; **split into small
-  tasks** but **not too small**; do not use `delayed` inside an already-`delayed`
-  function; do not apply `delayed` to other Dask collections.
+- **`delayed` best practices**: call `delayed` on the *function*, not on the result; do not
+  mutate inputs; avoid global state and side effects; split into small tasks but not too
+  small; do not use `delayed` inside an already-`delayed` function; do not apply `delayed`
+  to other Dask collections.
 - **Pitfalls**: data serialization between workers (`pickle`), saturated scheduler,
   *lazy vs eager* confusion (forgetting `.compute()`), too many tiny tasks (scheduling
   overhead).

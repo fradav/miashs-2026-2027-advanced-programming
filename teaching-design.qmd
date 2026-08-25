@@ -1,25 +1,23 @@
 # The pedagogical design
 
-This page explains **how** you will learn in this module and **why** this choice was made.
+This page explains **the design** of this module: how you will learn and why this choice was made.
 Read it carefully: everything for the semester follows from it.
 
 ## The general idea
 
-Knowledge is not built only by listening to an instructor: it is built in interaction, with
-the people around you and with the documents and tools you work with. This module puts you at
-the center of your learning: you **partly design your own track**, you **choose your working
-modes**, and you **observe** how you learn.
+Knowledge is built in interaction: with the people around you, and with the documents and
+tools you work with. This module puts you at the center of your learning: you design part of
+your own path, and you observe how you learn.
 
 Concretely, the idea has three parts:
 
 1. **Autonomous, co-constructed learning**: you write a learning plan and follow it, with
    regular support.
-2. **A "learning by teaching" setup**: by configuring an **AI tutor** that must teach you
+2. **A "learning by teaching" setup**: by configuring an AI tutor that must teach you
    *correctly*, you are forced to master the material. You cannot ask a machine to teach a
    concept you do not understand yourself.
 3. **A critical approach**: AI has documented limitations (hallucinations, over-reliance,
-   superficial uses, unequal access). Rather than ignoring them, the course makes them an
-   object of work and analysis.
+   superficial uses, unequal access). The course makes them an object of work and analysis.
 
 ## Two tracks, identical objectives
 
@@ -45,11 +43,11 @@ Concretely, the idea has three parts:
 ### Switching tracks
 
 You can start in one track and switch to the other during the semester, as long as the choice
-is **justified and explained** in your report. The flexibility is deliberate: it lets each
+is justified and explained in your report. The flexibility is deliberate: it lets each
 student find the way they learn best, and it is part of the module's reflective work.
 
-> **An important point.** This is a parallel-programming course whose learning process partly
-> relies on tools whose effects you will learn to master or work around.
+> This is a parallel-programming course whose learning process partly relies on tools whose
+> effects you will learn to master or work around.
 
 ## Reciprocal observation
 
@@ -77,15 +75,15 @@ mode counts as much as the others**; no choice is interpreted as lesser commitme
 
 ### Solo work
 
-- **With the AI tutor (Track A)**: asynchronous dialogue at your own pace, where you can
+- With the AI tutor (Track A): asynchronous dialogue at your own pace, where you can
   rephrase, go back, and think before answering.
-- **With the resources (Track B)**: documentation, books, tutorials, previous courses.
-- **The logbook**, under any circumstances, is your main channel of written expression.
+- With the resources (Track B): documentation, books, tutorials, previous courses.
+- The **logbook**, under any circumstances, is your main channel of written expression.
 
 ### Pair work
 
 - **Reciprocal observation** pairs work through written exchange (journals read crosswise,
-  asynchronous comments) **or** orally (a 15–20 minute interview), at the participants'
+  asynchronous comments) or orally (a 15–20 minute interview), at the participants'
   choice.
 - The final project can be done solo or in pairs (communication arrangements defined by the
   pair itself).

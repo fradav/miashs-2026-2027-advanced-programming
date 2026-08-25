@@ -419,10 +419,10 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This page recaps the thread of the module and serves as a <strong>navigation map</strong> for the autonomous work. It does not replace the modules: it helps you <em>situate</em> each concept.</p>
+<p>This page recaps the thread of the module and serves as a <strong>navigation map</strong> for the autonomous work. It complements the modules: it helps you situate each concept.</p>
 <section id="the-thread-parallelism-is-not-free" class="level2" data-number="14.1">
 <h2 data-number="14.1" class="anchored" data-anchor-id="the-thread-parallelism-is-not-free"><span class="header-section-number">14.1</span> The thread: parallelism is not free</h2>
-<p>The single theme of the course fits in one sentence: <strong>parallelizing = decomposing to speed up, but every decomposition has a cost</strong> (scheduling, communication, memory, synchronization). The speed curve is never linear in the number of workers.</p>
+<p>The single theme of the course fits in one sentence: parallelizing means decomposing to speed up, but every decomposition has a cost (scheduling, communication, memory, synchronization). The speed curve is never linear in the number of workers.</p>
 <pre class="mermaid"><code>flowchart TD
     A[Sequential problem] --&gt; B[Identify the bottleneck]
     B --&gt; C{I/O or CPU?}
@@ -503,10 +503,10 @@ ul.task-list li input[type="checkbox"] {
 <section id="cross-cutting-watch-points" class="level2" data-number="14.3">
 <h2 data-number="14.3" class="anchored" data-anchor-id="cross-cutting-watch-points"><span class="header-section-number">14.3</span> Cross-cutting watch points</h2>
 <ul>
-<li><strong>Python’s GIL</strong> only blocks <em>threads</em> on CPU-bound work; asyncio is for I/O, multiprocessing is for CPU-bound work.</li>
+<li><strong>Python’s GIL</strong> only blocks threads on CPU-bound work; asyncio is for I/O, multiprocessing is for CPU-bound work.</li>
 <li><strong>Always measure</strong> before and after: only timing (with the cost of transfers for the GPU) justifies an architecture choice.</li>
-<li><strong>A lock is not a magic wand</strong>: it protects a critical section but introduces waiting and a risk of <em>deadlock</em>.</li>
-<li><strong>Shared state is the enemy of parallelism</strong>: prefer <em>pure</em> tasks (no mutation, no side effects) as recommended by Dask best practices.</li>
+<li><strong>A lock serializes a critical section</strong>: it prevents races but introduces waiting and a risk of <em>deadlock</em>.</li>
+<li><strong>Shared state is the enemy of parallelism</strong>: prefer pure tasks (no mutation, no side effects) as recommended by Dask best practices.</li>
 </ul>
 </section>
 <section id="indicative-deadlines" class="level2" data-number="14.4">
@@ -555,7 +555,7 @@ ul.task-list li input[type="checkbox"] {
 <ol type="1">
 <li><strong>Read the teaching design</strong> (<code>teaching-design.qmd</code>): it is the framework, everything follows from it.</li>
 <li><strong>Choose your hardware</strong> (see <code>prerequisites.qmd</code> to install the tooling, online or local LLM depending on your machine).</li>
-<li><strong>Write your learning plan</strong> (template in <code>learning-plan.qmd</code>): it sets the order and the success criteria — it is your roadmap.</li>
+<li><strong>Write your learning plan</strong> (template in <code>learning-plan.qmd</code>): it sets the order and the success criteria; it is your roadmap.</li>
 <li><strong>Module 0 first</strong>, then M1 → M2 → M3, and depending on your objectives M4 → M5 → M6.</li>
 </ol>
 

@@ -459,10 +459,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>For this module you need <strong>two basic tools</strong> — a code editor and a Python environment manager — plus, for <a href="./teaching-design.html">Track A</a>, access to a language model. All the options below are free; the effective limits of each offer are given (verified on 25/08/2026).</p>
+<p>For this module you need <strong>two basic tools</strong> (a code editor and a Python environment manager), plus, for <a href="./teaching-design.html">Track A</a>, access to a language model. All the options below are free; the effective limits of each offer are given (verified on 25/08/2026).</p>
 <section id="editor-zed" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="editor-zed"><span class="header-section-number">2.1</span> Editor: Zed</h2>
-<p><strong><a href="https://zed.dev/">Zed</a></strong> is the editor used in the labs. It is free, fast, and includes a code assistant (<em>Agent</em>) that can be connected to any OpenAI-compatible API — including the free offers described below.</p>
+<p><strong><a href="https://zed.dev/">Zed</a></strong> is the editor used in the labs. It is free, fast, and includes a code assistant (<em>Agent</em>) that can be connected to any OpenAI-compatible API, including the free offers described below.</p>
 <ul>
 <li>Installation: <a href="https://zed.dev/" class="uri">https://zed.dev/</a> (macOS, Linux, Windows).</li>
 <li>No configuration is needed to write code; only the <em>Agent</em> panel must be connected to a model (see <a href="#track-a-tooling-an-ai-tutor">Track A tooling</a>).</li>
@@ -480,7 +480,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="track-a-tooling-an-ai-tutor" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="track-a-tooling-an-ai-tutor"><span class="header-section-number">2.3</span> Track A tooling: an AI tutor</h2>
-<p>Track A requires access to a large language model (LLM). Three options, <strong>all free</strong>, depending on your hardware and preferences — the kick-off survey distributed in session will help us calibrate this choice.</p>
+<p>Track A requires access to a large language model (LLM). Three options, <strong>all free</strong>, depending on your hardware and preferences; the kick-off survey distributed in session will help us calibrate this choice.</p>
 <section id="option-1-openrouter-api-recommended" class="level3" data-number="2.3.1">
 <h3 data-number="2.3.1" class="anchored" data-anchor-id="option-1-openrouter-api-recommended"><span class="header-section-number">2.3.1</span> Option 1 — OpenRouter API (recommended)</h3>
 <p><a href="https://openrouter.ai/">OpenRouter</a> is an aggregator: <strong>one API key gives access to dozens of models</strong> (Llama, Qwen, Gemma, DeepSeek, gpt-oss, Nemotron…) through a single OpenAI-compatible API.</p>
@@ -491,10 +491,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>URL: <code>https://openrouter.ai/api/v1</code></li>
 <li>Key: your OpenRouter key</li>
-<li>Model: open the <a href="https://openrouter.ai/models?fmt=free"><em>Free Models</em> collection</a> and copy the identifier of a model whose ID ends with <code>:free</code> (as of 25/08/2026: 17 models — e.g.&nbsp;<code>z-ai/glm-5.2:free</code>, <code>cohere/north-mini-code:free</code>, <code>google/gemma-4-31b-it:free</code>, <code>nvidia/nemotron-3-ultra-550b-a55b:free</code>). The catalog <strong>changes often</strong>: if a model disappears, the Free Models page lists the replacement. You can configure several models and switch from one to the other in the <em>Agent</em> panel.</li>
+<li>Model: open the <a href="https://openrouter.ai/models?fmt=free"><em>Free Models</em> collection</a> and copy the identifier of a model whose ID ends with <code>:free</code> (as of 25/08/2026: 17 models, e.g.&nbsp;<code>z-ai/glm-5.2:free</code>, <code>cohere/north-mini-code:free</code>, <code>google/gemma-4-31b-it:free</code>, <code>nvidia/nemotron-3-ultra-550b-a55b:free</code>). The catalog <strong>changes often</strong>: if a model disappears, the Free Models page lists the replacement. You can configure several models and switch from one to the other in the <em>Agent</em> panel.</li>
 </ul></li>
 </ol>
-<p><strong>Effective limits (25/08/2026)</strong> — the cap applies to the <em>number of requests</em>, not to tokens:</p>
+<p><strong>Effective limits (25/08/2026)</strong>. The cap applies to the <em>number of requests</em>, not to tokens:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -522,21 +522,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <ul>
-<li>The daily quota rises to <strong>1,000/day</strong> as soon as the account has bought <strong>at least $10 of credits once</strong> (credits never expire) — the increase stays even if the balance drops back to zero. A single $10 top-up on a class account is therefore enough.</li>
-<li>Free models are served at <strong>low priority</strong>: waiting may occur at peak hours, and the <code>:free</code> model catalog <strong>changes regularly</strong> (some disappear, others appear) — hence the value of configuring several models.</li>
+<li>The daily quota rises to <strong>1,000/day</strong> as soon as the account has bought at least $10 of credits once (credits never expire); the increase stays even if the balance drops back to zero. A single $10 top-up on a class account is therefore enough.</li>
+<li>Free models are served at <strong>low priority</strong>: waiting may occur at peak hours, and the <code>:free</code> model catalog changes regularly (some disappear, others appear); hence the value of configuring several models.</li>
 <li>Failed requests (429 = limit reached) <strong>count</strong> towards the daily quota.</li>
-<li>In <strong>tokens</strong>, OpenRouter imposes <strong>no</strong> global quota on free models: the size of a request is bounded by the model’s <strong>context window</strong> (as of 25/08/2026: from 64k to 1M tokens, e.g.&nbsp;<code>z-ai/glm-5.2:free</code> in 256k, <code>nvidia/nemotron-3-ultra-550b-a55b:free</code> in 1M) and the throughput (tokens/min) is set by each provider — often reduced at peak hours. Only the <em>request</em> counters (20/min, 50/day) are authoritative at the OpenRouter level.</li>
+<li>In tokens, OpenRouter imposes no global quota on free models: the size of a request is bounded by the model’s <strong>context window</strong> (as of 25/08/2026: from 64k to 1M tokens, e.g. <code>z-ai/glm-5.2:free</code> in 256k, <code>nvidia/nemotron-3-ultra-550b-a55b:free</code> in 1M) and the throughput (tokens/min) is set by each provider, often reduced at peak hours. Only the <em>request</em> counters (20/min, 50/day) are authoritative at the OpenRouter level.</li>
 <li>Check the <strong>data policy</strong> of each provider: some free endpoints may train on your exchanges. Avoid sending sensitive data to them.</li>
 </ul>
 <blockquote class="blockquote">
-<p><strong>If each student creates their own</strong> OpenRouter account (2 minutes), each gets their own 50 requests/day — this is the simplest and safest option for a class.</p>
+<p>If each student creates their own OpenRouter account (2 minutes), each gets their own 50 requests/day; this is the simplest and safest option for a class.</p>
 </blockquote>
 </section>
 <section id="option-2-mistral-api-free-key" class="level3" data-number="2.3.2">
 <h3 data-number="2.3.2" class="anchored" data-anchor-id="option-2-mistral-api-free-key"><span class="header-section-number">2.3.2</span> Option 2 — Mistral API (free key)</h3>
 <p>Mistral “La Plateforme” offers a free <strong>Experiment</strong> plan: access to <strong>all models</strong> (Mistral Small, Medium, Large, Codestral, Magistral…), no credit card, but with a <strong>phone verification</strong>.</p>
 <ol type="1">
-<li>Create an account at <a href="https://console.mistral.ai/home" class="uri">https://console.mistral.ai/home</a> and grab an <strong>API key</strong>. A valid phone number is required — warn the instructor if this is a problem.</li>
+<li>Create an account at <a href="https://console.mistral.ai/home" class="uri">https://console.mistral.ai/home</a> and grab an <strong>API key</strong>. A valid phone number is required; warn the instructor if this is a problem.</li>
 <li>In Zed, add an <em>OpenAI-compatible</em> provider:
 <ul>
 <li>URL: <code>https://api.mistral.ai/v1</code></li>
@@ -544,8 +544,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Model: <code>mistral-small-latest</code> (reasoning enabled with <code>reasoning_effort: "high"</code>, see the troubleshooting below) or <code>mistral-medium-3-5</code> (more powerful, same mechanism).</li>
 </ul></li>
 </ol>
-<p><strong>Effective limits (Experiment plan)</strong> — <strong>approximate and unpublished</strong> figures (exact in the console, <em>Limits</em> section): about <strong>1 billion tokens/month</strong>, <strong>~500,000 tokens/min</strong> per model and <strong>~1 request/s per API key</strong> (2 req/min according to some sources). The detailed quotas vary by model <em>group</em> (e.g.&nbsp;magistral: 20,000 tokens/min, 10 req/min). This plan is meant for experimentation, not production.</p>
-<p><strong>Data</strong>: free-plan requests <strong>may be used to train</strong> Mistral models (retention ~30 days, cf. their privacy policy) — do not send sensitive code or exchanges.</p>
+<p><strong>Effective limits (Experiment plan)</strong>: approximate and unpublished figures (exact in the console, <em>Limits</em> section); about 1 billion tokens/month, ~500,000 tokens/min per model and ~1 request/s per API key (2 req/min according to some sources). The detailed quotas vary by model group (e.g.&nbsp;magistral: 20,000 tokens/min, 10 req/min). This plan is meant for experimentation, not production.</p>
+<p><strong>Data</strong>: free-plan requests may be used to train Mistral models (retention ~30 days, cf. their privacy policy); do not send sensitive code or exchanges.</p>
 <p>For reasoning models, see the troubleshooting below.</p>
 </section>
 <section id="option-3-local-model-if-your-machine-allows-it" class="level3" data-number="2.3.3">
@@ -562,15 +562,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li><strong>You use a model that does not reason, or an outdated name.</strong> Reasoning is now <em>adjustable</em> and is triggered by the <code>reasoning_effort</code> parameter:
 <ul>
-<li>Concerned models: <code>mistral-small-latest</code> and <code>mistral-medium-3-5</code> — they think <strong>only if</strong> you send <code>reasoning_effort: "high"</code> (default = <code>"none"</code>: no thinking).</li>
+<li>Concerned models: <code>mistral-small-latest</code> and <code>mistral-medium-3-5</code>; they think <strong>only if</strong> you send <code>reasoning_effort: "high"</code> (default = <code>"none"</code>: no thinking).</li>
 <li>The <code>magistral-*-latest</code> names (“native” reasoning, always on) are <strong>deprecated</strong> at Mistral (25/08/2026): <code>magistral-small-latest</code> now resolves to <code>mistral-small-latest</code>, with adjustable reasoning. Prefer <code>mistral-small-latest</code> with <code>reasoning_effort: "high"</code>.</li>
-<li>The other models (Large, Codestral…) have <strong>no</strong> reasoning mode: sending them <code>reasoning_effort</code> causes an <strong>HTTP 422</strong> error.</li>
+<li>The other models (Large, Codestral…) have no reasoning mode: sending them <code>reasoning_effort</code> causes an <strong>HTTP 422</strong> error.</li>
 </ul></li>
-<li><strong>The parameter is misplaced.</strong> <code>reasoning_effort</code> is a <strong>root-level</strong> field of the Chat Completions request body (not in <code>extra_body</code>, not in a message).</li>
-<li><strong>The response format changes.</strong> With <code>reasoning_effort: "high"</code>, <code>message.content</code> becomes a <strong>list of chunks</strong> (<code>ThinkChunk</code> — the trace, then <code>TextChunk</code> — the answer) instead of a string. Code that reads <code>content</code> as a string “shows nothing” or crashes. Two useful details:
+<li><strong>The parameter is misplaced.</strong> <code>reasoning_effort</code> is a root-level field of the Chat Completions request body (not in <code>extra_body</code>, not in a message).</li>
+<li><strong>The response format changes.</strong> With <code>reasoning_effort: "high"</code>, <code>message.content</code> becomes a <strong>list of chunks</strong> (<code>ThinkChunk</code> for the trace, then <code>TextChunk</code> for the answer) instead of a string. Code that reads <code>content</code> as a string “shows nothing” or crashes. Two useful details:
 <ul>
 <li><strong>In streaming, <code>delta.content</code> changes shape</strong>: a list of <code>ThinkChunk</code> during the reflection, then a mixed list (end of <code>ThinkChunk</code> + first <code>TextChunk</code>) at the transition, then a plain string for the final answer. Code that always expects the same type “shows nothing” without crashing.</li>
-<li><strong>Be tolerant about chunking</strong>: depending on the model, the answer may contain <strong>empty</strong> <code>ThinkChunk</code>s interleaved within <code>TextChunk</code>s (a bug reported on <code>magistral-medium-latest</code>). Keep only the text of the <code>TextChunk</code>s and ignore the rest.</li>
+<li><strong>Be tolerant about chunking</strong>: depending on the model, the answer may contain empty <code>ThinkChunk</code>s interleaved within <code>TextChunk</code>s (a bug reported on <code>magistral-medium-latest</code>). Keep only the text of the <code>TextChunk</code>s and ignore the rest.</li>
 <li><strong>In multi-turn, send back in the history the complete assistant message (with its trace)</strong>: removing the <code>ThinkChunk</code> of previous turns degrades quality noticeably.</li>
 </ul></li>
 </ol>
@@ -596,7 +596,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-H</span> <span class="st">"Authorization: Bearer </span><span class="va">$MISTRAL_API_KEY</span><span class="st">"</span> <span class="dt">\</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-H</span> <span class="st">"Content-Type: application/json"</span> <span class="dt">\</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">-d</span> <span class="st">'{"model":"mistral-small-latest","reasoning_effort":"high","messages":[{"role":"user","content":"Explain the concept of a lock."}]}'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>In Zed</strong>: declare Mistral as an <em>OpenAI-compatible</em> provider (<code>https://api.mistral.ai/v1</code>) and, for the model, <strong>set <code>reasoning_effort</code> to <code>"high"</code> in its configuration</strong> (<code>available_models</code> in the <em>Agent</em> settings). This setting activates the thinking and asks Zed to display the trace in the panel. On older versions of Zed, <code>reasoning_effort</code> could not be forwarded for OpenAI-compatible providers (bug fixed since) — update Zed if the thinking does not show. Note that Mistral returns the trace <strong>in <code>message.content</code></strong> (chunks), not as a dedicated field: a tool that expects a plain string may display “nothing”. To see the trace in all circumstances, use a script (as above) or Mistral <strong>Le Chat</strong>.</p>
+<p><strong>In Zed</strong>: declare Mistral as an OpenAI-compatible provider (<code>https://api.mistral.ai/v1</code>) and, for the model, set <code>reasoning_effort</code> to <code>"high"</code> in its configuration (<code>available_models</code> in the Agent settings). This setting activates the thinking and asks Zed to display the trace in the panel. On older versions of Zed, <code>reasoning_effort</code> could not be forwarded for OpenAI-compatible providers (bug fixed since); update Zed if the thinking does not show. Mistral returns the trace in <code>message.content</code> (chunks), not as a dedicated field: a tool that expects a plain string may display “nothing”. To see the trace in all circumstances, use a script (as above) or Mistral Le Chat.</p>
 </section>
 <section id="collaborative-editing" class="level2" data-number="2.5">
 <h2 data-number="2.5" class="anchored" data-anchor-id="collaborative-editing"><span class="header-section-number">2.5</span> Collaborative editing</h2>
@@ -604,7 +604,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="running-multiprocessingasyncio-in-jupyter" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="running-multiprocessingasyncio-in-jupyter"><span class="header-section-number">2.6</span> Running <code>multiprocessing</code>/<code>asyncio</code> in Jupyter</h2>
-<p>Under macOS, <code>multiprocessing</code> requires the <em>spawn</em> method in Jupyter notebooks — a fix that requires kernel-specific settings. The most robust approach is to run your scripts with <code>uv run</code> rather than in a notebook cell; the details are covered in the lab if needed.</p>
+<p>Under macOS, <code>multiprocessing</code> requires the <em>spawn</em> method in Jupyter notebooks; a fix that requires kernel-specific settings. The most robust approach is to run your scripts with <code>uv run</code> rather than in a notebook cell; the details are covered in the lab if needed.</p>
 
 
 </section>

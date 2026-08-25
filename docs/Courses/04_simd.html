@@ -475,7 +475,7 @@ window.Quarto = {
 <li><strong>numpy vectorizes</strong>: <em>ufuncs</em> (<code>+</code>, <code>*</code>, <code>np.sqrt</code>, <code>np.sum</code>…) operate on the array in one block; data must be <strong>contiguous</strong> (<code>C-contiguous</code>) to be efficient.</li>
 <li><strong>numba</strong>: <code>@njit</code> compiles the function to machine code on the first call (<em>just-in-time</em> compilation); <code>parallel=True</code> + <code>prange</code> distributes the iterations; <code>fastmath=True</code> relaxes IEEE arithmetic (always check the impact on precision).</li>
 <li><strong>When it is not efficient</strong>: small data (call overhead dominates), non-contiguous access, divergent branches, computations where the bottleneck is <em>memory</em> rather than computation.</li>
-<li><strong>Intrinsics</strong> (C/C++): functions mapping to SIMD instructions (<code>_mm_add_ps</code>, <code>_mm256_fma_ps</code>…) — useful to know in order to understand, not needed in Python.</li>
+<li><strong>Intrinsics</strong> (C/C++): functions mapping to SIMD instructions (<code>_mm_add_ps</code>, <code>_mm256_fma_ps</code>…); useful to know in order to understand, not needed in Python.</li>
 </ul>
 </section>
 <section id="exercises" class="level2" data-number="10.2">

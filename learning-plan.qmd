@@ -1,12 +1,12 @@
 # Planning your learning
 
-> Working page for **block 3** — valid for both tracks. The goal is to produce a **learning
+> Working page for **block 3** (valid for both tracks). The goal is to produce a **learning
 > plan** validated by the instructor before starting the autonomous work.
 
 ## Why a plan?
 
-Learning autonomously without a plan is navigating without a map: you skim, you drift, you
-do not know when you are done. A learning plan (inspired by *learning contracts*) turns
+Learning autonomously without a plan is navigating without a map: you skim and drift, and
+you never know when you are done. A learning plan (inspired by *learning contracts*) turns
 intention into **commitment**: objectives, an order, success criteria, a schedule. The plan
 is validated in session 5: it is your roadmap for block 5.
 
@@ -89,7 +89,7 @@ personal adaptations.
 ## Validation flow (session 5)
 
 - Your plan is **reviewed individually** (~15 min with the instructor).
-- **Track A**: the v1 of your system prompt is tested on a simple exercise — the tutor must
+- **Track A**: the v1 of your system prompt is tested on a simple exercise; the tutor must
   already "behave" (refuse the solution, guide).
 - The requested adjustments are to be carried over into the plan; it then becomes your
   reference for block 5.
@@ -99,5 +99,5 @@ personal adaptations.
 - Vague objectives (no observable criterion);
 - Overly ambitious sequencing (underestimating time);
 - Missing evidence ("I will read the docs");
-- A "perfect" plan never revisited after session 5 — the plan is a **living tool**, you
+- A "perfect" plan never revisited after session 5; the plan is a **living tool**, you
   update it (and document why) in the logbook.

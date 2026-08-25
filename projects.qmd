@@ -27,9 +27,9 @@ the module's technical objectives.
 Collect (extraction), clean/merge (transformation), then load data to a target format (CSV,
 Parquet, SQLite database).
 
-- **Extraction**: concurrent retrieval of sources (paginated APIs, files) — `asyncio` +
+- **Extraction**: concurrent retrieval of sources (paginated APIs, files), with `asyncio` +
   `httpx`.
-- **Transformation**: cleaning, aggregations, joins — `multiprocessing`, `dask` or
+- **Transformation**: cleaning, aggregations, joins, with `multiprocessing`, `dask` or
   vectorized `numpy` depending on the data shape.
 - **Loading**: writing in Parquet/SQLite; analysis of the impact of parallelism at each
   step.
@@ -91,7 +91,7 @@ results.
 The 30% share of the final grade is given by the instructor on this rubric, identically for
 tracks A and B.
 
-## Defense (S11 — 18/11, 13:30–15:30)
+## Defense (S11, 18/11, 13:30–15:30)
 
 - **5–8 minute presentation** + questions: what the project does, how it is parallelized,
   what gains were measured, what limits remain.

@@ -397,7 +397,7 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#minimal-specification" id="toc-minimal-specification" class="nav-link" data-scroll-target="#minimal-specification"><span class="header-section-number">13.3</span> Minimal specification</a></li>
   <li><a href="#grading-rubric-overall-weight-30" id="toc-grading-rubric-overall-weight-30" class="nav-link" data-scroll-target="#grading-rubric-overall-weight-30"><span class="header-section-number">13.4</span> Grading rubric (overall weight: 30%)</a></li>
-  <li><a href="#defense-s11-1811-13301530" id="toc-defense-s11-1811-13301530" class="nav-link" data-scroll-target="#defense-s11-1811-13301530"><span class="header-section-number">13.5</span> Defense (S11 — 18/11, 13:30–15:30)</a></li>
+  <li><a href="#defense-s11-1811-13301530" id="toc-defense-s11-1811-13301530" class="nav-link" data-scroll-target="#defense-s11-1811-13301530"><span class="header-section-number">13.5</span> Defense (S11, 18/11, 13:30–15:30)</a></li>
   <li><a href="#frequently-asked-questions" id="toc-frequently-asked-questions" class="nav-link" data-scroll-target="#frequently-asked-questions"><span class="header-section-number">13.6</span> Frequently asked questions</a></li>
   </ul>
 </nav>
@@ -442,8 +442,8 @@ ul.task-list li input[type="checkbox"] {
 <h3 data-number="13.2.1" class="anchored" data-anchor-id="parallel-etl-pipeline"><span class="header-section-number">13.2.1</span> 1. Parallel ETL pipeline</h3>
 <p>Collect (extraction), clean/merge (transformation), then load data to a target format (CSV, Parquet, SQLite database).</p>
 <ul>
-<li><strong>Extraction</strong>: concurrent retrieval of sources (paginated APIs, files) — <code>asyncio</code> + <code>httpx</code>.</li>
-<li><strong>Transformation</strong>: cleaning, aggregations, joins — <code>multiprocessing</code>, <code>dask</code> or vectorized <code>numpy</code> depending on the data shape.</li>
+<li><strong>Extraction</strong>: concurrent retrieval of sources (paginated APIs, files), with <code>asyncio</code> + <code>httpx</code>.</li>
+<li><strong>Transformation</strong>: cleaning, aggregations, joins, with <code>multiprocessing</code>, <code>dask</code> or vectorized <code>numpy</code> depending on the data shape.</li>
 <li><strong>Loading</strong>: writing in Parquet/SQLite; analysis of the impact of parallelism at each step.</li>
 <li><strong>Deliverable</strong>: a pipeline replayable with a single command, with sequential vs parallel time.</li>
 </ul>
@@ -525,7 +525,7 @@ ul.task-list li input[type="checkbox"] {
 <p>The 30% share of the final grade is given by the instructor on this rubric, identically for tracks A and B.</p>
 </section>
 <section id="defense-s11-1811-13301530" class="level2" data-number="13.5">
-<h2 data-number="13.5" class="anchored" data-anchor-id="defense-s11-1811-13301530"><span class="header-section-number">13.5</span> Defense (S11 — 18/11, 13:30–15:30)</h2>
+<h2 data-number="13.5" class="anchored" data-anchor-id="defense-s11-1811-13301530"><span class="header-section-number">13.5</span> Defense (S11, 18/11, 13:30–15:30)</h2>
 <ul>
 <li><strong>5–8 minute presentation</strong> + questions: what the project does, how it is parallelized, what gains were measured, what limits remain.</li>
 <li>The <strong>report</strong> is submitted before the session. Alternative arrangements (individual session, video submission) are planned if needed.</li>

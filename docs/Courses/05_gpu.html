@@ -462,7 +462,7 @@ window.Quarto = {
 <p>Objectives (observable criteria):</p>
 <ul>
 <li>Explain how a <strong>GPU</strong> architecture differs from a CPU (von Neumann, “control traded for arithmetic power”) and the notion of <strong>latency vs throughput</strong>.</li>
-<li>Describe the memory hierarchy: registers, <em>shared memory</em>, global memory, CPU cache — and the cost of <strong>CPU ↔︎ GPU transfers</strong>.</li>
+<li>Describe the memory hierarchy: registers, <em>shared memory</em>, global memory, CPU cache, and the cost of <strong>CPU ↔︎ GPU transfers</strong>.</li>
 <li>Run a simple computation on GPU with <strong>CuPy</strong> (API close to numpy) and with <strong>numba-CUDA</strong> (<code>@cuda.jit</code>), measuring the copy cost.</li>
 </ul>
 <p>Resources: chapter <code>09_GPU-Caching-etc.qmd</code> from last year’s course; documentation <a href="https://docs.cupy.dev/"><code>cupy</code></a> and <a href="https://numba.readthedocs.io/en/stable/cuda/index.html">numba CUDA</a>.</p>
@@ -489,7 +489,7 @@ window.Quarto = {
 <li>CuPy measuring <em>everything</em> (transfers included), (c) CuPy measuring <em>only</em> the GPU computation (<code>with cp.cuda.Stream():</code> and <code>stream.synchronize()</code>). Explain the gaps.</li>
 </ol></li>
 <li><strong>numba-CUDA kernel</strong>: write a <code>@cuda.jit</code> vector-addition kernel, launch it on a suitable grid (block size), compare with CuPy. Compute the <em>number of blocks</em> needed to cover <span class="math inline">n</span>.</li>
-<li><strong>Latency vs throughput</strong>: build a demonstration (diagram or analogy of your choice — toll booth, pizzas, assembly line) and make a peer or your tutor understand it. Formalize in 3 sentences why more <em>concurrency</em> hides latency.</li>
+<li><strong>Latency vs throughput</strong>: build a demonstration (diagram or analogy of your choice: toll booth, pizzas, assembly line) and make a peer or your tutor understand it. Formalize in 3 sentences why more <em>concurrency</em> hides latency.</li>
 <li><strong>Transfers</strong>: a computation chaining 20 small GPU operations with a copy between each (numpy/CPU loop) vs the same keeping everything on GPU. Measure. Conclusion?</li>
 <li>(Track A) Have your tutor explain “why is a GPU slow on a single thread but fast on many?” and “when is it better to stay on CPU?”. Compare with the resources and note the imprecisions. (Track B) Prepare a live-coding: show the cost of a CPU→GPU→CPU round trip on a small operation.</li>
 </ol>

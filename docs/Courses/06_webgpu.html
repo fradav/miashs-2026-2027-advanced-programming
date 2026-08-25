@@ -426,11 +426,11 @@ ul.task-list li input[type="checkbox"] {
 <section id="key-points" class="level2" data-number="12.1">
 <h2 data-number="12.1" class="anchored" data-anchor-id="key-points"><span class="header-section-number">12.1</span> Key points</h2>
 <ul>
-<li><strong>WebGPU</strong>: a JavaScript API that exposes the GPU to the browser (the replacement of WebGL for computation); you write compute <em>shaders</em> in <strong>WGSL</strong>, a language close to Rust/C — no native driver to install, a recent browser is enough.</li>
+<li><strong>WebGPU</strong>: a JavaScript API that exposes the GPU to the browser (the replacement of WebGL for computation); you write compute <em>shaders</em> in <strong>WGSL</strong>, a language close to Rust/C; no native driver to install, a recent browser is enough.</li>
 <li><strong>Basic pipeline</strong>: <code>navigator.gpu.requestAdapter()</code> → <code>requestDevice()</code> → <code>device.createBuffer()</code> → <code>createBindGroup()</code> → <code>createComputePipeline()</code> → you <em>encode</em> a <code>compute pass</code> → <code>device.queue.submit()</code>. Buffers are typed, aligned, with explicit <em>usage flags</em>.</li>
 <li><strong>WGSL</strong>: <code>@compute</code>, <code>@workgroup_size</code>, variables in <em>storage</em> or <em>uniform</em> memory, mathematical functions; <strong>workgroups / invocations</strong> management analogous to CUDA blocks/threads (module 5).</li>
-<li><strong>Exemplary math</strong>: matrix multiplication (matmul) is the classic benchmark — you compare naive and <em>tiled</em> (per-block reuse) versions on the GPU.</li>
-<li><strong>Limits</strong>: bound by the GPU, no long-running massive computation (browser session), CPU↔︎GPU transfers always present — the same <em>throughput</em> questions as in module 5, but inside a web page.</li>
+<li><strong>Exemplary math</strong>: matrix multiplication (matmul) is the classic benchmark; you compare naive and <em>tiled</em> (per-block reuse) versions on the GPU.</li>
+<li><strong>Limits</strong>: bound by the GPU, no long-running massive computation (browser session), CPU↔︎GPU transfers always present; the same <em>throughput</em> questions as in module 5, but inside a web page.</li>
 </ul>
 </section>
 <section id="exercises" class="level2" data-number="12.2">
