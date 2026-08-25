@@ -1,0 +1,110 @@
+---
+title: "Projet final"
+subtitle: "Consolider le module sur un vrai programme parallèle"
+---
+
+Le projet final compte pour **30 %** de la note, avec **la même grille pour les deux
+parcours**. Il évalue la maîtrise technique des compétences du module sur un problème
+concret, mêlant plusieurs techniques vues (asyncio, multiprocessing, Dask, GPU selon sujet).
+
+## Cadre
+
+- **Solo ou binôme** (modalités de communication choisies par le binôme).
+- **Durée** : du lancement (fin octobre) à la **soutenance du 18/11** ; le **rapport** est
+  rendu en amont de la soutenance.
+- **Contraintes communes** : le projet doît *réellement* utiliser du parallélisme (pas du
+  séquentiel déguisé), les gains doivent être **mesurés et justifiés**, et le code doit être
+  **reproductible** (README lisible, script de démonstration).
+
+## Sujets proposés
+
+Chaque sujet est un point d'entrée ; vous pouvez le décliner ou en proposer un autre, du
+moment qu'il couvre les objectifs techniques du module.
+
+### 1. Pipeline ETL parallèle
+
+Collecter (extraction), nettoyer/fusionner (transformation), puis charger des données vers un
+format cible (CSV, Parquet, base SQLite).
+
+- **Extraction** : récupération concurrente de sources (API paginées, fichiers) — `asyncio` +
+  `httpx`.
+- **Transformation** : nettoyage, agrégations, jointures — `multiprocessing`, `dask` ou
+  `numpy` vectorisé selon la forme des données.
+- **Chargement** : écriture en Parquet/SQLite ; analyse de l'impact du parallélisme à chaque
+  étape.
+- **Livrable** : un pipeline rejouable en une commande, avec le temps séquentiel vs parallèle.
+
+### 2. Analyse OLAP / agrégation multidimensionnelle
+
+Charger un jeu de données (par exemple ~1 Go typé table, type *star schema* ou logs) et
+préparer des agrégations (roll-up, drill-down, cube) utilisées pour répondre à des questions
+métier.
+
+- Mise en œuvre avec `dask.dataframe` / `dask.delayed`, ou `cupy`/GPU si le matériel le
+  permet ; comparaison avec `pandas` pur.
+- **Livrable** : un notebook « questions → requêtes → visualisation des temps » et un
+  rapport sur les stratégies de partitionnement.
+
+### 3. Agent de recherche documentaire (deep research)
+
+Un agent qui interroge plusieurs sources simultanément (pages web, API, bases de données),
+extrait des informations pertinentes, agrége une synthèse argumentée et cite ses sources.
+
+- **Collection** : I/O concurrente (`asyncio`, `httpx`, files d'attente).
+- **Traitement** : découpage en tâches (`dask.delayed`) pour le nettoyage et l'extraction de
+  fragments pertinents; synthèse assistée par LLM (optionnel, non évaluée en soi).
+- **Livrable** : l'agent répond à une question posée, avec traçabilité (sources, temps par
+  étape) et mise en évidence du gain concurrentiel de la collecte.
+
+### 4. Traitement de flux (streaming)
+
+Produire un mini-système de traitement en continu : un producteur génère des événements
+(logs, capteurs simulés), un pipeline agrége par **fenêtres glissantes**, un consommateur
+affiche ou stocke les résultats.
+
+- **Architecture** : `asyncio` (queues, `asyncio.Queue`) en production/consommation, ou
+  `multiprocessing` + `Queue` ; gestion de l'ordre et du *backpressure*.
+- **Livrable** : une démo qui montre des statistiques qui se mettent à jour en continu, un
+  schéma d'architecture et l'analyse des choix de concurrence.
+
+## Cahier des charges minimal
+
+1. **Dépôt Git** propre : historique lisible, pas de données volumineuses dans le dépôt.
+2. **README** : objectif, installation (dépendances épinglées), commande de lancement,
+   exemples de sortie.
+3. **Code exécutable** : script principal + tests *minimum* (au moins un test unitaire sur une
+   fonction clé).
+4. **Mesures** : au moins un tableau comparatif (séquentiel vs parallèle, ou variantes de
+   workers) et l'interprétation en 3–5 lignes.
+5. **Rapport (4–6 pages)** : objectifs, architecture (schéma), choix techniques, mesures,
+   limites, ce qui a été appris.
+
+## Grille d'évaluation (poids global : 30 %)
+
+| Critère | Détail | Pondération interne |
+|---|---|---|
+| Maîtrise technique | Parallélisme *réellement* utilisé et justifié ; pas de faux parallélisme (GIL, event loop bloquée, deadlock) ; gestion des ressources | 30 % |
+| Qualité du code | Lisibilité, structure, gestion d'erreurs, tests de base, mesures reproductibles | 25 % |
+| Conformité à la cible | Réponses aux objectifs fixés dans le plan d'apprentissage ; respect du cahier des charges | 20 % |
+| Communication | Soutenance (5–8 min + questions), démo vivante, capacité à expliquer choix et limites | 25 % |
+
+La note sur 30 % de la note finale est attribuée par l'enseignant sur cette grille, à
+l'identique pour les parcours A et B.
+
+## Soutenance (S11 — 18/11, 13:30–15:30)
+
+- Présentation **5–8 minutes** + questions : ce que fait le projet, comment il est parallélisé,
+  quels gains mesurés, quelles limites.
+- Le **rapport** est déposé avant la séance. Des modalités alternatives (session individuelle,
+  dépôt vidéo) sont prévues si nécessaire.
+
+## Questions fréquentes
+
+- **Puis-je utiliser une librairie de plus ?** Oui, du moment que le sujet technique du module
+  (asyncio, IPC, Dask, vectorisation, GPU/WebGPU selon le sujet) reste le cœur justifié.
+- **Et si mon matériel n'a pas de GPU ?** Les sujets GPU sont optionnels ; un projet en
+  asyncio/Dask/vectorisation numpy suffit largement. Le sondage de rentrée sert justement à
+  calibrer ces choix.
+- **Le binôme compte-t-il ?** Le niveau d'exigence est ajusté (un livrable collectif plus
+  ambitieux, ou deux contributions clairement séparées) ; les rôles sont explicités dans le
+  rapport.

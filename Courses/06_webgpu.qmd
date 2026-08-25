@@ -1,0 +1,52 @@
+---
+title: "Module 6 — WebGPU"
+subtitle: "GPU dans le navigateur, compute shaders WGSL"
+---
+
+Objectifs (critères observables) :
+
+- Décrire **WebGPU** et sa place par rapport à un GPU natif (CUDA/CuPy) et à WebGL.
+- Initialiser un *device* WebGPU, créer des **buffers** et lancer une **compute pass** en
+  **WGSL**.
+- Écrire un **kernel de multiplication de matrices** en WGSL et le comparer à une version
+  numpy.
+
+Ressources : chapitres `10_WebGPU-First-App.qmd` et `11_1_WebGPU-matmul.qmd` du cours
+précédent ; documentation officielle [WebGPU](https://gpuweb.github.io/gpuweb/) et
+[WGSL](https://www.w3.org/TR/WGSL/).
+
+## Points clés
+
+- **WebGPU** : API JavaScript qui expose le GPU au navigateur (remplaçante de WebGL pour le
+  calcul) ; on écrit des *shaders* de calcul en **WGSL**, un langage proche de Rust/C —
+  aucun pilote natif à installer, un navigateur récent suffit.
+- **Pipeline de base** : `navigator.gpu.requestAdapter()` → `requestDevice()` →
+  `device.createBuffer()` → `createBindGroup()` → `createComputePipeline()` → on *encode* une
+  `compute pass` → `device.queue.submit()`. Les buffers sont typés, alignés, avec des *usage
+  flags* explicites.
+- **WGSL** : `@compute`, `@workgroup_size`, variables en mémoire *storage* ou *uniform*,
+  fonctions mathématiques ; gestion des **workgroups / invocations** analogue aux blocs/threads
+  CUDA (module 5).
+- **Mathématiques exemplaires** : la multiplication de matrices (matmul) est le banc d'essai
+  classique — on compare des versions naïve, *tiled* (réutilisation par blocs) sur le GPU.
+- **Limites** : navigable par GPU, pas de calcul massif persistant (session navigateur),
+  transferts CPU↔GPU toujours présents — mêmes questions de *débit* qu'en module 5, mais dans
+  une page web.
+
+## Exercices
+
+1. **Première app** : créez une page minimale qui initialise WebGPU, écrit une constante dans
+   un buffer *storage* via un compute shader, et lit le résultat en JS pour l'afficher.
+   Reprenez le gabarit du cours précédent.
+2. **Matmul (naïf)** : écrivez un shader WGSL de matmul (deux matrices passées en storage),
+   calculez le produit sur GPU, comparez le résultat à `numpy.dot` et mesurez le temps.
+3. **Matmul (tiled)** : écrivez une version « par tuiles » qui réutilise des blocs via
+   `var<workgroup>` (mémoire *shared* locale). Comparez avec la version naïve et expliquez le
+   gain, si gain il y a.
+4. **Choix de plateforme** : sur un même calcul (matmul 512×512), comparez (a) WebGPU dans le
+   navigateur, (b) CuPy/numba sur votre GPU, (c) numpy sur CPU. Quels critères font choisir
+   l'un ou l'autre ?
+5. (Parcours A) Faites expliquer à votre tuteur « qu'est-ce qu'un workgroup et à quoi sert la
+   mémoire partagée d'un workgroup ? » et validez la réponse sur la spec WGSL. (Parcours B)
+   Préparez un live-coding : lancez le matmul naïf WebGPU, montrez le résultat et une limite
+   (taille maximale par workgroup, performance vs CuPy).

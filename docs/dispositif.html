@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3&nbsp; Le dispositif pédagogique – Programmation avancée et calcul parallèle</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./tuteur-ia.html" rel="next">
+<link href="./intro.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-af28502ac8d036ed35c2b305f0f54fbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-3bbd6a9bbbe52288d7dadd4871a2e2aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Pas de résultats",
+    "search-matching-documents-text": "documents trouvés",
+    "search-copy-link-title": "Copier le lien vers la recherche",
+    "search-hide-matches-text": "Cacher les correspondances additionnelles",
+    "search-more-match-text": "correspondance de plus dans ce document",
+    "search-more-matches-text": "correspondances de plus dans ce document",
+    "search-clear-button-title": "Effacer",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Annuler",
+    "search-submit-button-title": "Envoyer",
+    "search-label": "Recherche"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./dispositif.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Le dispositif pédagogique</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Recherche" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Programmation avancée et calcul parallèle</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Basculer le mode sombre"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Recherche"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Préface</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Prérequis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dispositif.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Le dispositif pédagogique</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tuteur-ia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Concevoir un tuteur IA</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./plan-apprentissage.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Planifier son apprentissage</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Courses/00_intro-parallele.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction au parallélisme</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Courses/01_asynchrone.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 1 — Asynchrone et concurrence</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Courses/02_ipc-verrous.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 2 — IPC &amp; verrous</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Courses/03_distribue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 3 — Calcul distribué</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Courses/04_simd.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 4 — SIMD et vectorisation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Courses/05_gpu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Module 5 — GPU</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Courses/06_webgpu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Module 6 — WebGPU</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./projets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Projet final</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Synthèse du module</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Références</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table des matières</h2>
+   
+  <ul>
+  <li><a href="#lidée-générale" id="toc-lidée-générale" class="nav-link active" data-scroll-target="#lidée-générale"><span class="header-section-number">3.1</span> L’idée générale</a></li>
+  <li><a href="#deux-parcours-des-objectifs-identiques" id="toc-deux-parcours-des-objectifs-identiques" class="nav-link" data-scroll-target="#deux-parcours-des-objectifs-identiques"><span class="header-section-number">3.2</span> Deux parcours, des objectifs identiques</a>
+  <ul>
+  <li><a href="#parcours-a-tuteur-ia-socratique" id="toc-parcours-a-tuteur-ia-socratique" class="nav-link" data-scroll-target="#parcours-a-tuteur-ia-socratique"><span class="header-section-number">3.2.1</span> Parcours A — tuteur IA socratique</a></li>
+  <li><a href="#parcours-b-apprentissage-classique" id="toc-parcours-b-apprentissage-classique" class="nav-link" data-scroll-target="#parcours-b-apprentissage-classique"><span class="header-section-number">3.2.2</span> Parcours B — apprentissage classique</a></li>
+  <li><a href="#hybridation" id="toc-hybridation" class="nav-link" data-scroll-target="#hybridation"><span class="header-section-number">3.2.3</span> Hybridation</a></li>
+  </ul></li>
+  <li><a href="#observation-croisée" id="toc-observation-croisée" class="nav-link" data-scroll-target="#observation-croisée"><span class="header-section-number">3.3</span> Observation croisée</a></li>
+  <li><a href="#modalités-de-travail" id="toc-modalités-de-travail" class="nav-link" data-scroll-target="#modalités-de-travail"><span class="header-section-number">3.4</span> Modalités de travail</a>
+  <ul>
+  <li><a href="#travail-en-solo" id="toc-travail-en-solo" class="nav-link" data-scroll-target="#travail-en-solo"><span class="header-section-number">3.4.1</span> Travail en solo</a></li>
+  <li><a href="#travail-en-binôme" id="toc-travail-en-binôme" class="nav-link" data-scroll-target="#travail-en-binôme"><span class="header-section-number">3.4.2</span> Travail en binôme</a></li>
+  <li><a href="#prises-de-parole-en-groupe" id="toc-prises-de-parole-en-groupe" class="nav-link" data-scroll-target="#prises-de-parole-en-groupe"><span class="header-section-number">3.4.3</span> Prises de parole en groupe</a></li>
+  <li><a href="#passages-au-tableau" id="toc-passages-au-tableau" class="nav-link" data-scroll-target="#passages-au-tableau"><span class="header-section-number">3.4.4</span> Passages au tableau</a></li>
+  <li><a href="#signaux-et-temps-de-réflexion" id="toc-signaux-et-temps-de-réflexion" class="nav-link" data-scroll-target="#signaux-et-temps-de-réflexion"><span class="header-section-number">3.4.5</span> Signaux et temps de réflexion</a></li>
+  </ul></li>
+  <li><a href="#déroulé-du-semestre-plan-de-cours" id="toc-déroulé-du-semestre-plan-de-cours" class="nav-link" data-scroll-target="#déroulé-du-semestre-plan-de-cours"><span class="header-section-number">3.5</span> Déroulé du semestre (plan de cours)</a></li>
+  <li><a href="#évaluation" id="toc-évaluation" class="nav-link" data-scroll-target="#évaluation"><span class="header-section-number">3.6</span> Évaluation</a></li>
+  <li><a href="#les-garde-fous-pourquoi-ils-sont-là" id="toc-les-garde-fous-pourquoi-ils-sont-là" class="nav-link" data-scroll-target="#les-garde-fous-pourquoi-ils-sont-là"><span class="header-section-number">3.7</span> Les garde-fous (pourquoi ils sont là)</a></li>
+  <li><a href="#pour-aller-plus-loin" id="toc-pour-aller-plus-loin" class="nav-link" data-scroll-target="#pour-aller-plus-loin"><span class="header-section-number">3.8</span> Pour aller plus loin</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Le dispositif pédagogique</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Cette page explique <strong>comment</strong> vous allez apprendre dans ce module, et <strong>pourquoi</strong> ce choix. À lire avec soin : tout le semestre en découle.</p>
+<section id="lidée-générale" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="lidée-générale"><span class="header-section-number">3.1</span> L’idée générale</h2>
+<p>Le savoir ne se construit pas seulement en écoutant un enseignant : il se construit dans l’interaction — avec les autres, avec les documents, avec les outils. Ce module vous place au centre de votre apprentissage : vous <strong>concevez en partie votre parcours</strong>, vous <strong>choisissez vos modalités de travail</strong>, et vous <strong>observez</strong> comment vous apprenez.</p>
+<p>Concrètement, l’idée se décline en trois volets :</p>
+<ol type="1">
+<li><strong>Un apprentissage autonome et co-construit</strong> : vous rédigez un plan d’apprentissage et vous le suivez, avec un accompagnement régulier.</li>
+<li><strong>Un dispositif « enseigner pour apprendre »</strong> : en configurant un <strong>tuteur IA</strong> qui doit vous enseigner <em>correctement</em>, vous êtes obligé·e de maîtriser la matière — on ne peut pas demander à une machine d’enseigner un concept qu’on ne comprend pas soi-même.</li>
+<li><strong>Une démarche critique</strong> : l’IA a des limites documentées (hallucinations, sur-dépendance, usages superficiels, accès inégal). Plutôt que de les ignorer, le cours en fait un objet de travail et d’analyse.</li>
+</ol>
+</section>
+<section id="deux-parcours-des-objectifs-identiques" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="deux-parcours-des-objectifs-identiques"><span class="header-section-number">3.2</span> Deux parcours, des objectifs identiques</h2>
+<p><strong>Les objectifs techniques sont les mêmes pour tout le monde.</strong> C’est la façon d’apprendre qui diffère.</p>
+<section id="parcours-a-tuteur-ia-socratique" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="parcours-a-tuteur-ia-socratique"><span class="header-section-number">3.2.1</span> Parcours A — tuteur IA socratique</h3>
+<ul>
+<li>Vous rédigez un <strong>plan d’apprentissage</strong> structuré.</li>
+<li>Vous concevez un <strong>prompt system</strong> qui configure un chatbot en <em>tuteur socratique</em> : il ne donne pas les réponses, il questionne, guide, fait expliciter.</li>
+<li>Vous interagissez quotidiennement avec ce tuteur, et vous <strong>itérez sur le prompt</strong> en fonction de la qualité des échanges.</li>
+<li>Vous tenez un <strong>journal de bord</strong> qui inclut les conversations complètes du tuteur.</li>
+</ul>
+</section>
+<section id="parcours-b-apprentissage-classique" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="parcours-b-apprentissage-classique"><span class="header-section-number">3.2.2</span> Parcours B — apprentissage classique</h3>
+<ul>
+<li>Vous rédigez le <strong>même type de plan d’apprentissage</strong>.</li>
+<li>Vous travaillez à partir des <strong>ressources disponibles</strong> : ce site, la documentation, les livres, les tutoriels, le cours de l’année précédente.</li>
+<li>Vous tenez un <strong>journal de bord</strong> de votre travail autonome, et vous démontrez votre maîtrise par du <strong>live-coding</strong> (passage au tableau ou session individuelle avec l’enseignant).</li>
+</ul>
+</section>
+<section id="hybridation" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="hybridation"><span class="header-section-number">3.2.3</span> Hybridation</h3>
+<p>Vous pouvez commencer dans un parcours et basculer dans l’autre en cours de semestre, du moment que ce choix est <strong>motivé et expliqué</strong> dans votre rapport. C’est une flexibilité voulue : elle permet à chacun·e de trouver son mode d’apprentissage, et elle fait partie du travail réflexif du module.</p>
+<blockquote class="blockquote">
+<p><strong>Un point important.</strong> Ce n’est pas un cours « sur l’IA » : c’est un cours de programmation parallèle dont le processus d’apprentissage est partiellement fondé sur des outils dont vous apprendrez à maîtriser — ou à contourner — les effets.</p>
+</blockquote>
+</section>
+</section>
+<section id="observation-croisée" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="observation-croisée"><span class="header-section-number">3.3</span> Observation croisée</h2>
+<p>Vous rédigerez un <strong>rapport comparé</strong> qui mêle deux parties :</p>
+<ul>
+<li><strong>Partie réflexive</strong> — analyse de votre propre processus d’apprentissage : quelles stratégies ont marché, où les difficultés sont apparues, comment vous les avez résolues.</li>
+<li><strong>Partie observationnelle</strong> — observation des étudiant·es de l’<em>autre</em> parcours : comment apprennent-ils ? Cette approche semble-t-elle efficace, et sur quels critères ? Quelles réactions cela suscite-t-il chez vous (envie, méfiance, curiosité) et pourquoi ?</li>
+</ul>
+<p>Les étudiant·es du parcours A observent le groupe B pour comprendre ce qui motive le choix de se passer d’IA, et pour justifier en quoi leur propre usage n’est pas une simple sur-dépendance. Les étudiant·es du parcours B observent le groupe A pour analyser les processus d’apprentissage à l’œuvre — et être mieux armé·es pour évoluer dans un monde professionnel où l’IA est omniprésente.</p>
+<p>En milieu de semestre, une <strong>restitution croisée</strong> (lecture anonyme des rapports et discussion collective) permet de mettre en commun ces observations. Le but n’est pas de départager « qui a raison », mais de développer un <strong>rapport éclairé</strong> à la technologie.</p>
+</section>
+<section id="modalités-de-travail" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="modalités-de-travail"><span class="header-section-number">3.4</span> Modalités de travail</h2>
+<p>Le module est conçu pour que chacun·e trouve un format qui lui convient. <strong>Chaque modalité vaut autant que les autres</strong> ; aucun choix n’est interprété comme un moindre engagement.</p>
+<section id="travail-en-solo" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="travail-en-solo"><span class="header-section-number">3.4.1</span> Travail en solo</h3>
+<ul>
+<li><strong>Avec le tuteur IA (parcours A)</strong> : dialogue asynchrone, à votre rythme — vous pouvez reformuler, revenir en arrière, réfléchir avant de répondre.</li>
+<li><strong>Avec les ressources (parcours B)</strong> : documentation, livres, tutoriels, cours précédents.</li>
+<li><strong>Le journal de bord</strong>, quoi qu’il arrive, est votre principal canal d’expression écrite.</li>
+</ul>
+</section>
+<section id="travail-en-binôme" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="travail-en-binôme"><span class="header-section-number">3.4.2</span> Travail en binôme</h3>
+<ul>
+<li>Les binômes d’<strong>observation croisée</strong> se font par échange écrit (journaux lus en croisé, commentaires asynchrones) <strong>ou</strong> oral (entretien de 15–20 min) — au choix des participant·es.</li>
+<li>Le projet final peut se faire en solo ou en binôme (modalités de communication définies par le binôme lui-même).</li>
+</ul>
+</section>
+<section id="prises-de-parole-en-groupe" class="level3" data-number="3.4.3">
+<h3 data-number="3.4.3" class="anchored" data-anchor-id="prises-de-parole-en-groupe"><span class="header-section-number">3.4.3</span> Prises de parole en groupe</h3>
+<p>Cinq canaux sont équivalents :</p>
+<ol type="1">
+<li><strong>Parole orale spontanée</strong> ;</li>
+<li><strong>Parole orale annoncée</strong> — vous signalez à l’avance que vous voulez intervenir ;</li>
+<li><strong>Contribution écrite asynchrone</strong> — rédigée avant la séance (forum, document partagé), lue ou projetée par l’enseignant ou un·e pair·e ;</li>
+<li><strong>Contribution écrite synchrone</strong> — écrite pendant la séance (chat, doc collaboratif) ;</li>
+<li><strong>Contribution par artefact</strong> — un diagramme, du code, une capture d’écran qui porte votre contribution sans que vous ayez à la défendre oralement.</li>
+</ol>
+<p>L’enseignant intègre les contributions non-orales à la discussion avec la même valeur que les contributions orales.</p>
+</section>
+<section id="passages-au-tableau" class="level3" data-number="3.4.4">
+<h3 data-number="3.4.4" class="anchored" data-anchor-id="passages-au-tableau"><span class="header-section-number">3.4.4</span> Passages au tableau</h3>
+<p>Le « passage au tableau » (démonstration, live-coding) est un moment à forte charge sociale. Quatre modalités équivalentes :</p>
+<ul>
+<li><strong>Passage au tableau classique</strong> ;</li>
+<li><strong>Session individuelle avec l’enseignant</strong> ;</li>
+<li><strong>Enregistrement asynchrone</strong> (vidéo de 5–10 min, projetée anonymement si vous le souhaitez) ;</li>
+<li><strong>Démonstration par artefact</strong> (code commenté, diagramme d’architecture, trace de débogage).</li>
+</ul>
+<p><strong>Règle d’or</strong> : personne n’est mis·e en difficulté publique. Si vous souhaitez une alternative, elle vous est proposée sans justification et sans sanction.</p>
+</section>
+<section id="signaux-et-temps-de-réflexion" class="level3" data-number="3.4.5">
+<h3 data-number="3.4.5" class="anchored" data-anchor-id="signaux-et-temps-de-réflexion"><span class="header-section-number">3.4.5</span> Signaux et temps de réflexion</h3>
+<ul>
+<li>L’enseignant laisse un <strong>temps de réflexion</strong> (1–2 min) avant de solliciter une réponse.</li>
+<li>Un <strong>signal de surcharge</strong> discret (carte, geste convenu, message dans le chat) vous permet de demander une pause — respecté sans commentaire public.</li>
+</ul>
+</section>
+</section>
+<section id="déroulé-du-semestre-plan-de-cours" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="déroulé-du-semestre-plan-de-cours"><span class="header-section-number">3.5</span> Déroulé du semestre (plan de cours)</h2>
+<p>Détail complet dans le plan de cours de l’enseignant ; en bref :</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Période</th>
+<th>Bloc</th>
+<th>Contenu</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>S1 (26/08)</td>
+<td>1</td>
+<td>Introduction, cadre, choix du parcours</td>
+</tr>
+<tr class="even">
+<td>S2–S3 (27/08, 01/09)</td>
+<td>2</td>
+<td>Concevoir un tuteur IA (principes, atelier prompt)</td>
+</tr>
+<tr class="odd">
+<td>S4–S5 (03/09, 22/09)</td>
+<td>3–4</td>
+<td>Plan d’apprentissage, validation</td>
+</tr>
+<tr class="even">
+<td>S6–S8 (24/09 → 01/10)</td>
+<td>5</td>
+<td>Travail autonome + points de suivi</td>
+</tr>
+<tr class="odd">
+<td>S9 (22/10)</td>
+<td>6</td>
+<td>Restitution croisée des rapports</td>
+</tr>
+<tr class="even">
+<td>S10 (23/10) → S11 (18/11)</td>
+<td>7 + examen</td>
+<td>Projet final, soutenance</td>
+</tr>
+<tr class="odd">
+<td>S12 (19/11)</td>
+<td>7</td>
+<td>Bilan, rapport métacognitif</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Le travail autonome occupe une part importante du module</strong> : les séances encadrées servent de points de suivi et de déblocage, le reste se fait à votre rythme, chez vous.</p>
+</section>
+<section id="évaluation" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="évaluation"><span class="header-section-number">3.6</span> Évaluation</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Critère</th>
+<th>Poids</th>
+<th>Parcours A</th>
+<th>Parcours B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Plan d’apprentissage</td>
+<td>15 %</td>
+<td>Plan + prompt system</td>
+<td>Plan structuré</td>
+</tr>
+<tr class="even">
+<td>Journal de bord</td>
+<td>15 %</td>
+<td>Journal des interactions + conversations complètes</td>
+<td>Journal du travail + preuves de live-coding</td>
+</tr>
+<tr class="odd">
+<td>Rapport comparé (réflexif + observationnel)</td>
+<td>20 %</td>
+<td>Auto-analyse + observation du groupe B</td>
+<td>Auto-analyse + observation du groupe A</td>
+</tr>
+<tr class="even">
+<td>Projet final</td>
+<td>30 %</td>
+<td>Projet technique</td>
+<td>Projet technique</td>
+</tr>
+<tr class="odd">
+<td>Rapport métacognitif final</td>
+<td>20 %</td>
+<td>Réflexion sur le processus global</td>
+<td>Réflexion sur le processus global</td>
+</tr>
+</tbody>
+</table>
+<p>Le projet final est évalué <strong>avec la même grille pour les deux parcours</strong>.</p>
+</section>
+<section id="les-garde-fous-pourquoi-ils-sont-là" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="les-garde-fous-pourquoi-ils-sont-là"><span class="header-section-number">3.7</span> Les garde-fous (pourquoi ils sont là)</h2>
+<ul>
+<li><strong>Parcours A</strong> : les conversations complètes du tuteur avec le journal de bord servent de <em>traces objectives</em>. Si le tuteur donne une réponse fausse, vous devez documenter comment vous l’avez détectée et corrigée — c’est exactement le type de compétence que le module veut développer.</li>
+<li><strong>Parcours B</strong> : la preuve de maîtrise est plus directe (live-coding, session individuelle), la charge documentaire plus légère.</li>
+</ul>
+</section>
+<section id="pour-aller-plus-loin" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="pour-aller-plus-loin"><span class="header-section-number">3.8</span> Pour aller plus loin</h2>
+<ul>
+<li>La page <a href="./tuteur-ia.html">Concevoir un tuteur IA</a> détaille le travail du bloc 2 (parcours A).</li>
+<li>La page <a href="./plan-apprentissage.html">Planifier son apprentissage</a> détaille le contrat d’apprentissage (tous parcours).</li>
+<li>Quelques lectures de base : pédagogie dialogique et co-construction (Vygotski, Freire, Bovill), limites documentées de l’IA en éducation (hallucinations, sur-dépendance, inégalités d’accès). Les références sont listées en fin de site.</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copié");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copié");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./intro.html" class="pagination-link" aria-label="Prérequis">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Prérequis</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./tuteur-ia.html" class="pagination-link" aria-label="Concevoir un tuteur IA">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Concevoir un tuteur IA</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Sous licence <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Construit avec <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

@@ -1,0 +1,38 @@
+/*-- scss:defaults --*/
+// Personnalisation du thème (darkly / flatly).
+// Ajustez ces valeurs pour modifier l'ensemble du site.
+
+$font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-size-root: 16px !default;
+
+// Couleurs d'accent (déclinaison du bleu enseignement).
+$primary: #2b6cb0 !default;
+$link-color: #2b6cb0 !default;
+$code-color: #b0385a !default;
+
+/*-- scss:rules --*/
+
+// Blocs de citation : faire ressortir les conseils et garde-fous.
+div.callout-note,
+div.callout-tip {
+  border-left-width: 4px;
+}
+
+// Tableaux : en-têtes plus lisibles.
+table > thead {
+  background-color: rgba(43, 108, 176, 0.12);
+}
+
+th, td {
+  padding: 0.4rem 0.7rem;
+}
+
+// Équations et blocs de code : relief léger.
+pre, code {
+  border-radius: 4px;
+}
+
+// Navigation : rendre les titres de chapitres plus aérés.
+.navbar-brand .navbar-title {
+  font-weight: 600;
+}

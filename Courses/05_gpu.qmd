@@ -1,0 +1,59 @@
+---
+title: "Module 5 — GPU"
+subtitle: "architecture, latence vs débit, CuPy, numba-CUDA"
+---
+
+Objectifs (critères observables) :
+
+- Expliquer en quoi l'architecture d'un **GPU** diffère de celle d'un CPU (von Neumann,
+  « control pour arithmetic power ») et la notion de **latence vs débit**.
+- Décrire la hiérarchie mémoire : registres, *shared memory*, mémoire globale, cache CPU —
+  et le coût des **transferts CPU ↔ GPU**.
+- Lancer un calcul simple sur GPU avec **CuPy** (API proche de numpy) et avec
+  **numba-CUDA** (`@cuda.jit`), en mesurant le coût des copies.
+
+Ressources : chapitre `09_GPU-Caching-etc.qmd` du cours précédent ; documentation
+[`cupy`](https://docs.cupy.dev/) et
+[numba CUDA](https://numba.readthedocs.io/en/stable/cuda/index.html).
+
+## Points clés
+
+- **Architecture** : un GPU est massivement parallèle (des milliers de cœurs simples,
+  *throughput-oriented*) alors qu'un CPU a peu de cœurs complexes, *latency-oriented*. Le GPU
+  **échange du contrôle contre de la puissance arithmétique** : les threads sont nombreux,
+  simples, synchronisés par lots.
+- **Latence vs débit** : un seul thread GPU est lent ; la performance vient de *beaucoup*
+  d'opérations en vol en même temps. Métaphores de cours : traiter une seule commande (latence)
+  vs remplir la chaîne sans interruption (débit).
+- **Mémoire** : copier entre CPU et GPU passe par le bus (PCIe ou mémoire unifiée) → les
+  **transferts coûtent cher** : il faut minimiser les allers-retours, réutiliser les buffers,
+  faire le maximum de calcul côté GPU.
+- **Hiérarchie mémoire GPU** : registres (rapides, rares) → shared memory (par bloc, très
+  rapide) → mémoire globale (lente) ; *bank conflicts*, *coalescing* à connaître en seconde
+  lecture.
+- **En Python** :
+  - **CuPy** : `cupy.array`, `cupy.sum`, … API calquée sur numpy ; un tableau est créé sur
+    GPU, les opérations y restent.
+  - **numba-CUDA** : `@cuda.jit` définit un *kernel* ; on précise la grille de blocs et de
+    threads (`cuda.jit([...])(...)`), on y accède aux indices (`cuda.grid`).
+- **Pièges** : oublier de synchroniser (timing faux), mesurer *avec* le transfert, ignorer le
+  premier lancement (compilation JIT/JIT-cache), surutiliser la mémoire globale sans
+  réutilisation.
+
+## Exercices
+
+1. **CuPy vs numpy** : addition de deux grands vecteurs ($n = 10^7, 10^8$) : (a) numpy sur
+   CPU, (b) CuPy en mesurant *tout* (transferts compris), (c) CuPy en mesurant *uniquement*
+   le calcul GPU (`with cp.cuda.Stream():` et `stream.synchronize()`). Expliquez les écarts.
+2. **Kernel numba-CUDA** : écrivez un kernel `@cuda.jit` d'addition de vecteurs, lancez-le sur
+   une grille adaptée (taille des blocs), comparez avec CuPy. Calculez le *nombre de blocs*
+   nécessaire pour couvrir $n$.
+3. **Latence vs débit** : construisez une démonstration (schéma ou analogie de votre choix —
+   file de péage, pizzas, chaîne de montage) et faites-la comprendre à un·e pair·e ou à votre
+   tuteur. Formalisez en 3 phrases pourquoi plus de *concurrence* masque la latence.
+4. **Transferts** : un calcul qui enchaîne 20 petites opérations sur GPU avec une copie entre
+   chaque (boucle numpy/CPU) vs la même chose en gardant tout sur GPU. Mesurez. Conclusion ?
+5. (Parcours A) Faites expliquer à votre tuteur « pourquoi un GPU est-il lent sur un seul
+   thread mais rapide sur beaucoup ? » et « quand vaut-il mieux rester sur CPU ? ». Confrontez
+   aux ressources et notez les imprécisions. (Parcours B) Préparez un live-coding : montrez le
+   coût d'un aller-retour CPU→GPU→CPU sur une petite opération.

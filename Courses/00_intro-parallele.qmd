@@ -1,0 +1,59 @@
+---
+title: "Introduction au parallélisme"
+subtitle: "Concepts de base, lois et taxonomie"
+---
+
+**Module d'introduction** — commun aux deux parcours, vu en début de semestre. Il fournit le
+vocabulaire utilisé partout ailleurs. Ressource complète : chapitre
+`02_Parallel-intro.qmd` du cours de l'année précédente — que vous pouvez utiliser tel quel ou
+faire « enseigner » à votre tuteur IA.
+
+## Notions à maîtriser
+
+| Notion | Définition courte |
+|---|---|
+| Tâche | une commande ou un groupe de commandes à exécuter |
+| Worker | un programme ou sous-programme qui exécute des tâches (thread, processus) |
+| Ressource | unité de calcul (cœur CPU, GPU, machine distante) |
+| Entrée / sortie (I/O) | données nécessaires à une tâche / résultats produits |
+| Mémoire / stockage | là où vivent les données |
+| Synchronisation | contrainte d'ordre entre tâches (la sortie d'une tâche est l'entrée d'une autre) |
+
+## Questions structurantes
+
+1. **Séquentiel vs parallèle** : $n$ tâches, $1$ worker → temps $\sim O(n)$.
+2. **Parallèle simple** : $n$ tâches, $p \ge n$ workers → temps $\sim O(1)$ (bottleneck : pas
+   assez de workers).
+3. **Ordonnancement** : $p < n$ tâches par worker → temps $\sim O(n/p)$.
+4. **Ressources partagées** : plusieurs workers sur une même ressource → attente, risque de
+   saturation (l'organisation de l'accès coûte du temps).
+5. **I/O** : données pas prêtes / résultats pas écrits → les workers attendent ; accès
+   concurrent à la mémoire → goulet d'étranglement.
+
+> **Expérience à refaire** : la courbe de temps en fonction du nombre de workers n'est *jamais*
+> linéaire. Reprenez les illustrations du cours précédent et interprétez la perte
+> (surcoût d'ordonnancement, I/O, mémoire).
+
+## Lois et taxonomie
+
+- **Loi d'Amdahl** : accélération bornée par la fraction séquentielle (scaling *fort*,
+  problème de taille fixe) :
+
+  $$S_{up}(N) \le \frac{1}{S + \frac{P}{N}}$$
+
+- **Loi de Gustafson** : quand la taille du problème croît avec le nombre d'unités (scaling
+  *faible*), l'accélération peut rester quasi linéaire.
+- **Taxonomie de Flynn** : SISD, SIMD, MISD, MIMD — relie le niveau de parallélisme
+  (instruction, thread, tâche) au matériel et au logiciel.
+- **Multi-processing vs multi-threading** : mémoire exclusive vs partagée, communication
+  inter-processus vs au site appelant, coût de création, niveau de concurrence (OS vs
+  bibliothèque/langage).
+
+## Exercices
+
+1. Un programme passe 80 % de son temps dans une partie parallélisable. Calculez
+   l'accélération maximale avec 2, 4, 16 cœurs (loi d'Amdahl). Interprétez.
+2. Sur votre machine : `python` fait une somme élément par élément (SISD mentalement), puis
+   `numpy` vectorise. Chronométrez $n=10^6, 10^7, 10^8$. Commenter le gain et le pourquoi.
+3. Expliquez en 5 lignes la différence thread/processus à votre tuteur IA (parcours A) ou
+   dans votre journal (parcours B), puis validez par une ressource officielle.

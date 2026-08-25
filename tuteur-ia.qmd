@@ -1,0 +1,103 @@
+# Concevoir un tuteur IA
+
+> Page de travail du **bloc 2** (parcours A). Les étudiant·es du parcours B assistent à
+> l'atelier en observateurs : ils·elles observent le processus de conception sans avoir à le
+> reproduire. Les notions de cette page sont aussi utiles au parcours B pour *comprendre*
+> ce que fait l'autre groupe lors de l'observation croisée.
+
+## Pourquoi configurer, et pas seulement utiliser ?
+
+Un chatbot « brut » est souvent un mauvais enseignant : il **donne les réponses
+directement**, ce qui court-circuite la construction de la compréhension, et il **hallucine**,
+c'est-à-dire qu'il produit des affirmations fausses avec assurance.
+
+Un bon tuteur socratique, lui :
+
+- ne donne pas la réponse : il **questionne** et guide ;
+- **soutient** (scaffolding) : il découpe, reformule, donne un indice au bon moment ;
+- **préserve votre agence** : c'est vous qui raisonnez, lui ne raisonne pas à votre place ;
+- s'adapte : quand vous montrez une erreur, il réajuste son étayage.
+
+Pour configurer ce comportement, vous devez **comprendre la matière aussi bien que la
+pédagogie** : c'est le principe *learning by teaching*. Si vous ne savez pas distinguer une
+bonne explication d'une mauvaise, vous ne pourrez pas corriger votre tuteur.
+
+## L'anatomie d'un *prompt system*
+
+Un *prompt system* (ou *system prompt*) est le texte qui fixe le comportement du chatbot. Il
+se travaille en blocs :
+
+1. **Rôle** — qui est le tuteur, pour quel public. Ex. :
+   > « Tu es un tuteur socratique de programmation Python pour un·e étudiant·e de master en
+   > informatique appliquée. Ton objectif est de l'aider à comprendre les concepts de
+   > programmation asynchrone, jamais de faire le travail à sa place. »
+
+2. **Méthode** — comment il enseigne. Ex. :
+   > « Tu progresses par questions courtes. Tu ne donnes jamais directement une solution :
+   > tu guides l'étudiant·e étape par étape. Quand il se trompe, tu ne donnes pas la
+   > correction : tu poses une question qui le fait réfléchir à son erreur. »
+
+3. **Règles anti-triche** — ce qui est interdit. Ex. :
+   > « Tu ne fournis jamais le code complet d'un exercice. Tu peux donner un squelette, un
+   > indice, ou pointer la documentation. Tu refuses poliment si l'étudiant·e insiste. »
+
+4. **Gestion des hallucinations** — comment il gère l'incertitude. Ex. :
+   > « Si tu n'es pas sûr·e d'une réponse, le dis explicitement et propose de vérifier dans
+   > la documentation. Signale clairement les points de la documentation que tu inventes. »
+
+5. **Ton et format** — comment il s'exprime. Ex. :
+   > « Tu réponds en français, de façon concise et encourageante. Tu vérifies la
+   > compréhension avant de passer à la suite. »
+
+6. **Contexte (optionnel)** — la matière à enseigner. On peut fournir un extrait du support
+   de cours, un plan de chapitre, ou des objectifs pédagogiques précis.
+
+## Le processus d'itération
+
+Un prompt system n'est jamais « fini ». Boucle de travail :
+
+1. **Rédiger** une v1 (blocs ci-dessus).
+2. **Tester** sur des exercices types du module : le tuteur donne-t-il la bonne dose d'aide ?
+   Résiste-t-il à la demande de solution ? Repère-t-il une erreur ?
+3. **Observer** les conversations : où le tuteur est-il trop directif ? trop vague ?
+   Qu'a-t-il inventé ?
+4. **Itérer** : reformuler, contraindre, ajouter un exemple de dialogue *à imiter* ou *à
+   éviter* dans le prompt.
+5. **Consigner** : garder trace des versions du prompt et de la raison de chaque changement —
+   c'est une matière précieuse pour votre rapport réflexif.
+
+> Logiquement, le prompt peut même commencer par « n'ouvre pas le sujet sur… » — en pratique,
+> les itérations se jouent dans le détail : un contre-exemple de dialogue vaut souvent mieux
+> que dix règles abstraites.
+
+## Détecter une réponse fausse (ou nuisible)
+
+- **Croiser les sources** : confronter la réponse du tuteur avec la documentation officielle
+  (ex. `docs.python.org`), d'autres ressources, ou un petit test d'exécution.
+- **Tester le code** : ne jamais recopier un code sans le comprendre ni l'exécuter.
+- **Demander les raisons** : un bon tuteur doit pouvoir justifier ; s'il se contredit ou
+  s'enfonce, sniffing de l'erreur probable.
+- **Documenter** : chaque réponse fausse détectée et corrigée entre dans votre journal de
+  bord — c'est un des objectifs du module.
+
+## Exercice type (bloc 2)
+
+1. Choisissez un concept simple du module (ex. la différence entre `thread` et `process`,
+   ou ce qu'est une `coroutine`).
+2. Rédigez une v1 du prompt system en 5 blocs (rôle, méthode, anti-triche, hallucinations,
+   ton).
+3. Testez sur 3 questions : *« donne-moi la réponse »* (le tuteur doit refuser),
+   *« corrige mon code »* (il doit faire réfléchir), *« explique ce concept »* (il doit
+   étayer sans tout donner).
+4. Notez 2 défauts observés et proposez 2 modifications concrètes du prompt.
+5. Conservez la v1 du prompt : elle sera jointe à votre plan d'apprentissage et discutée à la
+   validation (séance 5).
+
+## Grille d'auto-évaluation d'un prompt
+
+- [ ] Le tuteur refuse les demandes de solution directe ?
+- [ ] Il pose des questions qui font progresser, plutôt que des questions fermées sans suite ?
+- [ ] Il adapte son aide si vous êtes perdu·e ?
+- [ ] Il signale son incertitude au lieu d'inventer ?
+- [ ] Il vérifie la compréhension avant de passer au point suivant ?
+- [ ] Le ton est soutenant, et le format lisible ?

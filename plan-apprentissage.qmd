@@ -1,0 +1,103 @@
+# Planifier son apprentissage
+
+> Page de travail du **bloc 3** — valable pour les deux parcours. L'objectif est de produire
+> un **plan d'apprentissage** validé par l'enseignant avant de commencer le travail autonome.
+
+## Pourquoi un plan ?
+
+Apprendre en autonomie sans plan, c'est naviguer sans carte : on survole, on s'égare, on ne
+sait pas quand on a fini. Un plan d'apprentissage (inspiré des *contrats d'apprentissage*)
+transforme l'intention en **engagement** : des objectifs, un ordre, des critères de réussite,
+un calendrier. Le plan est validé en séance 5 : c'est votre feuille de route pour le bloc 5.
+
+## Ce que doit contenir le plan
+
+### 1. Objectifs (par module technique)
+
+Pour chacun des 6 modules (async, IPC/verrous, distribué, SIMD, GPU, WebGPU), formulez
+**2–3 objectifs** sous forme de *critères observables* :
+
+> « Je suis capable d'écrire un programme utilisant `asyncio.gather` pour paralléliser des
+> I/O et d'expliquer quand cela accélère (et quand ça n'accélère pas). »
+
+Évitez les formulations vagues (« comprendre asyncio »). Un objectif doit permettre de dire
+**oui ou non** : « je sais le faire sans aide ».
+
+### 2. Séquençage
+
+- **Ordre des modules** (recommandé : async → IPC/verrous → distribué → SIMD → GPU → WebGPU)
+  et **justification** de votre ordre si vous le modifiez.
+- **Découpage** : pour chaque module, 2–4 étapes avec une estimation de temps.
+
+### 3. Critères de réussite et preuves
+
+- Comment saurez-vous que vous avez atteint l'objectif ? (exercice réussi, mini-projet,
+  explication orale/écrite, quiz…)
+- **Parcours A** : une *conversation* avec le tuteur qui montre la maîtrise (par ex. un
+  exercice mené jusqu'au bout sans que le tuteur donne la réponse).
+- **Parcours B** : un *exercice* fait seul, prêt à être live-codé devant l'enseignant.
+
+### 4. Calendrier de suivi
+
+Répartissez le travail entre les points de suivi (séances 6, 7, 8) et les périodes
+autonomes. Prévoyez des **marges** : le dernier tiers du temps reste disponible pour les
+imprévus et les révisions.
+
+### 5. Contrat
+
+Une courte section d'engagement : vos modalités de travail (horaires, environnement, canal
+de communication avec l'enseignant), vos « signaux d'alerte » (quand demander de l'aide), et
+vos adaptations personnelles éventuelles.
+
+## Gabarit de plan
+
+```markdown
+# Plan d'apprentissage — [Prénom]
+
+## Parcours : A (tuteur IA) / B (classique)
+
+## Objectifs par module
+### M1 — Asynchrone
+- Objectif 1 : ...
+- Objectif 2 : ...
+- Preuve : ...
+### M2 — IPC & verrous
+- ...
+
+## Séquençage
+| Module | Étapes | Temps estimé |
+|---|---|---|
+| M1 | ... | ... |
+
+## Critères de réussite
+- ...
+
+## Calendrier
+| Échéance | Fait prévu |
+|---|---|
+| Séance 6 | ... |
+| Séance 7 | ... |
+| Séance 8 | ... |
+| 20/10 | Rapport intermédiaire |
+
+## Contrat
+- Modalités de travail : ...
+- Signaux d'alerte : ...
+- Adaptations : ...
+```
+
+## Déroulé de la validation (séance 5)
+
+- Votre plan est **relu individuellement** (~15 min avec l'enseignant).
+- **Parcours A** : la v1 de votre prompt system est testée sur un exercice simple — le tuteur
+  doit déjà « se comporter » (refuser la solution, guider).
+- Les ajustements demandés sont à reporter dans le plan ; il devient alors votre référence
+  pour le bloc 5.
+
+## Erreurs classiques à éviter
+
+- Objectifs vagues (pas de critère observable) ;
+- Séquençage trop ambitieux (sous-estimer le temps) ;
+- Preuves absentes (« je lirai la doc ») ;
+- Plan « parfait » jamais relu après la séance 5 — le plan est un **outil vivant**, on le met
+  à jour (et on documente pourquoi) dans le journal de bord.

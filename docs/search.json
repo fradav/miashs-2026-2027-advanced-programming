@@ -1,0 +1,692 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Programmation avancée et calcul parallèle",
+    "section": "",
+    "text": "1 Préface\nCe site contient le support du module « Programmation avancée et calcul parallèle » du master MIASHS (Mathématiques et Informatique Appliqués aux Sciences Humaines et Sociales), Université Paul-Valéry Montpellier 3.\nLe module couvre six familles de techniques : programmation asynchrone, communication inter-processus et verrous, calcul distribué (Dask, Ray), SIMD, GPU et WebGPU.\nUne particularité. Ce module repose sur un dispositif pédagogique d’apprentissage autonome et co-construit : deux parcours sont proposés — un parcours avec un tuteur IA que vous concevez et faites évoluer vous-même, et un parcours d’apprentissage classique à partir des ressources. Les objectifs techniques sont identiques dans les deux cas ; c’est le processus d’apprentissage qui diffère. Vous trouverez tous les détails dans la page Le dispositif.\nVous pouvez naviguer dans le site comme dans un livre : utilisez la table des matières à gauche. Avant la première séance, suivez la page Prérequis pour installer l’outillage.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Préface</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "2  Prérequis",
+    "section": "",
+    "text": "2.1 Logiciels à installer\nIl vous faut un éditeur de code et un gestionnaire d’environnements Python.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Prérequis</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#logiciels-à-installer",
+    "href": "intro.html#logiciels-à-installer",
+    "title": "2  Prérequis",
+    "section": "",
+    "text": "Visual Studio Code — l’éditeur utilisé en TD.\nExtensions recommandées :\n\nPython ;\nLive Share pour l’édition collaborative (comme l’an dernier) ;\nune extension d’assistant de code (voir ci-dessous).",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Prérequis</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#gestion-des-environnements-python-avec-uv",
+    "href": "intro.html#gestion-des-environnements-python-avec-uv",
+    "title": "2  Prérequis",
+    "section": "2.2 Gestion des environnements Python avec uv",
+    "text": "2.2 Gestion des environnements Python avec uv\nuv est l’outil de gestion d’environnements Python recommandé. Il installe l’environnement et les paquets dans le répertoire courant.\nVoir la documentation d’installation pour votre plateforme. Ensuite :\nuv init          # crée un environnement dans le répertoire courant\nuv add package   # ajoute un paquet (remplacer package par le nom)\nExécuter un script avec une dépendance ponctuelle :\nuv run --with dependance script.py",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Prérequis</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#loutillage-du-parcours-a-un-tuteur-ia",
+    "href": "intro.html#loutillage-du-parcours-a-un-tuteur-ia",
+    "title": "2  Prérequis",
+    "section": "2.3 L’outillage du parcours A : un tuteur IA",
+    "text": "2.3 L’outillage du parcours A : un tuteur IA\nLe parcours A nécessite l’accès à un modèle de langage (LLM). Deux options, toutes deux gratuites, selon votre matériel — le sondage de démarrage nous aidera à calibrer ce choix :\n\n2.3.1 Option 1 — API en ligne gratuite (minimum vital)\nCréez un compte sur Mistral.ai « La Plateforme » et récupérez une clé API (plan gratuit « Experiment »). Un numéro de téléphone valide est nécessaire à l’inscription — prévenez l’enseignant si c’est un problème.\nUne fois la clé obtenue, selon votre outil :\n\nContinue.dev (extension VSCode) : créez un fichier .continue/config.yaml dans votre dossier utilisateur (~/.continue sur Linux/macOS, %USERPROFILE%\\.continue sur Windows) avec, par exemple :\nname: miashs/mistral\nversion: 1.0.0\nschema: v1\nmodels:\n  - name: Devstral\n    provider: mistral\n    model: devstral-medium-latest\n    apiKey: ${{ secrets.MISTRAL_API_KEY }}\n    roles: [chat, edit, apply]\n    defaultCompletionOptions:\n      contextLength: 131072\n  - name: Mistral\n    provider: mistral\n    model: mistral-medium-latest\n    apiKey: ${{ secrets.MISTRAL_API_KEY }}\n    roles: [chat, edit, apply]\net posez votre clé dans ~/.continue/.env (ou %USERPROFILE%\\.continue\\.env) :\nMISTRAL_API_KEY=votre_cle\nChat web : Mistral Le Chat (ou l’assistant de votre choix) convient aussi pour les échanges socratiques du parcours A — l’important est de pouvoir configurer le comportement du tuteur via un prompt system (voir la page Concevoir un tuteur IA).\n\n\n\n2.3.2 Option 2 — Modèle local (si votre machine le permet)\nSi vous avez au moins ~16 Go de RAM (ou un GPU dédié avec ~6 Go de VRAM) et ~8 Go d’espace disque libre, vous pouvez faire tourner un modèle local type Qwen 3.5-4B (≈5,5 Go quantifié) avec llama.cpp ou LM Studio. Un modèle local fonctionne hors ligne et sans compte. Le sondage sert précisément à savoir qui peut en faire tourner un.\n\nSi votre machine est modeste : ne vous inquiétez pas. L’option 1 (API gratuite) suffit pour suivre le parcours A. Le parcours B, lui, ne nécessite aucun outil d’IA.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Prérequis</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#édition-collaborative",
+    "href": "intro.html#édition-collaborative",
+    "title": "2  Prérequis",
+    "section": "2.4 Édition collaborative",
+    "text": "2.4 Édition collaborative\nComme l’an dernier, les séances pourront utiliser Live Share (lien fourni dans le salon Discord du module). Ouvrez une fenêtre VSCode dédiée avant de rejoindre la session collaborative.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Prérequis</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#faire-tourner-multiprocessingasyncio-en-jupyter",
+    "href": "intro.html#faire-tourner-multiprocessingasyncio-en-jupyter",
+    "title": "2  Prérequis",
+    "section": "2.5 Faire tourner multiprocessing/asyncio en Jupyter",
+    "text": "2.5 Faire tourner multiprocessing/asyncio en Jupyter\nSous macOS, Jupyter exige un correctif pour multiprocessing (méthode spawn) — le bloc à ajouter dans settings.json de VSCode se trouve dans le cours de l’année dernière ; le détail est repris en TD si besoin.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Prérequis</span>"
+    ]
+  },
+  {
+    "objectID": "dispositif.html",
+    "href": "dispositif.html",
+    "title": "3  Le dispositif pédagogique",
+    "section": "",
+    "text": "3.1 L’idée générale\nCette page explique comment vous allez apprendre dans ce module, et pourquoi ce choix. À lire avec soin : tout le semestre en découle.\nLe savoir ne se construit pas seulement en écoutant un enseignant : il se construit dans l’interaction — avec les autres, avec les documents, avec les outils. Ce module vous place au centre de votre apprentissage : vous concevez en partie votre parcours, vous choisissez vos modalités de travail, et vous observez comment vous apprenez.\nConcrètement, l’idée se décline en trois volets :",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Le dispositif pédagogique</span>"
+    ]
+  },
+  {
+    "objectID": "dispositif.html#lidée-générale",
+    "href": "dispositif.html#lidée-générale",
+    "title": "3  Le dispositif pédagogique",
+    "section": "",
+    "text": "Un apprentissage autonome et co-construit : vous rédigez un plan d’apprentissage et vous le suivez, avec un accompagnement régulier.\nUn dispositif « enseigner pour apprendre » : en configurant un tuteur IA qui doit vous enseigner correctement, vous êtes obligé·e de maîtriser la matière — on ne peut pas demander à une machine d’enseigner un concept qu’on ne comprend pas soi-même.\nUne démarche critique : l’IA a des limites documentées (hallucinations, sur-dépendance, usages superficiels, accès inégal). Plutôt que de les ignorer, le cours en fait un objet de travail et d’analyse.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Le dispositif pédagogique</span>"
+    ]
+  },
+  {
+    "objectID": "dispositif.html#deux-parcours-des-objectifs-identiques",
+    "href": "dispositif.html#deux-parcours-des-objectifs-identiques",
+    "title": "3  Le dispositif pédagogique",
+    "section": "3.2 Deux parcours, des objectifs identiques",
+    "text": "3.2 Deux parcours, des objectifs identiques\nLes objectifs techniques sont les mêmes pour tout le monde. C’est la façon d’apprendre qui diffère.\n\n3.2.1 Parcours A — tuteur IA socratique\n\nVous rédigez un plan d’apprentissage structuré.\nVous concevez un prompt system qui configure un chatbot en tuteur socratique : il ne donne pas les réponses, il questionne, guide, fait expliciter.\nVous interagissez quotidiennement avec ce tuteur, et vous itérez sur le prompt en fonction de la qualité des échanges.\nVous tenez un journal de bord qui inclut les conversations complètes du tuteur.\n\n\n\n3.2.2 Parcours B — apprentissage classique\n\nVous rédigez le même type de plan d’apprentissage.\nVous travaillez à partir des ressources disponibles : ce site, la documentation, les livres, les tutoriels, le cours de l’année précédente.\nVous tenez un journal de bord de votre travail autonome, et vous démontrez votre maîtrise par du live-coding (passage au tableau ou session individuelle avec l’enseignant).\n\n\n\n3.2.3 Hybridation\nVous pouvez commencer dans un parcours et basculer dans l’autre en cours de semestre, du moment que ce choix est motivé et expliqué dans votre rapport. C’est une flexibilité voulue : elle permet à chacun·e de trouver son mode d’apprentissage, et elle fait partie du travail réflexif du module.\n\nUn point important. Ce n’est pas un cours « sur l’IA » : c’est un cours de programmation parallèle dont le processus d’apprentissage est partiellement fondé sur des outils dont vous apprendrez à maîtriser — ou à contourner — les effets.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Le dispositif pédagogique</span>"
+    ]
+  },
+  {
+    "objectID": "dispositif.html#observation-croisée",
+    "href": "dispositif.html#observation-croisée",
+    "title": "3  Le dispositif pédagogique",
+    "section": "3.3 Observation croisée",
+    "text": "3.3 Observation croisée\nVous rédigerez un rapport comparé qui mêle deux parties :\n\nPartie réflexive — analyse de votre propre processus d’apprentissage : quelles stratégies ont marché, où les difficultés sont apparues, comment vous les avez résolues.\nPartie observationnelle — observation des étudiant·es de l’autre parcours : comment apprennent-ils ? Cette approche semble-t-elle efficace, et sur quels critères ? Quelles réactions cela suscite-t-il chez vous (envie, méfiance, curiosité) et pourquoi ?\n\nLes étudiant·es du parcours A observent le groupe B pour comprendre ce qui motive le choix de se passer d’IA, et pour justifier en quoi leur propre usage n’est pas une simple sur-dépendance. Les étudiant·es du parcours B observent le groupe A pour analyser les processus d’apprentissage à l’œuvre — et être mieux armé·es pour évoluer dans un monde professionnel où l’IA est omniprésente.\nEn milieu de semestre, une restitution croisée (lecture anonyme des rapports et discussion collective) permet de mettre en commun ces observations. Le but n’est pas de départager « qui a raison », mais de développer un rapport éclairé à la technologie.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Le dispositif pédagogique</span>"
+    ]
+  },
+  {
+    "objectID": "dispositif.html#modalités-de-travail",
+    "href": "dispositif.html#modalités-de-travail",
+    "title": "3  Le dispositif pédagogique",
+    "section": "3.4 Modalités de travail",
+    "text": "3.4 Modalités de travail\nLe module est conçu pour que chacun·e trouve un format qui lui convient. Chaque modalité vaut autant que les autres ; aucun choix n’est interprété comme un moindre engagement.\n\n3.4.1 Travail en solo\n\nAvec le tuteur IA (parcours A) : dialogue asynchrone, à votre rythme — vous pouvez reformuler, revenir en arrière, réfléchir avant de répondre.\nAvec les ressources (parcours B) : documentation, livres, tutoriels, cours précédents.\nLe journal de bord, quoi qu’il arrive, est votre principal canal d’expression écrite.\n\n\n\n3.4.2 Travail en binôme\n\nLes binômes d’observation croisée se font par échange écrit (journaux lus en croisé, commentaires asynchrones) ou oral (entretien de 15–20 min) — au choix des participant·es.\nLe projet final peut se faire en solo ou en binôme (modalités de communication définies par le binôme lui-même).\n\n\n\n3.4.3 Prises de parole en groupe\nCinq canaux sont équivalents :\n\nParole orale spontanée ;\nParole orale annoncée — vous signalez à l’avance que vous voulez intervenir ;\nContribution écrite asynchrone — rédigée avant la séance (forum, document partagé), lue ou projetée par l’enseignant ou un·e pair·e ;\nContribution écrite synchrone — écrite pendant la séance (chat, doc collaboratif) ;\nContribution par artefact — un diagramme, du code, une capture d’écran qui porte votre contribution sans que vous ayez à la défendre oralement.\n\nL’enseignant intègre les contributions non-orales à la discussion avec la même valeur que les contributions orales.\n\n\n3.4.4 Passages au tableau\nLe « passage au tableau » (démonstration, live-coding) est un moment à forte charge sociale. Quatre modalités équivalentes :\n\nPassage au tableau classique ;\nSession individuelle avec l’enseignant ;\nEnregistrement asynchrone (vidéo de 5–10 min, projetée anonymement si vous le souhaitez) ;\nDémonstration par artefact (code commenté, diagramme d’architecture, trace de débogage).\n\nRègle d’or : personne n’est mis·e en difficulté publique. Si vous souhaitez une alternative, elle vous est proposée sans justification et sans sanction.\n\n\n3.4.5 Signaux et temps de réflexion\n\nL’enseignant laisse un temps de réflexion (1–2 min) avant de solliciter une réponse.\nUn signal de surcharge discret (carte, geste convenu, message dans le chat) vous permet de demander une pause — respecté sans commentaire public.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Le dispositif pédagogique</span>"
+    ]
+  },
+  {
+    "objectID": "dispositif.html#déroulé-du-semestre-plan-de-cours",
+    "href": "dispositif.html#déroulé-du-semestre-plan-de-cours",
+    "title": "3  Le dispositif pédagogique",
+    "section": "3.5 Déroulé du semestre (plan de cours)",
+    "text": "3.5 Déroulé du semestre (plan de cours)\nDétail complet dans le plan de cours de l’enseignant ; en bref :\n\n\n\n\n\n\n\n\nPériode\nBloc\nContenu\n\n\n\n\nS1 (26/08)\n1\nIntroduction, cadre, choix du parcours\n\n\nS2–S3 (27/08, 01/09)\n2\nConcevoir un tuteur IA (principes, atelier prompt)\n\n\nS4–S5 (03/09, 22/09)\n3–4\nPlan d’apprentissage, validation\n\n\nS6–S8 (24/09 → 01/10)\n5\nTravail autonome + points de suivi\n\n\nS9 (22/10)\n6\nRestitution croisée des rapports\n\n\nS10 (23/10) → S11 (18/11)\n7 + examen\nProjet final, soutenance\n\n\nS12 (19/11)\n7\nBilan, rapport métacognitif\n\n\n\nLe travail autonome occupe une part importante du module : les séances encadrées servent de points de suivi et de déblocage, le reste se fait à votre rythme, chez vous.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Le dispositif pédagogique</span>"
+    ]
+  },
+  {
+    "objectID": "dispositif.html#évaluation",
+    "href": "dispositif.html#évaluation",
+    "title": "3  Le dispositif pédagogique",
+    "section": "3.6 Évaluation",
+    "text": "3.6 Évaluation\n\n\n\n\n\n\n\n\n\nCritère\nPoids\nParcours A\nParcours B\n\n\n\n\nPlan d’apprentissage\n15 %\nPlan + prompt system\nPlan structuré\n\n\nJournal de bord\n15 %\nJournal des interactions + conversations complètes\nJournal du travail + preuves de live-coding\n\n\nRapport comparé (réflexif + observationnel)\n20 %\nAuto-analyse + observation du groupe B\nAuto-analyse + observation du groupe A\n\n\nProjet final\n30 %\nProjet technique\nProjet technique\n\n\nRapport métacognitif final\n20 %\nRéflexion sur le processus global\nRéflexion sur le processus global\n\n\n\nLe projet final est évalué avec la même grille pour les deux parcours.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Le dispositif pédagogique</span>"
+    ]
+  },
+  {
+    "objectID": "dispositif.html#les-garde-fous-pourquoi-ils-sont-là",
+    "href": "dispositif.html#les-garde-fous-pourquoi-ils-sont-là",
+    "title": "3  Le dispositif pédagogique",
+    "section": "3.7 Les garde-fous (pourquoi ils sont là)",
+    "text": "3.7 Les garde-fous (pourquoi ils sont là)\n\nParcours A : les conversations complètes du tuteur avec le journal de bord servent de traces objectives. Si le tuteur donne une réponse fausse, vous devez documenter comment vous l’avez détectée et corrigée — c’est exactement le type de compétence que le module veut développer.\nParcours B : la preuve de maîtrise est plus directe (live-coding, session individuelle), la charge documentaire plus légère.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Le dispositif pédagogique</span>"
+    ]
+  },
+  {
+    "objectID": "dispositif.html#pour-aller-plus-loin",
+    "href": "dispositif.html#pour-aller-plus-loin",
+    "title": "3  Le dispositif pédagogique",
+    "section": "3.8 Pour aller plus loin",
+    "text": "3.8 Pour aller plus loin\n\nLa page Concevoir un tuteur IA détaille le travail du bloc 2 (parcours A).\nLa page Planifier son apprentissage détaille le contrat d’apprentissage (tous parcours).\nQuelques lectures de base : pédagogie dialogique et co-construction (Vygotski, Freire, Bovill), limites documentées de l’IA en éducation (hallucinations, sur-dépendance, inégalités d’accès). Les références sont listées en fin de site.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Le dispositif pédagogique</span>"
+    ]
+  },
+  {
+    "objectID": "tuteur-ia.html",
+    "href": "tuteur-ia.html",
+    "title": "4  Concevoir un tuteur IA",
+    "section": "",
+    "text": "4.1 Pourquoi configurer, et pas seulement utiliser ?\nUn chatbot « brut » est souvent un mauvais enseignant : il donne les réponses directement, ce qui court-circuite la construction de la compréhension, et il hallucine, c’est-à-dire qu’il produit des affirmations fausses avec assurance.\nUn bon tuteur socratique, lui :\nPour configurer ce comportement, vous devez comprendre la matière aussi bien que la pédagogie : c’est le principe learning by teaching. Si vous ne savez pas distinguer une bonne explication d’une mauvaise, vous ne pourrez pas corriger votre tuteur.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Concevoir un tuteur IA</span>"
+    ]
+  },
+  {
+    "objectID": "tuteur-ia.html#pourquoi-configurer-et-pas-seulement-utiliser",
+    "href": "tuteur-ia.html#pourquoi-configurer-et-pas-seulement-utiliser",
+    "title": "4  Concevoir un tuteur IA",
+    "section": "",
+    "text": "ne donne pas la réponse : il questionne et guide ;\nsoutient (scaffolding) : il découpe, reformule, donne un indice au bon moment ;\npréserve votre agence : c’est vous qui raisonnez, lui ne raisonne pas à votre place ;\ns’adapte : quand vous montrez une erreur, il réajuste son étayage.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Concevoir un tuteur IA</span>"
+    ]
+  },
+  {
+    "objectID": "tuteur-ia.html#lanatomie-dun-prompt-system",
+    "href": "tuteur-ia.html#lanatomie-dun-prompt-system",
+    "title": "4  Concevoir un tuteur IA",
+    "section": "4.2 L’anatomie d’un prompt system",
+    "text": "4.2 L’anatomie d’un prompt system\nUn prompt system (ou system prompt) est le texte qui fixe le comportement du chatbot. Il se travaille en blocs :\n\nRôle — qui est le tuteur, pour quel public. Ex. : &gt; « Tu es un tuteur socratique de programmation Python pour un·e étudiant·e de master en &gt; informatique appliquée. Ton objectif est de l’aider à comprendre les concepts de &gt; programmation asynchrone, jamais de faire le travail à sa place. »\nMéthode — comment il enseigne. Ex. : &gt; « Tu progresses par questions courtes. Tu ne donnes jamais directement une solution : &gt; tu guides l’étudiant·e étape par étape. Quand il se trompe, tu ne donnes pas la &gt; correction : tu poses une question qui le fait réfléchir à son erreur. »\nRègles anti-triche — ce qui est interdit. Ex. : &gt; « Tu ne fournis jamais le code complet d’un exercice. Tu peux donner un squelette, un &gt; indice, ou pointer la documentation. Tu refuses poliment si l’étudiant·e insiste. »\nGestion des hallucinations — comment il gère l’incertitude. Ex. : &gt; « Si tu n’es pas sûr·e d’une réponse, le dis explicitement et propose de vérifier dans &gt; la documentation. Signale clairement les points de la documentation que tu inventes. »\nTon et format — comment il s’exprime. Ex. : &gt; « Tu réponds en français, de façon concise et encourageante. Tu vérifies la &gt; compréhension avant de passer à la suite. »\nContexte (optionnel) — la matière à enseigner. On peut fournir un extrait du support de cours, un plan de chapitre, ou des objectifs pédagogiques précis.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Concevoir un tuteur IA</span>"
+    ]
+  },
+  {
+    "objectID": "tuteur-ia.html#le-processus-ditération",
+    "href": "tuteur-ia.html#le-processus-ditération",
+    "title": "4  Concevoir un tuteur IA",
+    "section": "4.3 Le processus d’itération",
+    "text": "4.3 Le processus d’itération\nUn prompt system n’est jamais « fini ». Boucle de travail :\n\nRédiger une v1 (blocs ci-dessus).\nTester sur des exercices types du module : le tuteur donne-t-il la bonne dose d’aide ? Résiste-t-il à la demande de solution ? Repère-t-il une erreur ?\nObserver les conversations : où le tuteur est-il trop directif ? trop vague ? Qu’a-t-il inventé ?\nItérer : reformuler, contraindre, ajouter un exemple de dialogue à imiter ou à éviter dans le prompt.\nConsigner : garder trace des versions du prompt et de la raison de chaque changement — c’est une matière précieuse pour votre rapport réflexif.\n\n\nLogiquement, le prompt peut même commencer par « n’ouvre pas le sujet sur… » — en pratique, les itérations se jouent dans le détail : un contre-exemple de dialogue vaut souvent mieux que dix règles abstraites.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Concevoir un tuteur IA</span>"
+    ]
+  },
+  {
+    "objectID": "tuteur-ia.html#détecter-une-réponse-fausse-ou-nuisible",
+    "href": "tuteur-ia.html#détecter-une-réponse-fausse-ou-nuisible",
+    "title": "4  Concevoir un tuteur IA",
+    "section": "4.4 Détecter une réponse fausse (ou nuisible)",
+    "text": "4.4 Détecter une réponse fausse (ou nuisible)\n\nCroiser les sources : confronter la réponse du tuteur avec la documentation officielle (ex. docs.python.org), d’autres ressources, ou un petit test d’exécution.\nTester le code : ne jamais recopier un code sans le comprendre ni l’exécuter.\nDemander les raisons : un bon tuteur doit pouvoir justifier ; s’il se contredit ou s’enfonce, sniffing de l’erreur probable.\nDocumenter : chaque réponse fausse détectée et corrigée entre dans votre journal de bord — c’est un des objectifs du module.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Concevoir un tuteur IA</span>"
+    ]
+  },
+  {
+    "objectID": "tuteur-ia.html#exercice-type-bloc-2",
+    "href": "tuteur-ia.html#exercice-type-bloc-2",
+    "title": "4  Concevoir un tuteur IA",
+    "section": "4.5 Exercice type (bloc 2)",
+    "text": "4.5 Exercice type (bloc 2)\n\nChoisissez un concept simple du module (ex. la différence entre thread et process, ou ce qu’est une coroutine).\nRédigez une v1 du prompt system en 5 blocs (rôle, méthode, anti-triche, hallucinations, ton).\nTestez sur 3 questions : « donne-moi la réponse » (le tuteur doit refuser), « corrige mon code » (il doit faire réfléchir), « explique ce concept » (il doit étayer sans tout donner).\nNotez 2 défauts observés et proposez 2 modifications concrètes du prompt.\nConservez la v1 du prompt : elle sera jointe à votre plan d’apprentissage et discutée à la validation (séance 5).",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Concevoir un tuteur IA</span>"
+    ]
+  },
+  {
+    "objectID": "tuteur-ia.html#grille-dauto-évaluation-dun-prompt",
+    "href": "tuteur-ia.html#grille-dauto-évaluation-dun-prompt",
+    "title": "4  Concevoir un tuteur IA",
+    "section": "4.6 Grille d’auto-évaluation d’un prompt",
+    "text": "4.6 Grille d’auto-évaluation d’un prompt\n\nLe tuteur refuse les demandes de solution directe ?\nIl pose des questions qui font progresser, plutôt que des questions fermées sans suite ?\nIl adapte son aide si vous êtes perdu·e ?\nIl signale son incertitude au lieu d’inventer ?\nIl vérifie la compréhension avant de passer au point suivant ?\nLe ton est soutenant, et le format lisible ?",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Concevoir un tuteur IA</span>"
+    ]
+  },
+  {
+    "objectID": "plan-apprentissage.html",
+    "href": "plan-apprentissage.html",
+    "title": "5  Planifier son apprentissage",
+    "section": "",
+    "text": "5.1 Pourquoi un plan ?\nApprendre en autonomie sans plan, c’est naviguer sans carte : on survole, on s’égare, on ne sait pas quand on a fini. Un plan d’apprentissage (inspiré des contrats d’apprentissage) transforme l’intention en engagement : des objectifs, un ordre, des critères de réussite, un calendrier. Le plan est validé en séance 5 : c’est votre feuille de route pour le bloc 5.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Planifier son apprentissage</span>"
+    ]
+  },
+  {
+    "objectID": "plan-apprentissage.html#ce-que-doit-contenir-le-plan",
+    "href": "plan-apprentissage.html#ce-que-doit-contenir-le-plan",
+    "title": "5  Planifier son apprentissage",
+    "section": "5.2 Ce que doit contenir le plan",
+    "text": "5.2 Ce que doit contenir le plan\n\n5.2.1 1. Objectifs (par module technique)\nPour chacun des 6 modules (async, IPC/verrous, distribué, SIMD, GPU, WebGPU), formulez 2–3 objectifs sous forme de critères observables :\n\n« Je suis capable d’écrire un programme utilisant asyncio.gather pour paralléliser des I/O et d’expliquer quand cela accélère (et quand ça n’accélère pas). »\n\nÉvitez les formulations vagues (« comprendre asyncio »). Un objectif doit permettre de dire oui ou non : « je sais le faire sans aide ».\n\n\n5.2.2 2. Séquençage\n\nOrdre des modules (recommandé : async → IPC/verrous → distribué → SIMD → GPU → WebGPU) et justification de votre ordre si vous le modifiez.\nDécoupage : pour chaque module, 2–4 étapes avec une estimation de temps.\n\n\n\n5.2.3 3. Critères de réussite et preuves\n\nComment saurez-vous que vous avez atteint l’objectif ? (exercice réussi, mini-projet, explication orale/écrite, quiz…)\nParcours A : une conversation avec le tuteur qui montre la maîtrise (par ex. un exercice mené jusqu’au bout sans que le tuteur donne la réponse).\nParcours B : un exercice fait seul, prêt à être live-codé devant l’enseignant.\n\n\n\n5.2.4 4. Calendrier de suivi\nRépartissez le travail entre les points de suivi (séances 6, 7, 8) et les périodes autonomes. Prévoyez des marges : le dernier tiers du temps reste disponible pour les imprévus et les révisions.\n\n\n5.2.5 5. Contrat\nUne courte section d’engagement : vos modalités de travail (horaires, environnement, canal de communication avec l’enseignant), vos « signaux d’alerte » (quand demander de l’aide), et vos adaptations personnelles éventuelles.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Planifier son apprentissage</span>"
+    ]
+  },
+  {
+    "objectID": "plan-apprentissage.html#gabarit-de-plan",
+    "href": "plan-apprentissage.html#gabarit-de-plan",
+    "title": "5  Planifier son apprentissage",
+    "section": "5.3 Gabarit de plan",
+    "text": "5.3 Gabarit de plan\n# Plan d'apprentissage — [Prénom]\n\n## Parcours : A (tuteur IA) / B (classique)\n\n## Objectifs par module\n### M1 — Asynchrone\n- Objectif 1 : ...\n- Objectif 2 : ...\n- Preuve : ...\n### M2 — IPC & verrous\n- ...\n\n## Séquençage\n| Module | Étapes | Temps estimé |\n|---|---|---|\n| M1 | ... | ... |\n\n## Critères de réussite\n- ...\n\n## Calendrier\n| Échéance | Fait prévu |\n|---|---|\n| Séance 6 | ... |\n| Séance 7 | ... |\n| Séance 8 | ... |\n| 20/10 | Rapport intermédiaire |\n\n## Contrat\n- Modalités de travail : ...\n- Signaux d'alerte : ...\n- Adaptations : ...",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Planifier son apprentissage</span>"
+    ]
+  },
+  {
+    "objectID": "plan-apprentissage.html#déroulé-de-la-validation-séance-5",
+    "href": "plan-apprentissage.html#déroulé-de-la-validation-séance-5",
+    "title": "5  Planifier son apprentissage",
+    "section": "5.4 Déroulé de la validation (séance 5)",
+    "text": "5.4 Déroulé de la validation (séance 5)\n\nVotre plan est relu individuellement (~15 min avec l’enseignant).\nParcours A : la v1 de votre prompt system est testée sur un exercice simple — le tuteur doit déjà « se comporter » (refuser la solution, guider).\nLes ajustements demandés sont à reporter dans le plan ; il devient alors votre référence pour le bloc 5.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Planifier son apprentissage</span>"
+    ]
+  },
+  {
+    "objectID": "plan-apprentissage.html#erreurs-classiques-à-éviter",
+    "href": "plan-apprentissage.html#erreurs-classiques-à-éviter",
+    "title": "5  Planifier son apprentissage",
+    "section": "5.5 Erreurs classiques à éviter",
+    "text": "5.5 Erreurs classiques à éviter\n\nObjectifs vagues (pas de critère observable) ;\nSéquençage trop ambitieux (sous-estimer le temps) ;\nPreuves absentes (« je lirai la doc ») ;\nPlan « parfait » jamais relu après la séance 5 — le plan est un outil vivant, on le met à jour (et on documente pourquoi) dans le journal de bord.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Planifier son apprentissage</span>"
+    ]
+  },
+  {
+    "objectID": "Courses/00_intro-parallele.html",
+    "href": "Courses/00_intro-parallele.html",
+    "title": "6  Introduction au parallélisme",
+    "section": "",
+    "text": "6.1 Notions à maîtriser\nModule d’introduction — commun aux deux parcours, vu en début de semestre. Il fournit le vocabulaire utilisé partout ailleurs. Ressource complète : chapitre 02_Parallel-intro.qmd du cours de l’année précédente — que vous pouvez utiliser tel quel ou faire « enseigner » à votre tuteur IA.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Introduction au parallélisme</span>"
+    ]
+  },
+  {
+    "objectID": "Courses/00_intro-parallele.html#notions-à-maîtriser",
+    "href": "Courses/00_intro-parallele.html#notions-à-maîtriser",
+    "title": "6  Introduction au parallélisme",
+    "section": "",
+    "text": "Notion\nDéfinition courte\n\n\n\n\nTâche\nune commande ou un groupe de commandes à exécuter\n\n\nWorker\nun programme ou sous-programme qui exécute des tâches (thread, processus)\n\n\nRessource\nunité de calcul (cœur CPU, GPU, machine distante)\n\n\nEntrée / sortie (I/O)\ndonnées nécessaires à une tâche / résultats produits\n\n\nMémoire / stockage\nlà où vivent les données\n\n\nSynchronisation\ncontrainte d’ordre entre tâches (la sortie d’une tâche est l’entrée d’une autre)",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Introduction au parallélisme</span>"
+    ]
+  },
+  {
+    "objectID": "Courses/00_intro-parallele.html#questions-structurantes",
+    "href": "Courses/00_intro-parallele.html#questions-structurantes",
+    "title": "6  Introduction au parallélisme",
+    "section": "6.2 Questions structurantes",
+    "text": "6.2 Questions structurantes\n\nSéquentiel vs parallèle : n tâches, 1 worker → temps \\sim O(n).\nParallèle simple : n tâches, p \\ge n workers → temps \\sim O(1) (bottleneck : pas assez de workers).\nOrdonnancement : p &lt; n tâches par worker → temps \\sim O(n/p).\nRessources partagées : plusieurs workers sur une même ressource → attente, risque de saturation (l’organisation de l’accès coûte du temps).\nI/O : données pas prêtes / résultats pas écrits → les workers attendent ; accès concurrent à la mémoire → goulet d’étranglement.\n\n\nExpérience à refaire : la courbe de temps en fonction du nombre de workers n’est jamais linéaire. Reprenez les illustrations du cours précédent et interprétez la perte (surcoût d’ordonnancement, I/O, mémoire).",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Introduction au parallélisme</span>"
+    ]
+  },
+  {
+    "objectID": "Courses/00_intro-parallele.html#lois-et-taxonomie",
+    "href": "Courses/00_intro-parallele.html#lois-et-taxonomie",
+    "title": "6  Introduction au parallélisme",
+    "section": "6.3 Lois et taxonomie",
+    "text": "6.3 Lois et taxonomie\n\nLoi d’Amdahl : accélération bornée par la fraction séquentielle (scaling fort, problème de taille fixe) :\nS_{up}(N) \\le \\frac{1}{S + \\frac{P}{N}}\nLoi de Gustafson : quand la taille du problème croît avec le nombre d’unités (scaling faible), l’accélération peut rester quasi linéaire.\nTaxonomie de Flynn : SISD, SIMD, MISD, MIMD — relie le niveau de parallélisme (instruction, thread, tâche) au matériel et au logiciel.\nMulti-processing vs multi-threading : mémoire exclusive vs partagée, communication inter-processus vs au site appelant, coût de création, niveau de concurrence (OS vs bibliothèque/langage).",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Introduction au parallélisme</span>"
+    ]
+  },
+  {
+    "objectID": "Courses/00_intro-parallele.html#exercices",
+    "href": "Courses/00_intro-parallele.html#exercices",
+    "title": "6  Introduction au parallélisme",
+    "section": "6.4 Exercices",
+    "text": "6.4 Exercices\n\nUn programme passe 80 % de son temps dans une partie parallélisable. Calculez l’accélération maximale avec 2, 4, 16 cœurs (loi d’Amdahl). Interprétez.\nSur votre machine : python fait une somme élément par élément (SISD mentalement), puis numpy vectorise. Chronométrez n=10^6, 10^7, 10^8. Commenter le gain et le pourquoi.\nExpliquez en 5 lignes la différence thread/processus à votre tuteur IA (parcours A) ou dans votre journal (parcours B), puis validez par une ressource officielle.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Introduction au parallélisme</span>"
+    ]
+  },
+  {
+    "objectID": "Courses/01_asynchrone.html",
+    "href": "Courses/01_asynchrone.html",
+    "title": "7  Module 1 — Asynchrone et concurrence",
+    "section": "",
+    "text": "7.1 Points clés\nObjectifs (critères observables) :\nRessources : chapitre 03_Asynchronous.qmd du cours précédent ; documentation officielle asyncio.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Module 1 — Asynchrone et concurrence</span>"
+    ]
+  },
+  {
+    "objectID": "Courses/01_asynchrone.html#points-clés",
+    "href": "Courses/01_asynchrone.html#points-clés",
+    "title": "7  Module 1 — Asynchrone et concurrence",
+    "section": "",
+    "text": "Coroutine : fonction déclarée async def ; son exécution ne démarre pas à l’appel, il faut l’attendre ou la planifier.\nEvent loop : le « chef d’orchestre » qui alterne entre les coroutines quand elles sont en attente (I/O, sleep).\nawait, asyncio.gather, create_task, asyncio.run.\nGIL : les threads Python ne calculent pas en parallèle sur CPU ; l’asynchrone sert aux I/O (réseau, fichiers, API). Ne pas promettre le contraire à votre tuteur.\nPièges : bloquer l’event loop avec un appel synchrone long (time.sleep, requests en synchrone) ; oublier d’await ; mauvais usage de gather vs create_task.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Module 1 — Asynchrone et concurrence</span>"
+    ]
+  },
+  {
+    "objectID": "Courses/01_asynchrone.html#exercices",
+    "href": "Courses/01_asynchrone.html#exercices",
+    "title": "7  Module 1 — Asynchrone et concurrence",
+    "section": "7.2 Exercices",
+    "text": "7.2 Exercices\n\nTéléchargez N URLs en séquentiel puis avec asyncio.gather. Chronométrez. Pourquoi requests bloque-t-il ? Que faut-il utiliser à la place (httpx, aiohttp) ?\nÉcrivez un petit serveur/client asynchrone (asyncio.start_server) qui répond « pong ».\nPiège : mélangez time.sleep(1) et await asyncio.sleep(1) dans des tâches concurrentes. Chronométrez et expliquez le résultat (blocage de la boucle).\n(Parcours A) Demandez à votre tuteur « quand utiliser threads vs asyncio ? » et « pourquoi le GIL ne s’applique pas aux I/O ? ». Vérifiez ses réponses sur une source officielle et documentez toute imprécision.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Module 1 — Asynchrone et concurrence</span>"
+    ]
+  },
+  {
+    "objectID": "Courses/02_ipc-verrous.html",
+    "href": "Courses/02_ipc-verrous.html",
+    "title": "8  Module 2 — IPC & verrous",
+    "section": "",
+    "text": "8.1 Points clés\nObjectifs (critères observables) :\nRessources : chapitre 04_IPC-and-Locking.qmd du cours précédent ; documentation multiprocessing.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Module 2 — IPC & verrous</span>"
+    ]
+  },
+  {
+    "objectID": "Courses/02_ipc-verrous.html#points-clés",
+    "href": "Courses/02_ipc-verrous.html#points-clés",
+    "title": "8  Module 2 — IPC & verrous",
+    "section": "",
+    "text": "Processus : mémoire exclusive, communication par IPC ; démarrage par spawn (par défaut sur macOS/Windows) ou fork (Linux).\nQueues / Pipes : échange de messages. Mémoire partagée (Value, Array, shared_memory) : données partagées, mais à protéger.\nVerrous : Lock pour sérialiser une section critique (mise à jour d’un compteur partagé, écriture de fichier).\nDeadlock : deux processus s’attendent mutuellement ; verrouillage mal ordonné.\nRace conditions : le résultat dépend de l’ordre d’exécution → pourquoi le lock est nécessaire (illustration compteur).",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Module 2 — IPC & verrous</span>"
+    ]
+  },
+  {
+    "objectID": "Courses/02_ipc-verrous.html#exercices",
+    "href": "Courses/02_ipc-verrous.html#exercices",
+    "title": "8  Module 2 — IPC & verrous",
+    "section": "8.2 Exercices",
+    "text": "8.2 Exercices\n\nCompteur partagé : 8 processus incrémentent un compteur en mémoire partagée 100 000 fois chacun. Sans verrou → valeur fausse ; avec Lock → valeur correcte. Mesurez le coût du verrou.\nProducteur/consommateur : un processus produit des entiers, un autre les consomme via une Queue. Testez la mise en attente naturelle (queue.Empty).\nDeadlock : fabriquez volontairement un interblocage à deux ressources, diagnostiquez-le (où est le blocage ?) puis corrigez l’ordre d’acquisition.\nPool : comparez Pool.imap vs une boucle séquentielle sur un calcul CPU-bound.\n(Parcours B) Préparez l’exercice 1 en live-coding ; (parcours A) faites expliquer à votre tuteur « pourquoi un Lock est nécessaire si la mémoire est partagée » et évaluez la justesse de l’explication.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Module 2 — IPC & verrous</span>"
+    ]
+  },
+  {
+    "objectID": "Courses/03_distribue.html",
+    "href": "Courses/03_distribue.html",
+    "title": "9  Module 3 — Calcul distribué",
+    "section": "",
+    "text": "9.1 Points clés\nObjectifs (critères observables) :\nRessources : chapitres 05_Distributed.qmd, 06_Dask-Ray.qmd et 07_Dask-delayed.qmd du cours précédent ; documentation officielle dask et Ray.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Module 3 — Calcul distribué</span>"
+    ]
+  },
+  {
+    "objectID": "Courses/03_distribue.html#points-clés",
+    "href": "Courses/03_distribue.html#points-clés",
+    "title": "9  Module 3 — Calcul distribué",
+    "section": "",
+    "text": "MapReduce / Split-Apply-Combine : décomposer le problème en morceaux (split), traiter chaque morceau indépendamment (map/apply), puis fusionner les résultats partiels (reduce/combine). Application canonique : word count.\nDask resemble numpy/pandas mais en paresseux : delayed, bag, dataframe, array construisent un graphe de tâches ; rien ne s’exécute avant .compute(). Scheduler (threads, processes, distributed).\ndask.delayed : transforme une fonction en tâche évaluée paresseusement ; le graphe s’emboîte et .compute() orchestre les dépendances.\nRay : modèle actor — état préservé entre appels (@ray.remote sur une classe) et futures ; pensé pour des services avec état et du parallélisme à grande échelle.\nBonnes pratiques delayed : appeler delayed sur la fonction, pas sur le résultat ; ne pas muter les inputs ; éviter l’état global et les effets de bord ; découper en petites tâches mais pas trop ; ne pas utiliser delayed à l’intérieur d’une fonction déjà delayed ; ne pas appliquer delayed sur d’autres collections Dask.\nPièges : sérialisation des données entre workers (pickle), scheduler qui sature, confusion lazy vs eager (oublier .compute()), trop de tâches minuscules (surcharge d’ordonnancement).",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Module 3 — Calcul distribué</span>"
+    ]
+  },
+  {
+    "objectID": "Courses/03_distribue.html#exercices",
+    "href": "Courses/03_distribue.html#exercices",
+    "title": "9  Module 3 — Calcul distribué",
+    "section": "9.2 Exercices",
+    "text": "9.2 Exercices\n\nWord count distribué : comptez les mots d’un ensemble de fichiers texte avec dask.bag (map + foldby, ou l’équivalent), puis avec une liste de fichiers et delayed. Comparez les temps sur un seul fichier puis plusieurs.\nPipeline paresseux : écrivez 3–4 fonctions (lecture → nettoyage → calcul → agrégation), enchaînez-les avec delayed, vérifiez qu’aucun calcul n’a lieu avant .compute() (comment le constater ?), puis déclenchez.\nDask vs Ray : même calcul (somme de nombres, ou incrément d’un compteur) écrit avec Dask puis avec Ray (@ray.remote + acteur). Comparez les paradigmes : graphe vs état.\nBonnes pratiques : partez d’une fonction delayed qui mute une liste globale ou un tableau partagé, montrez le bug (résultat qui dépend de l’ordre), puis corrigez en retournant les valeurs. Justifiez la correction.\n(Parcours A) Faites expliquer à votre tuteur « pourquoi ne faut-il pas appeler delayed sur d’autres collections Dask ? » et « quelle est la différence entre threads et processes pour le scheduler ? ». Vérifiez chaque réponse sur la documentation officielle. (Parcours B) Préparez un mini live-coding : transformez une boucle séquentielle en graphe Dask, montrez le gain, et le cas où Dask n’apporte rien.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Module 3 — Calcul distribué</span>"
+    ]
+  },
+  {
+    "objectID": "Courses/04_simd.html",
+    "href": "Courses/04_simd.html",
+    "title": "10  Module 4 — SIMD et vectorisation",
+    "section": "",
+    "text": "10.1 Points clés\nObjectifs (critères observables) :\nRessources : chapitre 08_SIMD.qmd du cours précédent ; documentation numba et numpy.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Module 4 — SIMD et vectorisation</span>"
+    ]
+  },
+  {
+    "objectID": "Courses/04_simd.html#points-clés",
+    "href": "Courses/04_simd.html#points-clés",
+    "title": "10  Module 4 — SIMD et vectorisation",
+    "section": "",
+    "text": "Pourquoi la vectorisation ? une seule instruction décodée et exécutée pour plusieurs données → moins de décodage, moins de boucles, meilleur débit. C’est une forme de parallélisme au niveau instruction, invisible au niveau thread.\nRegistres SIMD : SSE (128 bits ≈ 4 flottants 32 bits), AVX (256 bits ≈ 8 flottants), AVX-512 ; longueur qui a crû avec le temps. Compatible avec la taxonomie de Flynn (module d’intro) : c’est du data parallelism.\nnumpy vectorise : les ufuncs (+, *, np.sqrt, np.sum…) opèrent sur le tableau d’un bloc ; les données doivent être contiguës (C-contiguous) pour être efficaces.\nnumba : @njit compile la fonction en code machine au premier appel (compilation just-in-time) ; parallel=True + prange distribue les itérations ; fastmath=True relâche l’arithmétique IEEE (toujours vérifier l’impact sur la précision).\nQuand ce n’est pas efficace : petites données (le surcoût d’appel domine), accès non contigus, branches divergentes, calculs où le goulot est la mémoire et non le calcul.\nIntrinsics (C/C++) : fonctions correspondant aux instructions SIMD (_mm_add_ps, _mm256_fma_ps…) — à connaître pour comprendre, pas nécessaire à utiliser en Python.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Module 4 — SIMD et vectorisation</span>"
+    ]
+  },
+  {
+    "objectID": "Courses/04_simd.html#exercices",
+    "href": "Courses/04_simd.html#exercices",
+    "title": "10  Module 4 — SIMD et vectorisation",
+    "section": "10.2 Exercices",
+    "text": "10.2 Exercices\n\nBoucle vs numpy : calculez y = 3x^2 + 2 pour n = 10^5, 10^6, 10^7, 10^8 en boucle Python pure puis avec une expression numpy. Tracez le rapport des temps. Pourquoi le gain dépend-il de n ?\nnumba : réécrivez la boucle de l’exercice 1 avec @njit, puis @njit(parallel=True) et prange. Comparez avec numpy et avec la boucle pure. Que se passe-t-il au premier appel (compilation) ?\nufunc et contiguïté : chronométrez une opération sur un tableau contigu vs un tableau non contigu (par exemple une vue a[::2]). Interprétez avec la notion de cache.\nCas non vectorisable : écrivez une fonction avec une branche (type collatz ou fonction par morceaux) et comparez les approches. La vectorisation aide-t-elle autant ? Pourquoi ?\n(Parcours A) Demandez à votre tuteur « pourquoi numpy est-il plus rapide qu’une boucle Python ? » puis « qu’est-ce que fastmath et quels risques ? ». Validez sur la doc officielle et documentez toute approximation. (Parcours B) Préparez un live-coding comparatif boucle/numpy/numba et expliquez le graphe de résultats.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Module 4 — SIMD et vectorisation</span>"
+    ]
+  },
+  {
+    "objectID": "Courses/05_gpu.html",
+    "href": "Courses/05_gpu.html",
+    "title": "11  Module 5 — GPU",
+    "section": "",
+    "text": "11.1 Points clés\nObjectifs (critères observables) :\nRessources : chapitre 09_GPU-Caching-etc.qmd du cours précédent ; documentation cupy et numba CUDA.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Module 5 — GPU</span>"
+    ]
+  },
+  {
+    "objectID": "Courses/05_gpu.html#points-clés",
+    "href": "Courses/05_gpu.html#points-clés",
+    "title": "11  Module 5 — GPU",
+    "section": "",
+    "text": "Architecture : un GPU est massivement parallèle (des milliers de cœurs simples, throughput-oriented) alors qu’un CPU a peu de cœurs complexes, latency-oriented. Le GPU échange du contrôle contre de la puissance arithmétique : les threads sont nombreux, simples, synchronisés par lots.\nLatence vs débit : un seul thread GPU est lent ; la performance vient de beaucoup d’opérations en vol en même temps. Métaphores de cours : traiter une seule commande (latence) vs remplir la chaîne sans interruption (débit).\nMémoire : copier entre CPU et GPU passe par le bus (PCIe ou mémoire unifiée) → les transferts coûtent cher : il faut minimiser les allers-retours, réutiliser les buffers, faire le maximum de calcul côté GPU.\nHiérarchie mémoire GPU : registres (rapides, rares) → shared memory (par bloc, très rapide) → mémoire globale (lente) ; bank conflicts, coalescing à connaître en seconde lecture.\nEn Python :\n\nCuPy : cupy.array, cupy.sum, … API calquée sur numpy ; un tableau est créé sur GPU, les opérations y restent.\nnumba-CUDA : @cuda.jit définit un kernel ; on précise la grille de blocs et de threads (cuda.jit([...])(...)), on y accède aux indices (cuda.grid).\n\nPièges : oublier de synchroniser (timing faux), mesurer avec le transfert, ignorer le premier lancement (compilation JIT/JIT-cache), surutiliser la mémoire globale sans réutilisation.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Module 5 — GPU</span>"
+    ]
+  },
+  {
+    "objectID": "Courses/05_gpu.html#exercices",
+    "href": "Courses/05_gpu.html#exercices",
+    "title": "11  Module 5 — GPU",
+    "section": "11.2 Exercices",
+    "text": "11.2 Exercices\n\nCuPy vs numpy : addition de deux grands vecteurs (n = 10^7, 10^8) : (a) numpy sur CPU, (b) CuPy en mesurant tout (transferts compris), (c) CuPy en mesurant uniquement le calcul GPU (with cp.cuda.Stream(): et stream.synchronize()). Expliquez les écarts.\nKernel numba-CUDA : écrivez un kernel @cuda.jit d’addition de vecteurs, lancez-le sur une grille adaptée (taille des blocs), comparez avec CuPy. Calculez le nombre de blocs nécessaire pour couvrir n.\nLatence vs débit : construisez une démonstration (schéma ou analogie de votre choix — file de péage, pizzas, chaîne de montage) et faites-la comprendre à un·e pair·e ou à votre tuteur. Formalisez en 3 phrases pourquoi plus de concurrence masque la latence.\nTransferts : un calcul qui enchaîne 20 petites opérations sur GPU avec une copie entre chaque (boucle numpy/CPU) vs la même chose en gardant tout sur GPU. Mesurez. Conclusion ?\n(Parcours A) Faites expliquer à votre tuteur « pourquoi un GPU est-il lent sur un seul thread mais rapide sur beaucoup ? » et « quand vaut-il mieux rester sur CPU ? ». Confrontez aux ressources et notez les imprécisions. (Parcours B) Préparez un live-coding : montrez le coût d’un aller-retour CPU→GPU→CPU sur une petite opération.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Module 5 — GPU</span>"
+    ]
+  },
+  {
+    "objectID": "Courses/06_webgpu.html",
+    "href": "Courses/06_webgpu.html",
+    "title": "12  Module 6 — WebGPU",
+    "section": "",
+    "text": "12.1 Points clés\nObjectifs (critères observables) :\nRessources : chapitres 10_WebGPU-First-App.qmd et 11_1_WebGPU-matmul.qmd du cours précédent ; documentation officielle WebGPU et WGSL.",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Module 6 — WebGPU</span>"
+    ]
+  },
+  {
+    "objectID": "Courses/06_webgpu.html#points-clés",
+    "href": "Courses/06_webgpu.html#points-clés",
+    "title": "12  Module 6 — WebGPU",
+    "section": "",
+    "text": "WebGPU : API JavaScript qui expose le GPU au navigateur (remplaçante de WebGL pour le calcul) ; on écrit des shaders de calcul en WGSL, un langage proche de Rust/C — aucun pilote natif à installer, un navigateur récent suffit.\nPipeline de base : navigator.gpu.requestAdapter() → requestDevice() → device.createBuffer() → createBindGroup() → createComputePipeline() → on encode une compute pass → device.queue.submit(). Les buffers sont typés, alignés, avec des usage flags explicites.\nWGSL : @compute, @workgroup_size, variables en mémoire storage ou uniform, fonctions mathématiques ; gestion des workgroups / invocations analogue aux blocs/threads CUDA (module 5).\nMathématiques exemplaires : la multiplication de matrices (matmul) est le banc d’essai classique — on compare des versions naïve, tiled (réutilisation par blocs) sur le GPU.\nLimites : navigable par GPU, pas de calcul massif persistant (session navigateur), transferts CPU↔︎GPU toujours présents — mêmes questions de débit qu’en module 5, mais dans une page web.",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Module 6 — WebGPU</span>"
+    ]
+  },
+  {
+    "objectID": "Courses/06_webgpu.html#exercices",
+    "href": "Courses/06_webgpu.html#exercices",
+    "title": "12  Module 6 — WebGPU",
+    "section": "12.2 Exercices",
+    "text": "12.2 Exercices\n\nPremière app : créez une page minimale qui initialise WebGPU, écrit une constante dans un buffer storage via un compute shader, et lit le résultat en JS pour l’afficher. Reprenez le gabarit du cours précédent.\nMatmul (naïf) : écrivez un shader WGSL de matmul (deux matrices passées en storage), calculez le produit sur GPU, comparez le résultat à numpy.dot et mesurez le temps.\nMatmul (tiled) : écrivez une version « par tuiles » qui réutilise des blocs via var&lt;workgroup&gt; (mémoire shared locale). Comparez avec la version naïve et expliquez le gain, si gain il y a.\nChoix de plateforme : sur un même calcul (matmul 512×512), comparez (a) WebGPU dans le navigateur, (b) CuPy/numba sur votre GPU, (c) numpy sur CPU. Quels critères font choisir l’un ou l’autre ?\n(Parcours A) Faites expliquer à votre tuteur « qu’est-ce qu’un workgroup et à quoi sert la mémoire partagée d’un workgroup ? » et validez la réponse sur la spec WGSL. (Parcours B) Préparez un live-coding : lancez le matmul naïf WebGPU, montrez le résultat et une limite (taille maximale par workgroup, performance vs CuPy).",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Module 6 — WebGPU</span>"
+    ]
+  },
+  {
+    "objectID": "projets.html",
+    "href": "projets.html",
+    "title": "13  Projet final",
+    "section": "",
+    "text": "13.1 Cadre\nLe projet final compte pour 30 % de la note, avec la même grille pour les deux parcours. Il évalue la maîtrise technique des compétences du module sur un problème concret, mêlant plusieurs techniques vues (asyncio, multiprocessing, Dask, GPU selon sujet).",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Projet final</span>"
+    ]
+  },
+  {
+    "objectID": "projets.html#cadre",
+    "href": "projets.html#cadre",
+    "title": "13  Projet final",
+    "section": "",
+    "text": "Solo ou binôme (modalités de communication choisies par le binôme).\nDurée : du lancement (fin octobre) à la soutenance du 18/11 ; le rapport est rendu en amont de la soutenance.\nContraintes communes : le projet doît réellement utiliser du parallélisme (pas du séquentiel déguisé), les gains doivent être mesurés et justifiés, et le code doit être reproductible (README lisible, script de démonstration).",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Projet final</span>"
+    ]
+  },
+  {
+    "objectID": "projets.html#sujets-proposés",
+    "href": "projets.html#sujets-proposés",
+    "title": "13  Projet final",
+    "section": "13.2 Sujets proposés",
+    "text": "13.2 Sujets proposés\nChaque sujet est un point d’entrée ; vous pouvez le décliner ou en proposer un autre, du moment qu’il couvre les objectifs techniques du module.\n\n13.2.1 1. Pipeline ETL parallèle\nCollecter (extraction), nettoyer/fusionner (transformation), puis charger des données vers un format cible (CSV, Parquet, base SQLite).\n\nExtraction : récupération concurrente de sources (API paginées, fichiers) — asyncio + httpx.\nTransformation : nettoyage, agrégations, jointures — multiprocessing, dask ou numpy vectorisé selon la forme des données.\nChargement : écriture en Parquet/SQLite ; analyse de l’impact du parallélisme à chaque étape.\nLivrable : un pipeline rejouable en une commande, avec le temps séquentiel vs parallèle.\n\n\n\n13.2.2 2. Analyse OLAP / agrégation multidimensionnelle\nCharger un jeu de données (par exemple ~1 Go typé table, type star schema ou logs) et préparer des agrégations (roll-up, drill-down, cube) utilisées pour répondre à des questions métier.\n\nMise en œuvre avec dask.dataframe / dask.delayed, ou cupy/GPU si le matériel le permet ; comparaison avec pandas pur.\nLivrable : un notebook « questions → requêtes → visualisation des temps » et un rapport sur les stratégies de partitionnement.\n\n\n\n13.2.3 3. Agent de recherche documentaire (deep research)\nUn agent qui interroge plusieurs sources simultanément (pages web, API, bases de données), extrait des informations pertinentes, agrége une synthèse argumentée et cite ses sources.\n\nCollection : I/O concurrente (asyncio, httpx, files d’attente).\nTraitement : découpage en tâches (dask.delayed) pour le nettoyage et l’extraction de fragments pertinents; synthèse assistée par LLM (optionnel, non évaluée en soi).\nLivrable : l’agent répond à une question posée, avec traçabilité (sources, temps par étape) et mise en évidence du gain concurrentiel de la collecte.\n\n\n\n13.2.4 4. Traitement de flux (streaming)\nProduire un mini-système de traitement en continu : un producteur génère des événements (logs, capteurs simulés), un pipeline agrége par fenêtres glissantes, un consommateur affiche ou stocke les résultats.\n\nArchitecture : asyncio (queues, asyncio.Queue) en production/consommation, ou multiprocessing + Queue ; gestion de l’ordre et du backpressure.\nLivrable : une démo qui montre des statistiques qui se mettent à jour en continu, un schéma d’architecture et l’analyse des choix de concurrence.",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Projet final</span>"
+    ]
+  },
+  {
+    "objectID": "projets.html#cahier-des-charges-minimal",
+    "href": "projets.html#cahier-des-charges-minimal",
+    "title": "13  Projet final",
+    "section": "13.3 Cahier des charges minimal",
+    "text": "13.3 Cahier des charges minimal\n\nDépôt Git propre : historique lisible, pas de données volumineuses dans le dépôt.\nREADME : objectif, installation (dépendances épinglées), commande de lancement, exemples de sortie.\nCode exécutable : script principal + tests minimum (au moins un test unitaire sur une fonction clé).\nMesures : au moins un tableau comparatif (séquentiel vs parallèle, ou variantes de workers) et l’interprétation en 3–5 lignes.\nRapport (4–6 pages) : objectifs, architecture (schéma), choix techniques, mesures, limites, ce qui a été appris.",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Projet final</span>"
+    ]
+  },
+  {
+    "objectID": "projets.html#grille-dévaluation-poids-global-30",
+    "href": "projets.html#grille-dévaluation-poids-global-30",
+    "title": "13  Projet final",
+    "section": "13.4 Grille d’évaluation (poids global : 30 %)",
+    "text": "13.4 Grille d’évaluation (poids global : 30 %)\n\n\n\n\n\n\n\n\nCritère\nDétail\nPondération interne\n\n\n\n\nMaîtrise technique\nParallélisme réellement utilisé et justifié ; pas de faux parallélisme (GIL, event loop bloquée, deadlock) ; gestion des ressources\n30 %\n\n\nQualité du code\nLisibilité, structure, gestion d’erreurs, tests de base, mesures reproductibles\n25 %\n\n\nConformité à la cible\nRéponses aux objectifs fixés dans le plan d’apprentissage ; respect du cahier des charges\n20 %\n\n\nCommunication\nSoutenance (5–8 min + questions), démo vivante, capacité à expliquer choix et limites\n25 %\n\n\n\nLa note sur 30 % de la note finale est attribuée par l’enseignant sur cette grille, à l’identique pour les parcours A et B.",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Projet final</span>"
+    ]
+  },
+  {
+    "objectID": "projets.html#soutenance-s11-1811-13301530",
+    "href": "projets.html#soutenance-s11-1811-13301530",
+    "title": "13  Projet final",
+    "section": "13.5 Soutenance (S11 — 18/11, 13:30–15:30)",
+    "text": "13.5 Soutenance (S11 — 18/11, 13:30–15:30)\n\nPrésentation 5–8 minutes + questions : ce que fait le projet, comment il est parallélisé, quels gains mesurés, quelles limites.\nLe rapport est déposé avant la séance. Des modalités alternatives (session individuelle, dépôt vidéo) sont prévues si nécessaire.",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Projet final</span>"
+    ]
+  },
+  {
+    "objectID": "projets.html#questions-fréquentes",
+    "href": "projets.html#questions-fréquentes",
+    "title": "13  Projet final",
+    "section": "13.6 Questions fréquentes",
+    "text": "13.6 Questions fréquentes\n\nPuis-je utiliser une librairie de plus ? Oui, du moment que le sujet technique du module (asyncio, IPC, Dask, vectorisation, GPU/WebGPU selon le sujet) reste le cœur justifié.\nEt si mon matériel n’a pas de GPU ? Les sujets GPU sont optionnels ; un projet en asyncio/Dask/vectorisation numpy suffit largement. Le sondage de rentrée sert justement à calibrer ces choix.\nLe binôme compte-t-il ? Le niveau d’exigence est ajusté (un livrable collectif plus ambitieux, ou deux contributions clairement séparées) ; les rôles sont explicités dans le rapport.",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Projet final</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "14  Synthèse du module",
+    "section": "",
+    "text": "14.1 Le fil rouge : le parallélisme n’est pas gratuit\nCette page récapitule le fil conducteur du module et sert de carte de navigation pour le travail autonome. Elle ne remplace pas les modules : elle vous aide à situer chaque notion.\nLe thème unique du cours tient en une phrase : paralléliser = décomposer pour accélérer, mais chaque décomposition a un coût (ordonnancement, communication, mémoire, synchronisation). La courbe de vitesse n’est jamais linéaire avec le nombre de workers.",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Synthèse du module</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html#le-fil-rouge-le-parallélisme-nest-pas-gratuit",
+    "href": "summary.html#le-fil-rouge-le-parallélisme-nest-pas-gratuit",
+    "title": "14  Synthèse du module",
+    "section": "",
+    "text": "flowchart TD\n    A[Problème séquentiel] --&gt; B[Identifier le goulot]\n    B --&gt; C{I/O ou CPU ?}\n    C --&gt;|I/O| D[asyncio&lt;br&gt;M1]\n    C --&gt;|CPU, processus| E[multiprocessing + verrous&lt;br&gt;M2]\n    C --&gt;|CPU, gros volumes| F[Dask / Ray&lt;br&gt;M3]\n    C --&gt;|calcul mathématique| G[Vectorisation SIMD&lt;br&gt;M4]\n    C --&gt;|parallélisme massif| H[GPU / WebGPU&lt;br&gt;M5 / M6]\n    D --&gt; I[Mesurer et justifier le gain]\n    E --&gt; I\n    F --&gt; I\n    G --&gt; I\n    H --&gt; I",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Synthèse du module</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html#carte-des-6-modules",
+    "href": "summary.html#carte-des-6-modules",
+    "title": "14  Synthèse du module",
+    "section": "14.2 Carte des 6 modules",
+    "text": "14.2 Carte des 6 modules\n\n\n\n\n\n\n\n\n\nModule\nQuestion qu’il traite\nOutils principaux\nGoulot visé\n\n\n\n\nM0 — Intro\nQue veut dire paralléliser ?\nlois d’Amdahl/Gustafson, taxonomie de Flynn\nvocabulaire\n\n\nM1 — Asynchrone\nComment ne pas attendre ?\nasyncio, event loop, gather\nentrées/sorties\n\n\nM2 — IPC & verrous\nComment coordonner des processus ?\nmultiprocessing, Queue, Lock\nCPU partagé\n\n\nM3 — Distribué\nComment découper un gros calcul ?\ndask, ray, delayed\ngros volumes\n\n\nM4 — SIMD\nComment utiliser une instruction pour plusieurs données ?\nnumpy, numba\ncalcul vectoriel\n\n\nM5 — GPU\nComment exploiter beaucoup de cœurs simples ?\nCuPy, numba-CUDA\nparallélisme massif\n\n\nM6 — WebGPU\nComment calculer dans le navigateur ?\nWebGPU, WGSL\nGPU access",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Synthèse du module</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html#points-de-vigilance-transverses",
+    "href": "summary.html#points-de-vigilance-transverses",
+    "title": "14  Synthèse du module",
+    "section": "14.3 Points de vigilance transverses",
+    "text": "14.3 Points de vigilance transverses\n\nLe GIL de Python ne bloque que les threads sur du CPU-bound ; asyncio sert aux I/O, multiprocessing aux CPU-bound.\nToujours mesurer avant et après : seul un chronométrage (avec le coût des transferts pour le GPU) justifie un choix d’architecture.\nUn verrou n’est pas une baguette magique : il protège une section critique mais introduit attente et risque de deadlock.\nL’état partagé est l’ennemi du parallélisme : préférer des tâches pures (pas de mutation, pas d’effets de bord) comme le recommandent les bonnes pratiques de Dask.",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Synthèse du module</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html#échéances-indicatives",
+    "href": "summary.html#échéances-indicatives",
+    "title": "14  Synthèse du module",
+    "section": "14.4 Échéances indicatives",
+    "text": "14.4 Échéances indicatives\n\n\n\n\n\n\n\nRendu\nÉchéance\n\n\n\n\nChoix de parcours + sondage\nS1 (26/08)\n\n\nPlan d’apprentissage (+ prompt A)\navant S5, validé en S5 (22/09)\n\n\nJournal de bord\ncontinu, contrôles S6–S8, synthèse avant S9\n\n\nRapport comparé (réflexif + observationnel)\navant S9 (indicatif 20/10)\n\n\nProjet final (rapport + soutenance)\nsoutenance S11 (18/11), rapport avant\n\n\nRapport métacognitif final\nS12 (19/11)",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Synthèse du module</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html#par-où-commencer",
+    "href": "summary.html#par-où-commencer",
+    "title": "14  Synthèse du module",
+    "section": "14.5 Par où commencer",
+    "text": "14.5 Par où commencer\n\nLisez le dispositif (dispositif.qmd) : c’est le cadre, tout en découle.\nChoisissez votre matériel (voir intro.qmd pour installer l’outillage, LLM en ligne ou local selon votre machine).\nRédigez votre plan d’apprentissage (gabarit dans plan-apprentissage.qmd) : il fixe l’ordre et les critères de réussite — c’est votre feuille de route.\nModule 0 d’abord, puis M1 → M2 → M3, et selon vos objectifs M4 → M5 → M6.",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Synthèse du module</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "15  Références",
+    "section": "",
+    "text": "15.1 Pourquoi ce dispositif — cadre théorique\nLes références ci-dessous fondent le dispositif pédagogique du module (voir dispositif.qmd et tuteur-ia.qmd). Elles sont données pour vous aider à situer le cours ; aucune n’est à lire intégralement pour réussir, mais chacune peut éclairer une partie de votre rapport réflexif.",
+    "crumbs": [
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Références</span>"
+    ]
+  },
+  {
+    "objectID": "references.html#pourquoi-ce-dispositif-cadre-théorique",
+    "href": "references.html#pourquoi-ce-dispositif-cadre-théorique",
+    "title": "15  Références",
+    "section": "",
+    "text": "Apprentissage co-construit : le savoir se construit dans l’interaction [1], et les étudiants participent à la conception de leur parcours [2]–[4], dans la tradition de la pédagogie critique [5].\nContrats d’apprentissage : comment rédiger objectifs, séquençage et critères de réussite — fiche du Centre for Teaching Excellence de Waterloo [6].\nLearning by teaching avec IA : enseigner à un agent structure l’apprentissage [7] ; les bonnes pratiques du tutorat conversationnel préservent l’agence de l’étudiant et intègrent le knowledge tracing [8] ; un essai randomisé (N=194) suggère que le tutorat IA bien conçu peut surpasser l’apprentissage actif en classe [9] — résultat à confirmer.\nDialogue et réflexivité : pédagogie dialogique appliquée aux LLM [10].",
+    "crumbs": [
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Références</span>"
+    ]
+  },
+  {
+    "objectID": "references.html#limites-documentées-de-lia-en-éducation",
+    "href": "references.html#limites-documentées-de-lia-en-éducation",
+    "title": "15  Références",
+    "section": "15.2 Limites documentées de l’IA en éducation",
+    "text": "15.2 Limites documentées de l’IA en éducation\nLe module traite ces limites comme des objets de travail, pas comme des tabous :\n\nHallucinations et renforcement d’idées fausses [11].\nSur-dépendance et risque de perte de compétences de base [12] ; délestage cognitif et « dette cognitive » [13], [14] ; confiance instrumentale dans un assistant [15].\nUsages souvent superficiels des étudiants [16] et adoption conditionnée par la confiance et la politique de l’établissement [17], [18].\nRésistance, inégalités d’accès et postures face à la technologie [19], [20] ; points de vue des étudiants [21] ; état de l’art des agents pédagogiques [22].\nPour qui s’intéresse à la technique comme individuation et non simple outil : [23].",
+    "crumbs": [
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Références</span>"
+    ]
+  },
+  {
+    "objectID": "references.html#ressources-techniques-officielles",
+    "href": "references.html#ressources-techniques-officielles",
+    "title": "15  Références",
+    "section": "15.3 Ressources techniques officielles",
+    "text": "15.3 Ressources techniques officielles\nLa référence première pour la technique reste la documentation officielle — votre tuteur (parcours A) et votre recherche personnelle (parcours B) doivent toujours pouvoir être validés contre elle.\n\nPython asynchrone : asyncio [24].\nMultiprocess et IPC : multiprocessing [25].\nCalcul distribué : Dask delayed [26] et Ray [27].\nVectorisation : numpy ufunc [28] et numba [29].\nGPU : CuPy [30] et numba CUDA [29].\nWebGPU : specification WebGPU [31] et langage WGSL [32].",
+    "crumbs": [
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Références</span>"
+    ]
+  },
+  {
+    "objectID": "references.html#références-complémentaires",
+    "href": "references.html#références-complémentaires",
+    "title": "15  Références",
+    "section": "15.4 Références complémentaires",
+    "text": "15.4 Références complémentaires\nLe cours de l’année précédente (disponible séparément) constitue une ressource de premier niveau : chaque module du support y renvoie explicitement. Les fichiers cités dans les pages « Ressources » des modules sont saisis dans le plan de l’enseignant.\n\n\n\n\n[1] L. S. Vygotsky, Mind in Society: The Development of Higher Psychological Processes. Harvard University Press, 1978.\n\n\n[2] C. Bovill, A. Cook-Sather, et P. Felten, « Students as co-creators of teaching approaches, course design, and curricula: implications for academic developers », International Journal for Academic Development, vol. 16, nᵒ 2, p. 133‑145, 2011, doi: 10.1080/1360144X.2011.568690.\n\n\n[3] A. Cook-Sather, C. Bovill, et P. Felten, Engaging Students as Partners in Learning and Teaching: A Guide for Faculty. San Francisco: Jossey-Bass, 2014.\n\n\n[4] B. Vespone, « Co-constructing teaching and learning in higher education: a literature review of practices and implications », Journal of Learning Development in Higher Education, nᵒ 27, 2023, Disponible sur: https://journal.aldinhe.ac.uk/index.php/jldhe/article/view/997\n\n\n[5] P. Freire, Pedagogy of the Oppressed. Continuum, 1970.\n\n\n[6] Centre for Teaching Excellence, University of Waterloo, « Self-Directed Learning: Learning Contracts », University of Waterloo, 2023. Disponible sur: https://uwaterloo.ca/centre-for-teaching-excellence/catalogs/tip-sheets/self-directed-learning-learning-contracts\n\n\n[7] R. Schmucker, M. Xia, A. Azaria, et T. Mitchell, « Ruffle&Riley: Insights from Designing and Evaluating a Large Language Model-Based Conversational Tutoring System », in International Conference on Artificial Intelligence in Education, in LNAI 14829. Springer, 2024, p. 75‑90.\n\n\n[8] K. Vanacore, R. S. Baker, A. H. Closser, et J. Roschelle, « The Path to Conversational AI Tutors: Integrating Tutoring Best Practices and Targeted Technologies to Produce Scalable AI Agents », arXiv preprint arXiv:2602.19303. 2026. Disponible sur: https://arxiv.org/abs/2602.19303\n\n\n[9] G. Kestin, K. Miller, A. Klales, T. Milbourne, et G. Ponti, « AI tutoring outperforms in-class active learning: an RCT introducing a novel research-based design in an authentic educational setting », Scientific Reports, 2025, doi: 10.1038/s41598-025-97652-6.\n\n\n[10] R. Beale, « Dialogic Pedagogy for Large Language Models: Aligning Conversational AI with Proven Theories of Learning », arXiv preprint arXiv:2506.19484, 2025, Disponible sur: https://arxiv.org/abs/2506.19484\n\n\n[11] N. F. Davar, M. A. A. Dewan, et X. Zhang, « AI Chatbots in Education: Challenges and Opportunities », Information, vol. 16, nᵒ 3, p. 235, 2025, doi: 10.3390/info16030235.\n\n\n[12] E. Kasneci et al., « ChatGPT for good? On opportunities and challenges of large language models for education », Learning and Individual Differences, vol. 103, p. 102274, 2023, doi: 10.35542/osf.io/5er8f.\n\n\n[13] E. F. Risko et S. J. Gilbert, « Cognitive Offloading », Trends in Cognitive Sciences, vol. 20, nᵒ 9, p. 676‑688, 2016, doi: 10.1016/j.tics.2016.07.002.\n\n\n[14] N. Kosmyna et al., « Your Brain on ChatGPT: Accumulation of Cognitive Debt when Using an AI Assistant for Essay Writing Task », arXiv preprint arXiv:2506.08872. 2025. Disponible sur: https://arxiv.org/abs/2506.08872\n\n\n[15] S. Cao et C.-M. Huang, « Understanding User Reliance on AI in Assisted Decision-Making », Proceedings of the ACM on Human-Computer Interaction, vol. 6, nᵒ CSCW2, 2022.\n\n\n[16] C. Stöhr, A. W. Ou, et H. Malmström, « Perceptions and usage of AI chatbots among students in higher education across genders, academic levels and fields of study », Computers and Education: Artificial Intelligence, vol. 7, p. 100259, 2024.\n\n\n[17] A. Polyportis et N. Pahos, « Understanding students’ adoption of the ChatGPT chatbot in higher education: the role of anthropomorphism, trust, design novelty and institutional policy », Behaviour & Information Technology, vol. 44, nᵒ 2, p. 315‑336, 2024, doi: 10.1080/0144929X.2024.2317364.\n\n\n[18] L. Hughes, T. Malik, S. Dettmer, A. S. Al-Busaidi, et Y. K. Dwivedi, « Reimagining Higher Education: Navigating the Challenges of Generative AI Adoption », Information Systems Frontiers, 2025, doi: 10.1007/s10796-025-10582-6.\n\n\n[19] N. Selwyn, Should Robots Replace Teachers? AI and the Future of Education. Polity Press, 2019.\n\n\n[20] E. N. Al Mulhim, « Mitigating student resistance: the role of chatbots in sustainable educational technology integration », Frontiers in Education, vol. 10, 2025, doi: 10.3389/feduc.2025.1711832.\n\n\n[21] G. Pitts, V. Marcus, et S. Motamedi, « Student Perspectives on the Benefits and Risks of AI in Education », arXiv preprint arXiv:2505.02198, 2025, Disponible sur: https://arxiv.org/abs/2505.02198\n\n\n[22] H. Yusuf, A. G. Money, et D. Daylamani-Zad, « Pedagogical AI conversational agents in higher education: a conceptual framework and survey of the state of the art », Educational Technology Research and Development, 2025, doi: 10.1007/s11423-025-10447-4.\n\n\n[23] G. Simondon, L’individuation à la lumière des notions de forme et d’information. Aubier, 1964.\n\n\n[24] Python Software Foundation, « asyncio — Asynchronous I/O ». Documentation officielle Python, 2026. Disponible sur: https://docs.python.org/3/library/asyncio.html\n\n\n[25] Python Software Foundation, « multiprocessing — Process-based parallelism ». Documentation officielle Python, 2026. Disponible sur: https://docs.python.org/3/library/multiprocessing.html\n\n\n[26] Dask Development Team, « Dask: Parallel computing with task scheduling ». Documentation officielle Dask, 2026. Disponible sur: https://docs.dask.org/en/stable/delayed.html\n\n\n[27] Ray Project, « Ray: Scaling Python and AI applications ». Documentation officielle Ray, 2026. Disponible sur: https://docs.ray.io/en/latest/\n\n\n[28] NumPy Developers, « numpy ufuncs: Universal functions ». Documentation officielle NumPy, 2026. Disponible sur: https://numpy.org/doc/stable/reference/ufuncs.html\n\n\n[29] Numba Development Team, « Numba: A JIT Compiler for Python ». Documentation officielle Numba, 2026. Disponible sur: https://numba.readthedocs.io/\n\n\n[30] Preferred Networks, « CuPy: NumPy/SciPy-compatible Array Library for GPU ». Documentation officielle CuPy, 2026. Disponible sur: https://docs.cupy.dev/\n\n\n[31] W3C GPU for the Web Working Group, « WebGPU Specification ». Specification W3C, 2026. Disponible sur: https://gpuweb.github.io/gpuweb/\n\n\n[32] W3C GPU for the Web Working Group, « WebGPU Shading Language (WGSL) ». Specification W3C, 2026. Disponible sur: https://www.w3.org/TR/WGSL/",
+    "crumbs": [
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Références</span>"
+    ]
+  }
+]

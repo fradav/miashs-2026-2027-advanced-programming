@@ -1,0 +1,103 @@
+# Prérequis
+
+## Logiciels à installer
+
+Il vous faut un éditeur de code et un gestionnaire d'environnements Python.
+
+- **[Visual Studio Code](https://code.visualstudio.com/)** — l'éditeur utilisé en TD.
+- Extensions recommandées :
+  - [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) ;
+  - [Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare)
+    pour l'édition collaborative (comme l'an dernier) ;
+  - une extension d'assistant de code (voir ci-dessous).
+
+## Gestion des environnements Python avec `uv`
+
+`uv` est l'outil de gestion d'environnements Python recommandé. Il installe l'environnement
+et les paquets dans le répertoire courant.
+
+Voir la [documentation d'installation](https://docs.astral.sh/uv/getting-started/installation/)
+pour votre plateforme. Ensuite :
+
+```bash
+uv init          # crée un environnement dans le répertoire courant
+uv add package   # ajoute un paquet (remplacer package par le nom)
+```
+
+Exécuter un script avec une dépendance ponctuelle :
+
+```bash
+uv run --with dependance script.py
+```
+
+## L'outillage du parcours A : un tuteur IA
+
+Le parcours A nécessite l'accès à un modèle de langage (LLM). Deux options, **toutes deux
+gratuites**, selon votre matériel — le [sondage de démarrage](../sondage/sondage-limesurvey.qmd)
+nous aidera à calibrer ce choix :
+
+### Option 1 — API en ligne gratuite (minimum vital)
+
+Créez un compte sur [Mistral.ai « La Plateforme »](https://console.mistral.ai/home) et
+récupérez une **clé API** (plan gratuit « Experiment »). Un numéro de téléphone valide est
+nécessaire à l'inscription — prévenez l'enseignant si c'est un problème.
+
+Une fois la clé obtenue, selon votre outil :
+
+- **Continue.dev** (extension VSCode) : créez un fichier `.continue/config.yaml` dans votre
+  dossier utilisateur (`~/.continue` sur Linux/macOS, `%USERPROFILE%\.continue` sur Windows)
+  avec, par exemple :
+
+  ```yaml
+  name: miashs/mistral
+  version: 1.0.0
+  schema: v1
+  models:
+    - name: Devstral
+      provider: mistral
+      model: devstral-medium-latest
+      apiKey: ${{ secrets.MISTRAL_API_KEY }}
+      roles: [chat, edit, apply]
+      defaultCompletionOptions:
+        contextLength: 131072
+    - name: Mistral
+      provider: mistral
+      model: mistral-medium-latest
+      apiKey: ${{ secrets.MISTRAL_API_KEY }}
+      roles: [chat, edit, apply]
+  ```
+
+  et posez votre clé dans `~/.continue/.env` (ou `%USERPROFILE%\.continue\.env`) :
+
+  ```
+  MISTRAL_API_KEY=votre_cle
+  ```
+
+- **Chat web** : Mistral Le Chat (ou l'assistant de votre choix) convient aussi pour les
+  échanges socratiques du parcours A — l'important est de pouvoir **configurer le
+  comportement** du tuteur via un *prompt system* (voir la page
+  [Concevoir un tuteur IA](tuteur-ia.qmd)).
+
+### Option 2 — Modèle local (si votre machine le permet)
+
+Si vous avez au moins ~16 Go de RAM (ou un GPU dédié avec ~6 Go de VRAM) et ~8 Go d'espace
+disque libre, vous pouvez faire tourner un modèle local type **Qwen 3.5-4B** (≈5,5 Go
+quantifié) avec [`llama.cpp`](https://github.com/ggml-org/llama.cpp) ou
+[LM Studio](https://lmstudio.ai). Un modèle local fonctionne hors ligne et sans compte.
+Le [sondage](../sondage/sondage-limesurvey.qmd) sert précisément à savoir qui peut en faire
+tourner un.
+
+> **Si votre machine est modeste** : ne vous inquiétez pas. L'option 1 (API gratuite) suffit
+> pour suivre le parcours A. Le parcours B, lui, ne nécessite *aucun* outil d'IA.
+
+## Édition collaborative
+
+Comme l'an dernier, les séances pourront utiliser Live Share (lien fourni dans le salon
+Discord du module). Ouvrez une fenêtre VSCode dédiée avant de rejoindre la session
+collaborative.
+
+## Faire tourner `multiprocessing`/`asyncio` en Jupyter
+
+Sous macOS, Jupyter exige un correctif pour `multiprocessing` (méthode *spawn*) — le bloc à
+ajouter dans `settings.json` de VSCode se trouve dans le cours de l'année dernière ; le
+détail est repris en TD si besoin.
