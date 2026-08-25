@@ -2,11 +2,11 @@ project:
   type: book
   output-dir: docs
 
-lang: fr
+lang: en
 
 book:
-  title: "Programmation avancée et calcul parallèle"
-  subtitle: "M2 MIASHS — apprentissage autonome avec ou sans tuteur IA"
+  title: "Advanced Programming and Parallel Computing"
+  subtitle: "M2 MIASHS — self-directed learning with or without an AI tutor"
   author:
     - name: François-David Collin
       email: francois-david.collin@umontpellier.fr
@@ -16,22 +16,22 @@ book:
   date: "2026-08-25"
   date-format: full
   page-footer:
-    left: Sous licence <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.
-    right: Construit avec <a href="https://quarto.org/">Quarto</a>.
+    left: Licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.
+    right: Built with <a href="https://quarto.org/">Quarto</a>.
   chapters:
     - index.qmd
-    - intro.qmd
-    - dispositif.qmd
-    - tuteur-ia.qmd
-    - plan-apprentissage.qmd
-    - Courses/00_intro-parallele.qmd
-    - Courses/01_asynchrone.qmd
-    - Courses/02_ipc-verrous.qmd
-    - Courses/03_distribue.qmd
+    - prerequisites.qmd
+    - teaching-design.qmd
+    - ai-tutor.qmd
+    - learning-plan.qmd
+    - Courses/00_intro-parallelism.qmd
+    - Courses/01_asynchronous.qmd
+    - Courses/02_ipc-locks.qmd
+    - Courses/03_distributed.qmd
     - Courses/04_simd.qmd
     - Courses/05_gpu.qmd
     - Courses/06_webgpu.qmd
-    - projets.qmd
+    - projects.qmd
     - summary.qmd
     - references.qmd
 

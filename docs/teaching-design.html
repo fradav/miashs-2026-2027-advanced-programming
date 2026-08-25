@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.10.18">
@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>8&nbsp; Module 2 — IPC &amp; verrous – Programmation avancée et calcul parallèle</title>
+<title>3&nbsp; The pedagogical design – Advanced Programming and Parallel Computing</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -29,27 +29,27 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../Courses/03_distribue.html" rel="next">
-<link href="../Courses/01_asynchrone.html" rel="prev">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-af28502ac8d036ed35c2b305f0f54fbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-3bbd6a9bbbe52288d7dadd4871a2e2aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./ai-tutor.html" rel="next">
+<link href="./prerequisites.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-af28502ac8d036ed35c2b305f0f54fbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-3bbd6a9bbbe52288d7dadd4871a2e2aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -64,17 +64,17 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Pas de résultats",
-    "search-matching-documents-text": "documents trouvés",
-    "search-copy-link-title": "Copier le lien vers la recherche",
-    "search-hide-matches-text": "Cacher les correspondances additionnelles",
-    "search-more-match-text": "correspondance de plus dans ce document",
-    "search-more-matches-text": "correspondances de plus dans ce document",
-    "search-clear-button-title": "Effacer",
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Annuler",
-    "search-submit-button-title": "Envoyer",
-    "search-label": "Recherche"
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -256,13 +256,13 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Courses/02_ipc-verrous.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 2 — IPC &amp; verrous</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./teaching-design.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The pedagogical design</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Recherche" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -274,107 +274,107 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Programmation avancée et calcul parallèle</a> 
+      <a href="./">Advanced Programming and Parallel Computing</a> 
         <div class="sidebar-tools-main">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Basculer le mode sombre"><i class="bi"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Recherche"></div>
+        <div id="quarto-search" class="" title="Search"></div>
         </div>
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Préface</span></span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Prérequis</span></span></a>
+  <a href="./prerequisites.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Prerequisites</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dispositif.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Le dispositif pédagogique</span></span></a>
+  <a href="./teaching-design.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The pedagogical design</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tuteur-ia.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Concevoir un tuteur IA</span></span></a>
+  <a href="./ai-tutor.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Designing an AI tutor</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../plan-apprentissage.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Planifier son apprentissage</span></span></a>
+  <a href="./learning-plan.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Planning your learning</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/00_intro-parallele.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction au parallélisme</span></span></a>
+  <a href="./Courses/00_intro-parallelism.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction to Parallelism</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/01_asynchrone.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 1 — Asynchrone et concurrence</span></span></a>
+  <a href="./Courses/01_asynchronous.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 1 — Asynchronous and Concurrency</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/02_ipc-verrous.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 2 — IPC &amp; verrous</span></span></a>
+  <a href="./Courses/02_ipc-locks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 2 — IPC &amp; Locks</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/03_distribue.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 3 — Calcul distribué</span></span></a>
+  <a href="./Courses/03_distributed.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 3 — Distributed Computing</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/04_simd.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 4 — SIMD et vectorisation</span></span></a>
+  <a href="./Courses/04_simd.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 4 — SIMD and Vectorization</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/05_gpu.html" class="sidebar-item-text sidebar-link">
+  <a href="./Courses/05_gpu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Module 5 — GPU</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/06_webgpu.html" class="sidebar-item-text sidebar-link">
+  <a href="./Courses/06_webgpu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Module 6 — WebGPU</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../projets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Projet final</span></span></a>
+  <a href="./projects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Final project</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Synthèse du module</span></span></a>
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Module summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Références</span></span></a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">References</span></span></a>
   </div>
 </li>
     </ul>
@@ -384,11 +384,29 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table des matières</h2>
+    <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#points-clés" id="toc-points-clés" class="nav-link active" data-scroll-target="#points-clés"><span class="header-section-number">8.1</span> Points clés</a></li>
-  <li><a href="#exercices" id="toc-exercices" class="nav-link" data-scroll-target="#exercices"><span class="header-section-number">8.2</span> Exercices</a></li>
+  <li><a href="#the-general-idea" id="toc-the-general-idea" class="nav-link active" data-scroll-target="#the-general-idea"><span class="header-section-number">3.1</span> The general idea</a></li>
+  <li><a href="#two-tracks-identical-objectives" id="toc-two-tracks-identical-objectives" class="nav-link" data-scroll-target="#two-tracks-identical-objectives"><span class="header-section-number">3.2</span> Two tracks, identical objectives</a>
+  <ul>
+  <li><a href="#track-a-socratic-ai-tutor" id="toc-track-a-socratic-ai-tutor" class="nav-link" data-scroll-target="#track-a-socratic-ai-tutor"><span class="header-section-number">3.2.1</span> Track A: Socratic AI tutor</a></li>
+  <li><a href="#track-b-classic-learning" id="toc-track-b-classic-learning" class="nav-link" data-scroll-target="#track-b-classic-learning"><span class="header-section-number">3.2.2</span> Track B: classic learning</a></li>
+  <li><a href="#switching-tracks" id="toc-switching-tracks" class="nav-link" data-scroll-target="#switching-tracks"><span class="header-section-number">3.2.3</span> Switching tracks</a></li>
+  </ul></li>
+  <li><a href="#reciprocal-observation" id="toc-reciprocal-observation" class="nav-link" data-scroll-target="#reciprocal-observation"><span class="header-section-number">3.3</span> Reciprocal observation</a></li>
+  <li><a href="#working-modes" id="toc-working-modes" class="nav-link" data-scroll-target="#working-modes"><span class="header-section-number">3.4</span> Working modes</a>
+  <ul>
+  <li><a href="#solo-work" id="toc-solo-work" class="nav-link" data-scroll-target="#solo-work"><span class="header-section-number">3.4.1</span> Solo work</a></li>
+  <li><a href="#pair-work" id="toc-pair-work" class="nav-link" data-scroll-target="#pair-work"><span class="header-section-number">3.4.2</span> Pair work</a></li>
+  <li><a href="#speaking-up-in-group" id="toc-speaking-up-in-group" class="nav-link" data-scroll-target="#speaking-up-in-group"><span class="header-section-number">3.4.3</span> Speaking up in group</a></li>
+  <li><a href="#board-work" id="toc-board-work" class="nav-link" data-scroll-target="#board-work"><span class="header-section-number">3.4.4</span> Board work</a></li>
+  <li><a href="#signals-and-think-time" id="toc-signals-and-think-time" class="nav-link" data-scroll-target="#signals-and-think-time"><span class="header-section-number">3.4.5</span> Signals and think time</a></li>
+  </ul></li>
+  <li><a href="#semester-timeline-course-plan" id="toc-semester-timeline-course-plan" class="nav-link" data-scroll-target="#semester-timeline-course-plan"><span class="header-section-number">3.5</span> Semester timeline (course plan)</a></li>
+  <li><a href="#assessment" id="toc-assessment" class="nav-link" data-scroll-target="#assessment"><span class="header-section-number">3.6</span> Assessment</a></li>
+  <li><a href="#the-safeguards-why-they-are-there" id="toc-the-safeguards-why-they-are-there" class="nav-link" data-scroll-target="#the-safeguards-why-they-are-there"><span class="header-section-number">3.7</span> The safeguards (why they are there)</a></li>
+  <li><a href="#to-go-further" id="toc-to-go-further" class="nav-link" data-scroll-target="#to-go-further"><span class="header-section-number">3.8</span> To go further</a></li>
   </ul>
 </nav>
     </div>
@@ -398,8 +416,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 2 — IPC &amp; verrous</span></h1>
-<p class="subtitle lead">multiprocessing, pipes, queues, locks, mémoire partagée</p>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The pedagogical design</span></h1>
 </div>
 
 
@@ -416,32 +433,226 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Objectifs (critères observables) :</p>
+<p>This page explains <strong>how</strong> you will learn in this module and <strong>why</strong> this choice was made. Read it carefully: everything for the semester follows from it.</p>
+<section id="the-general-idea" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="the-general-idea"><span class="header-section-number">3.1</span> The general idea</h2>
+<p>Knowledge is not built only by listening to an instructor: it is built in interaction, with the people around you and with the documents and tools you work with. This module puts you at the center of your learning: you <strong>partly design your own track</strong>, you <strong>choose your working modes</strong>, and you <strong>observe</strong> how you learn.</p>
+<p>Concretely, the idea has three parts:</p>
+<ol type="1">
+<li><strong>Autonomous, co-constructed learning</strong>: you write a learning plan and follow it, with regular support.</li>
+<li><strong>A “learning by teaching” setup</strong>: by configuring an <strong>AI tutor</strong> that must teach you <em>correctly</em>, you are forced to master the material. You cannot ask a machine to teach a concept you do not understand yourself.</li>
+<li><strong>A critical approach</strong>: AI has documented limitations (hallucinations, over-reliance, superficial uses, unequal access). Rather than ignoring them, the course makes them an object of work and analysis.</li>
+</ol>
+</section>
+<section id="two-tracks-identical-objectives" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="two-tracks-identical-objectives"><span class="header-section-number">3.2</span> Two tracks, identical objectives</h2>
+<p><strong>The technical objectives are the same for everyone.</strong> Only the way of learning differs.</p>
+<section id="track-a-socratic-ai-tutor" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="track-a-socratic-ai-tutor"><span class="header-section-number">3.2.1</span> Track A: Socratic AI tutor</h3>
 <ul>
-<li>Créer et coordonner des <strong>processus</strong> avec <code>multiprocessing</code> (pile, queues, pools).</li>
-<li>Échanger des données entre processus (pipes, queues, mémoire partagée) et choisir l’outil adapté.</li>
-<li>Protéger une section critique avec un <strong>verrou</strong> et diagnostiquer un <em>deadlock</em>.</li>
-</ul>
-<p>Ressources : chapitre <code>04_IPC-and-Locking.qmd</code> du cours précédent ; documentation <a href="https://docs.python.org/3/library/multiprocessing.html"><code>multiprocessing</code></a>.</p>
-<section id="points-clés" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="points-clés"><span class="header-section-number">8.1</span> Points clés</h2>
-<ul>
-<li><strong>Processus</strong> : mémoire <em>exclusive</em>, communication par IPC ; démarrage par <code>spawn</code> (par défaut sur macOS/Windows) ou <code>fork</code> (Linux).</li>
-<li><strong>Queues / Pipes</strong> : échange de messages. <strong>Mémoire partagée</strong> (<code>Value</code>, <code>Array</code>, <code>shared_memory</code>) : données partagées, mais à protéger.</li>
-<li><strong>Verrous</strong> : <code>Lock</code> pour sérialiser une <em>section critique</em> (mise à jour d’un compteur partagé, écriture de fichier).</li>
-<li><strong>Deadlock</strong> : deux processus s’attendent mutuellement ; verrouillage mal ordonné.</li>
-<li><strong>Race conditions</strong> : le résultat dépend de l’ordre d’exécution → pourquoi le lock est nécessaire (illustration compteur).</li>
+<li>You write a structured <strong>learning plan</strong>.</li>
+<li>You design a <strong>system prompt</strong> that configures a chatbot as a <em>Socratic tutor</em>: it does not give answers, it questions, guides, and makes you articulate your thinking.</li>
+<li>You interact daily with this tutor and <strong>iterate on the system prompt</strong> based on the quality of the exchanges.</li>
+<li>You keep a <strong>logbook</strong> that includes the tutor’s full conversations.</li>
 </ul>
 </section>
-<section id="exercices" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="exercices"><span class="header-section-number">8.2</span> Exercices</h2>
+<section id="track-b-classic-learning" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="track-b-classic-learning"><span class="header-section-number">3.2.2</span> Track B: classic learning</h3>
+<ul>
+<li>You write the <strong>same kind of learning plan</strong>.</li>
+<li>You work from the <strong>available resources</strong>: this site, the documentation, books, tutorials, last year’s course.</li>
+<li>You keep a <strong>logbook</strong> of your autonomous work, and you demonstrate mastery through <strong>live-coding</strong> (board work or an individual session with the instructor).</li>
+</ul>
+</section>
+<section id="switching-tracks" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="switching-tracks"><span class="header-section-number">3.2.3</span> Switching tracks</h3>
+<p>You can start in one track and switch to the other during the semester, as long as the choice is <strong>justified and explained</strong> in your report. The flexibility is deliberate: it lets each student find the way they learn best, and it is part of the module’s reflective work.</p>
+<blockquote class="blockquote">
+<p><strong>An important point.</strong> This is a parallel-programming course whose learning process partly relies on tools whose effects you will learn to master or work around.</p>
+</blockquote>
+</section>
+</section>
+<section id="reciprocal-observation" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="reciprocal-observation"><span class="header-section-number">3.3</span> Reciprocal observation</h2>
+<p>You will write a <strong>comparative report</strong> that blends two parts:</p>
+<ul>
+<li><strong>Reflective part</strong>: analysis of your own learning process. Which strategies worked, where difficulties appeared, how you resolved them.</li>
+<li><strong>Observational part</strong>: observation of the students in the <em>other</em> track. How do they learn? Does the approach seem effective, and on what criteria? What reactions does it trigger in you (envy, wariness) and why?</li>
+</ul>
+<p>Track A students observe group B to understand what motivates the choice to do without AI and to justify why their own use is not mere over-reliance. Track B students observe group A to analyze the learning processes at work and to be better equipped to move through a professional world where AI is omnipresent.</p>
+<p>Mid-semester, a <strong>cross-review session</strong> (anonymous reading of the reports and collective discussion) pools these observations. The goal is not to decide who is right, but to develop an <strong>informed relationship</strong> with technology.</p>
+</section>
+<section id="working-modes" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="working-modes"><span class="header-section-number">3.4</span> Working modes</h2>
+<p>The module is designed so that each student finds a format that suits them. <strong>Every working mode counts as much as the others</strong>; no choice is interpreted as lesser commitment.</p>
+<section id="solo-work" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="solo-work"><span class="header-section-number">3.4.1</span> Solo work</h3>
+<ul>
+<li><strong>With the AI tutor (Track A)</strong>: asynchronous dialogue at your own pace, where you can rephrase, go back, and think before answering.</li>
+<li><strong>With the resources (Track B)</strong>: documentation, books, tutorials, previous courses.</li>
+<li><strong>The logbook</strong>, under any circumstances, is your main channel of written expression.</li>
+</ul>
+</section>
+<section id="pair-work" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="pair-work"><span class="header-section-number">3.4.2</span> Pair work</h3>
+<ul>
+<li><strong>Reciprocal observation</strong> pairs work through written exchange (journals read crosswise, asynchronous comments) <strong>or</strong> orally (a 15–20 minute interview), at the participants’ choice.</li>
+<li>The final project can be done solo or in pairs (communication arrangements defined by the pair itself).</li>
+</ul>
+</section>
+<section id="speaking-up-in-group" class="level3" data-number="3.4.3">
+<h3 data-number="3.4.3" class="anchored" data-anchor-id="speaking-up-in-group"><span class="header-section-number">3.4.3</span> Speaking up in group</h3>
+<p>Five channels are equivalent:</p>
 <ol type="1">
-<li><strong>Compteur partagé</strong> : 8 processus incrémentent un compteur en mémoire partagée 100 000 fois chacun. Sans verrou → valeur fausse ; avec <code>Lock</code> → valeur correcte. Mesurez le coût du verrou.</li>
-<li><strong>Producteur/consommateur</strong> : un processus produit des entiers, un autre les consomme via une <code>Queue</code>. Testez la mise en attente naturelle (<code>queue.Empty</code>).</li>
-<li><strong>Deadlock</strong> : fabriquez volontairement un interblocage à deux ressources, diagnostiquez-le (où est le blocage ?) puis corrigez l’ordre d’acquisition.</li>
-<li><strong>Pool</strong> : comparez <code>Pool.imap</code> vs une boucle séquentielle sur un calcul CPU-bound.</li>
-<li>(Parcours B) Préparez l’exercice 1 en live-coding ; (parcours A) faites expliquer à votre tuteur « pourquoi un Lock est nécessaire si la mémoire est partagée » et évaluez la justesse de l’explication.</li>
+<li><strong>Spontaneous oral speaking up</strong>;</li>
+<li><strong>Announced oral speaking up</strong>: you signal in advance that you want to intervene;</li>
+<li><strong>Asynchronous written contribution</strong>: written before the session (forum, shared document), read or projected by the instructor or a peer;</li>
+<li><strong>Synchronous written contribution</strong>: written during the session (chat, collaborative document);</li>
+<li><strong>Contribution by artifact</strong>: a diagram, code, or screenshot that carries your contribution without you having to defend it orally.</li>
 </ol>
+<p>The instructor gives non-oral contributions the same weight in the discussion as oral ones.</p>
+</section>
+<section id="board-work" class="level3" data-number="3.4.4">
+<h3 data-number="3.4.4" class="anchored" data-anchor-id="board-work"><span class="header-section-number">3.4.4</span> Board work</h3>
+<p>“Board work” (demonstration, live-coding) is a moment with high social stakes. Four equivalent modes:</p>
+<ul>
+<li><strong>Classic board work</strong>;</li>
+<li><strong>Individual session with the instructor</strong>;</li>
+<li><strong>Asynchronous recording</strong> (a 5–10 minute video, projected anonymously if you wish);</li>
+<li><strong>Demonstration by artifact</strong> (commented code, architecture diagram, debugging trace).</li>
+</ul>
+<p><strong>Golden rule</strong>: no one is put in public difficulty. If you want an alternative, it is offered without justification and without penalty.</p>
+</section>
+<section id="signals-and-think-time" class="level3" data-number="3.4.5">
+<h3 data-number="3.4.5" class="anchored" data-anchor-id="signals-and-think-time"><span class="header-section-number">3.4.5</span> Signals and think time</h3>
+<ul>
+<li>The instructor leaves a <strong>think time</strong> (1–2 minutes) before asking for an answer.</li>
+<li>A discreet <strong>overload signal</strong> (card, agreed gesture, message in the chat) lets you ask for a pause, and the request is respected without public comment.</li>
+</ul>
+</section>
+</section>
+<section id="semester-timeline-course-plan" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="semester-timeline-course-plan"><span class="header-section-number">3.5</span> Semester timeline (course plan)</h2>
+<p>Full details in the instructor’s course plan. In brief:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Period</th>
+<th>Block</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>S1 (26/08)</td>
+<td>1</td>
+<td>Introduction, framework, track choice</td>
+</tr>
+<tr class="even">
+<td>S2–S3 (27/08, 01/09)</td>
+<td>2</td>
+<td>Designing an AI tutor (principles, system prompt workshop)</td>
+</tr>
+<tr class="odd">
+<td>S4–S5 (03/09, 22/09)</td>
+<td>3–4</td>
+<td>Learning plan, validation</td>
+</tr>
+<tr class="even">
+<td>S6–S8 (24/09 → 01/10)</td>
+<td>5</td>
+<td>Autonomous work + progress check-ins</td>
+</tr>
+<tr class="odd">
+<td>S9 (22/10)</td>
+<td>6</td>
+<td>Cross-review of reports</td>
+</tr>
+<tr class="even">
+<td>S10 (23/10) → S11 (18/11)</td>
+<td>7 + exam</td>
+<td>Final project, defense</td>
+</tr>
+<tr class="odd">
+<td>S12 (19/11)</td>
+<td>7</td>
+<td>Wrap-up, metacognitive report</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Autonomous work takes up a large share of the module</strong>: the supervised sessions serve as tracking and unblocking checkpoints, and the rest is done at your own pace, at home.</p>
+</section>
+<section id="assessment" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="assessment"><span class="header-section-number">3.6</span> Assessment</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Criterion</th>
+<th>Weight</th>
+<th>Track A</th>
+<th>Track B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Learning plan</td>
+<td>15%</td>
+<td>Plan + system prompt</td>
+<td>Structured plan</td>
+</tr>
+<tr class="even">
+<td>Logbook</td>
+<td>15%</td>
+<td>Interaction log + full conversations</td>
+<td>Work log + live-coding evidence</td>
+</tr>
+<tr class="odd">
+<td>Comparative report (reflective + observational)</td>
+<td>20%</td>
+<td>Self-analysis + observation of group B</td>
+<td>Self-analysis + observation of group A</td>
+</tr>
+<tr class="even">
+<td>Final project</td>
+<td>30%</td>
+<td>Technical project</td>
+<td>Technical project</td>
+</tr>
+<tr class="odd">
+<td>Final metacognitive report</td>
+<td>20%</td>
+<td>Reflection on the overall process</td>
+<td>Reflection on the overall process</td>
+</tr>
+</tbody>
+</table>
+<p>The final project is assessed <strong>with the same rubric for both tracks</strong>.</p>
+</section>
+<section id="the-safeguards-why-they-are-there" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="the-safeguards-why-they-are-there"><span class="header-section-number">3.7</span> The safeguards (why they are there)</h2>
+<ul>
+<li><strong>Track A</strong>: the tutor’s full conversations in the logbook serve as <em>objective traces</em>. If the tutor gives a wrong answer, you must document how you detected it and corrected it. That is exactly the kind of skill the module wants to develop.</li>
+<li><strong>Track B</strong>: the proof of mastery is more direct (live-coding, individual session), and the documentation load is lighter.</li>
+</ul>
+</section>
+<section id="to-go-further" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="to-go-further"><span class="header-section-number">3.8</span> To go further</h2>
+<ul>
+<li>The page <a href="./ai-tutor.html">Designing an AI tutor</a> details the work of block 2 (Track A).</li>
+<li>The page <a href="./learning-plan.html">Planning your learning</a> details the learning contract (all tracks).</li>
+<li>A few basic readings: dialogic pedagogy and co-construction (Vygotski, Freire, Bovill), documented limits of AI in education (hallucinations, over-reliance, unequal access). The references are listed at the end of the site.</li>
+</ul>
 
 
 </section>
@@ -485,12 +696,12 @@ ul.task-list li input[type="checkbox"] {
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copié");
+      button.setAttribute("title", "Copied!");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copié");
+        button.setAttribute("data-bs-title", "Copied!");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
@@ -862,13 +1073,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../Courses/01_asynchrone.html" class="pagination-link" aria-label="Module 1 — Asynchrone et concurrence">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 1 — Asynchrone et concurrence</span></span>
+      <a href="./prerequisites.html" class="pagination-link" aria-label="Prerequisites">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Prerequisites</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../Courses/03_distribue.html" class="pagination-link" aria-label="Module 3 — Calcul distribué">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 3 — Calcul distribué</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ai-tutor.html" class="pagination-link" aria-label="Designing an AI tutor">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Designing an AI tutor</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -876,13 +1087,13 @@ ul.task-list li input[type="checkbox"] {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Sous licence <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>
+<p>Licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
     <div class="nav-footer-right">
-<p>Construit avec <a href="https://quarto.org/">Quarto</a>.</p>
+<p>Built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
   </div>
 </footer>

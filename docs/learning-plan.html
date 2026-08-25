@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.10.18">
@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>7&nbsp; Module 1 — Asynchrone et concurrence – Programmation avancée et calcul parallèle</title>
+<title>5&nbsp; Planning your learning – Advanced Programming and Parallel Computing</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,30 +26,65 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../Courses/02_ipc-verrous.html" rel="next">
-<link href="../Courses/00_intro-parallele.html" rel="prev">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-af28502ac8d036ed35c2b305f0f54fbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-3bbd6a9bbbe52288d7dadd4871a2e2aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Courses/00_intro-parallelism.html" rel="next">
+<link href="./ai-tutor.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-af28502ac8d036ed35c2b305f0f54fbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-3bbd6a9bbbe52288d7dadd4871a2e2aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -64,63 +99,20 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Pas de résultats",
-    "search-matching-documents-text": "documents trouvés",
-    "search-copy-link-title": "Copier le lien vers la recherche",
-    "search-hide-matches-text": "Cacher les correspondances additionnelles",
-    "search-more-match-text": "correspondance de plus dans ce document",
-    "search-more-matches-text": "correspondances de plus dans ce document",
-    "search-clear-button-title": "Effacer",
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Annuler",
-    "search-submit-button-title": "Envoyer",
-    "search-label": "Recherche"
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -299,13 +291,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Courses/01_asynchrone.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 1 — Asynchrone et concurrence</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./learning-plan.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Planning your learning</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Recherche" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -317,107 +309,107 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Programmation avancée et calcul parallèle</a> 
+      <a href="./">Advanced Programming and Parallel Computing</a> 
         <div class="sidebar-tools-main">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Basculer le mode sombre"><i class="bi"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Recherche"></div>
+        <div id="quarto-search" class="" title="Search"></div>
         </div>
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Préface</span></span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Prérequis</span></span></a>
+  <a href="./prerequisites.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Prerequisites</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dispositif.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Le dispositif pédagogique</span></span></a>
+  <a href="./teaching-design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The pedagogical design</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tuteur-ia.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Concevoir un tuteur IA</span></span></a>
+  <a href="./ai-tutor.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Designing an AI tutor</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../plan-apprentissage.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Planifier son apprentissage</span></span></a>
+  <a href="./learning-plan.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Planning your learning</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/00_intro-parallele.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction au parallélisme</span></span></a>
+  <a href="./Courses/00_intro-parallelism.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction to Parallelism</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/01_asynchrone.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 1 — Asynchrone et concurrence</span></span></a>
+  <a href="./Courses/01_asynchronous.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 1 — Asynchronous and Concurrency</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/02_ipc-verrous.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 2 — IPC &amp; verrous</span></span></a>
+  <a href="./Courses/02_ipc-locks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 2 — IPC &amp; Locks</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/03_distribue.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 3 — Calcul distribué</span></span></a>
+  <a href="./Courses/03_distributed.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 3 — Distributed Computing</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/04_simd.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 4 — SIMD et vectorisation</span></span></a>
+  <a href="./Courses/04_simd.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 4 — SIMD and Vectorization</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/05_gpu.html" class="sidebar-item-text sidebar-link">
+  <a href="./Courses/05_gpu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Module 5 — GPU</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/06_webgpu.html" class="sidebar-item-text sidebar-link">
+  <a href="./Courses/06_webgpu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Module 6 — WebGPU</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../projets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Projet final</span></span></a>
+  <a href="./projects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Final project</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Synthèse du module</span></span></a>
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Module summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Références</span></span></a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">References</span></span></a>
   </div>
 </li>
     </ul>
@@ -427,11 +419,21 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table des matières</h2>
+    <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#points-clés" id="toc-points-clés" class="nav-link active" data-scroll-target="#points-clés"><span class="header-section-number">7.1</span> Points clés</a></li>
-  <li><a href="#exercices" id="toc-exercices" class="nav-link" data-scroll-target="#exercices"><span class="header-section-number">7.2</span> Exercices</a></li>
+  <li><a href="#why-a-plan" id="toc-why-a-plan" class="nav-link active" data-scroll-target="#why-a-plan"><span class="header-section-number">5.1</span> Why a plan?</a></li>
+  <li><a href="#what-the-plan-must-contain" id="toc-what-the-plan-must-contain" class="nav-link" data-scroll-target="#what-the-plan-must-contain"><span class="header-section-number">5.2</span> What the plan must contain</a>
+  <ul>
+  <li><a href="#objectives-per-technical-module" id="toc-objectives-per-technical-module" class="nav-link" data-scroll-target="#objectives-per-technical-module"><span class="header-section-number">5.2.1</span> 1. Objectives (per technical module)</a></li>
+  <li><a href="#sequencing" id="toc-sequencing" class="nav-link" data-scroll-target="#sequencing"><span class="header-section-number">5.2.2</span> 2. Sequencing</a></li>
+  <li><a href="#success-criteria-and-evidence" id="toc-success-criteria-and-evidence" class="nav-link" data-scroll-target="#success-criteria-and-evidence"><span class="header-section-number">5.2.3</span> 3. Success criteria and evidence</a></li>
+  <li><a href="#follow-up-schedule" id="toc-follow-up-schedule" class="nav-link" data-scroll-target="#follow-up-schedule"><span class="header-section-number">5.2.4</span> 4. Follow-up schedule</a></li>
+  <li><a href="#contract" id="toc-contract" class="nav-link" data-scroll-target="#contract"><span class="header-section-number">5.2.5</span> 5. Contract</a></li>
+  </ul></li>
+  <li><a href="#plan-template" id="toc-plan-template" class="nav-link" data-scroll-target="#plan-template"><span class="header-section-number">5.3</span> Plan template</a></li>
+  <li><a href="#validation-flow-session-5" id="toc-validation-flow-session-5" class="nav-link" data-scroll-target="#validation-flow-session-5"><span class="header-section-number">5.4</span> Validation flow (session 5)</a></li>
+  <li><a href="#classic-mistakes-to-avoid" id="toc-classic-mistakes-to-avoid" class="nav-link" data-scroll-target="#classic-mistakes-to-avoid"><span class="header-section-number">5.5</span> Classic mistakes to avoid</a></li>
   </ul>
 </nav>
     </div>
@@ -441,8 +443,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 1 — Asynchrone et concurrence</span></h1>
-<p class="subtitle lead">asyncio, event loop, tâches</p>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Planning your learning</span></h1>
 </div>
 
 
@@ -459,31 +460,98 @@ window.Quarto = {
 </header>
 
 
-<p>Objectifs (critères observables) :</p>
+<blockquote class="blockquote">
+<p>Working page for <strong>block 3</strong> — valid for both tracks. The goal is to produce a <strong>learning plan</strong> validated by the instructor before starting the autonomous work.</p>
+</blockquote>
+<section id="why-a-plan" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="why-a-plan"><span class="header-section-number">5.1</span> Why a plan?</h2>
+<p>Learning autonomously without a plan is navigating without a map: you skim, you drift, you do not know when you are done. A learning plan (inspired by <em>learning contracts</em>) turns intention into <strong>commitment</strong>: objectives, an order, success criteria, a schedule. The plan is validated in session 5: it is your roadmap for block 5.</p>
+</section>
+<section id="what-the-plan-must-contain" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="what-the-plan-must-contain"><span class="header-section-number">5.2</span> What the plan must contain</h2>
+<section id="objectives-per-technical-module" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="objectives-per-technical-module"><span class="header-section-number">5.2.1</span> 1. Objectives (per technical module)</h3>
+<p>For each of the 6 modules (async, IPC/locks, distributed, SIMD, GPU, WebGPU), write <strong>2–3 objectives</strong> as <em>observable criteria</em>:</p>
+<blockquote class="blockquote">
+<p>“I am able to write a program using <code>asyncio.gather</code> to parallelize I/O and to explain when it speeds things up (and when it does not).”</p>
+</blockquote>
+<p>Avoid vague wording (“understand asyncio”). An objective must allow a <strong>yes or no</strong> answer: “I can do it without help.”</p>
+</section>
+<section id="sequencing" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="sequencing"><span class="header-section-number">5.2.2</span> 2. Sequencing</h3>
 <ul>
-<li>Écrire un programme utilisant <code>asyncio</code> pour paralléliser des opérations d’entrée/sortie.</li>
-<li>Expliquer <em>quand</em> l’asynchrone accélère (I/O) et <em>quand</em> il n’accélère pas (CPU-bound).</li>
-<li>Décrire le rôle de l’<strong>event loop</strong> et des coroutines.</li>
-</ul>
-<p>Ressources : chapitre <code>03_Asynchronous.qmd</code> du cours précédent ; documentation officielle <a href="https://docs.python.org/3/library/asyncio.html"><code>asyncio</code></a>.</p>
-<section id="points-clés" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="points-clés"><span class="header-section-number">7.1</span> Points clés</h2>
-<ul>
-<li><strong>Coroutine</strong> : fonction déclarée <code>async def</code> ; son exécution ne démarre pas à l’appel, il faut l’<em>attendre</em> ou la <em>planifier</em>.</li>
-<li><strong>Event loop</strong> : le « chef d’orchestre » qui alterne entre les coroutines quand elles sont en attente (I/O, <code>sleep</code>).</li>
-<li><code>await</code>, <code>asyncio.gather</code>, <code>create_task</code>, <code>asyncio.run</code>.</li>
-<li><strong>GIL</strong> : les threads Python ne calculent pas en parallèle sur CPU ; l’asynchrone sert aux I/O (réseau, fichiers, API). Ne pas promettre le contraire à votre tuteur.</li>
-<li>Pièges : <strong>bloquer l’event loop</strong> avec un appel synchrone long (<code>time.sleep</code>, <code>requests</code> en synchrone) ; oublier d’<code>await</code> ; mauvais usage de <code>gather</code> vs <code>create_task</code>.</li>
+<li><strong>Order of the modules</strong> (recommended: async → IPC/locks → distributed → SIMD → GPU → WebGPU) and <strong>justification</strong> of your order if you change it.</li>
+<li><strong>Breakdown</strong>: for each module, 2–4 steps with a time estimate.</li>
 </ul>
 </section>
-<section id="exercices" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="exercices"><span class="header-section-number">7.2</span> Exercices</h2>
-<ol type="1">
-<li>Téléchargez <span class="math inline">N</span> URLs en séquentiel puis avec <code>asyncio.gather</code>. Chronométrez. Pourquoi <code>requests</code> bloque-t-il ? Que faut-il utiliser à la place (<code>httpx</code>, <code>aiohttp</code>) ?</li>
-<li>Écrivez un petit serveur/client asynchrone (<code>asyncio.start_server</code>) qui répond « pong ».</li>
-<li>Piège : mélangez <code>time.sleep(1)</code> et <code>await asyncio.sleep(1)</code> dans des tâches concurrentes. Chronométrez et expliquez le résultat (blocage de la boucle).</li>
-<li>(Parcours A) Demandez à votre tuteur « quand utiliser threads vs asyncio ? » et « pourquoi le GIL ne s’applique pas aux I/O ? ». Vérifiez ses réponses sur une source officielle et documentez toute imprécision.</li>
-</ol>
+<section id="success-criteria-and-evidence" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="success-criteria-and-evidence"><span class="header-section-number">5.2.3</span> 3. Success criteria and evidence</h3>
+<ul>
+<li>How will you know the objective is reached? (a successful exercise, a mini-project, an oral or written explanation, a quiz…)</li>
+<li><strong>Track A</strong>: a <em>conversation</em> with the tutor that shows mastery (e.g.&nbsp;an exercise carried through without the tutor giving away the answer).</li>
+<li><strong>Track B</strong>: an <em>exercise</em> done alone, ready to be live-coded in front of the instructor.</li>
+</ul>
+</section>
+<section id="follow-up-schedule" class="level3" data-number="5.2.4">
+<h3 data-number="5.2.4" class="anchored" data-anchor-id="follow-up-schedule"><span class="header-section-number">5.2.4</span> 4. Follow-up schedule</h3>
+<p>Spread the work between the follow-up points (sessions 6, 7, 8) and the autonomous periods. Plan for <strong>slack</strong>: the last third of the time stays available for the unexpected and for review.</p>
+</section>
+<section id="contract" class="level3" data-number="5.2.5">
+<h3 data-number="5.2.5" class="anchored" data-anchor-id="contract"><span class="header-section-number">5.2.5</span> 5. Contract</h3>
+<p>A short commitment section: your working arrangements (hours, environment, communication channel with the instructor), your “warning signals” (when to ask for help), and any personal adaptations.</p>
+</section>
+</section>
+<section id="plan-template" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="plan-template"><span class="header-section-number">5.3</span> Plan template</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Learning plan — [First name]</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Track: A (AI tutor) / B (classic)</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Objectives per module</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">### M1 — Asynchronous</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Objective 1: ...</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Objective 2: ...</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Evidence: ...</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">### M2 — IPC &amp; locks</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>...</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">## Sequencing</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Module <span class="pp">|</span> Steps <span class="pp">|</span> Estimated time <span class="pp">|</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="pp">|---|---|---|</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> M1 <span class="pp">|</span> ... <span class="pp">|</span> ... <span class="pp">|</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## Success criteria</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>...</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">## Schedule</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Due <span class="pp">|</span> Planned <span class="pp">|</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="pp">|---|---|</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Session 6 <span class="pp">|</span> ... <span class="pp">|</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Session 7 <span class="pp">|</span> ... <span class="pp">|</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Session 8 <span class="pp">|</span> ... <span class="pp">|</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 20/10 <span class="pp">|</span> Intermediate report <span class="pp">|</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu">## Contract</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Working arrangements: ...</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Warning signals: ...</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Adaptations: ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="validation-flow-session-5" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="validation-flow-session-5"><span class="header-section-number">5.4</span> Validation flow (session 5)</h2>
+<ul>
+<li>Your plan is <strong>reviewed individually</strong> (~15 min with the instructor).</li>
+<li><strong>Track A</strong>: the v1 of your system prompt is tested on a simple exercise — the tutor must already “behave” (refuse the solution, guide).</li>
+<li>The requested adjustments are to be carried over into the plan; it then becomes your reference for block 5.</li>
+</ul>
+</section>
+<section id="classic-mistakes-to-avoid" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="classic-mistakes-to-avoid"><span class="header-section-number">5.5</span> Classic mistakes to avoid</h2>
+<ul>
+<li>Vague objectives (no observable criterion);</li>
+<li>Overly ambitious sequencing (underestimating time);</li>
+<li>Missing evidence (“I will read the docs”);</li>
+<li>A “perfect” plan never revisited after session 5 — the plan is a <strong>living tool</strong>, you update it (and document why) in the logbook.</li>
+</ul>
 
 
 </section>
@@ -527,12 +595,12 @@ window.Quarto = {
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copié");
+      button.setAttribute("title", "Copied!");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copié");
+        button.setAttribute("data-bs-title", "Copied!");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
@@ -904,13 +972,13 @@ window.Quarto = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../Courses/00_intro-parallele.html" class="pagination-link" aria-label="Introduction au parallélisme">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction au parallélisme</span></span>
+      <a href="./ai-tutor.html" class="pagination-link" aria-label="Designing an AI tutor">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Designing an AI tutor</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../Courses/02_ipc-verrous.html" class="pagination-link" aria-label="Module 2 — IPC &amp; verrous">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 2 — IPC &amp; verrous</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Courses/00_intro-parallelism.html" class="pagination-link" aria-label="Introduction to Parallelism">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction to Parallelism</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -918,13 +986,13 @@ window.Quarto = {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Sous licence <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>
+<p>Licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
     <div class="nav-footer-right">
-<p>Construit avec <a href="https://quarto.org/">Quarto</a>.</p>
+<p>Built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
   </div>
 </footer>

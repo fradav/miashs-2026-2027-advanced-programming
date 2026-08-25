@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.10.18">
@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>13&nbsp; Projet final – Programmation avancée et calcul parallèle</title>
+<title>7&nbsp; Module 1 — Asynchronous and Concurrency – Advanced Programming and Parallel Computing</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -29,27 +29,27 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./summary.html" rel="next">
-<link href="./Courses/06_webgpu.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-af28502ac8d036ed35c2b305f0f54fbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-3bbd6a9bbbe52288d7dadd4871a2e2aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../Courses/02_ipc-locks.html" rel="next">
+<link href="../Courses/00_intro-parallelism.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-af28502ac8d036ed35c2b305f0f54fbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-3bbd6a9bbbe52288d7dadd4871a2e2aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -64,20 +64,63 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Pas de résultats",
-    "search-matching-documents-text": "documents trouvés",
-    "search-copy-link-title": "Copier le lien vers la recherche",
-    "search-hide-matches-text": "Cacher les correspondances additionnelles",
-    "search-more-match-text": "correspondance de plus dans ce document",
-    "search-more-matches-text": "correspondances de plus dans ce document",
-    "search-clear-button-title": "Effacer",
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Annuler",
-    "search-submit-button-title": "Envoyer",
-    "search-label": "Recherche"
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -256,13 +299,13 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./projets.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Projet final</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Courses/01_asynchronous.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 1 — Asynchronous and Concurrency</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Recherche" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -274,107 +317,107 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Programmation avancée et calcul parallèle</a> 
+      <a href="../">Advanced Programming and Parallel Computing</a> 
         <div class="sidebar-tools-main">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Basculer le mode sombre"><i class="bi"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Recherche"></div>
+        <div id="quarto-search" class="" title="Search"></div>
         </div>
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Préface</span></span></a>
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Prérequis</span></span></a>
+  <a href="../prerequisites.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Prerequisites</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dispositif.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Le dispositif pédagogique</span></span></a>
+  <a href="../teaching-design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The pedagogical design</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tuteur-ia.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Concevoir un tuteur IA</span></span></a>
+  <a href="../ai-tutor.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Designing an AI tutor</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./plan-apprentissage.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Planifier son apprentissage</span></span></a>
+  <a href="../learning-plan.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Planning your learning</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Courses/00_intro-parallele.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction au parallélisme</span></span></a>
+  <a href="../Courses/00_intro-parallelism.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction to Parallelism</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Courses/01_asynchrone.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 1 — Asynchrone et concurrence</span></span></a>
+  <a href="../Courses/01_asynchronous.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 1 — Asynchronous and Concurrency</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Courses/02_ipc-verrous.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 2 — IPC &amp; verrous</span></span></a>
+  <a href="../Courses/02_ipc-locks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 2 — IPC &amp; Locks</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Courses/03_distribue.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 3 — Calcul distribué</span></span></a>
+  <a href="../Courses/03_distributed.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 3 — Distributed Computing</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Courses/04_simd.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 4 — SIMD et vectorisation</span></span></a>
+  <a href="../Courses/04_simd.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 4 — SIMD and Vectorization</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Courses/05_gpu.html" class="sidebar-item-text sidebar-link">
+  <a href="../Courses/05_gpu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Module 5 — GPU</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Courses/06_webgpu.html" class="sidebar-item-text sidebar-link">
+  <a href="../Courses/06_webgpu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Module 6 — WebGPU</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./projets.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Projet final</span></span></a>
+  <a href="../projects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Final project</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Synthèse du module</span></span></a>
+  <a href="../summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Module summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Références</span></span></a>
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">References</span></span></a>
   </div>
 </li>
     </ul>
@@ -384,21 +427,11 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table des matières</h2>
+    <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#cadre" id="toc-cadre" class="nav-link active" data-scroll-target="#cadre"><span class="header-section-number">13.1</span> Cadre</a></li>
-  <li><a href="#sujets-proposés" id="toc-sujets-proposés" class="nav-link" data-scroll-target="#sujets-proposés"><span class="header-section-number">13.2</span> Sujets proposés</a>
-  <ul>
-  <li><a href="#pipeline-etl-parallèle" id="toc-pipeline-etl-parallèle" class="nav-link" data-scroll-target="#pipeline-etl-parallèle"><span class="header-section-number">13.2.1</span> 1. Pipeline ETL parallèle</a></li>
-  <li><a href="#analyse-olap-agrégation-multidimensionnelle" id="toc-analyse-olap-agrégation-multidimensionnelle" class="nav-link" data-scroll-target="#analyse-olap-agrégation-multidimensionnelle"><span class="header-section-number">13.2.2</span> 2. Analyse OLAP / agrégation multidimensionnelle</a></li>
-  <li><a href="#agent-de-recherche-documentaire-deep-research" id="toc-agent-de-recherche-documentaire-deep-research" class="nav-link" data-scroll-target="#agent-de-recherche-documentaire-deep-research"><span class="header-section-number">13.2.3</span> 3. Agent de recherche documentaire (deep research)</a></li>
-  <li><a href="#traitement-de-flux-streaming" id="toc-traitement-de-flux-streaming" class="nav-link" data-scroll-target="#traitement-de-flux-streaming"><span class="header-section-number">13.2.4</span> 4. Traitement de flux (streaming)</a></li>
-  </ul></li>
-  <li><a href="#cahier-des-charges-minimal" id="toc-cahier-des-charges-minimal" class="nav-link" data-scroll-target="#cahier-des-charges-minimal"><span class="header-section-number">13.3</span> Cahier des charges minimal</a></li>
-  <li><a href="#grille-dévaluation-poids-global-30" id="toc-grille-dévaluation-poids-global-30" class="nav-link" data-scroll-target="#grille-dévaluation-poids-global-30"><span class="header-section-number">13.4</span> Grille d’évaluation (poids global : 30 %)</a></li>
-  <li><a href="#soutenance-s11-1811-13301530" id="toc-soutenance-s11-1811-13301530" class="nav-link" data-scroll-target="#soutenance-s11-1811-13301530"><span class="header-section-number">13.5</span> Soutenance (S11 — 18/11, 13:30–15:30)</a></li>
-  <li><a href="#questions-fréquentes" id="toc-questions-fréquentes" class="nav-link" data-scroll-target="#questions-fréquentes"><span class="header-section-number">13.6</span> Questions fréquentes</a></li>
+  <li><a href="#key-points" id="toc-key-points" class="nav-link active" data-scroll-target="#key-points"><span class="header-section-number">7.1</span> Key points</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">7.2</span> Exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -408,8 +441,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Projet final</span></h1>
-<p class="subtitle lead">Consolider le module sur un vrai programme parallèle</p>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 1 — Asynchronous and Concurrency</span></h1>
+<p class="subtitle lead">asyncio, event loop, tasks</p>
 </div>
 
 
@@ -426,118 +459,31 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Le projet final compte pour <strong>30 %</strong> de la note, avec <strong>la même grille pour les deux parcours</strong>. Il évalue la maîtrise technique des compétences du module sur un problème concret, mêlant plusieurs techniques vues (asyncio, multiprocessing, Dask, GPU selon sujet).</p>
-<section id="cadre" class="level2" data-number="13.1">
-<h2 data-number="13.1" class="anchored" data-anchor-id="cadre"><span class="header-section-number">13.1</span> Cadre</h2>
+<p>Objectives (observable criteria):</p>
 <ul>
-<li><strong>Solo ou binôme</strong> (modalités de communication choisies par le binôme).</li>
-<li><strong>Durée</strong> : du lancement (fin octobre) à la <strong>soutenance du 18/11</strong> ; le <strong>rapport</strong> est rendu en amont de la soutenance.</li>
-<li><strong>Contraintes communes</strong> : le projet doît <em>réellement</em> utiliser du parallélisme (pas du séquentiel déguisé), les gains doivent être <strong>mesurés et justifiés</strong>, et le code doit être <strong>reproductible</strong> (README lisible, script de démonstration).</li>
+<li>Write a program using <code>asyncio</code> to parallelize input/output operations.</li>
+<li>Explain <em>when</em> asynchronicity speeds things up (I/O) and <em>when</em> it does not (CPU-bound).</li>
+<li>Describe the role of the <strong>event loop</strong> and of coroutines.</li>
+</ul>
+<p>Resources: chapter <code>03_Asynchronous.qmd</code> from last year’s course; official documentation <a href="https://docs.python.org/3/library/asyncio.html"><code>asyncio</code></a>.</p>
+<section id="key-points" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="key-points"><span class="header-section-number">7.1</span> Key points</h2>
+<ul>
+<li><strong>Coroutine</strong>: a function declared <code>async def</code>; its execution does not start at the call, you must <em>await</em> it or <em>schedule</em> it.</li>
+<li><strong>Event loop</strong>: the “conductor” that switches between coroutines when they are waiting (I/O, <code>sleep</code>).</li>
+<li><code>await</code>, <code>asyncio.gather</code>, <code>create_task</code>, <code>asyncio.run</code>.</li>
+<li><strong>GIL</strong>: Python threads do not compute in parallel on CPU; asyncio is for I/O (network, files, APIs). Do not promise the opposite to your tutor.</li>
+<li>Pitfalls: <strong>blocking the event loop</strong> with a long synchronous call (<code>time.sleep</code>, <code>requests</code> used synchronously); forgetting to <code>await</code>; misusing <code>gather</code> vs <code>create_task</code>.</li>
 </ul>
 </section>
-<section id="sujets-proposés" class="level2" data-number="13.2">
-<h2 data-number="13.2" class="anchored" data-anchor-id="sujets-proposés"><span class="header-section-number">13.2</span> Sujets proposés</h2>
-<p>Chaque sujet est un point d’entrée ; vous pouvez le décliner ou en proposer un autre, du moment qu’il couvre les objectifs techniques du module.</p>
-<section id="pipeline-etl-parallèle" class="level3" data-number="13.2.1">
-<h3 data-number="13.2.1" class="anchored" data-anchor-id="pipeline-etl-parallèle"><span class="header-section-number">13.2.1</span> 1. Pipeline ETL parallèle</h3>
-<p>Collecter (extraction), nettoyer/fusionner (transformation), puis charger des données vers un format cible (CSV, Parquet, base SQLite).</p>
-<ul>
-<li><strong>Extraction</strong> : récupération concurrente de sources (API paginées, fichiers) — <code>asyncio</code> + <code>httpx</code>.</li>
-<li><strong>Transformation</strong> : nettoyage, agrégations, jointures — <code>multiprocessing</code>, <code>dask</code> ou <code>numpy</code> vectorisé selon la forme des données.</li>
-<li><strong>Chargement</strong> : écriture en Parquet/SQLite ; analyse de l’impact du parallélisme à chaque étape.</li>
-<li><strong>Livrable</strong> : un pipeline rejouable en une commande, avec le temps séquentiel vs parallèle.</li>
-</ul>
-</section>
-<section id="analyse-olap-agrégation-multidimensionnelle" class="level3" data-number="13.2.2">
-<h3 data-number="13.2.2" class="anchored" data-anchor-id="analyse-olap-agrégation-multidimensionnelle"><span class="header-section-number">13.2.2</span> 2. Analyse OLAP / agrégation multidimensionnelle</h3>
-<p>Charger un jeu de données (par exemple ~1 Go typé table, type <em>star schema</em> ou logs) et préparer des agrégations (roll-up, drill-down, cube) utilisées pour répondre à des questions métier.</p>
-<ul>
-<li>Mise en œuvre avec <code>dask.dataframe</code> / <code>dask.delayed</code>, ou <code>cupy</code>/GPU si le matériel le permet ; comparaison avec <code>pandas</code> pur.</li>
-<li><strong>Livrable</strong> : un notebook « questions → requêtes → visualisation des temps » et un rapport sur les stratégies de partitionnement.</li>
-</ul>
-</section>
-<section id="agent-de-recherche-documentaire-deep-research" class="level3" data-number="13.2.3">
-<h3 data-number="13.2.3" class="anchored" data-anchor-id="agent-de-recherche-documentaire-deep-research"><span class="header-section-number">13.2.3</span> 3. Agent de recherche documentaire (deep research)</h3>
-<p>Un agent qui interroge plusieurs sources simultanément (pages web, API, bases de données), extrait des informations pertinentes, agrége une synthèse argumentée et cite ses sources.</p>
-<ul>
-<li><strong>Collection</strong> : I/O concurrente (<code>asyncio</code>, <code>httpx</code>, files d’attente).</li>
-<li><strong>Traitement</strong> : découpage en tâches (<code>dask.delayed</code>) pour le nettoyage et l’extraction de fragments pertinents; synthèse assistée par LLM (optionnel, non évaluée en soi).</li>
-<li><strong>Livrable</strong> : l’agent répond à une question posée, avec traçabilité (sources, temps par étape) et mise en évidence du gain concurrentiel de la collecte.</li>
-</ul>
-</section>
-<section id="traitement-de-flux-streaming" class="level3" data-number="13.2.4">
-<h3 data-number="13.2.4" class="anchored" data-anchor-id="traitement-de-flux-streaming"><span class="header-section-number">13.2.4</span> 4. Traitement de flux (streaming)</h3>
-<p>Produire un mini-système de traitement en continu : un producteur génère des événements (logs, capteurs simulés), un pipeline agrége par <strong>fenêtres glissantes</strong>, un consommateur affiche ou stocke les résultats.</p>
-<ul>
-<li><strong>Architecture</strong> : <code>asyncio</code> (queues, <code>asyncio.Queue</code>) en production/consommation, ou <code>multiprocessing</code> + <code>Queue</code> ; gestion de l’ordre et du <em>backpressure</em>.</li>
-<li><strong>Livrable</strong> : une démo qui montre des statistiques qui se mettent à jour en continu, un schéma d’architecture et l’analyse des choix de concurrence.</li>
-</ul>
-</section>
-</section>
-<section id="cahier-des-charges-minimal" class="level2" data-number="13.3">
-<h2 data-number="13.3" class="anchored" data-anchor-id="cahier-des-charges-minimal"><span class="header-section-number">13.3</span> Cahier des charges minimal</h2>
+<section id="exercises" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="exercises"><span class="header-section-number">7.2</span> Exercises</h2>
 <ol type="1">
-<li><strong>Dépôt Git</strong> propre : historique lisible, pas de données volumineuses dans le dépôt.</li>
-<li><strong>README</strong> : objectif, installation (dépendances épinglées), commande de lancement, exemples de sortie.</li>
-<li><strong>Code exécutable</strong> : script principal + tests <em>minimum</em> (au moins un test unitaire sur une fonction clé).</li>
-<li><strong>Mesures</strong> : au moins un tableau comparatif (séquentiel vs parallèle, ou variantes de workers) et l’interprétation en 3–5 lignes.</li>
-<li><strong>Rapport (4–6 pages)</strong> : objectifs, architecture (schéma), choix techniques, mesures, limites, ce qui a été appris.</li>
+<li>Download <span class="math inline">N</span> URLs sequentially, then with <code>asyncio.gather</code>. Time both. Why does <code>requests</code> block? What should you use instead (<code>httpx</code>, <code>aiohttp</code>)?</li>
+<li>Write a small asynchronous server/client (<code>asyncio.start_server</code>) answering “pong”.</li>
+<li>Trap: mix <code>time.sleep(1)</code> and <code>await asyncio.sleep(1)</code> in concurrent tasks. Time it and explain the result (loop blocking).</li>
+<li>(Track A) Ask your tutor “when to use threads vs asyncio?” and “why does the GIL not apply to I/O?”. Check the answers against an official source and document any imprecision.</li>
 </ol>
-</section>
-<section id="grille-dévaluation-poids-global-30" class="level2" data-number="13.4">
-<h2 data-number="13.4" class="anchored" data-anchor-id="grille-dévaluation-poids-global-30"><span class="header-section-number">13.4</span> Grille d’évaluation (poids global : 30 %)</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Critère</th>
-<th>Détail</th>
-<th>Pondération interne</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Maîtrise technique</td>
-<td>Parallélisme <em>réellement</em> utilisé et justifié ; pas de faux parallélisme (GIL, event loop bloquée, deadlock) ; gestion des ressources</td>
-<td>30 %</td>
-</tr>
-<tr class="even">
-<td>Qualité du code</td>
-<td>Lisibilité, structure, gestion d’erreurs, tests de base, mesures reproductibles</td>
-<td>25 %</td>
-</tr>
-<tr class="odd">
-<td>Conformité à la cible</td>
-<td>Réponses aux objectifs fixés dans le plan d’apprentissage ; respect du cahier des charges</td>
-<td>20 %</td>
-</tr>
-<tr class="even">
-<td>Communication</td>
-<td>Soutenance (5–8 min + questions), démo vivante, capacité à expliquer choix et limites</td>
-<td>25 %</td>
-</tr>
-</tbody>
-</table>
-<p>La note sur 30 % de la note finale est attribuée par l’enseignant sur cette grille, à l’identique pour les parcours A et B.</p>
-</section>
-<section id="soutenance-s11-1811-13301530" class="level2" data-number="13.5">
-<h2 data-number="13.5" class="anchored" data-anchor-id="soutenance-s11-1811-13301530"><span class="header-section-number">13.5</span> Soutenance (S11 — 18/11, 13:30–15:30)</h2>
-<ul>
-<li>Présentation <strong>5–8 minutes</strong> + questions : ce que fait le projet, comment il est parallélisé, quels gains mesurés, quelles limites.</li>
-<li>Le <strong>rapport</strong> est déposé avant la séance. Des modalités alternatives (session individuelle, dépôt vidéo) sont prévues si nécessaire.</li>
-</ul>
-</section>
-<section id="questions-fréquentes" class="level2" data-number="13.6">
-<h2 data-number="13.6" class="anchored" data-anchor-id="questions-fréquentes"><span class="header-section-number">13.6</span> Questions fréquentes</h2>
-<ul>
-<li><strong>Puis-je utiliser une librairie de plus ?</strong> Oui, du moment que le sujet technique du module (asyncio, IPC, Dask, vectorisation, GPU/WebGPU selon le sujet) reste le cœur justifié.</li>
-<li><strong>Et si mon matériel n’a pas de GPU ?</strong> Les sujets GPU sont optionnels ; un projet en asyncio/Dask/vectorisation numpy suffit largement. Le sondage de rentrée sert justement à calibrer ces choix.</li>
-<li><strong>Le binôme compte-t-il ?</strong> Le niveau d’exigence est ajusté (un livrable collectif plus ambitieux, ou deux contributions clairement séparées) ; les rôles sont explicités dans le rapport.</li>
-</ul>
 
 
 </section>
@@ -581,12 +527,12 @@ ul.task-list li input[type="checkbox"] {
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copié");
+      button.setAttribute("title", "Copied!");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copié");
+        button.setAttribute("data-bs-title", "Copied!");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
@@ -958,13 +904,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Courses/06_webgpu.html" class="pagination-link" aria-label="Module 6 — WebGPU">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Module 6 — WebGPU</span></span>
+      <a href="../Courses/00_intro-parallelism.html" class="pagination-link" aria-label="Introduction to Parallelism">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction to Parallelism</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./summary.html" class="pagination-link" aria-label="Synthèse du module">
-        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Synthèse du module</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../Courses/02_ipc-locks.html" class="pagination-link" aria-label="Module 2 — IPC &amp; Locks">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 2 — IPC &amp; Locks</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -972,13 +918,13 @@ ul.task-list li input[type="checkbox"] {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Sous licence <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>
+<p>Licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
     <div class="nav-footer-right">
-<p>Construit avec <a href="https://quarto.org/">Quarto</a>.</p>
+<p>Built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
   </div>
 </footer>

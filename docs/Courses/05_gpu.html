@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.10.18">
@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>11&nbsp; Module 5 — GPU – Programmation avancée et calcul parallèle</title>
+<title>11&nbsp; Module 5 — GPU – Advanced Programming and Parallel Computing</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -64,17 +64,17 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Pas de résultats",
-    "search-matching-documents-text": "documents trouvés",
-    "search-copy-link-title": "Copier le lien vers la recherche",
-    "search-hide-matches-text": "Cacher les correspondances additionnelles",
-    "search-more-match-text": "correspondance de plus dans ce document",
-    "search-more-matches-text": "correspondances de plus dans ce document",
-    "search-clear-button-title": "Effacer",
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Annuler",
-    "search-submit-button-title": "Envoyer",
-    "search-label": "Recherche"
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -299,13 +299,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Courses/05_gpu.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Module 5 — GPU</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Recherche" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -317,15 +317,15 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Programmation avancée et calcul parallèle</a> 
+      <a href="../">Advanced Programming and Parallel Computing</a> 
         <div class="sidebar-tools-main">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Basculer le mode sombre"><i class="bi"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Recherche"></div>
+        <div id="quarto-search" class="" title="Search"></div>
         </div>
         </div>
     <div class="sidebar-menu-container"> 
@@ -333,61 +333,61 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Préface</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Prérequis</span></span></a>
+  <a href="../prerequisites.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Prerequisites</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dispositif.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Le dispositif pédagogique</span></span></a>
+  <a href="../teaching-design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The pedagogical design</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tuteur-ia.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Concevoir un tuteur IA</span></span></a>
+  <a href="../ai-tutor.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Designing an AI tutor</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../plan-apprentissage.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Planifier son apprentissage</span></span></a>
+  <a href="../learning-plan.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Planning your learning</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/00_intro-parallele.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction au parallélisme</span></span></a>
+  <a href="../Courses/00_intro-parallelism.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction to Parallelism</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/01_asynchrone.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 1 — Asynchrone et concurrence</span></span></a>
+  <a href="../Courses/01_asynchronous.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 1 — Asynchronous and Concurrency</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/02_ipc-verrous.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 2 — IPC &amp; verrous</span></span></a>
+  <a href="../Courses/02_ipc-locks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 2 — IPC &amp; Locks</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/03_distribue.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 3 — Calcul distribué</span></span></a>
+  <a href="../Courses/03_distributed.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 3 — Distributed Computing</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../Courses/04_simd.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 4 — SIMD et vectorisation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 4 — SIMD and Vectorization</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -404,20 +404,20 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../projets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Projet final</span></span></a>
+  <a href="../projects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Final project</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Synthèse du module</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Module summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Références</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">References</span></span></a>
   </div>
 </li>
     </ul>
@@ -427,11 +427,11 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table des matières</h2>
+    <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#points-clés" id="toc-points-clés" class="nav-link active" data-scroll-target="#points-clés"><span class="header-section-number">11.1</span> Points clés</a></li>
-  <li><a href="#exercices" id="toc-exercices" class="nav-link" data-scroll-target="#exercices"><span class="header-section-number">11.2</span> Exercices</a></li>
+  <li><a href="#key-points" id="toc-key-points" class="nav-link active" data-scroll-target="#key-points"><span class="header-section-number">11.1</span> Key points</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">11.2</span> Exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -442,7 +442,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Module 5 — GPU</span></h1>
-<p class="subtitle lead">architecture, latence vs débit, CuPy, numba-CUDA</p>
+<p class="subtitle lead">architecture, latency vs throughput, CuPy, numba-CUDA</p>
 </div>
 
 
@@ -459,36 +459,39 @@ window.Quarto = {
 </header>
 
 
-<p>Objectifs (critères observables) :</p>
+<p>Objectives (observable criteria):</p>
 <ul>
-<li>Expliquer en quoi l’architecture d’un <strong>GPU</strong> diffère de celle d’un CPU (von Neumann, « control pour arithmetic power ») et la notion de <strong>latence vs débit</strong>.</li>
-<li>Décrire la hiérarchie mémoire : registres, <em>shared memory</em>, mémoire globale, cache CPU — et le coût des <strong>transferts CPU ↔︎ GPU</strong>.</li>
-<li>Lancer un calcul simple sur GPU avec <strong>CuPy</strong> (API proche de numpy) et avec <strong>numba-CUDA</strong> (<code>@cuda.jit</code>), en mesurant le coût des copies.</li>
+<li>Explain how a <strong>GPU</strong> architecture differs from a CPU (von Neumann, “control traded for arithmetic power”) and the notion of <strong>latency vs throughput</strong>.</li>
+<li>Describe the memory hierarchy: registers, <em>shared memory</em>, global memory, CPU cache — and the cost of <strong>CPU ↔︎ GPU transfers</strong>.</li>
+<li>Run a simple computation on GPU with <strong>CuPy</strong> (API close to numpy) and with <strong>numba-CUDA</strong> (<code>@cuda.jit</code>), measuring the copy cost.</li>
 </ul>
-<p>Ressources : chapitre <code>09_GPU-Caching-etc.qmd</code> du cours précédent ; documentation <a href="https://docs.cupy.dev/"><code>cupy</code></a> et <a href="https://numba.readthedocs.io/en/stable/cuda/index.html">numba CUDA</a>.</p>
-<section id="points-clés" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="points-clés"><span class="header-section-number">11.1</span> Points clés</h2>
+<p>Resources: chapter <code>09_GPU-Caching-etc.qmd</code> from last year’s course; documentation <a href="https://docs.cupy.dev/"><code>cupy</code></a> and <a href="https://numba.readthedocs.io/en/stable/cuda/index.html">numba CUDA</a>.</p>
+<section id="key-points" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="key-points"><span class="header-section-number">11.1</span> Key points</h2>
 <ul>
-<li><strong>Architecture</strong> : un GPU est massivement parallèle (des milliers de cœurs simples, <em>throughput-oriented</em>) alors qu’un CPU a peu de cœurs complexes, <em>latency-oriented</em>. Le GPU <strong>échange du contrôle contre de la puissance arithmétique</strong> : les threads sont nombreux, simples, synchronisés par lots.</li>
-<li><strong>Latence vs débit</strong> : un seul thread GPU est lent ; la performance vient de <em>beaucoup</em> d’opérations en vol en même temps. Métaphores de cours : traiter une seule commande (latence) vs remplir la chaîne sans interruption (débit).</li>
-<li><strong>Mémoire</strong> : copier entre CPU et GPU passe par le bus (PCIe ou mémoire unifiée) → les <strong>transferts coûtent cher</strong> : il faut minimiser les allers-retours, réutiliser les buffers, faire le maximum de calcul côté GPU.</li>
-<li><strong>Hiérarchie mémoire GPU</strong> : registres (rapides, rares) → shared memory (par bloc, très rapide) → mémoire globale (lente) ; <em>bank conflicts</em>, <em>coalescing</em> à connaître en seconde lecture.</li>
-<li><strong>En Python</strong> :
+<li><strong>Architecture</strong>: a GPU is massively parallel (thousands of simple cores, <em>throughput-oriented</em>) while a CPU has few complex cores, <em>latency-oriented</em>. The GPU <strong>trades control for arithmetic power</strong>: threads are numerous, simple, synchronized in batches.</li>
+<li><strong>Latency vs throughput</strong>: a single GPU thread is slow; performance comes from <em>many</em> operations in flight at the same time. Course metaphors: processing a single order (latency) vs filling the pipeline without interruption (throughput).</li>
+<li><strong>Memory</strong>: copying between CPU and GPU goes through the bus (PCIe or unified memory) → <strong>transfers are expensive</strong>: minimize round trips, reuse buffers, do as much computation as possible on the GPU side.</li>
+<li><strong>GPU memory hierarchy</strong>: registers (fast, scarce) → shared memory (per block, very fast) → global memory (slow); <em>bank conflicts</em>, <em>coalescing</em> to know on a second read.</li>
+<li><strong>In Python</strong>:
 <ul>
-<li><strong>CuPy</strong> : <code>cupy.array</code>, <code>cupy.sum</code>, … API calquée sur numpy ; un tableau est créé sur GPU, les opérations y restent.</li>
-<li><strong>numba-CUDA</strong> : <code>@cuda.jit</code> définit un <em>kernel</em> ; on précise la grille de blocs et de threads (<code>cuda.jit([...])(...)</code>), on y accède aux indices (<code>cuda.grid</code>).</li>
+<li><strong>CuPy</strong>: <code>cupy.array</code>, <code>cupy.sum</code>, … API modeled on numpy; an array is created on GPU, operations stay there.</li>
+<li><strong>numba-CUDA</strong>: <code>@cuda.jit</code> defines a <em>kernel</em>; you specify the grid of blocks and threads (<code>cuda.jit([...])(...)</code>), you access the indices (<code>cuda.grid</code>).</li>
 </ul></li>
-<li><strong>Pièges</strong> : oublier de synchroniser (timing faux), mesurer <em>avec</em> le transfert, ignorer le premier lancement (compilation JIT/JIT-cache), surutiliser la mémoire globale sans réutilisation.</li>
+<li><strong>Pitfalls</strong>: forgetting to synchronize (wrong timing), measuring <em>including</em> the transfer, ignoring the first launch (JIT/JIT-cache compilation), overusing global memory without reuse.</li>
 </ul>
 </section>
-<section id="exercices" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="exercices"><span class="header-section-number">11.2</span> Exercices</h2>
+<section id="exercises" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="exercises"><span class="header-section-number">11.2</span> Exercises</h2>
 <ol type="1">
-<li><strong>CuPy vs numpy</strong> : addition de deux grands vecteurs (<span class="math inline">n = 10^7, 10^8</span>) : (a) numpy sur CPU, (b) CuPy en mesurant <em>tout</em> (transferts compris), (c) CuPy en mesurant <em>uniquement</em> le calcul GPU (<code>with cp.cuda.Stream():</code> et <code>stream.synchronize()</code>). Expliquez les écarts.</li>
-<li><strong>Kernel numba-CUDA</strong> : écrivez un kernel <code>@cuda.jit</code> d’addition de vecteurs, lancez-le sur une grille adaptée (taille des blocs), comparez avec CuPy. Calculez le <em>nombre de blocs</em> nécessaire pour couvrir <span class="math inline">n</span>.</li>
-<li><strong>Latence vs débit</strong> : construisez une démonstration (schéma ou analogie de votre choix — file de péage, pizzas, chaîne de montage) et faites-la comprendre à un·e pair·e ou à votre tuteur. Formalisez en 3 phrases pourquoi plus de <em>concurrence</em> masque la latence.</li>
-<li><strong>Transferts</strong> : un calcul qui enchaîne 20 petites opérations sur GPU avec une copie entre chaque (boucle numpy/CPU) vs la même chose en gardant tout sur GPU. Mesurez. Conclusion ?</li>
-<li>(Parcours A) Faites expliquer à votre tuteur « pourquoi un GPU est-il lent sur un seul thread mais rapide sur beaucoup ? » et « quand vaut-il mieux rester sur CPU ? ». Confrontez aux ressources et notez les imprécisions. (Parcours B) Préparez un live-coding : montrez le coût d’un aller-retour CPU→GPU→CPU sur une petite opération.</li>
+<li><strong>CuPy vs numpy</strong>: addition of two large vectors (<span class="math inline">n = 10^7, 10^8</span>): (a) numpy on CPU,
+<ol start="2" type="a">
+<li>CuPy measuring <em>everything</em> (transfers included), (c) CuPy measuring <em>only</em> the GPU computation (<code>with cp.cuda.Stream():</code> and <code>stream.synchronize()</code>). Explain the gaps.</li>
+</ol></li>
+<li><strong>numba-CUDA kernel</strong>: write a <code>@cuda.jit</code> vector-addition kernel, launch it on a suitable grid (block size), compare with CuPy. Compute the <em>number of blocks</em> needed to cover <span class="math inline">n</span>.</li>
+<li><strong>Latency vs throughput</strong>: build a demonstration (diagram or analogy of your choice — toll booth, pizzas, assembly line) and make a peer or your tutor understand it. Formalize in 3 sentences why more <em>concurrency</em> hides latency.</li>
+<li><strong>Transfers</strong>: a computation chaining 20 small GPU operations with a copy between each (numpy/CPU loop) vs the same keeping everything on GPU. Measure. Conclusion?</li>
+<li>(Track A) Have your tutor explain “why is a GPU slow on a single thread but fast on many?” and “when is it better to stay on CPU?”. Compare with the resources and note the imprecisions. (Track B) Prepare a live-coding: show the cost of a CPU→GPU→CPU round trip on a small operation.</li>
 </ol>
 
 
@@ -533,12 +536,12 @@ window.Quarto = {
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copié");
+      button.setAttribute("title", "Copied!");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copié");
+        button.setAttribute("data-bs-title", "Copied!");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
@@ -910,8 +913,8 @@ window.Quarto = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../Courses/04_simd.html" class="pagination-link" aria-label="Module 4 — SIMD et vectorisation">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 4 — SIMD et vectorisation</span></span>
+      <a href="../Courses/04_simd.html" class="pagination-link" aria-label="Module 4 — SIMD and Vectorization">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 4 — SIMD and Vectorization</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
@@ -924,13 +927,13 @@ window.Quarto = {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Sous licence <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>
+<p>Licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
     <div class="nav-footer-right">
-<p>Construit avec <a href="https://quarto.org/">Quarto</a>.</p>
+<p>Built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
   </div>
 </footer>

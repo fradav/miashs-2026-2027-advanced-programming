@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.10.18">
@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>10&nbsp; Module 4 — SIMD et vectorisation – Programmation avancée et calcul parallèle</title>
+<title>10&nbsp; Module 4 — SIMD and Vectorization – Advanced Programming and Parallel Computing</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -37,7 +37,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../Courses/05_gpu.html" rel="next">
-<link href="../Courses/03_distribue.html" rel="prev">
+<link href="../Courses/03_distributed.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -64,17 +64,17 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Pas de résultats",
-    "search-matching-documents-text": "documents trouvés",
-    "search-copy-link-title": "Copier le lien vers la recherche",
-    "search-hide-matches-text": "Cacher les correspondances additionnelles",
-    "search-more-match-text": "correspondance de plus dans ce document",
-    "search-more-matches-text": "correspondances de plus dans ce document",
-    "search-clear-button-title": "Effacer",
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Annuler",
-    "search-submit-button-title": "Envoyer",
-    "search-label": "Recherche"
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -299,13 +299,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Courses/04_simd.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 4 — SIMD et vectorisation</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Courses/04_simd.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 4 — SIMD and Vectorization</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Recherche" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -317,15 +317,15 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Programmation avancée et calcul parallèle</a> 
+      <a href="../">Advanced Programming and Parallel Computing</a> 
         <div class="sidebar-tools-main">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Basculer le mode sombre"><i class="bi"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Recherche"></div>
+        <div id="quarto-search" class="" title="Search"></div>
         </div>
         </div>
     <div class="sidebar-menu-container"> 
@@ -333,61 +333,61 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Préface</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Prérequis</span></span></a>
+  <a href="../prerequisites.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Prerequisites</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dispositif.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Le dispositif pédagogique</span></span></a>
+  <a href="../teaching-design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The pedagogical design</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tuteur-ia.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Concevoir un tuteur IA</span></span></a>
+  <a href="../ai-tutor.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Designing an AI tutor</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../plan-apprentissage.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Planifier son apprentissage</span></span></a>
+  <a href="../learning-plan.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Planning your learning</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/00_intro-parallele.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction au parallélisme</span></span></a>
+  <a href="../Courses/00_intro-parallelism.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction to Parallelism</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/01_asynchrone.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 1 — Asynchrone et concurrence</span></span></a>
+  <a href="../Courses/01_asynchronous.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 1 — Asynchronous and Concurrency</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/02_ipc-verrous.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 2 — IPC &amp; verrous</span></span></a>
+  <a href="../Courses/02_ipc-locks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 2 — IPC &amp; Locks</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/03_distribue.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 3 — Calcul distribué</span></span></a>
+  <a href="../Courses/03_distributed.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 3 — Distributed Computing</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../Courses/04_simd.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 4 — SIMD et vectorisation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 4 — SIMD and Vectorization</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -404,20 +404,20 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../projets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Projet final</span></span></a>
+  <a href="../projects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Final project</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Synthèse du module</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Module summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Références</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">References</span></span></a>
   </div>
 </li>
     </ul>
@@ -427,11 +427,11 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table des matières</h2>
+    <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#points-clés" id="toc-points-clés" class="nav-link active" data-scroll-target="#points-clés"><span class="header-section-number">10.1</span> Points clés</a></li>
-  <li><a href="#exercices" id="toc-exercices" class="nav-link" data-scroll-target="#exercices"><span class="header-section-number">10.2</span> Exercices</a></li>
+  <li><a href="#key-points" id="toc-key-points" class="nav-link active" data-scroll-target="#key-points"><span class="header-section-number">10.1</span> Key points</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">10.2</span> Exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -441,8 +441,8 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 4 — SIMD et vectorisation</span></h1>
-<p class="subtitle lead">une instruction, plusieurs données (SSE/AVX, numpy, numba)</p>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 4 — SIMD and Vectorization</span></h1>
+<p class="subtitle lead">one instruction, multiple data (SSE/AVX, numpy, numba)</p>
 </div>
 
 
@@ -459,33 +459,33 @@ window.Quarto = {
 </header>
 
 
-<p>Objectifs (critères observables) :</p>
+<p>Objectives (observable criteria):</p>
 <ul>
-<li>Expliquer ce qu’est <strong>SIMD</strong> (Single Instruction, Multiple Data) et pourquoi elle accélère.</li>
-<li>Utiliser la vectorisation <strong>numpy</strong> (ufuncs, opérations sur tableaux) et mesurer le gain par rapport à une boucle Python.</li>
-<li>Compiler des boucles avec <strong>numba</strong> (<code>@njit</code>, <code>parallel=True</code>, <code>fastmath</code>) et comprendre quand la vectorisation n’aide pas.</li>
-<li>Décrire la notion d’<strong>intrinsics</strong> et de longeur de vecteur (SSE 128 bits, AVX 256 bits).</li>
+<li>Explain what <strong>SIMD</strong> (Single Instruction, Multiple Data) is and why it speeds things up.</li>
+<li>Use <strong>numpy</strong> vectorization (ufuncs, array operations) and measure the gain over a Python loop.</li>
+<li>Compile loops with <strong>numba</strong> (<code>@njit</code>, <code>parallel=True</code>, <code>fastmath</code>) and understand when vectorization does not help.</li>
+<li>Describe the notion of <strong>intrinsics</strong> and of vector length (SSE 128 bits, AVX 256 bits).</li>
 </ul>
-<p>Ressources : chapitre <code>08_SIMD.qmd</code> du cours précédent ; documentation <a href="https://numba.readthedocs.io/"><code>numba</code></a> et <a href="https://numpy.org/doc/stable/reference/ufuncs.html"><code>numpy</code></a>.</p>
-<section id="points-clés" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="points-clés"><span class="header-section-number">10.1</span> Points clés</h2>
+<p>Resources: chapter <code>08_SIMD.qmd</code> from last year’s course; documentation <a href="https://numba.readthedocs.io/"><code>numba</code></a> and <a href="https://numpy.org/doc/stable/reference/ufuncs.html"><code>numpy</code></a>.</p>
+<section id="key-points" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="key-points"><span class="header-section-number">10.1</span> Key points</h2>
 <ul>
-<li><strong>Pourquoi la vectorisation ?</strong> une seule instruction décodée et exécutée pour <em>plusieurs données</em> → moins de décodage, moins de boucles, meilleur débit. C’est une forme de parallélisme <em>au niveau instruction</em>, invisible au niveau thread.</li>
-<li><strong>Registres SIMD</strong> : SSE (128 bits ≈ 4 flottants 32 bits), AVX (256 bits ≈ 8 flottants), AVX-512 ; longueur qui a crû avec le temps. Compatible avec la <strong>taxonomie de Flynn</strong> (module d’intro) : c’est du <em>data parallelism</em>.</li>
-<li><strong>numpy vectorise</strong> : les <em>ufuncs</em> (<code>+</code>, <code>*</code>, <code>np.sqrt</code>, <code>np.sum</code>…) opèrent sur le tableau d’un bloc ; les données doivent être <strong>contiguës</strong> (<code>C-contiguous</code>) pour être efficaces.</li>
-<li><strong>numba</strong> : <code>@njit</code> compile la fonction en code machine au premier appel (compilation <em>just-in-time</em>) ; <code>parallel=True</code> + <code>prange</code> distribue les itérations ; <code>fastmath=True</code> relâche l’arithmétique IEEE (toujours vérifier l’impact sur la précision).</li>
-<li><strong>Quand ce n’est pas efficace</strong> : petites données (le surcoût d’appel domine), accès non contigus, branches divergentes, calculs où le goulot est la <em>mémoire</em> et non le calcul.</li>
-<li><strong>Intrinsics</strong> (C/C++) : fonctions correspondant aux instructions SIMD (<code>_mm_add_ps</code>, <code>_mm256_fma_ps</code>…) — à connaître pour comprendre, pas nécessaire à utiliser en Python.</li>
+<li><strong>Why vectorize?</strong> one instruction decoded and executed for <em>multiple data</em> → less decoding, fewer loop iterations, better throughput. A form of <em>instruction-level</em> parallelism, invisible at the thread level.</li>
+<li><strong>SIMD registers</strong>: SSE (128 bits ≈ 4 32-bit floats), AVX (256 bits ≈ 8 floats), AVX-512; lengths that have grown over time. Consistent with the <strong>Flynn taxonomy</strong> (intro module): this is <em>data parallelism</em>.</li>
+<li><strong>numpy vectorizes</strong>: <em>ufuncs</em> (<code>+</code>, <code>*</code>, <code>np.sqrt</code>, <code>np.sum</code>…) operate on the array in one block; data must be <strong>contiguous</strong> (<code>C-contiguous</code>) to be efficient.</li>
+<li><strong>numba</strong>: <code>@njit</code> compiles the function to machine code on the first call (<em>just-in-time</em> compilation); <code>parallel=True</code> + <code>prange</code> distributes the iterations; <code>fastmath=True</code> relaxes IEEE arithmetic (always check the impact on precision).</li>
+<li><strong>When it is not efficient</strong>: small data (call overhead dominates), non-contiguous access, divergent branches, computations where the bottleneck is <em>memory</em> rather than computation.</li>
+<li><strong>Intrinsics</strong> (C/C++): functions mapping to SIMD instructions (<code>_mm_add_ps</code>, <code>_mm256_fma_ps</code>…) — useful to know in order to understand, not needed in Python.</li>
 </ul>
 </section>
-<section id="exercices" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="exercices"><span class="header-section-number">10.2</span> Exercices</h2>
+<section id="exercises" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="exercises"><span class="header-section-number">10.2</span> Exercises</h2>
 <ol type="1">
-<li><strong>Boucle vs numpy</strong> : calculez <span class="math inline">y = 3x^2 + 2</span> pour <span class="math inline">n = 10^5, 10^6, 10^7, 10^8</span> en boucle Python pure puis avec une expression numpy. Tracez le rapport des temps. Pourquoi le gain dépend-il de <span class="math inline">n</span> ?</li>
-<li><strong>numba</strong> : réécrivez la boucle de l’exercice 1 avec <code>@njit</code>, puis <code>@njit(parallel=True)</code> et <code>prange</code>. Comparez avec numpy et avec la boucle pure. Que se passe-t-il au <em>premier</em> appel (compilation) ?</li>
-<li><strong>ufunc et contiguïté</strong> : chronométrez une opération sur un tableau contigu vs un tableau <em>non contigu</em> (par exemple une vue <code>a[::2]</code>). Interprétez avec la notion de cache.</li>
-<li><strong>Cas non vectorisable</strong> : écrivez une fonction avec une branche (type <em>collatz</em> ou <em>fonction par morceaux</em>) et comparez les approches. La vectorisation aide-t-elle autant ? Pourquoi ?</li>
-<li>(Parcours A) Demandez à votre tuteur « pourquoi numpy est-il plus rapide qu’une boucle Python ? » puis « qu’est-ce que fastmath et quels risques ? ». Validez sur la doc officielle et documentez toute approximation. (Parcours B) Préparez un live-coding comparatif boucle/numpy/numba et expliquez le graphe de résultats.</li>
+<li><strong>Loop vs numpy</strong>: compute <span class="math inline">y = 3x^2 + 2</span> for <span class="math inline">n = 10^5, 10^6, 10^7, 10^8</span> in pure Python loop, then with a numpy expression. Plot the time ratio. Why does the gain depend on <span class="math inline">n</span>?</li>
+<li><strong>numba</strong>: rewrite the loop from exercise 1 with <code>@njit</code>, then <code>@njit(parallel=True)</code> and <code>prange</code>. Compare with numpy and with the pure loop. What happens at the <em>first</em> call (compilation)?</li>
+<li><strong>ufunc and contiguity</strong>: time an operation on a contiguous array vs a <em>non-contiguous</em> one (e.g.&nbsp;a view <code>a[::2]</code>). Interpret with the notion of cache.</li>
+<li><strong>Non-vectorizable case</strong>: write a function with a branch (like <em>collatz</em> or a <em>piecewise</em> function) and compare the approaches. Does vectorization help as much? Why?</li>
+<li>(Track A) Ask your tutor “why is numpy faster than a Python loop?” then “what is fastmath and what are the risks?”. Validate against the official docs and document any approximation. (Track B) Prepare a comparative loop/numpy/numba live-coding and explain the result graph.</li>
 </ol>
 
 
@@ -530,12 +530,12 @@ window.Quarto = {
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copié");
+      button.setAttribute("title", "Copied!");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copié");
+        button.setAttribute("data-bs-title", "Copied!");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
@@ -907,8 +907,8 @@ window.Quarto = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../Courses/03_distribue.html" class="pagination-link" aria-label="Module 3 — Calcul distribué">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 3 — Calcul distribué</span></span>
+      <a href="../Courses/03_distributed.html" class="pagination-link" aria-label="Module 3 — Distributed Computing">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 3 — Distributed Computing</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
@@ -921,13 +921,13 @@ window.Quarto = {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Sous licence <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>
+<p>Licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
     <div class="nav-footer-right">
-<p>Construit avec <a href="https://quarto.org/">Quarto</a>.</p>
+<p>Built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
   </div>
 </footer>

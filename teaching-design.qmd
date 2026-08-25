@@ -1,0 +1,171 @@
+# The pedagogical design
+
+This page explains **how** you will learn in this module and **why** this choice was made.
+Read it carefully: everything for the semester follows from it.
+
+## The general idea
+
+Knowledge is not built only by listening to an instructor: it is built in interaction, with
+the people around you and with the documents and tools you work with. This module puts you at
+the center of your learning: you **partly design your own track**, you **choose your working
+modes**, and you **observe** how you learn.
+
+Concretely, the idea has three parts:
+
+1. **Autonomous, co-constructed learning**: you write a learning plan and follow it, with
+   regular support.
+2. **A "learning by teaching" setup**: by configuring an **AI tutor** that must teach you
+   *correctly*, you are forced to master the material. You cannot ask a machine to teach a
+   concept you do not understand yourself.
+3. **A critical approach**: AI has documented limitations (hallucinations, over-reliance,
+   superficial uses, unequal access). Rather than ignoring them, the course makes them an
+   object of work and analysis.
+
+## Two tracks, identical objectives
+
+**The technical objectives are the same for everyone.** Only the way of learning differs.
+
+### Track A: Socratic AI tutor
+
+- You write a structured **learning plan**.
+- You design a **system prompt** that configures a chatbot as a *Socratic tutor*: it does not
+  give answers, it questions, guides, and makes you articulate your thinking.
+- You interact daily with this tutor and **iterate on the system prompt** based on the
+  quality of the exchanges.
+- You keep a **logbook** that includes the tutor's full conversations.
+
+### Track B: classic learning
+
+- You write the **same kind of learning plan**.
+- You work from the **available resources**: this site, the documentation, books, tutorials,
+  last year's course.
+- You keep a **logbook** of your autonomous work, and you demonstrate mastery through
+  **live-coding** (board work or an individual session with the instructor).
+
+### Switching tracks
+
+You can start in one track and switch to the other during the semester, as long as the choice
+is **justified and explained** in your report. The flexibility is deliberate: it lets each
+student find the way they learn best, and it is part of the module's reflective work.
+
+> **An important point.** This is a parallel-programming course whose learning process partly
+> relies on tools whose effects you will learn to master or work around.
+
+## Reciprocal observation
+
+You will write a **comparative report** that blends two parts:
+
+- **Reflective part**: analysis of your own learning process. Which strategies worked, where
+  difficulties appeared, how you resolved them.
+- **Observational part**: observation of the students in the *other* track. How do they
+  learn? Does the approach seem effective, and on what criteria? What reactions does it
+  trigger in you (envy, wariness) and why?
+
+Track A students observe group B to understand what motivates the choice to do without AI and
+to justify why their own use is not mere over-reliance. Track B students observe group A to
+analyze the learning processes at work and to be better equipped to move through a
+professional world where AI is omnipresent.
+
+Mid-semester, a **cross-review session** (anonymous reading of the reports and collective
+discussion) pools these observations. The goal is not to decide who is right, but to develop
+an **informed relationship** with technology.
+
+## Working modes
+
+The module is designed so that each student finds a format that suits them. **Every working
+mode counts as much as the others**; no choice is interpreted as lesser commitment.
+
+### Solo work
+
+- **With the AI tutor (Track A)**: asynchronous dialogue at your own pace, where you can
+  rephrase, go back, and think before answering.
+- **With the resources (Track B)**: documentation, books, tutorials, previous courses.
+- **The logbook**, under any circumstances, is your main channel of written expression.
+
+### Pair work
+
+- **Reciprocal observation** pairs work through written exchange (journals read crosswise,
+  asynchronous comments) **or** orally (a 15–20 minute interview), at the participants'
+  choice.
+- The final project can be done solo or in pairs (communication arrangements defined by the
+  pair itself).
+
+### Speaking up in group
+
+Five channels are equivalent:
+
+1. **Spontaneous oral speaking up**;
+2. **Announced oral speaking up**: you signal in advance that you want to intervene;
+3. **Asynchronous written contribution**: written before the session (forum, shared
+   document), read or projected by the instructor or a peer;
+4. **Synchronous written contribution**: written during the session (chat, collaborative
+   document);
+5. **Contribution by artifact**: a diagram, code, or screenshot that carries your
+   contribution without you having to defend it orally.
+
+The instructor gives non-oral contributions the same weight in the discussion as oral ones.
+
+### Board work
+
+"Board work" (demonstration, live-coding) is a moment with high social stakes. Four
+equivalent modes:
+
+- **Classic board work**;
+- **Individual session with the instructor**;
+- **Asynchronous recording** (a 5–10 minute video, projected anonymously if you wish);
+- **Demonstration by artifact** (commented code, architecture diagram, debugging trace).
+
+**Golden rule**: no one is put in public difficulty. If you want an alternative, it is
+offered without justification and without penalty.
+
+### Signals and think time
+
+- The instructor leaves a **think time** (1–2 minutes) before asking for an answer.
+- A discreet **overload signal** (card, agreed gesture, message in the chat) lets you ask
+  for a pause, and the request is respected without public comment.
+
+## Semester timeline (course plan)
+
+Full details in the instructor's course plan. In brief:
+
+| Period | Block | Content |
+|---|---|---|
+| S1 (26/08) | 1 | Introduction, framework, track choice |
+| S2–S3 (27/08, 01/09) | 2 | Designing an AI tutor (principles, system prompt workshop) |
+| S4–S5 (03/09, 22/09) | 3–4 | Learning plan, validation |
+| S6–S8 (24/09 → 01/10) | 5 | Autonomous work + progress check-ins |
+| S9 (22/10) | 6 | Cross-review of reports |
+| S10 (23/10) → S11 (18/11) | 7 + exam | Final project, defense |
+| S12 (19/11) | 7 | Wrap-up, metacognitive report |
+
+**Autonomous work takes up a large share of the module**: the supervised sessions serve as
+tracking and unblocking checkpoints, and the rest is done at your own pace, at home.
+
+## Assessment
+
+| Criterion | Weight | Track A | Track B |
+|---|---|---|---|
+| Learning plan | 15% | Plan + system prompt | Structured plan |
+| Logbook | 15% | Interaction log + full conversations | Work log + live-coding evidence |
+| Comparative report (reflective + observational) | 20% | Self-analysis + observation of group B | Self-analysis + observation of group A |
+| Final project | 30% | Technical project | Technical project |
+| Final metacognitive report | 20% | Reflection on the overall process | Reflection on the overall process |
+
+The final project is assessed **with the same rubric for both tracks**.
+
+## The safeguards (why they are there)
+
+- **Track A**: the tutor's full conversations in the logbook serve as *objective traces*. If
+  the tutor gives a wrong answer, you must document how you detected it and corrected it.
+  That is exactly the kind of skill the module wants to develop.
+- **Track B**: the proof of mastery is more direct (live-coding, individual session), and
+  the documentation load is lighter.
+
+## To go further
+
+- The page [Designing an AI tutor](ai-tutor.qmd) details the work of block 2 (Track A).
+- The page [Planning your learning](learning-plan.qmd) details the learning contract (all
+  tracks).
+- A few basic readings: dialogic pedagogy and co-construction (Vygotski, Freire, Bovill),
+  documented limits of AI in education (hallucinations, over-reliance, unequal access). The
+  references are listed at the end of the site.

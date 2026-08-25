@@ -1,0 +1,103 @@
+# Planning your learning
+
+> Working page for **block 3** — valid for both tracks. The goal is to produce a **learning
+> plan** validated by the instructor before starting the autonomous work.
+
+## Why a plan?
+
+Learning autonomously without a plan is navigating without a map: you skim, you drift, you
+do not know when you are done. A learning plan (inspired by *learning contracts*) turns
+intention into **commitment**: objectives, an order, success criteria, a schedule. The plan
+is validated in session 5: it is your roadmap for block 5.
+
+## What the plan must contain
+
+### 1. Objectives (per technical module)
+
+For each of the 6 modules (async, IPC/locks, distributed, SIMD, GPU, WebGPU), write
+**2–3 objectives** as *observable criteria*:
+
+> "I am able to write a program using `asyncio.gather` to parallelize I/O and to explain when
+> it speeds things up (and when it does not)."
+
+Avoid vague wording ("understand asyncio"). An objective must allow a **yes or no** answer:
+"I can do it without help."
+
+### 2. Sequencing
+
+- **Order of the modules** (recommended: async → IPC/locks → distributed → SIMD → GPU →
+  WebGPU) and **justification** of your order if you change it.
+- **Breakdown**: for each module, 2–4 steps with a time estimate.
+
+### 3. Success criteria and evidence
+
+- How will you know the objective is reached? (a successful exercise, a mini-project, an
+  oral or written explanation, a quiz…)
+- **Track A**: a *conversation* with the tutor that shows mastery (e.g. an exercise carried
+  through without the tutor giving away the answer).
+- **Track B**: an *exercise* done alone, ready to be live-coded in front of the instructor.
+
+### 4. Follow-up schedule
+
+Spread the work between the follow-up points (sessions 6, 7, 8) and the autonomous periods.
+Plan for **slack**: the last third of the time stays available for the unexpected and for
+review.
+
+### 5. Contract
+
+A short commitment section: your working arrangements (hours, environment, communication
+channel with the instructor), your "warning signals" (when to ask for help), and any
+personal adaptations.
+
+## Plan template
+
+```markdown
+# Learning plan — [First name]
+
+## Track: A (AI tutor) / B (classic)
+
+## Objectives per module
+### M1 — Asynchronous
+- Objective 1: ...
+- Objective 2: ...
+- Evidence: ...
+### M2 — IPC & locks
+- ...
+
+## Sequencing
+| Module | Steps | Estimated time |
+|---|---|---|
+| M1 | ... | ... |
+
+## Success criteria
+- ...
+
+## Schedule
+| Due | Planned |
+|---|---|
+| Session 6 | ... |
+| Session 7 | ... |
+| Session 8 | ... |
+| 20/10 | Intermediate report |
+
+## Contract
+- Working arrangements: ...
+- Warning signals: ...
+- Adaptations: ...
+```
+
+## Validation flow (session 5)
+
+- Your plan is **reviewed individually** (~15 min with the instructor).
+- **Track A**: the v1 of your system prompt is tested on a simple exercise — the tutor must
+  already "behave" (refuse the solution, guide).
+- The requested adjustments are to be carried over into the plan; it then becomes your
+  reference for block 5.
+
+## Classic mistakes to avoid
+
+- Vague objectives (no observable criterion);
+- Overly ambitious sequencing (underestimating time);
+- Missing evidence ("I will read the docs");
+- A "perfect" plan never revisited after session 5 — the plan is a **living tool**, you
+  update it (and document why) in the logbook.

@@ -1,0 +1,102 @@
+# Designing an AI tutor
+
+> Working page for **block 2** (Track A). Track B students attend the workshop as observers:
+> they observe the design process without having to reproduce it. The ideas on this page are
+> also useful to Track B students to *understand* what the other group does during the
+> reciprocal observation.
+
+## Why configure, and not just use?
+
+A "raw" chatbot is often a poor teacher: it **gives answers directly**, which shortcuts the
+construction of understanding, and it **hallucinates**, meaning it produces false claims with
+confidence.
+
+A good Socratic tutor, by contrast:
+
+- does not give the answer: it **questions** and guides;
+- **supports** (scaffolding): it breaks down, rephrases, gives a hint at the right moment;
+- **preserves your agency**: you do the reasoning, it does not reason in your place;
+- adapts: when you show an error, it adjusts its scaffolding.
+
+To configure this behavior, you must **understand the material as well as the pedagogy**:
+that is the *learning by teaching* principle. If you cannot tell a good explanation from a
+bad one, you will not be able to correct your tutor.
+
+## The anatomy of a *system prompt*
+
+A *system prompt* is the text that sets the chatbot's behavior. It is built from blocks:
+
+1. **Role**: who the tutor is, for what audience. E.g.:
+   > "You are a Socratic Python programming tutor for a master's student in applied computer
+   > science. Your goal is to help them understand asynchronous programming concepts, never
+   > to do the work for them."
+
+2. **Method**: how it teaches. E.g.:
+   > "You progress with short questions. You never give a solution directly: you guide the
+   > student step by step. When they make a mistake, you do not give the correction: you
+   > ask a question that makes them reflect on their error."
+
+3. **Anti-cheating rules**: what is forbidden. E.g.:
+   > "You never provide the complete code of an exercise. You can give a skeleton, a hint,
+   > or point to the documentation. You politely refuse if the student insists."
+
+4. **Handling hallucinations**: how it manages uncertainty. E.g.:
+   > "If you are not sure of an answer, say so explicitly and offer to check the
+   > documentation. Clearly flag the points of the documentation that you are inventing."
+
+5. **Tone and format**: how it expresses itself. E.g.:
+   > "You answer in French, concisely and encouragingly. You check understanding before
+   > moving on."
+
+6. **Context (optional)**: the material to teach. You can provide an excerpt from the
+   course material, a chapter outline, or precise learning objectives.
+
+## The iteration process
+
+A system prompt is never "finished". Work loop:
+
+1. **Write** a v1 (blocks above).
+2. **Test** on typical module exercises: does the tutor give the right amount of help? Does
+   it resist the request for a solution? Does it spot an error?
+3. **Observe** the conversations: where is the tutor too directive? too vague? What did it
+   invent?
+4. **Iterate**: rephrase, constrain, add an example dialogue *to imitate* or *to avoid* in
+   the prompt.
+5. **Record**: keep track of the prompt versions and the reason for each change. This is
+   valuable material for your reflective report.
+
+> Logically, the prompt can even start with "do not open the topic with…". In practice, the
+> iterations are won in the details: one counter-example dialogue is often worth more than
+> ten abstract rules.
+
+## Detecting a false (or harmful) answer
+
+- **Cross-check sources**: compare the tutor's answer with the official documentation (e.g.,
+  `docs.python.org`), other resources, or a small execution test.
+- **Test the code**: never copy code without understanding it or running it.
+- **Ask for reasons**: a good tutor must be able to justify itself; if it contradicts itself
+  or digs its heels in, you have likely detected the error.
+- **Document**: every false answer detected and corrected goes into your logbook. That is
+  one of the goals of the module.
+
+## Typical exercise (block 2)
+
+1. Choose a simple concept from the module (e.g., the difference between `thread` and
+   `process`, or what a `coroutine` is).
+2. Write a v1 of the system prompt in 5 blocks (role, method, anti-cheating, hallucinations,
+   tone).
+3. Test it on 3 questions: *"give me the answer"* (the tutor must refuse), *"correct my
+   code"* (it must make you think), *"explain this concept"* (it must support without giving
+   everything).
+4. Note 2 observed flaws and propose 2 concrete changes to the prompt.
+5. Keep the v1 of the prompt: it will be attached to your learning plan and discussed at the
+   validation (session 5).
+
+## Self-assessment grid for a prompt
+
+- [ ] Does the tutor refuse direct requests for the solution?
+- [ ] Does it ask questions that move you forward, rather than closed dead-end questions?
+- [ ] Does it adapt its help if you are lost?
+- [ ] Does it flag its uncertainty instead of making things up?
+- [ ] Does it check understanding before moving to the next point?
+- [ ] Is the tone supportive and the format readable?

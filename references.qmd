@@ -1,68 +1,66 @@
 ---
-title: "Références"
-subtitle: "Lectures pour comprendre le cadre pédagogique et la technique"
+title: "References"
+subtitle: "Readings to understand the pedagogical framework and the technique"
 ---
 
-## Pourquoi ce dispositif — cadre théorique
+## Why this design — theoretical framework
 
-Les références ci-dessous fondent le dispositif pédagogique du module (voir
-[dispositif.qmd](dispositif.qmd) et [tuteur-ia.qmd](tuteur-ia.qmd)). Elles sont données pour
-vous aider à situer le cours ; aucune n'est à lire intégralement pour réussir, mais chacune
-peut éclairer une partie de votre rapport réflexif.
+The references below ground the module's pedagogical design (see
+[teaching-design.qmd](teaching-design.qmd) and [ai-tutor.qmd](ai-tutor.qmd)). They are given
+to help you situate the course; none needs to be read fully to succeed, but each can inform
+a part of your reflexive report.
 
-- **Apprentissage co-construit** : le savoir se construit dans l'interaction
-  [@vygotsky1978mind], et les étudiants participent à la conception de leur parcours
-  [@bovill2011co_creators; @cook_sather2014partners; @aldinhe2023co_constructing], dans la
-  tradition de la pédagogie critique [@freire1970pedagogy].
-- **Contrats d'apprentissage** : comment rédiger objectifs, séquençage et critères de
-  réussite — fiche du Centre for Teaching Excellence de Waterloo
+- **Co-constructed learning**: knowledge is built in interaction
+  [@vygotsky1978mind], and students take part in designing their own track
+  [@bovill2011co_creators; @cook_sather2014partners; @aldinhe2023co_constructing], in the
+  tradition of critical pedagogy [@freire1970pedagogy].
+- **Learning contracts**: how to write objectives, sequencing and success criteria — the
+  Waterloo Centre for Teaching Excellence factsheet
   [@waterloo2023learning_contracts].
-- **Learning by teaching avec IA** : enseigner à un agent structure l'apprentissage
-  [@schmucker2024ruffle] ; les bonnes pratiques du tutorat conversationnel préservent
-  l'agence de l'étudiant et intègrent le knowledge tracing [@arxiv2026path_conversational] ;
-  un essai randomisé (N=194) suggère que le tutorat IA bien conçu peut surpasser
-  l'apprentissage actif en classe [@nature2025ai_tutoring_rct] — résultat à confirmer.
-- **Dialogue et réflexivité** : pédagogie dialogique appliquée aux LLM [@beale2025dialogic].
+- **Learning by teaching with AI**: teaching an agent structures learning
+  [@schmucker2024ruffle]; conversational tutoring best practices preserve the student's
+  agency and integrate knowledge tracing [@arxiv2026path_conversational]; a randomized
+  trial (N=194) suggests that well-designed AI tutoring can outperform active learning in
+  class [@nature2025ai_tutoring_rct] — a result to be confirmed.
+- **Dialogue and reflexivity**: dialogic pedagogy applied to LLMs [@beale2025dialogic].
 
-## Limites documentées de l'IA en éducation
+## Documented limits of AI in education
 
-Le module traite ces limites comme des objets de travail, pas comme des tabous :
+The module treats these limits as objects of work, not taboos:
 
-- Hallucinations et renforcement d'idées fausses [@mdpi2025chatbots_challenges].
-- Sur-dépendance et risque de perte de compétences de base [@kasneci2023chatgpt] ;
-  délestage cognitif et « dette cognitive » [@risko2016cognitive_offloading;
-  @kosmyna2025brain_chatgpt] ; confiance instrumentale dans un assistant [@cao2022reliance].
-- Usages souvent superficiels des étudiants [@stohr2024chatbots_beliefs] et adoption
-  conditionnée par la confiance et la politique de l'établissement
-  [@taylor2024chatgpt_adoption; @springer2025reimagining_he].
-- Résistance, inégalités d'accès et postures face à la technologie [@selwyn2019robots;
-  @frontiers2025mitigating_resistance] ; points de vue des étudiants
-  [@arxiv2025student_perspectives] ; état de l'art des agents pédagogiques
+- Hallucinations and reinforcement of misconceptions [@mdpi2025chatbots_challenges].
+- Over-reliance and risk of losing basic skills [@kasneci2023chatgpt]; cognitive
+  offloading and "cognitive debt" [@risko2016cognitive_offloading;
+  @kosmyna2025brain_chatgpt]; instrumental trust in an assistant [@cao2022reliance].
+- Often superficial student uses [@stohr2024chatbots_beliefs] and adoption conditioned by
+  trust and institutional policy [@taylor2024chatgpt_adoption; @springer2025reimagining_he].
+- Resistance, access inequalities and postures toward technology [@selwyn2019robots;
+  @frontiers2025mitigating_resistance]; student viewpoints
+  [@arxiv2025student_perspectives]; state of the art of pedagogical agents
   [@springer2025pedagogical_agents].
-- Pour qui s'intéresse à la technique comme *individuation* et non simple outil :
+- For those interested in technique as *individuation* and not merely a tool:
   [@simondon1964individuation].
 
-## Ressources techniques officielles
+## Official technical resources
 
-La référence première pour la technique reste la documentation officielle — votre tuteur
-(parcours A) et votre recherche personnelle (parcours B) doivent toujours pouvoir être
-validés contre elle.
+The primary reference for the technique remains the official documentation — your tutor
+(Track A) and your own research (Track B) must always be checkable against it.
 
-- Python asynchrone : [`asyncio`](https://docs.python.org/3/library/asyncio.html)
+- Asynchronous Python: [`asyncio`](https://docs.python.org/3/library/asyncio.html)
   [@python_asyncio].
-- Multiprocess et IPC : [`multiprocessing`](https://docs.python.org/3/library/multiprocessing.html)
+- Multiprocess and IPC: [`multiprocessing`](https://docs.python.org/3/library/multiprocessing.html)
   [@python_multiprocessing].
-- Calcul distribué : [Dask delayed](https://docs.dask.org/en/stable/delayed.html)
-  [@dask_docs] et [Ray](https://docs.ray.io/en/latest/) [@ray_docs].
-- Vectorisation : [numpy ufunc](https://numpy.org/doc/stable/reference/ufuncs.html)
-  [@numpy_ufunc] et [numba](https://numba.readthedocs.io/) [@numba_docs].
-- GPU : [CuPy](https://docs.cupy.dev/) [@cupy_docs] et [numba CUDA](https://numba.readthedocs.io/en/stable/cuda/index.html)
-  [@numba_docs].
-- WebGPU : [specification WebGPU](https://gpuweb.github.io/gpuweb/) [@webgpu_spec] et
-  [langage WGSL](https://www.w3.org/TR/WGSL/) [@wgsl_spec].
+- Distributed computing: [Dask delayed](https://docs.dask.org/en/stable/delayed.html)
+  [@dask_docs] and [Ray](https://docs.ray.io/en/latest/) [@ray_docs].
+- Vectorization: [numpy ufunc](https://numpy.org/doc/stable/reference/ufuncs.html)
+  [@numpy_ufunc] and [numba](https://numba.readthedocs.io/) [@numba_docs].
+- GPU: [CuPy](https://docs.cupy.dev/) [@cupy_docs] and
+  [numba CUDA](https://numba.readthedocs.io/en/stable/cuda/index.html) [@numba_docs].
+- WebGPU: [WebGPU specification](https://gpuweb.github.io/gpuweb/) [@webgpu_spec] and the
+  [WGSL language](https://www.w3.org/TR/WGSL/) [@wgsl_spec].
 
-## Références complémentaires
+## Further references
 
-Le cours de l'année précédente (disponible séparément) constitue une ressource de premier
-niveau : chaque module du support y renvoie explicitement. Les fichiers cités dans les pages
-« Ressources » des modules sont saisis dans le plan de l'enseignant.
+The previous year's course (available separately) is a first-rate resource: every module of
+this support refers to it explicitly. The files cited in the "Resources" pages of the
+modules are recorded in the instructor's plan.

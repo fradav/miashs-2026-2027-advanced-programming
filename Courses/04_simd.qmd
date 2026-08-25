@@ -1,53 +1,54 @@
 ---
-title: "Module 4 — SIMD et vectorisation"
-subtitle: "une instruction, plusieurs données (SSE/AVX, numpy, numba)"
+title: "Module 4 — SIMD and Vectorization"
+subtitle: "one instruction, multiple data (SSE/AVX, numpy, numba)"
 ---
 
-Objectifs (critères observables) :
+Objectives (observable criteria):
 
-- Expliquer ce qu'est **SIMD** (Single Instruction, Multiple Data) et pourquoi elle accélère.
-- Utiliser la vectorisation **numpy** (ufuncs, opérations sur tableaux) et mesurer le gain
-  par rapport à une boucle Python.
-- Compiler des boucles avec **numba** (`@njit`, `parallel=True`, `fastmath`) et comprendre
-  quand la vectorisation n'aide pas.
-- Décrire la notion d'**intrinsics** et de longeur de vecteur (SSE 128 bits, AVX 256 bits).
+- Explain what **SIMD** (Single Instruction, Multiple Data) is and why it speeds things up.
+- Use **numpy** vectorization (ufuncs, array operations) and measure the gain over a
+  Python loop.
+- Compile loops with **numba** (`@njit`, `parallel=True`, `fastmath`) and understand when
+  vectorization does not help.
+- Describe the notion of **intrinsics** and of vector length (SSE 128 bits, AVX 256 bits).
 
-Ressources : chapitre `08_SIMD.qmd` du cours précédent ; documentation
-[`numba`](https://numba.readthedocs.io/) et
+Resources: chapter `08_SIMD.qmd` from last year's course; documentation
+[`numba`](https://numba.readthedocs.io/) and
 [`numpy`](https://numpy.org/doc/stable/reference/ufuncs.html).
 
-## Points clés
+## Key points
 
-- **Pourquoi la vectorisation ?** une seule instruction décodée et exécutée pour *plusieurs
-  données* → moins de décodage, moins de boucles, meilleur débit. C'est une forme de
-  parallélisme *au niveau instruction*, invisible au niveau thread.
-- **Registres SIMD** : SSE (128 bits ≈ 4 flottants 32 bits), AVX (256 bits ≈ 8 flottants),
-  AVX-512 ; longueur qui a crû avec le temps. Compatible avec la **taxonomie de Flynn**
-  (module d'intro) : c'est du *data parallelism*.
-- **numpy vectorise** : les *ufuncs* (`+`, `*`, `np.sqrt`, `np.sum`…) opèrent sur le tableau
-  d'un bloc ; les données doivent être **contiguës** (`C-contiguous`) pour être efficaces.
-- **numba** : `@njit` compile la fonction en code machine au premier appel (compilation
-  *just-in-time*) ; `parallel=True` + `prange` distribue les itérations ; `fastmath=True`
-  relâche l'arithmétique IEEE (toujours vérifier l'impact sur la précision).
-- **Quand ce n'est pas efficace** : petites données (le surcoût d'appel domine), accès non
-  contigus, branches divergentes, calculs où le goulot est la *mémoire* et non le calcul.
-- **Intrinsics** (C/C++) : fonctions correspondant aux instructions SIMD (`_mm_add_ps`,
-  `_mm256_fma_ps`…) — à connaître pour comprendre, pas nécessaire à utiliser en Python.
+- **Why vectorize?** one instruction decoded and executed for *multiple data* → less
+  decoding, fewer loop iterations, better throughput. A form of *instruction-level*
+  parallelism, invisible at the thread level.
+- **SIMD registers**: SSE (128 bits ≈ 4 32-bit floats), AVX (256 bits ≈ 8 floats),
+  AVX-512; lengths that have grown over time. Consistent with the **Flynn taxonomy**
+  (intro module): this is *data parallelism*.
+- **numpy vectorizes**: *ufuncs* (`+`, `*`, `np.sqrt`, `np.sum`…) operate on the array
+  in one block; data must be **contiguous** (`C-contiguous`) to be efficient.
+- **numba**: `@njit` compiles the function to machine code on the first call
+  (*just-in-time* compilation); `parallel=True` + `prange` distributes the iterations;
+  `fastmath=True` relaxes IEEE arithmetic (always check the impact on precision).
+- **When it is not efficient**: small data (call overhead dominates), non-contiguous
+  access, divergent branches, computations where the bottleneck is *memory* rather than
+  computation.
+- **Intrinsics** (C/C++): functions mapping to SIMD instructions (`_mm_add_ps`,
+  `_mm256_fma_ps`…) — useful to know in order to understand, not needed in Python.
 
-## Exercices
+## Exercises
 
-1. **Boucle vs numpy** : calculez $y = 3x^2 + 2$ pour $n = 10^5, 10^6, 10^7, 10^8$ en boucle
-   Python pure puis avec une expression numpy. Tracez le rapport des temps. Pourquoi le gain
-   dépend-il de $n$ ?
-2. **numba** : réécrivez la boucle de l'exercice 1 avec `@njit`, puis `@njit(parallel=True)`
-   et `prange`. Comparez avec numpy et avec la boucle pure. Que se passe-t-il au *premier*
-   appel (compilation) ?
-3. **ufunc et contiguïté** : chronométrez une opération sur un tableau contigu vs un tableau
-   *non contigu* (par exemple une vue `a[::2]`). Interprétez avec la notion de cache.
-4. **Cas non vectorisable** : écrivez une fonction avec une branche (type *collatz* ou
-   *fonction par morceaux*) et comparez les approches. La vectorisation aide-t-elle autant ?
-   Pourquoi ?
-5. (Parcours A) Demandez à votre tuteur « pourquoi numpy est-il plus rapide qu'une boucle
-   Python ? » puis « qu'est-ce que fastmath et quels risques ? ». Validez sur la doc officielle
-   et documentez toute approximation. (Parcours B) Préparez un live-coding comparatif
-   boucle/numpy/numba et expliquez le graphe de résultats.
+1. **Loop vs numpy**: compute $y = 3x^2 + 2$ for $n = 10^5, 10^6, 10^7, 10^8$ in pure
+   Python loop, then with a numpy expression. Plot the time ratio. Why does the gain
+   depend on $n$?
+2. **numba**: rewrite the loop from exercise 1 with `@njit`, then `@njit(parallel=True)`
+   and `prange`. Compare with numpy and with the pure loop. What happens at the *first*
+   call (compilation)?
+3. **ufunc and contiguity**: time an operation on a contiguous array vs a *non-contiguous*
+   one (e.g. a view `a[::2]`). Interpret with the notion of cache.
+4. **Non-vectorizable case**: write a function with a branch (like *collatz* or a
+   *piecewise* function) and compare the approaches. Does vectorization help as much?
+   Why?
+5. (Track A) Ask your tutor "why is numpy faster than a Python loop?" then "what is
+   fastmath and what are the risks?". Validate against the official docs and document any
+   approximation. (Track B) Prepare a comparative loop/numpy/numba live-coding and explain
+   the result graph.

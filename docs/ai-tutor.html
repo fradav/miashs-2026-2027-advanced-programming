@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.10.18">
@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9&nbsp; Module 3 — Calcul distribué – Programmation avancée et calcul parallèle</title>
+<title>4&nbsp; Designing an AI tutor – Advanced Programming and Parallel Computing</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -29,27 +29,27 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../Courses/04_simd.html" rel="next">
-<link href="../Courses/02_ipc-verrous.html" rel="prev">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-af28502ac8d036ed35c2b305f0f54fbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-3bbd6a9bbbe52288d7dadd4871a2e2aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./learning-plan.html" rel="next">
+<link href="./teaching-design.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-af28502ac8d036ed35c2b305f0f54fbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-3bbd6a9bbbe52288d7dadd4871a2e2aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -64,17 +64,17 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Pas de résultats",
-    "search-matching-documents-text": "documents trouvés",
-    "search-copy-link-title": "Copier le lien vers la recherche",
-    "search-hide-matches-text": "Cacher les correspondances additionnelles",
-    "search-more-match-text": "correspondance de plus dans ce document",
-    "search-more-matches-text": "correspondances de plus dans ce document",
-    "search-clear-button-title": "Effacer",
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Annuler",
-    "search-submit-button-title": "Envoyer",
-    "search-label": "Recherche"
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -256,13 +256,13 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Courses/03_distribue.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 3 — Calcul distribué</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ai-tutor.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Designing an AI tutor</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Recherche" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -274,107 +274,107 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Programmation avancée et calcul parallèle</a> 
+      <a href="./">Advanced Programming and Parallel Computing</a> 
         <div class="sidebar-tools-main">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Basculer le mode sombre"><i class="bi"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Recherche"></div>
+        <div id="quarto-search" class="" title="Search"></div>
         </div>
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Préface</span></span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Prérequis</span></span></a>
+  <a href="./prerequisites.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Prerequisites</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dispositif.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Le dispositif pédagogique</span></span></a>
+  <a href="./teaching-design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The pedagogical design</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tuteur-ia.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Concevoir un tuteur IA</span></span></a>
+  <a href="./ai-tutor.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Designing an AI tutor</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../plan-apprentissage.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Planifier son apprentissage</span></span></a>
+  <a href="./learning-plan.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Planning your learning</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/00_intro-parallele.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction au parallélisme</span></span></a>
+  <a href="./Courses/00_intro-parallelism.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction to Parallelism</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/01_asynchrone.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 1 — Asynchrone et concurrence</span></span></a>
+  <a href="./Courses/01_asynchronous.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 1 — Asynchronous and Concurrency</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/02_ipc-verrous.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 2 — IPC &amp; verrous</span></span></a>
+  <a href="./Courses/02_ipc-locks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 2 — IPC &amp; Locks</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/03_distribue.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 3 — Calcul distribué</span></span></a>
+  <a href="./Courses/03_distributed.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 3 — Distributed Computing</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/04_simd.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 4 — SIMD et vectorisation</span></span></a>
+  <a href="./Courses/04_simd.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 4 — SIMD and Vectorization</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/05_gpu.html" class="sidebar-item-text sidebar-link">
+  <a href="./Courses/05_gpu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Module 5 — GPU</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/06_webgpu.html" class="sidebar-item-text sidebar-link">
+  <a href="./Courses/06_webgpu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Module 6 — WebGPU</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../projets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Projet final</span></span></a>
+  <a href="./projects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Final project</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Synthèse du module</span></span></a>
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Module summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Références</span></span></a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">References</span></span></a>
   </div>
 </li>
     </ul>
@@ -384,11 +384,15 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table des matières</h2>
+    <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#points-clés" id="toc-points-clés" class="nav-link active" data-scroll-target="#points-clés"><span class="header-section-number">9.1</span> Points clés</a></li>
-  <li><a href="#exercices" id="toc-exercices" class="nav-link" data-scroll-target="#exercices"><span class="header-section-number">9.2</span> Exercices</a></li>
+  <li><a href="#why-configure-and-not-just-use" id="toc-why-configure-and-not-just-use" class="nav-link active" data-scroll-target="#why-configure-and-not-just-use"><span class="header-section-number">4.1</span> Why configure, and not just use?</a></li>
+  <li><a href="#the-anatomy-of-a-system-prompt" id="toc-the-anatomy-of-a-system-prompt" class="nav-link" data-scroll-target="#the-anatomy-of-a-system-prompt"><span class="header-section-number">4.2</span> The anatomy of a <em>system prompt</em></a></li>
+  <li><a href="#the-iteration-process" id="toc-the-iteration-process" class="nav-link" data-scroll-target="#the-iteration-process"><span class="header-section-number">4.3</span> The iteration process</a></li>
+  <li><a href="#detecting-a-false-or-harmful-answer" id="toc-detecting-a-false-or-harmful-answer" class="nav-link" data-scroll-target="#detecting-a-false-or-harmful-answer"><span class="header-section-number">4.4</span> Detecting a false (or harmful) answer</a></li>
+  <li><a href="#typical-exercise-block-2" id="toc-typical-exercise-block-2" class="nav-link" data-scroll-target="#typical-exercise-block-2"><span class="header-section-number">4.5</span> Typical exercise (block 2)</a></li>
+  <li><a href="#self-assessment-grid-for-a-prompt" id="toc-self-assessment-grid-for-a-prompt" class="nav-link" data-scroll-target="#self-assessment-grid-for-a-prompt"><span class="header-section-number">4.6</span> Self-assessment grid for a prompt</a></li>
   </ul>
 </nav>
     </div>
@@ -398,8 +402,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 3 — Calcul distribué</span></h1>
-<p class="subtitle lead">Dask, Ray, delayed, schedulers</p>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Designing an AI tutor</span></h1>
 </div>
 
 
@@ -416,34 +419,76 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Objectifs (critères observables) :</p>
+<blockquote class="blockquote">
+<p>Working page for <strong>block 2</strong> (Track A). Track B students attend the workshop as observers: they observe the design process without having to reproduce it. The ideas on this page are also useful to Track B students to <em>understand</em> what the other group does during the reciprocal observation.</p>
+</blockquote>
+<section id="why-configure-and-not-just-use" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="why-configure-and-not-just-use"><span class="header-section-number">4.1</span> Why configure, and not just use?</h2>
+<p>A “raw” chatbot is often a poor teacher: it <strong>gives answers directly</strong>, which shortcuts the construction of understanding, and it <strong>hallucinates</strong>, meaning it produces false claims with confidence.</p>
+<p>A good Socratic tutor, by contrast:</p>
 <ul>
-<li>Construire un pipeline de calcul <strong>paresseux</strong> avec <code>dask.delayed</code> et le déclencher avec <code>.compute()</code>.</li>
-<li>Expliquer la différence entre calcul <em>graph-based</em> (Dask) et <em>actor-based</em> (Ray), et choisir l’outil adapté.</li>
-<li>Décrire le motif <strong>MapReduce / Split-Apply-Combine</strong> et le reconnaître dans un problème.</li>
-<li>Citer et appliquer les bonnes pratiques de <code>dask.delayed</code> (pas de mutation, pas d’état global, pas d’effets de bord).</li>
+<li>does not give the answer: it <strong>questions</strong> and guides;</li>
+<li><strong>supports</strong> (scaffolding): it breaks down, rephrases, gives a hint at the right moment;</li>
+<li><strong>preserves your agency</strong>: you do the reasoning, it does not reason in your place;</li>
+<li>adapts: when you show an error, it adjusts its scaffolding.</li>
 </ul>
-<p>Ressources : chapitres <code>05_Distributed.qmd</code>, <code>06_Dask-Ray.qmd</code> et <code>07_Dask-delayed.qmd</code> du cours précédent ; documentation officielle <a href="https://docs.dask.org/en/stable/delayed.html"><code>dask</code></a> et <a href="https://docs.ray.io/en/latest/">Ray</a>.</p>
-<section id="points-clés" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="points-clés"><span class="header-section-number">9.1</span> Points clés</h2>
+<p>To configure this behavior, you must <strong>understand the material as well as the pedagogy</strong>: that is the <em>learning by teaching</em> principle. If you cannot tell a good explanation from a bad one, you will not be able to correct your tutor.</p>
+</section>
+<section id="the-anatomy-of-a-system-prompt" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="the-anatomy-of-a-system-prompt"><span class="header-section-number">4.2</span> The anatomy of a <em>system prompt</em></h2>
+<p>A <em>system prompt</em> is the text that sets the chatbot’s behavior. It is built from blocks:</p>
+<ol type="1">
+<li><p><strong>Role</strong>: who the tutor is, for what audience. E.g.: &gt; “You are a Socratic Python programming tutor for a master’s student in applied computer &gt; science. Your goal is to help them understand asynchronous programming concepts, never &gt; to do the work for them.”</p></li>
+<li><p><strong>Method</strong>: how it teaches. E.g.: &gt; “You progress with short questions. You never give a solution directly: you guide the &gt; student step by step. When they make a mistake, you do not give the correction: you &gt; ask a question that makes them reflect on their error.”</p></li>
+<li><p><strong>Anti-cheating rules</strong>: what is forbidden. E.g.: &gt; “You never provide the complete code of an exercise. You can give a skeleton, a hint, &gt; or point to the documentation. You politely refuse if the student insists.”</p></li>
+<li><p><strong>Handling hallucinations</strong>: how it manages uncertainty. E.g.: &gt; “If you are not sure of an answer, say so explicitly and offer to check the &gt; documentation. Clearly flag the points of the documentation that you are inventing.”</p></li>
+<li><p><strong>Tone and format</strong>: how it expresses itself. E.g.: &gt; “You answer in French, concisely and encouragingly. You check understanding before &gt; moving on.”</p></li>
+<li><p><strong>Context (optional)</strong>: the material to teach. You can provide an excerpt from the course material, a chapter outline, or precise learning objectives.</p></li>
+</ol>
+</section>
+<section id="the-iteration-process" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="the-iteration-process"><span class="header-section-number">4.3</span> The iteration process</h2>
+<p>A system prompt is never “finished”. Work loop:</p>
+<ol type="1">
+<li><strong>Write</strong> a v1 (blocks above).</li>
+<li><strong>Test</strong> on typical module exercises: does the tutor give the right amount of help? Does it resist the request for a solution? Does it spot an error?</li>
+<li><strong>Observe</strong> the conversations: where is the tutor too directive? too vague? What did it invent?</li>
+<li><strong>Iterate</strong>: rephrase, constrain, add an example dialogue <em>to imitate</em> or <em>to avoid</em> in the prompt.</li>
+<li><strong>Record</strong>: keep track of the prompt versions and the reason for each change. This is valuable material for your reflective report.</li>
+</ol>
+<blockquote class="blockquote">
+<p>Logically, the prompt can even start with “do not open the topic with…”. In practice, the iterations are won in the details: one counter-example dialogue is often worth more than ten abstract rules.</p>
+</blockquote>
+</section>
+<section id="detecting-a-false-or-harmful-answer" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="detecting-a-false-or-harmful-answer"><span class="header-section-number">4.4</span> Detecting a false (or harmful) answer</h2>
 <ul>
-<li><strong>MapReduce / Split-Apply-Combine</strong> : décomposer le problème en <em>morceaux</em> (split), traiter chaque morceau indépendamment (map/apply), puis <em>fusionner</em> les résultats partiels (reduce/combine). Application canonique : word count.</li>
-<li><strong>Dask resemble numpy/pandas mais en paresseux</strong> : <code>delayed</code>, <code>bag</code>, <code>dataframe</code>, <code>array</code> construisent un <strong>graphe de tâches</strong> ; rien ne s’exécute avant <code>.compute()</code>. Scheduler (threads, processes, distributed).</li>
-<li><strong><code>dask.delayed</code></strong> : transforme une fonction en <em>tâche</em> évaluée paresseusement ; le graphe s’emboîte et <code>.compute()</code> orchestre les dépendances.</li>
-<li><strong>Ray</strong> : modèle <strong>actor</strong> — état préservé entre appels (<code>@ray.remote</code> sur une classe) et <em>futures</em> ; pensé pour des services avec état et du parallélisme à grande échelle.</li>
-<li><strong>Bonnes pratiques <code>delayed</code></strong> : appeler <code>delayed</code> sur la <em>fonction</em>, pas sur le résultat ; ne pas <strong>muter les inputs</strong> ; éviter l’<strong>état global</strong> et les <strong>effets de bord</strong> ; <strong>découper en petites tâches</strong> mais <strong>pas trop</strong> ; ne pas utiliser <code>delayed</code> à l’intérieur d’une fonction déjà <code>delayed</code> ; ne pas appliquer <code>delayed</code> sur d’autres collections Dask.</li>
-<li><strong>Pièges</strong> : sérialisation des données entre workers (<code>pickle</code>), scheduler qui sature, confusion <em>lazy vs eager</em> (oublier <code>.compute()</code>), trop de tâches minuscules (surcharge d’ordonnancement).</li>
+<li><strong>Cross-check sources</strong>: compare the tutor’s answer with the official documentation (e.g., <code>docs.python.org</code>), other resources, or a small execution test.</li>
+<li><strong>Test the code</strong>: never copy code without understanding it or running it.</li>
+<li><strong>Ask for reasons</strong>: a good tutor must be able to justify itself; if it contradicts itself or digs its heels in, you have likely detected the error.</li>
+<li><strong>Document</strong>: every false answer detected and corrected goes into your logbook. That is one of the goals of the module.</li>
 </ul>
 </section>
-<section id="exercices" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="exercices"><span class="header-section-number">9.2</span> Exercices</h2>
+<section id="typical-exercise-block-2" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="typical-exercise-block-2"><span class="header-section-number">4.5</span> Typical exercise (block 2)</h2>
 <ol type="1">
-<li><strong>Word count distribué</strong> : comptez les mots d’un ensemble de fichiers texte avec <code>dask.bag</code> (<code>map</code> + <code>foldby</code>, ou l’équivalent), puis avec une liste de fichiers et <code>delayed</code>. Comparez les temps sur un seul fichier puis plusieurs.</li>
-<li><strong>Pipeline paresseux</strong> : écrivez 3–4 fonctions (lecture → nettoyage → calcul → agrégation), enchaînez-les avec <code>delayed</code>, vérifiez qu’aucun calcul n’a lieu avant <code>.compute()</code> (comment le constater ?), puis déclenchez.</li>
-<li><strong>Dask vs Ray</strong> : même calcul (somme de nombres, ou incrément d’un compteur) écrit avec Dask puis avec Ray (<code>@ray.remote</code> + acteur). Comparez les paradigmes : graphe vs état.</li>
-<li><strong>Bonnes pratiques</strong> : partez d’une fonction <code>delayed</code> qui mute une liste globale ou un tableau partagé, montrez le bug (résultat qui dépend de l’ordre), puis corrigez en <em>retournant</em> les valeurs. Justifiez la correction.</li>
-<li>(Parcours A) Faites expliquer à votre tuteur « pourquoi ne faut-il pas appeler <code>delayed</code> sur d’autres collections Dask ? » et « quelle est la différence entre threads et processes pour le scheduler ? ». Vérifiez chaque réponse sur la documentation officielle. (Parcours B) Préparez un mini live-coding : transformez une boucle séquentielle en graphe Dask, montrez le gain, et le cas où Dask n’apporte rien.</li>
+<li>Choose a simple concept from the module (e.g., the difference between <code>thread</code> and <code>process</code>, or what a <code>coroutine</code> is).</li>
+<li>Write a v1 of the system prompt in 5 blocks (role, method, anti-cheating, hallucinations, tone).</li>
+<li>Test it on 3 questions: <em>“give me the answer”</em> (the tutor must refuse), <em>“correct my code”</em> (it must make you think), <em>“explain this concept”</em> (it must support without giving everything).</li>
+<li>Note 2 observed flaws and propose 2 concrete changes to the prompt.</li>
+<li>Keep the v1 of the prompt: it will be attached to your learning plan and discussed at the validation (session 5).</li>
 </ol>
+</section>
+<section id="self-assessment-grid-for-a-prompt" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="self-assessment-grid-for-a-prompt"><span class="header-section-number">4.6</span> Self-assessment grid for a prompt</h2>
+<ul class="task-list">
+<li><label><input type="checkbox">Does the tutor refuse direct requests for the solution?</label></li>
+<li><label><input type="checkbox">Does it ask questions that move you forward, rather than closed dead-end questions?</label></li>
+<li><label><input type="checkbox">Does it adapt its help if you are lost?</label></li>
+<li><label><input type="checkbox">Does it flag its uncertainty instead of making things up?</label></li>
+<li><label><input type="checkbox">Does it check understanding before moving to the next point?</label></li>
+<li><label><input type="checkbox">Is the tone supportive and the format readable?</label></li>
+</ul>
 
 
 </section>
@@ -487,12 +532,12 @@ ul.task-list li input[type="checkbox"] {
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copié");
+      button.setAttribute("title", "Copied!");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copié");
+        button.setAttribute("data-bs-title", "Copied!");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
@@ -864,13 +909,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../Courses/02_ipc-verrous.html" class="pagination-link" aria-label="Module 2 — IPC &amp; verrous">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 2 — IPC &amp; verrous</span></span>
+      <a href="./teaching-design.html" class="pagination-link" aria-label="The pedagogical design">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The pedagogical design</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../Courses/04_simd.html" class="pagination-link" aria-label="Module 4 — SIMD et vectorisation">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 4 — SIMD et vectorisation</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./learning-plan.html" class="pagination-link" aria-label="Planning your learning">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Planning your learning</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -878,13 +923,13 @@ ul.task-list li input[type="checkbox"] {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Sous licence <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>
+<p>Licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
     <div class="nav-footer-right">
-<p>Construit avec <a href="https://quarto.org/">Quarto</a>.</p>
+<p>Built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
   </div>
 </footer>

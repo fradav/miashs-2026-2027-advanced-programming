@@ -1,0 +1,110 @@
+---
+title: "Final project"
+subtitle: "Consolidate the module on a real parallel program"
+---
+
+The final project counts for **30%** of the grade, with **the same rubric for both tracks**.
+It assesses the technical mastery of the module's skills on a concrete problem, mixing
+several techniques seen in class (asyncio, multiprocessing, Dask, GPU depending on the
+topic).
+
+## Framework
+
+- **Alone or in a pair** (communication arrangements chosen by the pair).
+- **Duration**: from the launch (end of October) to the **defense on 18/11**; the **report**
+  is handed in before the defense.
+- **Common constraints**: the project must *actually* use parallelism (not disguised
+  sequential code), the gains must be **measured and justified**, and the code must be
+  **reproducible** (readable README, demonstration script).
+
+## Proposed topics
+
+Each topic is an entry point; you can adapt it or propose another one, as long as it covers
+the module's technical objectives.
+
+### 1. Parallel ETL pipeline
+
+Collect (extraction), clean/merge (transformation), then load data to a target format (CSV,
+Parquet, SQLite database).
+
+- **Extraction**: concurrent retrieval of sources (paginated APIs, files) — `asyncio` +
+  `httpx`.
+- **Transformation**: cleaning, aggregations, joins — `multiprocessing`, `dask` or
+  vectorized `numpy` depending on the data shape.
+- **Loading**: writing in Parquet/SQLite; analysis of the impact of parallelism at each
+  step.
+- **Deliverable**: a pipeline replayable with a single command, with sequential vs parallel
+  time.
+
+### 2. OLAP analysis / multidimensional aggregation
+
+Load a dataset (for example ~1 GB of table-typed data, *star schema* or logs) and prepare
+aggregations (roll-up, drill-down, cube) used to answer business questions.
+
+- Implemented with `dask.dataframe` / `dask.delayed`, or `cupy`/GPU if the hardware allows;
+  comparison with pure `pandas`.
+- **Deliverable**: a "questions → queries → timing visualization" notebook and a report on
+  partitioning strategies.
+
+### 3. Document retrieval agent (deep research)
+
+An agent that queries several sources simultaneously (web pages, APIs, databases), extracts
+relevant information, aggregates an argued synthesis and cites its sources.
+
+- **Collection**: concurrent I/O (`asyncio`, `httpx`, queues).
+- **Processing**: splitting into tasks (`dask.delayed`) for cleaning and extraction of
+  relevant snippets; LLM-assisted synthesis (optional, not graded per se).
+- **Deliverable**: the agent answers a given question, with traceability (sources, time per
+  step) and evidence of the concurrency gain of the collection.
+
+### 4. Stream processing
+
+Produce a mini continuous-processing system: a producer generates events (logs, simulated
+sensors), a pipeline aggregates by **sliding windows**, a consumer displays or stores the
+results.
+
+- **Architecture**: `asyncio` (queues, `asyncio.Queue`) for production/consumption, or
+  `multiprocessing` + `Queue`; managing order and *backpressure*.
+- **Deliverable**: a demo showing statistics updating continuously, an architecture diagram
+  and an analysis of the concurrency choices.
+
+## Minimal specification
+
+1. **Clean Git repository**: readable history, no large data in the repository.
+2. **README**: objective, installation (pinned dependencies), launch command, sample output.
+3. **Runnable code**: main script + *minimal* tests (at least one unit test on a key
+   function).
+4. **Measurements**: at least one comparative table (sequential vs parallel, or worker
+   variants) and the interpretation in 3–5 lines.
+5. **Report (4–6 pages)**: objectives, architecture (diagram), technical choices,
+   measurements, limits, what was learned.
+
+## Grading rubric (overall weight: 30%)
+
+| Criterion | Detail | Internal weight |
+|---|---|---|
+| Technical mastery | Parallelism *actually* used and justified; no fake parallelism (GIL, blocked event loop, deadlock); resource management | 30% |
+| Code quality | Readability, structure, error handling, basic tests, reproducible measurements | 25% |
+| Compliance with the target | Answers to the objectives set in the learning plan; respect of the specification | 20% |
+| Communication | Defense (5–8 min + questions), live demo, ability to explain choices and limits | 25% |
+
+The 30% share of the final grade is given by the instructor on this rubric, identically for
+tracks A and B.
+
+## Defense (S11 — 18/11, 13:30–15:30)
+
+- **5–8 minute presentation** + questions: what the project does, how it is parallelized,
+  what gains were measured, what limits remain.
+- The **report** is submitted before the session. Alternative arrangements (individual
+  session, video submission) are planned if needed.
+
+## Frequently asked questions
+
+- **Can I use one more library?** Yes, as long as the module's technical subject (asyncio,
+  IPC, Dask, vectorization, GPU/WebGPU depending on the topic) stays the justified core.
+- **What if my hardware has no GPU?** GPU topics are optional; an asyncio/Dask/numpy
+  vectorization project is more than enough. The kick-off survey is precisely used to
+  calibrate these choices.
+- **Does the pair count?** The level of expectation is adjusted (a more ambitious collective
+  deliverable, or two clearly separated contributions); the roles are spelled out in the
+  report.

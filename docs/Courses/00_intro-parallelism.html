@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.10.18">
@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; Introduction au parallélisme – Programmation avancée et calcul parallèle</title>
+<title>6&nbsp; Introduction to Parallelism – Advanced Programming and Parallel Computing</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -36,8 +36,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../Courses/01_asynchrone.html" rel="next">
-<link href="../plan-apprentissage.html" rel="prev">
+<link href="../Courses/01_asynchronous.html" rel="next">
+<link href="../learning-plan.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -64,17 +64,17 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Pas de résultats",
-    "search-matching-documents-text": "documents trouvés",
-    "search-copy-link-title": "Copier le lien vers la recherche",
-    "search-hide-matches-text": "Cacher les correspondances additionnelles",
-    "search-more-match-text": "correspondance de plus dans ce document",
-    "search-more-matches-text": "correspondances de plus dans ce document",
-    "search-clear-button-title": "Effacer",
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Annuler",
-    "search-submit-button-title": "Envoyer",
-    "search-label": "Recherche"
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -299,13 +299,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Courses/00_intro-parallele.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction au parallélisme</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Courses/00_intro-parallelism.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction to Parallelism</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Recherche" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -317,15 +317,15 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Programmation avancée et calcul parallèle</a> 
+      <a href="../">Advanced Programming and Parallel Computing</a> 
         <div class="sidebar-tools-main">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Basculer le mode sombre"><i class="bi"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Recherche"></div>
+        <div id="quarto-search" class="" title="Search"></div>
         </div>
         </div>
     <div class="sidebar-menu-container"> 
@@ -333,61 +333,61 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Préface</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Prérequis</span></span></a>
+  <a href="../prerequisites.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Prerequisites</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dispositif.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Le dispositif pédagogique</span></span></a>
+  <a href="../teaching-design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The pedagogical design</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tuteur-ia.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Concevoir un tuteur IA</span></span></a>
+  <a href="../ai-tutor.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Designing an AI tutor</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../plan-apprentissage.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Planifier son apprentissage</span></span></a>
+  <a href="../learning-plan.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Planning your learning</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/00_intro-parallele.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction au parallélisme</span></span></a>
+  <a href="../Courses/00_intro-parallelism.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction to Parallelism</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/01_asynchrone.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 1 — Asynchrone et concurrence</span></span></a>
+  <a href="../Courses/01_asynchronous.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 1 — Asynchronous and Concurrency</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/02_ipc-verrous.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 2 — IPC &amp; verrous</span></span></a>
+  <a href="../Courses/02_ipc-locks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 2 — IPC &amp; Locks</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/03_distribue.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 3 — Calcul distribué</span></span></a>
+  <a href="../Courses/03_distributed.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 3 — Distributed Computing</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../Courses/04_simd.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 4 — SIMD et vectorisation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 4 — SIMD and Vectorization</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -404,20 +404,20 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../projets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Projet final</span></span></a>
+  <a href="../projects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Final project</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Synthèse du module</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Module summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Références</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">References</span></span></a>
   </div>
 </li>
     </ul>
@@ -427,13 +427,13 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table des matières</h2>
+    <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#notions-à-maîtriser" id="toc-notions-à-maîtriser" class="nav-link active" data-scroll-target="#notions-à-maîtriser"><span class="header-section-number">6.1</span> Notions à maîtriser</a></li>
-  <li><a href="#questions-structurantes" id="toc-questions-structurantes" class="nav-link" data-scroll-target="#questions-structurantes"><span class="header-section-number">6.2</span> Questions structurantes</a></li>
-  <li><a href="#lois-et-taxonomie" id="toc-lois-et-taxonomie" class="nav-link" data-scroll-target="#lois-et-taxonomie"><span class="header-section-number">6.3</span> Lois et taxonomie</a></li>
-  <li><a href="#exercices" id="toc-exercices" class="nav-link" data-scroll-target="#exercices"><span class="header-section-number">6.4</span> Exercices</a></li>
+  <li><a href="#notions-to-master" id="toc-notions-to-master" class="nav-link active" data-scroll-target="#notions-to-master"><span class="header-section-number">6.1</span> Notions to master</a></li>
+  <li><a href="#structuring-questions" id="toc-structuring-questions" class="nav-link" data-scroll-target="#structuring-questions"><span class="header-section-number">6.2</span> Structuring questions</a></li>
+  <li><a href="#laws-and-taxonomy" id="toc-laws-and-taxonomy" class="nav-link" data-scroll-target="#laws-and-taxonomy"><span class="header-section-number">6.3</span> Laws and taxonomy</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">6.4</span> Exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -443,8 +443,8 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction au parallélisme</span></h1>
-<p class="subtitle lead">Concepts de base, lois et taxonomie</p>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction to Parallelism</span></h1>
+<p class="subtitle lead">Basic concepts, laws, and taxonomy</p>
 </div>
 
 
@@ -461,9 +461,9 @@ window.Quarto = {
 </header>
 
 
-<p><strong>Module d’introduction</strong> — commun aux deux parcours, vu en début de semestre. Il fournit le vocabulaire utilisé partout ailleurs. Ressource complète : chapitre <code>02_Parallel-intro.qmd</code> du cours de l’année précédente — que vous pouvez utiliser tel quel ou faire « enseigner » à votre tuteur IA.</p>
-<section id="notions-à-maîtriser" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="notions-à-maîtriser"><span class="header-section-number">6.1</span> Notions à maîtriser</h2>
+<p><strong>Introductory module</strong> — common to both tracks, covered at the start of the semester. It provides the vocabulary used everywhere else. Full resource: chapter <code>02_Parallel-intro.qmd</code> from last year’s course — use it as-is or have your AI tutor “teach” it to you.</p>
+<section id="notions-to-master" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="notions-to-master"><span class="header-section-number">6.1</span> Notions to master</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -472,66 +472,66 @@ window.Quarto = {
 <thead>
 <tr class="header">
 <th>Notion</th>
-<th>Définition courte</th>
+<th>Short definition</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Tâche</td>
-<td>une commande ou un groupe de commandes à exécuter</td>
+<td>Task</td>
+<td>a command or a group of commands to run</td>
 </tr>
 <tr class="even">
 <td>Worker</td>
-<td>un programme ou sous-programme qui exécute des tâches (thread, processus)</td>
+<td>a program or subprogram that executes tasks (thread, process)</td>
 </tr>
 <tr class="odd">
-<td>Ressource</td>
-<td>unité de calcul (cœur CPU, GPU, machine distante)</td>
+<td>Resource</td>
+<td>unit of computation (CPU core, GPU, remote machine)</td>
 </tr>
 <tr class="even">
-<td>Entrée / sortie (I/O)</td>
-<td>données nécessaires à une tâche / résultats produits</td>
+<td>Input / Output (I/O)</td>
+<td>data needed by a task / results produced</td>
 </tr>
 <tr class="odd">
-<td>Mémoire / stockage</td>
-<td>là où vivent les données</td>
+<td>Memory / storage</td>
+<td>where the data lives</td>
 </tr>
 <tr class="even">
-<td>Synchronisation</td>
-<td>contrainte d’ordre entre tâches (la sortie d’une tâche est l’entrée d’une autre)</td>
+<td>Synchronization</td>
+<td>ordering constraint between tasks (the output of one task is the input of another)</td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="questions-structurantes" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="questions-structurantes"><span class="header-section-number">6.2</span> Questions structurantes</h2>
+<section id="structuring-questions" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="structuring-questions"><span class="header-section-number">6.2</span> Structuring questions</h2>
 <ol type="1">
-<li><strong>Séquentiel vs parallèle</strong> : <span class="math inline">n</span> tâches, <span class="math inline">1</span> worker → temps <span class="math inline">\sim O(n)</span>.</li>
-<li><strong>Parallèle simple</strong> : <span class="math inline">n</span> tâches, <span class="math inline">p \ge n</span> workers → temps <span class="math inline">\sim O(1)</span> (bottleneck : pas assez de workers).</li>
-<li><strong>Ordonnancement</strong> : <span class="math inline">p &lt; n</span> tâches par worker → temps <span class="math inline">\sim O(n/p)</span>.</li>
-<li><strong>Ressources partagées</strong> : plusieurs workers sur une même ressource → attente, risque de saturation (l’organisation de l’accès coûte du temps).</li>
-<li><strong>I/O</strong> : données pas prêtes / résultats pas écrits → les workers attendent ; accès concurrent à la mémoire → goulet d’étranglement.</li>
+<li><strong>Sequential vs parallel</strong>: <span class="math inline">n</span> tasks, <span class="math inline">1</span> worker → time <span class="math inline">\sim O(n)</span>.</li>
+<li><strong>Simple parallel</strong>: <span class="math inline">n</span> tasks, <span class="math inline">p \ge n</span> workers → time <span class="math inline">\sim O(1)</span> (bottleneck: not enough workers).</li>
+<li><strong>Scheduling</strong>: <span class="math inline">p &lt; n</span> tasks per worker → time <span class="math inline">\sim O(n/p)</span>.</li>
+<li><strong>Shared resources</strong>: several workers on the same resource → waiting, risk of saturation (organizing the access costs time).</li>
+<li><strong>I/O</strong>: data not ready / results not written → workers wait; concurrent memory access → bottleneck.</li>
 </ol>
 <blockquote class="blockquote">
-<p><strong>Expérience à refaire</strong> : la courbe de temps en fonction du nombre de workers n’est <em>jamais</em> linéaire. Reprenez les illustrations du cours précédent et interprétez la perte (surcoût d’ordonnancement, I/O, mémoire).</p>
+<p><strong>Experiment to redo</strong>: the time vs number-of-workers curve is <em>never</em> linear. Go back to last year’s illustrations and interpret the loss (scheduling overhead, I/O, memory).</p>
 </blockquote>
 </section>
-<section id="lois-et-taxonomie" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="lois-et-taxonomie"><span class="header-section-number">6.3</span> Lois et taxonomie</h2>
+<section id="laws-and-taxonomy" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="laws-and-taxonomy"><span class="header-section-number">6.3</span> Laws and taxonomy</h2>
 <ul>
-<li><p><strong>Loi d’Amdahl</strong> : accélération bornée par la fraction séquentielle (scaling <em>fort</em>, problème de taille fixe) :</p>
+<li><p><strong>Amdahl’s law</strong>: speedup bounded by the sequential fraction (<em>strong</em> scaling, fixed-size problem):</p>
 <p><span class="math display">S_{up}(N) \le \frac{1}{S + \frac{P}{N}}</span></p></li>
-<li><p><strong>Loi de Gustafson</strong> : quand la taille du problème croît avec le nombre d’unités (scaling <em>faible</em>), l’accélération peut rester quasi linéaire.</p></li>
-<li><p><strong>Taxonomie de Flynn</strong> : SISD, SIMD, MISD, MIMD — relie le niveau de parallélisme (instruction, thread, tâche) au matériel et au logiciel.</p></li>
-<li><p><strong>Multi-processing vs multi-threading</strong> : mémoire exclusive vs partagée, communication inter-processus vs au site appelant, coût de création, niveau de concurrence (OS vs bibliothèque/langage).</p></li>
+<li><p><strong>Gustafson’s law</strong>: when the problem size grows with the number of units (<em>weak</em> scaling), the speedup can stay nearly linear.</p></li>
+<li><p><strong>Flynn’s taxonomy</strong>: SISD, SIMD, MISD, MIMD — relates the level of parallelism (instruction, thread, task) to hardware and software.</p></li>
+<li><p><strong>Multi-processing vs multi-threading</strong>: exclusive vs shared memory, inter-process communication vs in-process calls, creation cost, concurrency level (OS vs library/language).</p></li>
 </ul>
 </section>
-<section id="exercices" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="exercices"><span class="header-section-number">6.4</span> Exercices</h2>
+<section id="exercises" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">6.4</span> Exercises</h2>
 <ol type="1">
-<li>Un programme passe 80 % de son temps dans une partie parallélisable. Calculez l’accélération maximale avec 2, 4, 16 cœurs (loi d’Amdahl). Interprétez.</li>
-<li>Sur votre machine : <code>python</code> fait une somme élément par élément (SISD mentalement), puis <code>numpy</code> vectorise. Chronométrez <span class="math inline">n=10^6, 10^7, 10^8</span>. Commenter le gain et le pourquoi.</li>
-<li>Expliquez en 5 lignes la différence thread/processus à votre tuteur IA (parcours A) ou dans votre journal (parcours B), puis validez par une ressource officielle.</li>
+<li>A program spends 80% of its time in a parallelizable part. Compute the maximum speedup with 2, 4, 16 cores (Amdahl’s law). Interpret.</li>
+<li>On your machine: <code>python</code> computes a sum element by element (mentally SISD), then <code>numpy</code> vectorizes. Time <span class="math inline">n=10^6, 10^7, 10^8</span>. Comment on the gain and why.</li>
+<li>Explain in 5 lines the thread/process difference to your AI tutor (Track A) or in your logbook (Track B), then validate with an official resource.</li>
 </ol>
 
 
@@ -576,12 +576,12 @@ window.Quarto = {
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copié");
+      button.setAttribute("title", "Copied!");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copié");
+        button.setAttribute("data-bs-title", "Copied!");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
@@ -953,13 +953,13 @@ window.Quarto = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../plan-apprentissage.html" class="pagination-link" aria-label="Planifier son apprentissage">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Planifier son apprentissage</span></span>
+      <a href="../learning-plan.html" class="pagination-link" aria-label="Planning your learning">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Planning your learning</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../Courses/01_asynchrone.html" class="pagination-link" aria-label="Module 1 — Asynchrone et concurrence">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 1 — Asynchrone et concurrence</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../Courses/01_asynchronous.html" class="pagination-link" aria-label="Module 1 — Asynchronous and Concurrency">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 1 — Asynchronous and Concurrency</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -967,13 +967,13 @@ window.Quarto = {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Sous licence <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>
+<p>Licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
     <div class="nav-footer-right">
-<p>Construit avec <a href="https://quarto.org/">Quarto</a>.</p>
+<p>Built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
   </div>
 </footer>
