@@ -430,6 +430,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#option-2-mistral-api-free-key" id="toc-option-2-mistral-api-free-key" class="nav-link" data-scroll-target="#option-2-mistral-api-free-key"><span class="header-section-number">2.3.2</span> Option 2 — Mistral API (free key)</a></li>
   <li><a href="#option-3-local-model-if-your-machine-allows-it" id="toc-option-3-local-model-if-your-machine-allows-it" class="nav-link" data-scroll-target="#option-3-local-model-if-your-machine-allows-it"><span class="header-section-number">2.3.3</span> Option 3 — Local model (if your machine allows it)</a></li>
   <li><a href="#option-4-other-free-api-offers" id="toc-option-4-other-free-api-offers" class="nav-link" data-scroll-target="#option-4-other-free-api-offers"><span class="header-section-number">2.3.4</span> Option 4 — Other free API offers</a></li>
+  <li><a href="#option-5-a-web-chatbot-as-is-no-api-key" id="toc-option-5-a-web-chatbot-as-is-no-api-key" class="nav-link" data-scroll-target="#option-5-a-web-chatbot-as-is-no-api-key"><span class="header-section-number">2.3.5</span> Option 5 — A web chatbot, as-is (no API key)</a></li>
   </ul></li>
   <li><a href="#troubleshooting-mistrals-reasoning-thinking-does-not-show" id="toc-troubleshooting-mistrals-reasoning-thinking-does-not-show" class="nav-link" data-scroll-target="#troubleshooting-mistrals-reasoning-thinking-does-not-show"><span class="header-section-number">2.4</span> Troubleshooting: Mistral’s reasoning (“thinking”) does not show</a></li>
   <li><a href="#collaborative-editing" id="toc-collaborative-editing" class="nav-link" data-scroll-target="#collaborative-editing"><span class="header-section-number">2.5</span> Collaborative editing</a></li>
@@ -558,7 +559,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="option-4-other-free-api-offers" class="level3" data-number="2.3.4">
 <h3 data-number="2.3.4" class="anchored" data-anchor-id="option-4-other-free-api-offers"><span class="header-section-number">2.3.4</span> Option 4 — Other free API offers</h3>
-<p>Several other providers give free API access to language models and plug into Zed the same way (an <em>OpenAI-compatible</em> provider with an API key, like Options 1 and 2 above). Their catalogs and quotas change more often than OpenRouter’s; the figures below are rough (25/08/2026), verify the number you need on the official pricing page of the day.</p>
+<p>Three providers give free API access to language models and plug into Zed the same way (an <em>OpenAI-compatible</em> provider with an API key, like Options 1 and 2 above). Their catalogs and quotas change more often than OpenRouter’s; the figures below are rough (25/08/2026), verify the number you need on the official pricing page of the day.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -566,7 +567,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th>Models (selection)</th>
 <th>OpenAI-compatible endpoint</th>
 <th>Training on your prompts</th>
-<th>Approximate free limits</th>
+<th>Free limits (requests / tokens)</th>
 </tr>
 </thead>
 <tbody>
@@ -575,45 +576,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Open-weights: Llama, Qwen, DeepSeek-R1, gpt-oss, GLM</td>
 <td><code>https://api.groq.com/openai/v1</code></td>
 <td><strong>No</strong></td>
-<td>~30 requests/min, ~1,000/day per model</td>
+<td>~30 req/min, ~1,000 req/day; ~6–12K tokens/min, ~100–200K tokens/day (per model)</td>
 </tr>
 <tr class="even">
-<td><a href="https://github.com/marketplace/models">GitHub Models</a></td>
+<td><a href="https://github.com/features/models">GitHub Models</a></td>
 <td>GPT-4.1, o3, o4-mini, Llama, Mistral, DeepSeek, Cohere, Grok</td>
-<td><code>https://models.inference.ai.azure.com</code></td>
+<td><code>https://models.github.ai/inference</code></td>
 <td><strong>No</strong></td>
-<td>~10 requests/min on a free GitHub account</td>
+<td>~10 req/min, ~50–150 req/day; 8,000 in / 4,000 out tokens per exchange</td>
 </tr>
 <tr class="odd">
 <td><a href="https://aistudio.google.com">Google AI Studio</a></td>
 <td>Gemini Flash, Flash-Lite</td>
 <td><code>https://generativelanguage.googleapis.com/v1beta/openai/</code></td>
 <td><strong>Yes, on the free tier</strong></td>
-<td>~1,500 requests/day, 1M tokens/min per project</td>
-</tr>
-<tr class="even">
-<td><a href="https://developers.cloudflare.com/workers-ai/">Cloudflare Workers AI</a></td>
-<td>40+ open models, some multimodal</td>
-<td><code>https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1</code></td>
-<td><strong>No</strong></td>
-<td>10,000 neurons/day, reset daily</td>
-</tr>
-<tr class="odd">
-<td><a href="https://huggingface.co">Hugging Face</a> (serverless)</td>
-<td>Open-weights models, mostly below ~10B on the free tier</td>
-<td><code>https://router.huggingface.co/v1</code></td>
-<td>Depends on the model</td>
-<td>A few hundred requests/hour</td>
+<td>~15 req/min, ~1,500 req/day; 1M tokens/min per project</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li><strong>Data policy is the deciding factor for a tutor.</strong> Prefer endpoints that do <strong>not</strong> train on your prompts: Groq, GitHub Models, Cloudflare. Google AI Studio’s free tier may use your exchanges to improve Google’s models (its paid tier and Vertex AI do not); reserve it for exchanges that hold nothing sensitive.</li>
-<li><strong>Every free offer is rate-limited.</strong> Expect HTTP 429 under load; write your tutor scripts to retry with backoff, or queue exchanges for off-peak hours.</li>
+<li><strong>Data policy is the deciding factor for a tutor.</strong> Prefer endpoints that do <strong>not</strong> train on your prompts: Groq and GitHub Models. Google AI Studio’s free tier may use your exchanges to improve Google’s models (its paid tier and Vertex AI do not); reserve it for exchanges that hold nothing sensitive.</li>
+<li><strong>Every free offer is rate-limited.</strong> Expect HTTP 429 under load; write your tutor scripts to retry with backoff, or queue exchanges for off-peak hours. The token ceilings often bind before the request counters.</li>
 <li><strong>Groq</strong> installs like Option 1 and exposes a wide, fast range of open models.</li>
-<li><strong>GitHub Models</strong> needs only a GitHub account and a Personal Access Token, no billing. The gateway caps each exchange at about 8,000 input / 4,000 output tokens: enough for short Socratic dialogue, too small for long files.</li>
+<li><strong>GitHub Models</strong> needs only a GitHub account and a Personal Access Token, no billing. The 8,000 input / 4,000 output token cap per exchange suits short Socratic dialogue, not long files.</li>
 <li><strong>Google AI Studio</strong> offers the largest free volume (Flash models); multimodal input works there out of the box.</li>
+<li>Other free providers exist (Cloudflare Workers AI, Hugging Face serverless), but their OpenAI-compatible setup in Zed is less direct (account ID in the URL, different auth headers, cold starts), so they are left out here.</li>
 </ul>
+</section>
+<section id="option-5-a-web-chatbot-as-is-no-api-key" class="level3" data-number="2.3.5">
+<h3 data-number="2.3.5" class="anchored" data-anchor-id="option-5-a-web-chatbot-as-is-no-api-key"><span class="header-section-number">2.3.5</span> Option 5 — A web chatbot, as-is (no API key)</h3>
+<p>Instead of wiring an API into Zed, talk to a chatbot directly in a browser. This is the lowest-effort path: no API key and nothing to configure in Zed. The trade-offs: the tutor lives in the browser, and you must copy the exchanges into your logbook yourself (Zed does not see them).</p>
+<p><strong>Recommended: <a href="https://chat.deepseek.com">DeepSeek</a></strong> — free to use, no credit card, and a model that is openly competitive with the best closed ones for reasoning, which suits a Socratic tutor. Start each session by pasting your tutoring system prompt.</p>
+<p>Other free web chatbots:</p>
+<ul>
+<li><a href="https://gemini.google.com">Google Gemini</a> — free access to Gemini models.</li>
+<li><a href="https://chat.mistral.ai">Mistral Le Chat</a> — the same Mistral models as Option 2.</li>
+<li><a href="https://chat.qwen.ai">Qwen Chat</a> — Alibaba’s open-weights model family.</li>
+<li><a href="https://copilot.microsoft.com">Microsoft Copilot</a> — GPT-based assistant.</li>
+<li><a href="https://chatgpt.com">ChatGPT</a> — free tier, quota-limited.</li>
+<li><a href="https://claude.ai">Claude</a> — free tier, quota-limited.</li>
+</ul>
+<p>As with the free APIs, check the data policy before sending anything sensitive: several web chatbots (DeepSeek, Gemini, Copilot) train on your conversations by default.</p>
 </section>
 </section>
 <section id="troubleshooting-mistrals-reasoning-thinking-does-not-show" class="level2" data-number="2.4">
