@@ -75,7 +75,7 @@ Options 1–4 wire a model into Zed's Agent panel through an OpenAI-compatible A
 uses a chatbot in the browser, without Zed.
 
 ```{mermaid}
-flowchart TD
+flowchart LR
     YOU[Your laptop] --> ZED[Zed Agent panel]
     ZED --> O1[Option 1 — OpenRouter<br>one key, dozens of free models]
     ZED --> O2[Option 2 — Mistral<br>free key, all Mistral models]
@@ -152,7 +152,7 @@ Small, Medium, Large, Codestral, Magistral…), no credit card, but a phone veri
 required.
 
 ```{mermaid}
-flowchart LR
+flowchart TD
     Z[Zed<br>OpenAI-compatible provider] --> M[Mistral<br>https://api.mistral.ai/v1]
     M --> S[mistral-small-latest<br>reasoning_effort: high]
     M --> D[mistral-medium-3-5<br>reasoning_effort: high]
