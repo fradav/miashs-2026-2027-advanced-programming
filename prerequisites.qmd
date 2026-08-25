@@ -179,6 +179,9 @@ chatbots (DeepSeek, Gemini, Copilot) train on your conversations by default.
 
 ## Troubleshooting: Mistral's reasoning ("thinking") does not show
 
+<details>
+<summary>Show the causes and the working examples</summary>
+
 Three frequent causes:
 
 1. **You use a model that does not reason, or an outdated name.** Reasoning is now
@@ -244,6 +247,8 @@ could not be forwarded for OpenAI-compatible providers (bug fixed since); update
 thinking does not show. Mistral returns the trace in `message.content` (chunks), not as a
 dedicated field: a tool that expects a plain string may display "nothing". To see the trace
 in all circumstances, use a script (as above) or Mistral Le Chat.
+
+</details>
 
 ## Collaborative editing
 
