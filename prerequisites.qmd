@@ -60,6 +60,9 @@ OpenAI-compatible API.
      disappears, the Free Models page lists the replacement. You can configure several models
      and switch from one to the other in the *Agent* panel.
 
+See this [tutorial in French](https://surfmind.ai/fr/blog/best-free-openrouter-models) on the
+free OpenRouter models and how to exploit the free tier.
+
 **Effective limits (25/08/2026)**. The cap applies to the *number of requests*, not to
 tokens:
 
@@ -101,6 +104,9 @@ verification**.
    - Model: `mistral-small-latest` (reasoning enabled with `reasoning_effort: "high"`, see
      the troubleshooting below) or `mistral-medium-3-5` (more powerful, same mechanism).
 
+See this [tutorial in French](https://www.it-connect.fr/guide-pour-utiliser-api-mistral-ai-en-python/)
+to get the free Experiment key and call the Mistral API from Python.
+
 **Effective limits (Experiment plan)**: approximate and unpublished figures (exact in the
 console, *Limits* section); about 1 billion tokens/month, ~500,000 tokens/min per model and
 ~1 request/s per API key (2 req/min according to some sources). The detailed quotas vary by
@@ -136,6 +142,12 @@ the number you need on the official pricing page of the day.
 | [Groq](https://groq.com) | Open-weights: Llama, Qwen, DeepSeek-R1, gpt-oss, GLM | `https://api.groq.com/openai/v1` | **No** | ~30 req/min, ~1,000 req/day; ~6–12K tokens/min, ~100–200K tokens/day (per model) |
 | [GitHub Models](https://github.com/features/models) | GPT-4.1, o3, o4-mini, Llama, Mistral, DeepSeek, Cohere, Grok | `https://models.github.ai/inference` | **No** | ~10 req/min, ~50–150 req/day; 8,000 in / 4,000 out tokens per exchange |
 | [Google AI Studio](https://aistudio.google.com) | Gemini Flash, Flash-Lite | `https://generativelanguage.googleapis.com/v1beta/openai/` | **Yes, on the free tier** | ~15 req/min, ~1,500 req/day; 1M tokens/min per project |
+
+A tutorial for each free offer:
+
+- [Groq's free tier, without a credit card (in French)](https://www.getaiperks.com/fr/ai/groq-free-tier-2026).
+- [GitHub Models quickstart, official docs (in French)](https://docs.github.com/fr/github-models/quickstart).
+- [Using Google AI Studio for free (in French)](https://apidog.com/fr/blog/how-to-use-google-ai-studio-for-free-3/).
 
 - **Data policy is the deciding factor for a tutor.** Prefer endpoints that do **not** train
   on your prompts: Groq and GitHub Models. Google AI Studio's free tier may use your exchanges

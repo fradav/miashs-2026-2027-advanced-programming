@@ -496,6 +496,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Model: open the <a href="https://openrouter.ai/models?fmt=free"><em>Free Models</em> collection</a> and copy the identifier of a model whose ID ends with <code>:free</code> (as of 25/08/2026: 17 models, e.g.&nbsp;<code>z-ai/glm-5.2:free</code>, <code>cohere/north-mini-code:free</code>, <code>google/gemma-4-31b-it:free</code>, <code>nvidia/nemotron-3-ultra-550b-a55b:free</code>). The catalog <strong>changes often</strong>: if a model disappears, the Free Models page lists the replacement. You can configure several models and switch from one to the other in the <em>Agent</em> panel.</li>
 </ul></li>
 </ol>
+<p>See this <a href="https://surfmind.ai/fr/blog/best-free-openrouter-models">tutorial in French</a> on the free OpenRouter models and how to exploit the free tier.</p>
 <p><strong>Effective limits (25/08/2026)</strong>. The cap applies to the <em>number of requests</em>, not to tokens:</p>
 <table class="caption-top table">
 <thead>
@@ -546,6 +547,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Model: <code>mistral-small-latest</code> (reasoning enabled with <code>reasoning_effort: "high"</code>, see the troubleshooting below) or <code>mistral-medium-3-5</code> (more powerful, same mechanism).</li>
 </ul></li>
 </ol>
+<p>See this <a href="https://www.it-connect.fr/guide-pour-utiliser-api-mistral-ai-en-python/">tutorial in French</a> to get the free Experiment key and call the Mistral API from Python.</p>
 <p><strong>Effective limits (Experiment plan)</strong>: approximate and unpublished figures (exact in the console, <em>Limits</em> section); about 1 billion tokens/month, ~500,000 tokens/min per model and ~1 request/s per API key (2 req/min according to some sources). The detailed quotas vary by model group (e.g.&nbsp;magistral: 20,000 tokens/min, 10 req/min). This plan is meant for experimentation, not production.</p>
 <p><strong>Data</strong>: free-plan requests may be used to train Mistral models (retention ~30 days, cf. their privacy policy); do not send sensitive code or exchanges.</p>
 <p>For reasoning models, see the troubleshooting below.</p>
@@ -594,13 +596,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+<p>A tutorial for each free offer:</p>
 <ul>
-<li><strong>Data policy is the deciding factor for a tutor.</strong> Prefer endpoints that do <strong>not</strong> train on your prompts: Groq and GitHub Models. Google AI Studio’s free tier may use your exchanges to improve Google’s models (its paid tier and Vertex AI do not); reserve it for exchanges that hold nothing sensitive.</li>
-<li><strong>Every free offer is rate-limited.</strong> Expect HTTP 429 under load; write your tutor scripts to retry with backoff, or queue exchanges for off-peak hours. The token ceilings often bind before the request counters.</li>
-<li><strong>Groq</strong> installs like Option 1 and exposes a wide, fast range of open models.</li>
-<li><strong>GitHub Models</strong> needs only a GitHub account and a Personal Access Token, no billing. The 8,000 input / 4,000 output token cap per exchange suits short Socratic dialogue, not long files.</li>
-<li><strong>Google AI Studio</strong> offers the largest free volume (Flash models); multimodal input works there out of the box.</li>
-<li>Other free providers exist (Cloudflare Workers AI, Hugging Face serverless), but their OpenAI-compatible setup in Zed is less direct (account ID in the URL, different auth headers, cold starts), so they are left out here.</li>
+<li><p><a href="https://www.getaiperks.com/fr/ai/groq-free-tier-2026">Groq’s free tier, without a credit card (in French)</a>.</p></li>
+<li><p><a href="https://docs.github.com/fr/github-models/quickstart">GitHub Models quickstart, official docs (in French)</a>.</p></li>
+<li><p><a href="https://apidog.com/fr/blog/how-to-use-google-ai-studio-for-free-3/">Using Google AI Studio for free (in French)</a>.</p></li>
+<li><p><strong>Data policy is the deciding factor for a tutor.</strong> Prefer endpoints that do <strong>not</strong> train on your prompts: Groq and GitHub Models. Google AI Studio’s free tier may use your exchanges to improve Google’s models (its paid tier and Vertex AI do not); reserve it for exchanges that hold nothing sensitive.</p></li>
+<li><p><strong>Every free offer is rate-limited.</strong> Expect HTTP 429 under load; write your tutor scripts to retry with backoff, or queue exchanges for off-peak hours. The token ceilings often bind before the request counters.</p></li>
+<li><p><strong>Groq</strong> installs like Option 1 and exposes a wide, fast range of open models.</p></li>
+<li><p><strong>GitHub Models</strong> needs only a GitHub account and a Personal Access Token, no billing. The 8,000 input / 4,000 output token cap per exchange suits short Socratic dialogue, not long files.</p></li>
+<li><p><strong>Google AI Studio</strong> offers the largest free volume (Flash models); multimodal input works there out of the box.</p></li>
+<li><p>Other free providers exist (Cloudflare Workers AI, Hugging Face serverless), but their OpenAI-compatible setup in Zed is less direct (account ID in the URL, different auth headers, cold starts), so they are left out here.</p></li>
 </ul>
 </section>
 <section id="option-5-a-web-chatbot-as-is-no-api-key" class="level3" data-number="2.3.5">
