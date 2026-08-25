@@ -36,7 +36,7 @@ book:
     - references.qmd
 
 bibliography: references.bib
-csl: ../ieee.csl
+csl: ieee.csl
 
 fig-cap-location: top
 

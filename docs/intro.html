@@ -422,15 +422,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table des matières</h2>
    
   <ul>
-  <li><a href="#logiciels-à-installer" id="toc-logiciels-à-installer" class="nav-link active" data-scroll-target="#logiciels-à-installer"><span class="header-section-number">2.1</span> Logiciels à installer</a></li>
+  <li><a href="#éditeur-zed" id="toc-éditeur-zed" class="nav-link active" data-scroll-target="#éditeur-zed"><span class="header-section-number">2.1</span> Éditeur : Zed</a></li>
   <li><a href="#gestion-des-environnements-python-avec-uv" id="toc-gestion-des-environnements-python-avec-uv" class="nav-link" data-scroll-target="#gestion-des-environnements-python-avec-uv"><span class="header-section-number">2.2</span> Gestion des environnements Python avec <code>uv</code></a></li>
   <li><a href="#loutillage-du-parcours-a-un-tuteur-ia" id="toc-loutillage-du-parcours-a-un-tuteur-ia" class="nav-link" data-scroll-target="#loutillage-du-parcours-a-un-tuteur-ia"><span class="header-section-number">2.3</span> L’outillage du parcours A : un tuteur IA</a>
   <ul>
-  <li><a href="#option-1-api-en-ligne-gratuite-minimum-vital" id="toc-option-1-api-en-ligne-gratuite-minimum-vital" class="nav-link" data-scroll-target="#option-1-api-en-ligne-gratuite-minimum-vital"><span class="header-section-number">2.3.1</span> Option 1 — API en ligne gratuite (minimum vital)</a></li>
-  <li><a href="#option-2-modèle-local-si-votre-machine-le-permet" id="toc-option-2-modèle-local-si-votre-machine-le-permet" class="nav-link" data-scroll-target="#option-2-modèle-local-si-votre-machine-le-permet"><span class="header-section-number">2.3.2</span> Option 2 — Modèle local (si votre machine le permet)</a></li>
+  <li><a href="#option-1-api-openrouter-recommandée" id="toc-option-1-api-openrouter-recommandée" class="nav-link" data-scroll-target="#option-1-api-openrouter-recommandée"><span class="header-section-number">2.3.1</span> Option 1 — API OpenRouter (recommandée)</a></li>
+  <li><a href="#option-2-api-mistral-clé-gratuite" id="toc-option-2-api-mistral-clé-gratuite" class="nav-link" data-scroll-target="#option-2-api-mistral-clé-gratuite"><span class="header-section-number">2.3.2</span> Option 2 — API Mistral (clé gratuite)</a></li>
+  <li><a href="#option-3-modèle-local-si-votre-machine-le-permet" id="toc-option-3-modèle-local-si-votre-machine-le-permet" class="nav-link" data-scroll-target="#option-3-modèle-local-si-votre-machine-le-permet"><span class="header-section-number">2.3.3</span> Option 3 — Modèle local (si votre machine le permet)</a></li>
   </ul></li>
-  <li><a href="#édition-collaborative" id="toc-édition-collaborative" class="nav-link" data-scroll-target="#édition-collaborative"><span class="header-section-number">2.4</span> Édition collaborative</a></li>
-  <li><a href="#faire-tourner-multiprocessingasyncio-en-jupyter" id="toc-faire-tourner-multiprocessingasyncio-en-jupyter" class="nav-link" data-scroll-target="#faire-tourner-multiprocessingasyncio-en-jupyter"><span class="header-section-number">2.5</span> Faire tourner <code>multiprocessing</code>/<code>asyncio</code> en Jupyter</a></li>
+  <li><a href="#dépannage-le-raisonnement-thinking-de-mistral-ne-saffiche-pas" id="toc-dépannage-le-raisonnement-thinking-de-mistral-ne-saffiche-pas" class="nav-link" data-scroll-target="#dépannage-le-raisonnement-thinking-de-mistral-ne-saffiche-pas"><span class="header-section-number">2.4</span> Dépannage : le raisonnement (« thinking ») de Mistral ne s’affiche pas</a></li>
+  <li><a href="#édition-collaborative" id="toc-édition-collaborative" class="nav-link" data-scroll-target="#édition-collaborative"><span class="header-section-number">2.5</span> Édition collaborative</a></li>
+  <li><a href="#faire-tourner-multiprocessingasyncio-en-jupyter" id="toc-faire-tourner-multiprocessingasyncio-en-jupyter" class="nav-link" data-scroll-target="#faire-tourner-multiprocessingasyncio-en-jupyter"><span class="header-section-number">2.6</span> Faire tourner <code>multiprocessing</code>/<code>asyncio</code> en Jupyter</a></li>
   </ul>
 </nav>
     </div>
@@ -457,17 +459,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="logiciels-à-installer" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="logiciels-à-installer"><span class="header-section-number">2.1</span> Logiciels à installer</h2>
-<p>Il vous faut un éditeur de code et un gestionnaire d’environnements Python.</p>
+<p>Pour ce module, il vous faut <strong>deux outils de base</strong> — un éditeur de code et un gestionnaire d’environnements Python — plus, pour le <a href="./dispositif.html">parcours A</a>, l’accès à un modèle de langage. Toutes les options proposées ici sont gratuites ; les limites effectives de chaque offre sont indiquées (vérifiées le 25/08/2026).</p>
+<section id="éditeur-zed" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="éditeur-zed"><span class="header-section-number">2.1</span> Éditeur : Zed</h2>
+<p><strong><a href="https://zed.dev/">Zed</a></strong> est l’éditeur utilisé en TD. Il est gratuit, rapide, et intègre un assistant de code (<em>Agent</em>) qui peut être branché sur n’importe quelle API compatible OpenAI — dont les offres gratuites décrites plus bas.</p>
 <ul>
-<li><strong><a href="https://code.visualstudio.com/">Visual Studio Code</a></strong> — l’éditeur utilisé en TD.</li>
-<li>Extensions recommandées :
-<ul>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">Python</a> ;</li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare">Live Share</a> pour l’édition collaborative (comme l’an dernier) ;</li>
-<li>une extension d’assistant de code (voir ci-dessous).</li>
-</ul></li>
+<li>Installation : <a href="https://zed.dev/" class="uri">https://zed.dev/</a> (macOS, Linux, Windows).</li>
+<li>Aucune configuration nécessaire pour écrire du code ; seul le panneau <em>Agent</em> doit être relié à un modèle (voir <a href="#loutillage-du-parcours-a--un-tuteur-ia">L’outillage du parcours A</a>).</li>
+<li>(Optionnel) un compte Zed gratuit permet l’édition collaborative dans des <em>channels</em> (voir <a href="#edition-collaborative">Édition collaborative</a>).</li>
 </ul>
 </section>
 <section id="gestion-des-environnements-python-avec-uv" class="level2" data-number="2.2">
@@ -481,49 +480,131 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="loutillage-du-parcours-a-un-tuteur-ia" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="loutillage-du-parcours-a-un-tuteur-ia"><span class="header-section-number">2.3</span> L’outillage du parcours A : un tuteur IA</h2>
-<p>Le parcours A nécessite l’accès à un modèle de langage (LLM). Deux options, <strong>toutes deux gratuites</strong>, selon votre matériel — le <a href="../sondage/sondage-limesurvey.qmd">sondage de démarrage</a> nous aidera à calibrer ce choix :</p>
-<section id="option-1-api-en-ligne-gratuite-minimum-vital" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="option-1-api-en-ligne-gratuite-minimum-vital"><span class="header-section-number">2.3.1</span> Option 1 — API en ligne gratuite (minimum vital)</h3>
-<p>Créez un compte sur <a href="https://console.mistral.ai/home">Mistral.ai « La Plateforme »</a> et récupérez une <strong>clé API</strong> (plan gratuit « Experiment »). Un numéro de téléphone valide est nécessaire à l’inscription — prévenez l’enseignant si c’est un problème.</p>
-<p>Une fois la clé obtenue, selon votre outil :</p>
+<p>Le parcours A nécessite l’accès à un modèle de langage (LLM). Trois options, <strong>toutes gratuites</strong>, selon votre matériel et vos goûts — le sondage de démarrage distribué en séance nous aidera à calibrer ce choix :</p>
+<section id="option-1-api-openrouter-recommandée" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="option-1-api-openrouter-recommandée"><span class="header-section-number">2.3.1</span> Option 1 — API OpenRouter (recommandée)</h3>
+<p><a href="https://openrouter.ai/">OpenRouter</a> est un agrégateur : <strong>une clé API donne accès à des dizaines de modèles</strong> (Llama, Qwen, Gemma, DeepSeek, gpt-oss, Nemotron…) via une seule API compatible OpenAI.</p>
+<ol type="1">
+<li>Créez un compte sur <a href="https://openrouter.ai/" class="uri">https://openrouter.ai/</a> (email ou GitHub, aucune carte bancaire).</li>
+<li>Générez une clé API (page <em>Keys</em> de votre compte).</li>
+<li>Dans Zed, ajoutez un fournisseur <em>OpenAI-compatible</em> :
 <ul>
-<li><p><strong>Continue.dev</strong> (extension VSCode) : créez un fichier <code>.continue/config.yaml</code> dans votre dossier utilisateur (<code>~/.continue</code> sur Linux/macOS, <code>%USERPROFILE%\.continue</code> sur Windows) avec, par exemple :</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> miashs/mistral</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="fl">1.0.0</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">schema</span><span class="kw">:</span><span class="at"> v1</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">models</span><span class="kw">:</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Devstral</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">provider</span><span class="kw">:</span><span class="at"> mistral</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">model</span><span class="kw">:</span><span class="at"> devstral-medium-latest</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">apiKey</span><span class="kw">:</span><span class="at"> ${{ secrets.MISTRAL_API_KEY }}</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">roles</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">chat</span><span class="kw">,</span><span class="at"> edit</span><span class="kw">,</span><span class="at"> apply</span><span class="kw">]</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">defaultCompletionOptions</span><span class="kw">:</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">contextLength</span><span class="kw">:</span><span class="at"> </span><span class="dv">131072</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Mistral</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">provider</span><span class="kw">:</span><span class="at"> mistral</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">model</span><span class="kw">:</span><span class="at"> mistral-medium-latest</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">apiKey</span><span class="kw">:</span><span class="at"> ${{ secrets.MISTRAL_API_KEY }}</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">roles</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">chat</span><span class="kw">,</span><span class="at"> edit</span><span class="kw">,</span><span class="at"> apply</span><span class="kw">]</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-<p>et posez votre clé dans <code>~/.continue/.env</code> (ou <code>%USERPROFILE%\.continue\.env</code>) :</p>
-<pre><code>MISTRAL_API_KEY=votre_cle</code></pre></li>
-<li><p><strong>Chat web</strong> : Mistral Le Chat (ou l’assistant de votre choix) convient aussi pour les échanges socratiques du parcours A — l’important est de pouvoir <strong>configurer le comportement</strong> du tuteur via un <em>prompt system</em> (voir la page <a href="./tuteur-ia.html">Concevoir un tuteur IA</a>).</p></li>
+<li>URL : <code>https://openrouter.ai/api/v1</code></li>
+<li>Clé : la clé OpenRouter</li>
+<li>Modèle : ouvrez la <a href="https://openrouter.ai/models?fmt=free">collection <em>Free Models</em></a> et copiez l’identifiant d’un modèle dont l’ID se termine par <code>:free</code> (au 25/08/2026 : 17 modèles — ex. <code>z-ai/glm-5.2:free</code>, <code>cohere/north-mini-code:free</code>, <code>google/gemma-4-31b-it:free</code>, <code>nvidia/nemotron-3-ultra-550b-a55b:free</code>). Le catalogue <strong>change souvent</strong> : si un modèle disparaît, la page Free Models liste le remplaçant. Vous pouvez configurer plusieurs modèles et basculer de l’un à l’autre dans le panneau <em>Agent</em>.</li>
+</ul></li>
+</ol>
+<p><strong>Limites effectives (25/08/2026)</strong> — le plafond porte sur le <em>nombre de requêtes</em>, pas sur les tokens :</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Limite</th>
+<th>Compte gratuit</th>
+<th>Après un achat de ≥ 10 $ de crédits</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Coût par token (modèles <code>:free</code>)</td>
+<td>0 $</td>
+<td>0 $</td>
+</tr>
+<tr class="even">
+<td>Requêtes par minute</td>
+<td>20</td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<td>Requêtes par jour</td>
+<td>50</td>
+<td>1 000</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Le quota quotidien remonte à <strong>1 000/jour</strong> dès que le compte a acheté <strong>au moins 10 $ de crédits une fois</strong> (crédits valables à vie) — l’augmentation reste acquise même si le solde retombe à zéro. Une seule « recharge » de 10 $ sur un compte de classe suffit donc.</li>
+<li>Les modèles gratuits sont servis <strong>à priorité basse</strong> : attente possible aux heures de pointe, et le catalogue des modèles <code>:free</code> <strong>change régulièrement</strong> (certains disparaissent, d’autres apparaissent) — d’où l’intérêt de configurer plusieurs modèles.</li>
+<li>Les requêtes échouées (429 = limite atteinte) <strong>comptent</strong> dans le quota du jour.</li>
+<li>En <strong>tokens</strong>, OpenRouter n’impose <strong>pas</strong> de quota global sur les modèles gratuits : la taille d’une requête est bornée par la <strong>fenêtre de contexte</strong> du modèle (au 25/08/2026 : de 64k à 1M tokens, ex. <code>z-ai/glm-5.2:free</code> en 256k, <code>nvidia/nemotron-3-ultra-550b-a55b:free</code> en 1M) et le débit (tokens/min) est fixé par chaque fournisseur — souvent réduit aux heures de pointe. Seuls les compteurs de <em>requêtes</em> (20/min, 50/jour) font foi au niveau d’OpenRouter.</li>
+<li>Vérifiez la <strong>politique de données</strong> de chaque fournisseur : certains endpoints gratuits peuvent s’entraîner sur vos échanges. Évitez d’y envoyer des données sensibles.</li>
 </ul>
-</section>
-<section id="option-2-modèle-local-si-votre-machine-le-permet" class="level3" data-number="2.3.2">
-<h3 data-number="2.3.2" class="anchored" data-anchor-id="option-2-modèle-local-si-votre-machine-le-permet"><span class="header-section-number">2.3.2</span> Option 2 — Modèle local (si votre machine le permet)</h3>
-<p>Si vous avez au moins ~16 Go de RAM (ou un GPU dédié avec ~6 Go de VRAM) et ~8 Go d’espace disque libre, vous pouvez faire tourner un modèle local type <strong>Qwen 3.5-4B</strong> (≈5,5 Go quantifié) avec <a href="https://github.com/ggml-org/llama.cpp"><code>llama.cpp</code></a> ou <a href="https://lmstudio.ai">LM Studio</a>. Un modèle local fonctionne hors ligne et sans compte. Le <a href="../sondage/sondage-limesurvey.qmd">sondage</a> sert précisément à savoir qui peut en faire tourner un.</p>
 <blockquote class="blockquote">
-<p><strong>Si votre machine est modeste</strong> : ne vous inquiétez pas. L’option 1 (API gratuite) suffit pour suivre le parcours A. Le parcours B, lui, ne nécessite <em>aucun</em> outil d’IA.</p>
+<p><strong>Si chaque étudiant crée son propre compte</strong> OpenRouter (2 minutes), chacun dispose de ses 50 requêtes/jour — c’est l’option la plus simple et la plus sûre pour une classe.</p>
+</blockquote>
+</section>
+<section id="option-2-api-mistral-clé-gratuite" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="option-2-api-mistral-clé-gratuite"><span class="header-section-number">2.3.2</span> Option 2 — API Mistral (clé gratuite)</h3>
+<p>Mistral « La Plateforme » offre un plan gratuit <strong>Experiment</strong> : accès à <strong>tous les modèles</strong> (Mistral Small, Medium, Large, Codestral, Magistral…), sans carte bancaire, mais avec une <strong>vérification par téléphone</strong>.</p>
+<ol type="1">
+<li>Créez un compte sur <a href="https://console.mistral.ai/home" class="uri">https://console.mistral.ai/home</a> et récupérez une <strong>clé API</strong>. Un numéro de téléphone valide est nécessaire — prévenez l’enseignant si c’est un problème.</li>
+<li>Dans Zed, ajoutez un fournisseur <em>OpenAI-compatible</em> :
+<ul>
+<li>URL : <code>https://api.mistral.ai/v1</code></li>
+<li>Clé : la clé Mistral</li>
+<li>Modèle : <code>mistral-small-latest</code> (raisonnement activé avec <code>reasoning_effort: "high"</code>, voir le dépannage plus bas) ou <code>mistral-medium-3-5</code> (plus puissant, même mécanisme).</li>
+</ul></li>
+</ol>
+<p><strong>Limites effectives (plan Experiment)</strong> — chiffres <strong>approximatifs et non publiés</strong> (exacts dans la console, section <em>Limits</em>) : environ <strong>1 milliard de tokens/mois</strong>, <strong>~500 000 tokens/min</strong> par modèle et <strong>~1 requête/s par clé API</strong> (2 req/min selon certaines sources). Les quotas détaillés varient par <em>groupe</em> de modèles (ex. magistral : 20 000 tokens/min, 10 req/min). Ce plan sert à expérimenter, pas à produire.</p>
+<p><strong>Données</strong> : les requêtes du plan gratuit <strong>peuvent servir à l’entraînement des modèles</strong> Mistral (rétention ~30 jours, cf.&nbsp;leur politique de confidentialité) — n’y envoyez pas de code ou d’échange sensible.</p>
+<p>Pour les modèles à raisonnement, voir le dépannage ci-dessous.</p>
+</section>
+<section id="option-3-modèle-local-si-votre-machine-le-permet" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="option-3-modèle-local-si-votre-machine-le-permet"><span class="header-section-number">2.3.3</span> Option 3 — Modèle local (si votre machine le permet)</h3>
+<p>Si vous avez au moins ~16 Go de RAM (ou un GPU dédié avec ~6 Go de VRAM) et ~8 Go d’espace disque libre, vous pouvez faire tourner un modèle local type <strong>Qwen 3.5-4B</strong> (≈5,5 Go quantifié) avec <a href="https://github.com/ggml-org/llama.cpp"><code>llama.cpp</code></a> ou <a href="https://lmstudio.ai">LM Studio</a>. Un modèle local fonctionne hors ligne et sans compte ; Zed s’y connecte comme fournisseur <em>OpenAI-compatible</em> (<code>http://localhost:11434/v1</code>). Le sondage de démarrage (distribué en séance) sert précisément à savoir qui peut en faire tourner un.</p>
+<blockquote class="blockquote">
+<p><strong>Si votre machine est modeste</strong> : ne vous inquiétez pas. L’option 1 ou 2 (API gratuite) suffit pour suivre le parcours A. Le parcours B, lui, ne nécessite <em>aucun</em> outil d’IA.</p>
 </blockquote>
 </section>
 </section>
-<section id="édition-collaborative" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="édition-collaborative"><span class="header-section-number">2.4</span> Édition collaborative</h2>
-<p>Comme l’an dernier, les séances pourront utiliser Live Share (lien fourni dans le salon Discord du module). Ouvrez une fenêtre VSCode dédiée avant de rejoindre la session collaborative.</p>
+<section id="dépannage-le-raisonnement-thinking-de-mistral-ne-saffiche-pas" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="dépannage-le-raisonnement-thinking-de-mistral-ne-saffiche-pas"><span class="header-section-number">2.4</span> Dépannage : le raisonnement (« thinking ») de Mistral ne s’affiche pas</h2>
+<p>Trois causes fréquentes :</p>
+<ol type="1">
+<li><strong>Vous utilisez un modèle qui ne raisonne pas, ou une ancienne appellation.</strong> Le raisonnement est aujourd’hui <em>ajustable</em> et se déclenche par le paramètre <code>reasoning_effort</code> :
+<ul>
+<li>Modèles concernés : <code>mistral-small-latest</code> et <code>mistral-medium-3-5</code> — ils ne réfléchissent <strong>que si</strong> on envoie <code>reasoning_effort: "high"</code> (défaut = <code>"none"</code> : pas de thinking).</li>
+<li>Les dénominations <code>magistral-*-latest</code> (raisonnement « natif », toujours actif) sont <strong>dépréciées</strong> chez Mistral (25/08/2026) : <code>magistral-small-latest</code> résout désormais vers <code>mistral-small-latest</code>, à raisonnement ajustable. Préférez <code>mistral-small-latest</code> avec <code>reasoning_effort: "high"</code>.</li>
+<li>Les autres modèles (Large, Codestral…) n’ont <strong>pas</strong> de mode raisonnement : leur envoyer <code>reasoning_effort</code> provoque une erreur <strong>HTTP 422</strong>.</li>
+</ul></li>
+<li><strong>Le paramètre est mal placé.</strong> <code>reasoning_effort</code> est un champ <strong>racine</strong> du corps de la requête Chat Completions (pas dans <code>extra_body</code>, pas dans un message).</li>
+<li><strong>Le format de réponse change.</strong> Avec <code>reasoning_effort: "high"</code>, <code>message.content</code> devient une <strong>liste de chunks</strong> (<code>ThinkChunk</code> – la trace, puis <code>TextChunk</code> – la réponse) au lieu d’une chaîne de caractères. Un code qui lit <code>content</code> comme une chaîne « n’affiche rien » ou plante. Deux précisions utiles :
+<ul>
+<li><strong>En streaming, <code>delta.content</code> change de forme</strong> : liste <code>ThinkChunk</code> pendant la réflexion, puis liste mixte (fin de <code>ThinkChunk</code> + premier <code>TextChunk</code>) à la transition, puis chaîne simple pour la réponse finale. Un code qui attend toujours le même type « n’affiche rien » sans crasher.</li>
+<li><strong>Soyez tolérant au découpage</strong> : selon les modèles, la réponse peut contenir des <code>ThinkChunk</code> <strong>vides</strong> intercalés dans les <code>TextChunk</code> (bogue rapporté sur <code>magistral-medium-latest</code>). Ne gardez que le texte des <code>TextChunk</code> et ignorez le reste.</li>
+<li><strong>En multi-tour, renvoyez dans l’historique le message assistant complet (avec sa trace)</strong> : retirer le <code>ThinkChunk</code> des tours précédents dégrade nettement la qualité.</li>
+</ul></li>
+</ol>
+<p>Exemple minimal qui marche (SDK Python <code>mistralai</code>) :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mistralai <span class="im">import</span> Mistral</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mistralai.models <span class="im">import</span> TextChunk</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> Mistral(api_key<span class="op">=</span><span class="st">"VOTRE_CLE"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>resp <span class="op">=</span> client.chat.complete(</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    model<span class="op">=</span><span class="st">"mistral-small-latest"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    messages<span class="op">=</span>[{<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: <span class="st">"Explique le concept de verrou (lock)."</span>}],</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    reasoning_effort<span class="op">=</span><span class="st">"high"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>content <span class="op">=</span> resp.choices[<span class="dv">0</span>].message.content</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">isinstance</span>(content, <span class="bu">str</span>):</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(content)  <span class="co"># reasoning_effort="none" : chaîne simple</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> chunk <span class="kw">in</span> content:</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">isinstance</span>(chunk, TextChunk):</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(chunk.text, end<span class="op">=</span><span class="st">""</span>)  <span class="co"># on ignore les ThinkChunk (trace)</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Même chose en <code>curl</code> (la clé dans une variable d’environnement <code>MISTRAL_API_KEY</code>) :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> https://api.mistral.ai/v1/chat/completions <span class="dt">\</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-H</span> <span class="st">"Authorization: Bearer </span><span class="va">$MISTRAL_API_KEY</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-H</span> <span class="st">"Content-Type: application/json"</span> <span class="dt">\</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">-d</span> <span class="st">'{"model":"mistral-small-latest","reasoning_effort":"high","messages":[{"role":"user","content":"Explique le concept de verrou."}]}'</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Dans Zed</strong> : déclarez Mistral comme fournisseur <em>OpenAI-compatible</em> (<code>https://api.mistral.ai/v1</code>) et, pour le modèle, <strong>réglez <code>reasoning_effort</code> sur <code>"high"</code> dans sa configuration</strong> (<code>available_models</code> dans les réglages de l’<em>Agent</em>). C’est ce réglage qui active le thinking et demande à Zed d’afficher la trace dans le panneau. Sur des versions plus anciennes de Zed, <code>reasoning_effort</code> pouvait ne pas être transmis pour les fournisseurs OpenAI-compatible (bug corrigé depuis) — mettez Zed à jour si le thinking ne s’affiche pas. Notez que Mistral renvoie la trace <strong>dans <code>message.content</code></strong> (chunks), pas comme champ dédié : un outil qui attend une chaîne simple peut afficher « rien ». Pour voir la trace en toutes circonstances, utilisez un script (comme ci-dessus) ou Mistral <strong>Le Chat</strong>.</p>
 </section>
-<section id="faire-tourner-multiprocessingasyncio-en-jupyter" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="faire-tourner-multiprocessingasyncio-en-jupyter"><span class="header-section-number">2.5</span> Faire tourner <code>multiprocessing</code>/<code>asyncio</code> en Jupyter</h2>
-<p>Sous macOS, Jupyter exige un correctif pour <code>multiprocessing</code> (méthode <em>spawn</em>) — le bloc à ajouter dans <code>settings.json</code> de VSCode se trouve dans le cours de l’année dernière ; le détail est repris en TD si besoin.</p>
+<section id="édition-collaborative" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="édition-collaborative"><span class="header-section-number">2.5</span> Édition collaborative</h2>
+<p>Zed permet l’édition collaborative : un participant ouvre un <em>channel</em> (public ou privé) et les autres le rejoignent avec le lien. Les séances pourront utiliser cette fonctionnalité ou le salon Discord du module (le canal exact sera indiqué en TD).</p>
+</section>
+<section id="faire-tourner-multiprocessingasyncio-en-jupyter" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="faire-tourner-multiprocessingasyncio-en-jupyter"><span class="header-section-number">2.6</span> Faire tourner <code>multiprocessing</code>/<code>asyncio</code> en Jupyter</h2>
+<p>Sous macOS, <code>multiprocessing</code> exige la méthode <em>spawn</em> dans les notebooks Jupyter — un correctif exige des réglages propres au noyau. Le plus robuste reste d’exécuter vos scripts avec <code>uv run</code> plutôt que dans une cellule de notebook ; le détail est repris en TD si besoin.</p>
 
 
 </section>
