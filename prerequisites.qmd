@@ -38,7 +38,7 @@ uv run --with dependance script.py
 
 ## Track A tooling: an AI tutor
 
-Track A requires access to a large language model (LLM). Three options, **all free**,
+Track A requires access to a large language model (LLM). Several options, **all free**,
 depending on your hardware and preferences; the kick-off survey distributed in session will
 help us calibrate this choice.
 
@@ -123,6 +123,34 @@ in session) is precisely used to know who can run one.
 
 > **If your machine is modest**: don't worry. Option 1 or 2 (free API) is enough to follow
 > Track A. Track B, for its part, requires *no* AI tool at all.
+
+### Option 4 — Other free API offers
+
+Several other providers give free API access to language models and plug into Zed the same
+way (an *OpenAI-compatible* provider with an API key, like Options 1 and 2 above). Their
+catalogs and quotas change more often than OpenRouter's; the figures below are rough
+(25/08/2026), verify the number you need on the official pricing page of the day.
+
+| Provider | Models (selection) | OpenAI-compatible endpoint | Training on your prompts | Approximate free limits |
+|---|---|---|---|---|
+| [Groq](https://groq.com) | Open-weights: Llama, Qwen, DeepSeek-R1, gpt-oss, GLM | `https://api.groq.com/openai/v1` | **No** | ~30 requests/min, ~1,000/day per model |
+| [GitHub Models](https://github.com/marketplace/models) | GPT-4.1, o3, o4-mini, Llama, Mistral, DeepSeek, Cohere, Grok | `https://models.inference.ai.azure.com` | **No** | ~10 requests/min on a free GitHub account |
+| [Google AI Studio](https://aistudio.google.com) | Gemini Flash, Flash-Lite | `https://generativelanguage.googleapis.com/v1beta/openai/` | **Yes, on the free tier** | ~1,500 requests/day, 1M tokens/min per project |
+| [Cloudflare Workers AI](https://developers.cloudflare.com/workers-ai/) | 40+ open models, some multimodal | `https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1` | **No** | 10,000 neurons/day, reset daily |
+| [Hugging Face](https://huggingface.co) (serverless) | Open-weights models, mostly below ~10B on the free tier | `https://router.huggingface.co/v1` | Depends on the model | A few hundred requests/hour |
+
+- **Data policy is the deciding factor for a tutor.** Prefer endpoints that do **not** train
+  on your prompts: Groq, GitHub Models, Cloudflare. Google AI Studio's free tier may use your
+  exchanges to improve Google's models (its paid tier and Vertex AI do not); reserve it for
+  exchanges that hold nothing sensitive.
+- **Every free offer is rate-limited.** Expect HTTP 429 under load; write your tutor scripts
+  to retry with backoff, or queue exchanges for off-peak hours.
+- **Groq** installs like Option 1 and exposes a wide, fast range of open models.
+- **GitHub Models** needs only a GitHub account and a Personal Access Token, no billing. The
+  gateway caps each exchange at about 8,000 input / 4,000 output tokens: enough for short
+  Socratic dialogue, too small for long files.
+- **Google AI Studio** offers the largest free volume (Flash models); multimodal input works
+  there out of the box.
 
 ## Troubleshooting: Mistral's reasoning ("thinking") does not show
 

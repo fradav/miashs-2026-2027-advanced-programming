@@ -429,6 +429,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#option-1-openrouter-api-recommended" id="toc-option-1-openrouter-api-recommended" class="nav-link" data-scroll-target="#option-1-openrouter-api-recommended"><span class="header-section-number">2.3.1</span> Option 1 — OpenRouter API (recommended)</a></li>
   <li><a href="#option-2-mistral-api-free-key" id="toc-option-2-mistral-api-free-key" class="nav-link" data-scroll-target="#option-2-mistral-api-free-key"><span class="header-section-number">2.3.2</span> Option 2 — Mistral API (free key)</a></li>
   <li><a href="#option-3-local-model-if-your-machine-allows-it" id="toc-option-3-local-model-if-your-machine-allows-it" class="nav-link" data-scroll-target="#option-3-local-model-if-your-machine-allows-it"><span class="header-section-number">2.3.3</span> Option 3 — Local model (if your machine allows it)</a></li>
+  <li><a href="#option-4-other-free-api-offers" id="toc-option-4-other-free-api-offers" class="nav-link" data-scroll-target="#option-4-other-free-api-offers"><span class="header-section-number">2.3.4</span> Option 4 — Other free API offers</a></li>
   </ul></li>
   <li><a href="#troubleshooting-mistrals-reasoning-thinking-does-not-show" id="toc-troubleshooting-mistrals-reasoning-thinking-does-not-show" class="nav-link" data-scroll-target="#troubleshooting-mistrals-reasoning-thinking-does-not-show"><span class="header-section-number">2.4</span> Troubleshooting: Mistral’s reasoning (“thinking”) does not show</a></li>
   <li><a href="#collaborative-editing" id="toc-collaborative-editing" class="nav-link" data-scroll-target="#collaborative-editing"><span class="header-section-number">2.5</span> Collaborative editing</a></li>
@@ -480,7 +481,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="track-a-tooling-an-ai-tutor" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="track-a-tooling-an-ai-tutor"><span class="header-section-number">2.3</span> Track A tooling: an AI tutor</h2>
-<p>Track A requires access to a large language model (LLM). Three options, <strong>all free</strong>, depending on your hardware and preferences; the kick-off survey distributed in session will help us calibrate this choice.</p>
+<p>Track A requires access to a large language model (LLM). Several options, <strong>all free</strong>, depending on your hardware and preferences; the kick-off survey distributed in session will help us calibrate this choice.</p>
 <section id="option-1-openrouter-api-recommended" class="level3" data-number="2.3.1">
 <h3 data-number="2.3.1" class="anchored" data-anchor-id="option-1-openrouter-api-recommended"><span class="header-section-number">2.3.1</span> Option 1 — OpenRouter API (recommended)</h3>
 <p><a href="https://openrouter.ai/">OpenRouter</a> is an aggregator: <strong>one API key gives access to dozens of models</strong> (Llama, Qwen, Gemma, DeepSeek, gpt-oss, Nemotron…) through a single OpenAI-compatible API.</p>
@@ -554,6 +555,65 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p><strong>If your machine is modest</strong>: don’t worry. Option 1 or 2 (free API) is enough to follow Track A. Track B, for its part, requires <em>no</em> AI tool at all.</p>
 </blockquote>
+</section>
+<section id="option-4-other-free-api-offers" class="level3" data-number="2.3.4">
+<h3 data-number="2.3.4" class="anchored" data-anchor-id="option-4-other-free-api-offers"><span class="header-section-number">2.3.4</span> Option 4 — Other free API offers</h3>
+<p>Several other providers give free API access to language models and plug into Zed the same way (an <em>OpenAI-compatible</em> provider with an API key, like Options 1 and 2 above). Their catalogs and quotas change more often than OpenRouter’s; the figures below are rough (25/08/2026), verify the number you need on the official pricing page of the day.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Provider</th>
+<th>Models (selection)</th>
+<th>OpenAI-compatible endpoint</th>
+<th>Training on your prompts</th>
+<th>Approximate free limits</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://groq.com">Groq</a></td>
+<td>Open-weights: Llama, Qwen, DeepSeek-R1, gpt-oss, GLM</td>
+<td><code>https://api.groq.com/openai/v1</code></td>
+<td><strong>No</strong></td>
+<td>~30 requests/min, ~1,000/day per model</td>
+</tr>
+<tr class="even">
+<td><a href="https://github.com/marketplace/models">GitHub Models</a></td>
+<td>GPT-4.1, o3, o4-mini, Llama, Mistral, DeepSeek, Cohere, Grok</td>
+<td><code>https://models.inference.ai.azure.com</code></td>
+<td><strong>No</strong></td>
+<td>~10 requests/min on a free GitHub account</td>
+</tr>
+<tr class="odd">
+<td><a href="https://aistudio.google.com">Google AI Studio</a></td>
+<td>Gemini Flash, Flash-Lite</td>
+<td><code>https://generativelanguage.googleapis.com/v1beta/openai/</code></td>
+<td><strong>Yes, on the free tier</strong></td>
+<td>~1,500 requests/day, 1M tokens/min per project</td>
+</tr>
+<tr class="even">
+<td><a href="https://developers.cloudflare.com/workers-ai/">Cloudflare Workers AI</a></td>
+<td>40+ open models, some multimodal</td>
+<td><code>https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1</code></td>
+<td><strong>No</strong></td>
+<td>10,000 neurons/day, reset daily</td>
+</tr>
+<tr class="odd">
+<td><a href="https://huggingface.co">Hugging Face</a> (serverless)</td>
+<td>Open-weights models, mostly below ~10B on the free tier</td>
+<td><code>https://router.huggingface.co/v1</code></td>
+<td>Depends on the model</td>
+<td>A few hundred requests/hour</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Data policy is the deciding factor for a tutor.</strong> Prefer endpoints that do <strong>not</strong> train on your prompts: Groq, GitHub Models, Cloudflare. Google AI Studio’s free tier may use your exchanges to improve Google’s models (its paid tier and Vertex AI do not); reserve it for exchanges that hold nothing sensitive.</li>
+<li><strong>Every free offer is rate-limited.</strong> Expect HTTP 429 under load; write your tutor scripts to retry with backoff, or queue exchanges for off-peak hours.</li>
+<li><strong>Groq</strong> installs like Option 1 and exposes a wide, fast range of open models.</li>
+<li><strong>GitHub Models</strong> needs only a GitHub account and a Personal Access Token, no billing. The gateway caps each exchange at about 8,000 input / 4,000 output tokens: enough for short Socratic dialogue, too small for long files.</li>
+<li><strong>Google AI Studio</strong> offers the largest free volume (Flash models); multimodal input works there out of the box.</li>
+</ul>
 </section>
 </section>
 <section id="troubleshooting-mistrals-reasoning-thinking-does-not-show" class="level2" data-number="2.4">
