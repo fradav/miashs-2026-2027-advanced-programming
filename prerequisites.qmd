@@ -148,8 +148,8 @@ For reasoning models, see the troubleshooting below.
 
 ### Option 3 — Local model (if your machine allows it)
 
-If you have at least ~16 GB of RAM (or a dedicated GPU with ~6 GB of VRAM) and ~10 GB of free
-disk space, you can run a local model with [`llama.cpp`](https://github.com/ggml-org/llama.cpp)
+If you have at least ~16 GB of RAM (or a dedicated GPU with ~6 GB of VRAM) and ~10–20 GB of
+free disk space, you can run a local model with [`llama.cpp`](https://github.com/ggml-org/llama.cpp)
 or [LM Studio](https://lmstudio.ai). A local model works offline and without any account; Zed
 connects to it as an *OpenAI-compatible* provider (`http://localhost:11434/v1`).
 
@@ -157,9 +157,21 @@ Pick the largest model that fits on your machine. A **~9B** model (e.g. Qwen3.5-
 most intelligent under 10B on the Artificial Analysis Intelligence Index, 25/08/2026) is a
 reasonable minimum for a usable tutor, comfortable in 16 GB of RAM or ~6 GB of VRAM; a
 14B is noticeably better if your RAM allows. A 4B model drops the Socratic role after a
-turn or two and answers tersely. Factual slips are also more common. Quantized (Q4), the
-files weigh about 5 GB (a 9B) and 9 GB (a 14B). The kick-off survey (distributed in
-session) is precisely used to know who can run one.
+turn or two and answers tersely, and factual slips are more common. Quantized (Q4), the
+files weigh about 5 GB (a 9B) and 9 GB (a 14B).
+
+Derivative fine-tunes are worth a look. Ornith-1.5-9B (MIT, August 2026) builds on the
+Qwen3.5-9B architecture and is trained with reinforcement-learning self-improvement; it
+often scores above its base on benchmarks and needs the same ~5 GB at Q4.
+
+If your machine has room, consider a mixture-of-experts (MoE) model instead. An MoE
+stores many parameters and activates a fraction of them per token. Qwen3.6-35B-A3B stores
+~35B and activates ~3B; llama.cpp keeps the inactive experts in RAM while the active ones
+use the GPU (`--n-cpu-moe`), so the model files may exceed your VRAM. At Q4 it weighs ~20 GB
+and scores 32 on the Artificial Analysis Intelligence Index (25/08/2026), well above the
+median of 9 for open models of its size. Expect lower speed when experts spill to RAM.
+
+The kick-off survey (distributed in session) is precisely used to know who can run one.
 
 > **If your machine is modest**: don't worry. Option 1 or 2 (free API) is enough to follow
 > Track A. Track B, for its part, requires *no* AI tool at all.
