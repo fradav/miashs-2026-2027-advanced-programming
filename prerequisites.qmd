@@ -17,6 +17,18 @@ free offers described below.
 - (Optional) a free Zed account enables collaborative editing in *channels*
   (see [Collaborative editing](#collaborative-editing)).
 
+**Why this editor?** Zed is the meeting point of the two tracks of this module: a full
+code editor for Track B, and an *Agent* panel that hosts the tutoring LLM for Track A, in
+chat mode or as a coding agent that edits your files. Both modes live in the same window;
+you move from writing code to asking the tutor without changing tools, with the code still
+in view. This direct switch between tracks is what keeps the two learning paths close. A
+web chatbot lives outside the code, and a terminal-only agent (OpenCode, `pi`…) keeps the
+code out of the conversation.
+
+Zed also uses few resources: it starts quickly and stays light on memory, which helps when
+the same machine also runs a local model (Option 3 below), since the editor and the model
+share the RAM. VS Code, for comparison, uses noticeably more.
+
 ## Python environment management with `uv`
 
 `uv` is the recommended Python environment manager. It installs the environment and packages
@@ -41,6 +53,22 @@ uv run --with dependance script.py
 Track A requires access to a large language model (LLM). Several options, **all free**,
 depending on your hardware and preferences; the kick-off survey distributed in session will
 help us calibrate this choice.
+
+The choice of a model inside each option is subjective. It depends on your topics, your
+level, the language you write in, and how you like to be guided; catalogs also change over
+time. The reliable way to decide is to test models yourself on real content of this module.
+A prompt to probe a model's tutoring skills:
+
+```text
+Act as a Socratic tutor for Python programming. I am a beginner.
+Guide me with one question at a time; give me the answer only when
+I am stuck. Keep your replies short.
+```
+
+Run this prompt, then variants of your own, on the models you hesitate between, and judge
+on what a tutor does for you: does it let you think before it answers, and do its
+explanations hold? Some consoles compare models side by side on the same prompt (OpenRouter
+chat, Google AI Studio), which shortens the comparison.
 
 ### Option 1 — OpenRouter API (recommended)
 

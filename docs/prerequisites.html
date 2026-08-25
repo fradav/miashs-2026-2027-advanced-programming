@@ -470,6 +470,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>No configuration is needed to write code; only the <em>Agent</em> panel must be connected to a model (see <a href="#track-a-tooling-an-ai-tutor">Track A tooling</a>).</li>
 <li>(Optional) a free Zed account enables collaborative editing in <em>channels</em> (see <a href="#collaborative-editing">Collaborative editing</a>).</li>
 </ul>
+<p><strong>Why this editor?</strong> Zed is the meeting point of the two tracks of this module: a full code editor for Track B, and an <em>Agent</em> panel that hosts the tutoring LLM for Track A, in chat mode or as a coding agent that edits your files. Both modes live in the same window; you move from writing code to asking the tutor without changing tools, with the code still in view. This direct switch between tracks is what keeps the two learning paths close. A web chatbot lives outside the code, and a terminal-only agent (OpenCode, <code>pi</code>…) keeps the code out of the conversation.</p>
+<p>Zed also uses few resources: it starts quickly and stays light on memory, which helps when the same machine also runs a local model (Option 3 below), since the editor and the model share the RAM. VS Code, for comparison, uses noticeably more.</p>
 </section>
 <section id="python-environment-management-with-uv" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="python-environment-management-with-uv"><span class="header-section-number">2.2</span> Python environment management with <code>uv</code></h2>
@@ -483,6 +485,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="track-a-tooling-an-ai-tutor" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="track-a-tooling-an-ai-tutor"><span class="header-section-number">2.3</span> Track A tooling: an AI tutor</h2>
 <p>Track A requires access to a large language model (LLM). Several options, <strong>all free</strong>, depending on your hardware and preferences; the kick-off survey distributed in session will help us calibrate this choice.</p>
+<p>The choice of a model inside each option is subjective. It depends on your topics, your level, the language you write in, and how you like to be guided; catalogs also change over time. The reliable way to decide is to test models yourself on real content of this module. A prompt to probe a model’s tutoring skills:</p>
+<pre class="text"><code>Act as a Socratic tutor for Python programming. I am a beginner.
+Guide me with one question at a time; give me the answer only when
+I am stuck. Keep your replies short.</code></pre>
+<p>Run this prompt, then variants of your own, on the models you hesitate between, and judge on what a tutor does for you: does it let you think before it answers, and do its explanations hold? Some consoles compare models side by side on the same prompt (OpenRouter chat, Google AI Studio), which shortens the comparison.</p>
 <section id="option-1-openrouter-api-recommended" class="level3" data-number="2.3.1">
 <h3 data-number="2.3.1" class="anchored" data-anchor-id="option-1-openrouter-api-recommended"><span class="header-section-number">2.3.1</span> Option 1 — OpenRouter API (recommended)</h3>
 <p><a href="https://openrouter.ai/">OpenRouter</a> is an aggregator: <strong>one API key gives access to dozens of models</strong> (Llama, Qwen, Gemma, DeepSeek, gpt-oss, Nemotron…) through a single OpenAI-compatible API.</p>
@@ -648,27 +655,27 @@ Show the causes and the working examples
 </ul></li>
 </ol>
 <p>Minimal working example (Python <code>mistralai</code> SDK):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mistralai <span class="im">import</span> Mistral</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mistralai.models <span class="im">import</span> TextChunk</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> Mistral(api_key<span class="op">=</span><span class="st">"YOUR_KEY"</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>resp <span class="op">=</span> client.chat.complete(</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    model<span class="op">=</span><span class="st">"mistral-small-latest"</span>,</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    messages<span class="op">=</span>[{<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: <span class="st">"Explain the concept of a lock."</span>}],</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    reasoning_effort<span class="op">=</span><span class="st">"high"</span>,</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>content <span class="op">=</span> resp.choices[<span class="dv">0</span>].message.content</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">isinstance</span>(content, <span class="bu">str</span>):</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(content)  <span class="co"># reasoning_effort="none": plain string</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> chunk <span class="kw">in</span> content:</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">isinstance</span>(chunk, TextChunk):</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(chunk.text, end<span class="op">=</span><span class="st">""</span>)  <span class="co"># ThinkChunks (trace) are ignored</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mistralai <span class="im">import</span> Mistral</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mistralai.models <span class="im">import</span> TextChunk</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> Mistral(api_key<span class="op">=</span><span class="st">"YOUR_KEY"</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>resp <span class="op">=</span> client.chat.complete(</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    model<span class="op">=</span><span class="st">"mistral-small-latest"</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    messages<span class="op">=</span>[{<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: <span class="st">"Explain the concept of a lock."</span>}],</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    reasoning_effort<span class="op">=</span><span class="st">"high"</span>,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>content <span class="op">=</span> resp.choices[<span class="dv">0</span>].message.content</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">isinstance</span>(content, <span class="bu">str</span>):</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(content)  <span class="co"># reasoning_effort="none": plain string</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> chunk <span class="kw">in</span> content:</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">isinstance</span>(chunk, TextChunk):</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(chunk.text, end<span class="op">=</span><span class="st">""</span>)  <span class="co"># ThinkChunks (trace) are ignored</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Same in <code>curl</code> (the key in an environment variable <code>MISTRAL_API_KEY</code>):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> https://api.mistral.ai/v1/chat/completions <span class="dt">\</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-H</span> <span class="st">"Authorization: Bearer </span><span class="va">$MISTRAL_API_KEY</span><span class="st">"</span> <span class="dt">\</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-H</span> <span class="st">"Content-Type: application/json"</span> <span class="dt">\</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">-d</span> <span class="st">'{"model":"mistral-small-latest","reasoning_effort":"high","messages":[{"role":"user","content":"Explain the concept of a lock."}]}'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> https://api.mistral.ai/v1/chat/completions <span class="dt">\</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-H</span> <span class="st">"Authorization: Bearer </span><span class="va">$MISTRAL_API_KEY</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-H</span> <span class="st">"Content-Type: application/json"</span> <span class="dt">\</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">-d</span> <span class="st">'{"model":"mistral-small-latest","reasoning_effort":"high","messages":[{"role":"user","content":"Explain the concept of a lock."}]}'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>In Zed</strong>: declare Mistral as an OpenAI-compatible provider (<code>https://api.mistral.ai/v1</code>) and, for the model, set <code>reasoning_effort</code> to <code>"high"</code> in its configuration (<code>available_models</code> in the Agent settings). This setting activates the thinking and asks Zed to display the trace in the panel. On older versions of Zed, <code>reasoning_effort</code> could not be forwarded for OpenAI-compatible providers (bug fixed since); update Zed if the thinking does not show. Mistral returns the trace in <code>message.content</code> (chunks), not as a dedicated field: a tool that expects a plain string may display “nothing”. To see the trace in all circumstances, use a script (as above) or Mistral Le Chat.</p>
 </details>
 </section>
