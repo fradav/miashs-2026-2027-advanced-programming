@@ -159,6 +159,22 @@ The final project is assessed **with the same rubric for both tracks**.
 - **Track B**: the proof of mastery is more direct (live-coding, individual session), and
   the documentation load is lighter.
 
+## AI use policy
+
+Generative AI is **explicitly allowed** in this module, within a declared framework. It is a
+tool of the course, not a way around the work.
+
+1. **Declare your use.** In the logbook and in any graded deliverable, say where and how you
+   used an AI. Not using AI is also fine, with no justification required.
+2. **Assisted, not replaced.** The university charter distinguishes *guided assistance* from
+   *substitution*: the AI may question, guide, and challenge you; the understanding must be
+   yours.
+3. **Graded work stays with the instructor.** Outside this explicit authorization, undeclared
+   use of generative AI is academic fraud (Règlement des études, art. 2.6.4), and correction
+   is the instructor's alone.
+
+This follows the Université Paul-Valéry Montpellier 3 charter on AI use.
+
 ## To go further
 
 - The page [Designing an AI tutor](ai-tutor.qmd) details the work of block 2 (Track A).

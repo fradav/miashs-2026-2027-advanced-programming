@@ -160,11 +160,21 @@
     ]
   },
   {
+    "objectID": "teaching-design.html#ai-use-policy",
+    "href": "teaching-design.html#ai-use-policy",
+    "title": "3  The pedagogical design",
+    "section": "3.8 AI use policy",
+    "text": "3.8 AI use policy\nGenerative AI is explicitly allowed in this module, within a declared framework. It is a tool of the course, not a way around the work.\n\nDeclare your use. In the logbook and in any graded deliverable, say where and how you used an AI. Not using AI is also fine, with no justification required.\nAssisted, not replaced. The university charter distinguishes guided assistance from substitution: the AI may question, guide, and challenge you; the understanding must be yours.\nGraded work stays with the instructor. Outside this explicit authorization, undeclared use of generative AI is academic fraud (Règlement des études, art. 2.6.4), and correction is the instructor’s alone.\n\nThis follows the Université Paul-Valéry Montpellier 3 charter on AI use.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>The pedagogical design</span>"
+    ]
+  },
+  {
     "objectID": "teaching-design.html#to-go-further",
     "href": "teaching-design.html#to-go-further",
     "title": "3  The pedagogical design",
-    "section": "3.8 To go further",
-    "text": "3.8 To go further\n\nThe page Designing an AI tutor details the work of block 2 (Track A).\nThe page Planning your learning details the learning contract (all tracks).\nA few basic readings: dialogic pedagogy and co-construction (Vygotski, Freire, Bovill), documented limits of AI in education (hallucinations, over-reliance, unequal access). The references are listed at the end of the site.",
+    "section": "3.9 To go further",
+    "text": "3.9 To go further\n\nThe page Designing an AI tutor details the work of block 2 (Track A).\nThe page Planning your learning details the learning contract (all tracks).\nA few basic readings: dialogic pedagogy and co-construction (Vygotski, Freire, Bovill), documented limits of AI in education (hallucinations, over-reliance, unequal access). The references are listed at the end of the site.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>The pedagogical design</span>"
     ]
