@@ -153,12 +153,13 @@ disk space, you can run a local model with [`llama.cpp`](https://github.com/ggml
 or [LM Studio](https://lmstudio.ai). A local model works offline and without any account; Zed
 connects to it as an *OpenAI-compatible* provider (`http://localhost:11434/v1`).
 
-Pick the largest model that fits on your machine. **7B–8B** (e.g. Qwen3.5-8B) is the
-minimum for a usable tutor, comfortable in 16 GB of RAM or ~6 GB of VRAM; a 14B is
-noticeably better if your RAM allows. A 4B model drops the Socratic role after a turn or
-two and answers tersely. Factual slips are also more common. Quantized (Q4), the files
-weigh about 5 GB (an 8B) and 9 GB (a 14B). The kick-off survey (distributed in session) is
-precisely used to know who can run one.
+Pick the largest model that fits on your machine. A **~9B** model (e.g. Qwen3.5-9B, the
+most intelligent under 10B on the Artificial Analysis Intelligence Index, 25/08/2026) is a
+reasonable minimum for a usable tutor, comfortable in 16 GB of RAM or ~6 GB of VRAM; a
+14B is noticeably better if your RAM allows. A 4B model drops the Socratic role after a
+turn or two and answers tersely. Factual slips are also more common. Quantized (Q4), the
+files weigh about 5 GB (a 9B) and 9 GB (a 14B). The kick-off survey (distributed in
+session) is precisely used to know who can run one.
 
 > **If your machine is modest**: don't worry. Option 1 or 2 (free API) is enough to follow
 > Track A. Track B, for its part, requires *no* AI tool at all.
