@@ -12,7 +12,7 @@ The single theme of the course fits in one sentence: parallelizing means decompo
 speed up, but every decomposition has a cost (scheduling, communication, memory,
 synchronization). The speed curve is never linear in the number of workers.
 
-```mermaid
+```{mermaid}
 flowchart TD
     A[Sequential problem] --> B[Identify the bottleneck]
     B --> C{I/O or CPU?}

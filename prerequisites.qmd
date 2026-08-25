@@ -54,9 +54,10 @@ Track A requires access to a large language model (LLM). Several options, **all 
 depending on your hardware and preferences; the kick-off survey distributed in session will
 help us calibrate this choice.
 
-The choice of a model inside each option is subjective. It depends on your topics, your
-level, the language you write in, and how you like to be guided; catalogs also change over
-time. The reliable way to decide is to test models yourself on real content of this module.
+The choice of a model inside each option is subjective. It depends on your topics and your
+level, and on how you like to be guided (the language you write in matters too). Catalogs
+also change over time. The reliable way to decide is to test models yourself on real
+content of this module.
 A prompt to probe a model's tutoring skills:
 
 ```text
@@ -70,11 +71,36 @@ on what a tutor does for you: does it let you think before it answers, and do it
 explanations hold? Some consoles compare models side by side on the same prompt (OpenRouter
 chat, Google AI Studio), which shortens the comparison.
 
+Options 1–4 wire a model into Zed's Agent panel through an OpenAI-compatible API; option 5
+uses a chatbot in the browser, without Zed.
+
+```{mermaid}
+flowchart TD
+    YOU[Your laptop] --> ZED[Zed Agent panel]
+    ZED --> O1[Option 1 — OpenRouter<br>one key, dozens of free models]
+    ZED --> O2[Option 2 — Mistral<br>free key, all Mistral models]
+    ZED --> O3[Option 3 — local model<br>llama.cpp / LM Studio, offline]
+    ZED --> O4[Option 4 — other free APIs<br>Groq, GitHub Models, AI Studio]
+    YOU --> O5[Option 5 — web chatbot<br>DeepSeek et al, in the browser, no API]
+```
+
 ### Option 1 — OpenRouter API (recommended)
 
 [OpenRouter](https://openrouter.ai/) is an aggregator: **one API key gives access to dozens
 of models** (Llama, Qwen, Gemma, DeepSeek, gpt-oss, Nemotron…) through a single
 OpenAI-compatible API.
+
+```{mermaid}
+flowchart LR
+    Z[Zed<br>OpenAI-compatible provider] --> R[OpenRouter<br>https://openrouter.ai/api/v1]
+    R --> M1[Llama :free]
+    R --> M2[Qwen :free]
+    R --> M3[Gemma :free]
+    R --> M4[DeepSeek :free]
+    R --> MX[the catalog changes over time]
+```
+
+#### Set up the key in Zed
 
 1. Create an account at <https://openrouter.ai/> (email or GitHub, no credit card).
 2. Generate an API key (the *Keys* page of your account).
@@ -91,8 +117,9 @@ OpenAI-compatible API.
 See this [tutorial in French](https://surfmind.ai/fr/blog/best-free-openrouter-models) on the
 free OpenRouter models and how to exploit the free tier.
 
-**Effective limits (25/08/2026)**. The cap applies to the *number of requests*, not to
-tokens:
+#### Free limits and when they change
+
+The cap applies to the *number of requests*, not to tokens (as of 25/08/2026):
 
 | Limit | Free account | After buying ≥ $10 of credits |
 |---|---|---|
@@ -120,9 +147,18 @@ tokens:
 
 ### Option 2 — Mistral API (free key)
 
-Mistral "La Plateforme" offers a free **Experiment** plan: access to **all models** (Mistral
-Small, Medium, Large, Codestral, Magistral…), no credit card, but with a **phone
-verification**.
+Mistral "La Plateforme" offers a free Experiment plan: access to **all models** (Mistral
+Small, Medium, Large, Codestral, Magistral…), no credit card, but a phone verification is
+required.
+
+```{mermaid}
+flowchart LR
+    Z[Zed<br>OpenAI-compatible provider] --> M[Mistral<br>https://api.mistral.ai/v1]
+    M --> S[mistral-small-latest<br>reasoning_effort: high]
+    M --> D[mistral-medium-3-5<br>reasoning_effort: high]
+```
+
+#### Set up the key in Zed
 
 1. Create an account at <https://console.mistral.ai/home> and grab an **API key**. A valid
    phone number is required; warn the instructor if this is a problem.
@@ -135,16 +171,18 @@ verification**.
 See this [tutorial in French](https://www.it-connect.fr/guide-pour-utiliser-api-mistral-ai-en-python/)
 to get the free Experiment key and call the Mistral API from Python.
 
-**Effective limits (Experiment plan)**: approximate and unpublished figures (exact in the
-console, *Limits* section); about 1 billion tokens/month, ~500,000 tokens/min per model and
-~1 request/s per API key (2 req/min according to some sources). The detailed quotas vary by
-model group (e.g. magistral: 20,000 tokens/min, 10 req/min). This plan is meant for
-experimentation, not production.
+#### Free plan limits and data policy
 
-**Data**: free-plan requests may be used to train Mistral models (retention ~30 days, cf.
-their privacy policy); do not send sensitive code or exchanges.
+The limits are approximate and unpublished (exact figures in the console, *Limits* section);
+about 1 billion tokens/month, ~500,000 tokens/min per model and ~1 request/s per API key
+(2 req/min according to some sources). The detailed quotas vary by model group (e.g.
+magistral: 20,000 tokens/min, 10 req/min). This plan is meant for experimentation, not
+production.
 
-For reasoning models, see the troubleshooting below.
+Free-plan requests may be used to train Mistral models (retention ~30 days, cf. their
+privacy policy); do not send sensitive code or exchanges.
+
+For reasoning models, see the [troubleshooting below](#troubleshooting-mistrals-reasoning-thinking-does-not-show).
 
 ### Option 3 — Local model (if your machine allows it)
 
