@@ -36,6 +36,7 @@ book:
     - projects.qmd
     - summary.qmd
     - references.qmd
+    - appendix-local-llm.qmd
 
 bibliography: references.bib
 csl: ieee.csl

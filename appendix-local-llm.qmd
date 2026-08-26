@@ -1,0 +1,190 @@
+# Appendix: Running the local model from the USB key
+
+A USB key distributed in session carries a portable install of
+[llama.cpp](https://github.com/ggml-org/llama.cpp) with the **Ling-3.0-tiny**
+model, ready to serve an OpenAI-compatible API on your machine. This appendix
+gives the exact launch commands for Windows and macOS, explains how to tune the
+server when a machine is low on VRAM, and shows how to connect the server to
+Zed.
+
+The model card is <https://huggingface.co/inclusionAI/Ling-3.0-tiny>. The GGUF
+files are published at <https://huggingface.co/bloomer010/Ling-3.0-tiny-GGUF>.
+
+## What the key contains
+
+```text
+usb-llama/
+├── model/
+│   └── Ling-3.0-tiny-Q4_K_M.gguf   # the model, ~4.5 GB
+├── mac-arm64/                      # macOS Apple Silicon (Metal GPU)
+├── mac-x64/                        # macOS Intel (CPU)
+├── win-vulkan/                     # Windows, Vulkan GPU
+├── win-cpu/                        # Windows, CPU
+├── run-mac.command                 # macOS: double-click
+├── run-mac.sh                      # macOS: launch from a terminal
+├── run-windows.bat                 # Windows: double-click
+└── README.md                       # quick guide (in French)
+```
+
+| Property | Value |
+|---|---|
+| Model | Ling-3.0-tiny |
+| Architecture | Sparse mixture-of-experts (bailingmoe3) |
+| Parameters | 7.9B total, 1.3B active per token |
+| Context window | 256K native (262,144 tokens), output up to 32,768 tokens |
+| Quantization | Q4_K_M (~4.5 GB file) |
+| Languages | English, Chinese |
+| llama.cpp build | b10639 (includes bailingmoe3 support) |
+
+Hardware expectations match [Option 3](prerequisites.qmd) of the prerequisites:
+about 16 GB of RAM, or a GPU with ~6 GB of VRAM for the offload settings below.
+At Q4_K_M the whole model fits in memory; the server also reserves memory for the
+conversation context, which grows with the `-c` value.
+
+## Copy the folder first
+
+The USB key transports the folder; do not run anything from it. Copy the whole
+folder to your disk (Desktop, Documents, …) and launch the server from that local
+copy. The key is formatted exFAT, which both Windows and macOS read; the folder
+works identically once copied.
+
+## Starting the server
+
+### macOS
+
+Double-click `run-mac.command`. If macOS blocks the double-click, open a
+Terminal in the folder and run `bash run-mac.sh`. The script selects `mac-arm64`
+(Apple Silicon, Metal) or `mac-x64` (Intel, CPU) and opens the web interface once
+the server is ready.
+
+Equivalent invocation on Apple Silicon:
+
+```bash
+./mac-arm64/llama-server -m ./model/Ling-3.0-tiny-Q4_K_M.gguf \
+  --reasoning-preserve -ngl 999 --port 8002
+```
+
+### Windows
+
+Double-click `run-windows.bat`. The script probes the real GPU devices
+(`--list-devices`): if a Vulkan device is available (NVIDIA, AMD, or Intel), it
+uses `win-vulkan` with full GPU offload; otherwise it falls back to `win-cpu`.
+To force a backend, create an empty file named `USE_VULKAN` or `USE_CPU` in the
+folder.
+
+Equivalent invocation with the Vulkan backend:
+
+```bat
+win-vulkan\llama-server.exe -m .\model\Ling-3.0-tiny-Q4_K_M.gguf --reasoning-preserve -ngl 999 --port 8002
+```
+
+### Verifying that it runs
+
+- Web interface: <http://127.0.0.1:8002>
+- Health: <http://127.0.0.1:8002/health> → `{"status":"ok"}`
+- OpenAI-compatible API: <http://127.0.0.1:8002/v1>
+
+The default port is 8002; if it is busy, the scripts switch to 8010 and print the
+address. Stop the server with Ctrl+C. Prefer `127.0.0.1` over `localhost` in
+tools and scripts: `localhost` may resolve to IPv6 `::1`, which llama.cpp does
+not listen on by default.
+
+## Tuning the server
+
+| Flag | Effect |
+|---|---|
+| `-m PATH` | Model file to load |
+| `--reasoning-preserve` | Keep the model's reasoning trace in `reasoning_content` (required for the Zed setup below) |
+| `-ngl N` | Layers offloaded to the GPU; `999` = all |
+| `--n-cpu-moe N` (`-ncmoe N`) | MoE expert layers kept in system RAM (VRAM savings) |
+| `-c N` | Context length in tokens (default 4096) |
+| `--port N` | Server port (scripts use 8002, fallback 8010) |
+
+### GPU offload: `-ngl 999`
+
+`-ngl 999` pushes every layer to the GPU (Vulkan on Windows, Metal on Apple
+Silicon). On the demo machine it ran about 2× faster than CPU. With the GPU
+backend, always keep `-ngl 999`; on a GPU short on VRAM, reduce the memory of the
+*experts* instead, not the number of GPU layers.
+
+### MoE offload for low VRAM: `--n-cpu-moe`
+
+Ling-3.0-tiny is a mixture-of-experts model: it stores 7.9B parameters but only
+activates ~1.3B per token. The server keeps all expert weights in memory, and by
+default tries to place everything in VRAM. When the 4.5 GB model does not fit on
+the card, `--n-cpu-moe N` (short form `-ncmoe N`) keeps the expert weights of the
+top N layers in system RAM, while attention, the router, and the shared experts
+stay on the GPU.
+
+```bash
+llama-server -m ./model/Ling-3.0-tiny-Q4_K_M.gguf --reasoning-preserve -ngl 999 -ncmoe 24 --port 8002
+```
+
+Tuning rule: raise N until the model loads without spilling VRAM, then step back
+one notch. Each layer moved to the CPU makes token generation slower when a token
+picks an expert stored in RAM, so the smallest N that fits gives the best speed.
+The exact number depends on your card; watch the VRAM figure printed at startup.
+
+### Context size: `-c`
+
+The server starts with a 4096-token context, which is short for a tutoring
+conversation. Extend it at launch, for example `-c 8192`. A larger context uses
+more RAM and VRAM. Set the same value in the Zed configuration (next section);
+the two must agree.
+
+## Connecting the server to Zed
+
+Start the server first, with `--reasoning-preserve` and the `-c` value you chose.
+In Zed, add an *OpenAI-compatible* provider from the Agent settings
+(`agent: open settings`, *Add Provider*): API URL
+`http://127.0.0.1:8002/v1`, model `Ling-3.0-tiny`. Any API key works (`local`),
+since llama.cpp does not validate it.
+
+The same provider in `settings.json`:
+
+```json
+{
+  "language_models": {
+    "openai_compatible": {
+      "llamacpp": {
+        "api_url": "http://127.0.0.1:8002/v1",
+        "available_models": [
+          {
+            "name": "Ling-3.0-tiny",
+            "display_name": "Ling 3.0 Tiny (local)",
+            "max_tokens": 8192,
+            "max_output_tokens": 2048,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+              "chat_completions": true,
+              "interleaved_reasoning": true,
+              "max_tokens_parameter": true
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+Meaningful fields for this endpoint:
+
+- `api_url`: the OpenAI-compatible base URL of the local server.
+- `capabilities.chat_completions: true`: use the `/chat/completions` endpoint.
+- `capabilities.interleaved_reasoning: true`: send the reasoning trace back to
+  the model as a dedicated `reasoning_content` field on the next turn. This flag
+  is required here. The server stores the thinking trace in `reasoning_content`
+  (enabled by `--reasoning-preserve`); dropping the trace between turns degrades
+  the tutor's thread noticeably. Zed re-injects it, the same mechanism as a
+  scripted multi-turn exchange.
+- `capabilities.max_tokens_parameter: true`: send the output-token limit as
+  `max_tokens`, which llama.cpp expects, instead of `max_completion_tokens`.
+- `max_tokens`: the model's context window. Set it to the `-c` value you pass at
+  launch; the two must match.
+
+Select **Ling-3.0-tiny** in the Agent panel. The model reasons by default, and
+Zed shows the trace (thinking) as it does for other reasoning models.

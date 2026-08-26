@@ -708,5 +708,65 @@
     "crumbs": [
       "<span class='chapter-number'>15</span>  <span class='chapter-title'>References</span>"
     ]
+  },
+  {
+    "objectID": "appendix-local-llm.html",
+    "href": "appendix-local-llm.html",
+    "title": "16  Appendix: Running the local model from the USB key",
+    "section": "",
+    "text": "16.1 What the key contains\nA USB key distributed in session carries a portable install of llama.cpp with the Ling-3.0-tiny model, ready to serve an OpenAI-compatible API on your machine. This appendix gives the exact launch commands for Windows and macOS, explains how to tune the server when a machine is low on VRAM, and shows how to connect the server to Zed.\nThe model card is https://huggingface.co/inclusionAI/Ling-3.0-tiny. The GGUF files are published at https://huggingface.co/bloomer010/Ling-3.0-tiny-GGUF.\nHardware expectations match Option 3 of the prerequisites: about 16 GB of RAM, or a GPU with ~6 GB of VRAM for the offload settings below. At Q4_K_M the whole model fits in memory; the server also reserves memory for the conversation context, which grows with the -c value.",
+    "crumbs": [
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Appendix: Running the local model from the USB key</span>"
+    ]
+  },
+  {
+    "objectID": "appendix-local-llm.html#what-the-key-contains",
+    "href": "appendix-local-llm.html#what-the-key-contains",
+    "title": "16  Appendix: Running the local model from the USB key",
+    "section": "",
+    "text": "usb-llama/\n├── model/\n│   └── Ling-3.0-tiny-Q4_K_M.gguf   # the model, ~4.5 GB\n├── mac-arm64/                      # macOS Apple Silicon (Metal GPU)\n├── mac-x64/                        # macOS Intel (CPU)\n├── win-vulkan/                     # Windows, Vulkan GPU\n├── win-cpu/                        # Windows, CPU\n├── run-mac.command                 # macOS: double-click\n├── run-mac.sh                      # macOS: launch from a terminal\n├── run-windows.bat                 # Windows: double-click\n└── README.md                       # quick guide (in French)\n\n\n\n\n\n\n\nProperty\nValue\n\n\n\n\nModel\nLing-3.0-tiny\n\n\nArchitecture\nSparse mixture-of-experts (bailingmoe3)\n\n\nParameters\n7.9B total, 1.3B active per token\n\n\nContext window\n256K native (262,144 tokens), output up to 32,768 tokens\n\n\nQuantization\nQ4_K_M (~4.5 GB file)\n\n\nLanguages\nEnglish, Chinese\n\n\nllama.cpp build\nb10639 (includes bailingmoe3 support)",
+    "crumbs": [
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Appendix: Running the local model from the USB key</span>"
+    ]
+  },
+  {
+    "objectID": "appendix-local-llm.html#copy-the-folder-first",
+    "href": "appendix-local-llm.html#copy-the-folder-first",
+    "title": "16  Appendix: Running the local model from the USB key",
+    "section": "16.2 Copy the folder first",
+    "text": "16.2 Copy the folder first\nThe USB key transports the folder; do not run anything from it. Copy the whole folder to your disk (Desktop, Documents, …) and launch the server from that local copy. The key is formatted exFAT, which both Windows and macOS read; the folder works identically once copied.",
+    "crumbs": [
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Appendix: Running the local model from the USB key</span>"
+    ]
+  },
+  {
+    "objectID": "appendix-local-llm.html#starting-the-server",
+    "href": "appendix-local-llm.html#starting-the-server",
+    "title": "16  Appendix: Running the local model from the USB key",
+    "section": "16.3 Starting the server",
+    "text": "16.3 Starting the server\n\n16.3.1 macOS\nDouble-click run-mac.command. If macOS blocks the double-click, open a Terminal in the folder and run bash run-mac.sh. The script selects mac-arm64 (Apple Silicon, Metal) or mac-x64 (Intel, CPU) and opens the web interface once the server is ready.\nEquivalent invocation on Apple Silicon:\n./mac-arm64/llama-server -m ./model/Ling-3.0-tiny-Q4_K_M.gguf \\\n  --reasoning-preserve -ngl 999 --port 8002\n\n\n16.3.2 Windows\nDouble-click run-windows.bat. The script probes the real GPU devices (--list-devices): if a Vulkan device is available (NVIDIA, AMD, or Intel), it uses win-vulkan with full GPU offload; otherwise it falls back to win-cpu. To force a backend, create an empty file named USE_VULKAN or USE_CPU in the folder.\nEquivalent invocation with the Vulkan backend:\nwin-vulkan\\llama-server.exe -m .\\model\\Ling-3.0-tiny-Q4_K_M.gguf --reasoning-preserve -ngl 999 --port 8002\n\n\n16.3.3 Verifying that it runs\n\nWeb interface: http://127.0.0.1:8002\nHealth: http://127.0.0.1:8002/health → {\"status\":\"ok\"}\nOpenAI-compatible API: http://127.0.0.1:8002/v1\n\nThe default port is 8002; if it is busy, the scripts switch to 8010 and print the address. Stop the server with Ctrl+C. Prefer 127.0.0.1 over localhost in tools and scripts: localhost may resolve to IPv6 ::1, which llama.cpp does not listen on by default.",
+    "crumbs": [
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Appendix: Running the local model from the USB key</span>"
+    ]
+  },
+  {
+    "objectID": "appendix-local-llm.html#tuning-the-server",
+    "href": "appendix-local-llm.html#tuning-the-server",
+    "title": "16  Appendix: Running the local model from the USB key",
+    "section": "16.4 Tuning the server",
+    "text": "16.4 Tuning the server\n\n\n\n\n\n\n\nFlag\nEffect\n\n\n\n\n-m PATH\nModel file to load\n\n\n--reasoning-preserve\nKeep the model’s reasoning trace in reasoning_content (required for the Zed setup below)\n\n\n-ngl N\nLayers offloaded to the GPU; 999 = all\n\n\n--n-cpu-moe N (-ncmoe N)\nMoE expert layers kept in system RAM (VRAM savings)\n\n\n-c N\nContext length in tokens (default 4096)\n\n\n--port N\nServer port (scripts use 8002, fallback 8010)\n\n\n\n\n16.4.1 GPU offload: -ngl 999\n-ngl 999 pushes every layer to the GPU (Vulkan on Windows, Metal on Apple Silicon). On the demo machine it ran about 2× faster than CPU. With the GPU backend, always keep -ngl 999; on a GPU short on VRAM, reduce the memory of the experts instead, not the number of GPU layers.\n\n\n16.4.2 MoE offload for low VRAM: --n-cpu-moe\nLing-3.0-tiny is a mixture-of-experts model: it stores 7.9B parameters but only activates ~1.3B per token. The server keeps all expert weights in memory, and by default tries to place everything in VRAM. When the 4.5 GB model does not fit on the card, --n-cpu-moe N (short form -ncmoe N) keeps the expert weights of the top N layers in system RAM, while attention, the router, and the shared experts stay on the GPU.\nllama-server -m ./model/Ling-3.0-tiny-Q4_K_M.gguf --reasoning-preserve -ngl 999 -ncmoe 24 --port 8002\nTuning rule: raise N until the model loads without spilling VRAM, then step back one notch. Each layer moved to the CPU makes token generation slower when a token picks an expert stored in RAM, so the smallest N that fits gives the best speed. The exact number depends on your card; watch the VRAM figure printed at startup.\n\n\n16.4.3 Context size: -c\nThe server starts with a 4096-token context, which is short for a tutoring conversation. Extend it at launch, for example -c 8192. A larger context uses more RAM and VRAM. Set the same value in the Zed configuration (next section); the two must agree.",
+    "crumbs": [
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Appendix: Running the local model from the USB key</span>"
+    ]
+  },
+  {
+    "objectID": "appendix-local-llm.html#connecting-the-server-to-zed",
+    "href": "appendix-local-llm.html#connecting-the-server-to-zed",
+    "title": "16  Appendix: Running the local model from the USB key",
+    "section": "16.5 Connecting the server to Zed",
+    "text": "16.5 Connecting the server to Zed\nStart the server first, with --reasoning-preserve and the -c value you chose. In Zed, add an OpenAI-compatible provider from the Agent settings (agent: open settings, Add Provider): API URL http://127.0.0.1:8002/v1, model Ling-3.0-tiny. Any API key works (local), since llama.cpp does not validate it.\nThe same provider in settings.json:\n{\n  \"language_models\": {\n    \"openai_compatible\": {\n      \"llamacpp\": {\n        \"api_url\": \"http://127.0.0.1:8002/v1\",\n        \"available_models\": [\n          {\n            \"name\": \"Ling-3.0-tiny\",\n            \"display_name\": \"Ling 3.0 Tiny (local)\",\n            \"max_tokens\": 8192,\n            \"max_output_tokens\": 2048,\n            \"capabilities\": {\n              \"tools\": true,\n              \"images\": false,\n              \"parallel_tool_calls\": false,\n              \"prompt_cache_key\": false,\n              \"chat_completions\": true,\n              \"interleaved_reasoning\": true,\n              \"max_tokens_parameter\": true\n            }\n          }\n        ]\n      }\n    }\n  }\n}\nMeaningful fields for this endpoint:\n\napi_url: the OpenAI-compatible base URL of the local server.\ncapabilities.chat_completions: true: use the /chat/completions endpoint.\ncapabilities.interleaved_reasoning: true: send the reasoning trace back to the model as a dedicated reasoning_content field on the next turn. This flag is required here. The server stores the thinking trace in reasoning_content (enabled by --reasoning-preserve); dropping the trace between turns degrades the tutor’s thread noticeably. Zed re-injects it, the same mechanism as a scripted multi-turn exchange.\ncapabilities.max_tokens_parameter: true: send the output-token limit as max_tokens, which llama.cpp expects, instead of max_completion_tokens.\nmax_tokens: the model’s context window. Set it to the -c value you pass at launch; the two must match.\n\nSelect Ling-3.0-tiny in the Agent panel. The model reasons by default, and Zed shows the trace (thinking) as it does for other reasoning models.",
+    "crumbs": [
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Appendix: Running the local model from the USB key</span>"
+    ]
   }
 ]
