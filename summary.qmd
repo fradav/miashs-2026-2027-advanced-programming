@@ -12,21 +12,7 @@ The single theme of the course fits in one sentence: parallelizing means decompo
 speed up, but every decomposition has a cost (scheduling, communication, memory,
 synchronization). The speed curve is never linear in the number of workers.
 
-```{mermaid}
-flowchart TD
-    A[Sequential problem] --> B[Identify the bottleneck]
-    B --> C{I/O or CPU?}
-    C -->|I/O| D[asyncio<br>M1]
-    C -->|CPU, processes| E[multiprocessing + locks<br>M2]
-    C -->|CPU, large volumes| F[Dask / Ray<br>M3]
-    C -->|mathematical computation| G[SIMD vectorization<br>M4]
-    C -->|massive parallelism| H[GPU / WebGPU<br>M5 / M6]
-    D --> I[Measure and justify the gain]
-    E --> I
-    F --> I
-    G --> I
-    H --> I
-```
+![The module-choice decision map.](images/module_choice.svg)
 
 ## Map of the 6 modules
 

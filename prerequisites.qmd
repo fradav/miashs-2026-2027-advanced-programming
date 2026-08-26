@@ -74,15 +74,7 @@ chat, Google AI Studio), which shortens the comparison.
 Options 1–4 wire a model into Zed's Agent panel through an OpenAI-compatible API; option 5
 uses a chatbot in the browser, without Zed.
 
-```{mermaid}
-flowchart LR
-    YOU[Your laptop] --> ZED[Zed Agent panel]
-    ZED --> O1[Option 1 — OpenRouter<br>one key, dozens of free models]
-    ZED --> O2[Option 2 — Mistral<br>free key, all Mistral models]
-    ZED --> O3[Option 3 — local model<br>llama.cpp / LM Studio, offline]
-    ZED --> O4[Option 4 — other free APIs<br>Groq, GitHub Models, AI Studio]
-    YOU --> O5[Option 5 — web chatbot<br>DeepSeek et al, in the browser, no API]
-```
+![Five ways to run an AI tutor — all free.](images/prereq_5_options.svg)
 
 ### Option 1 — OpenRouter API (recommended)
 
@@ -90,15 +82,7 @@ flowchart LR
 of models** (Llama, Qwen, Gemma, DeepSeek, gpt-oss, Nemotron…) through a single
 OpenAI-compatible API.
 
-```{mermaid}
-flowchart LR
-    Z[Zed<br>OpenAI-compatible provider] --> R[OpenRouter<br>https://openrouter.ai/api/v1]
-    R --> M1[Llama :free]
-    R --> M2[Qwen :free]
-    R --> M3[Gemma :free]
-    R --> M4[DeepSeek :free]
-    R --> MX[the catalog changes over time]
-```
+![OpenRouter: one key, many `:free` models.](images/prereq_openrouter.svg)
 
 #### Set up the key in Zed
 
@@ -151,12 +135,7 @@ Mistral "La Plateforme" offers a free Experiment plan: access to **all models** 
 Small, Medium, Large, Codestral, Magistral…), no credit card, but a phone verification is
 required.
 
-```{mermaid}
-flowchart TD
-    Z[Zed<br>OpenAI-compatible provider] --> M[Mistral<br>https://api.mistral.ai/v1]
-    M --> S[mistral-small-latest<br>reasoning_effort: high]
-    M --> D[mistral-medium-3-5<br>reasoning_effort: high]
-```
+![Mistral: a free key for all models, reasoning on.](images/prereq_mistral.svg)
 
 #### Set up the key in Zed
 

@@ -112,9 +112,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 </head>
@@ -502,44 +499,20 @@ Guide me with one question at a time; give me the answer only when
 I am stuck. Keep your replies short.</code></pre>
 <p>Run this prompt, then variants of your own, on the models you hesitate between, and judge on what a tutor does for you: does it let you think before it answers, and do its explanations hold? Some consoles compare models side by side on the same prompt (OpenRouter chat, Google AI Studio), which shortens the comparison.</p>
 <p>Options 1–4 wire a model into Zed’s Agent panel through an OpenAI-compatible API; option 5 uses a chatbot in the browser, without Zed.</p>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-    YOU[Your laptop] --&gt; ZED[Zed Agent panel]
-    ZED --&gt; O1[Option 1 — OpenRouter&lt;br&gt;one key, dozens of free models]
-    ZED --&gt; O2[Option 2 — Mistral&lt;br&gt;free key, all Mistral models]
-    ZED --&gt; O3[Option 3 — local model&lt;br&gt;llama.cpp / LM Studio, offline]
-    ZED --&gt; O4[Option 4 — other free APIs&lt;br&gt;Groq, GitHub Models, AI Studio]
-    YOU --&gt; O5[Option 5 — web chatbot&lt;br&gt;DeepSeek et al, in the browser, no API]
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>Five ways to run an AI tutor — all free.</figcaption>
+<p><img src="images/prereq_5_options.svg" class="img-fluid figure-img"></p>
+</figure>
 </div>
 <section id="option-1-openrouter-api-recommended" class="level3" data-number="2.3.1">
 <h3 data-number="2.3.1" class="anchored" data-anchor-id="option-1-openrouter-api-recommended"><span class="header-section-number">2.3.1</span> Option 1 — OpenRouter API (recommended)</h3>
 <p><a href="https://openrouter.ai/">OpenRouter</a> is an aggregator: <strong>one API key gives access to dozens of models</strong> (Llama, Qwen, Gemma, DeepSeek, gpt-oss, Nemotron…) through a single OpenAI-compatible API.</p>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-    Z[Zed&lt;br&gt;OpenAI-compatible provider] --&gt; R[OpenRouter&lt;br&gt;https://openrouter.ai/api/v1]
-    R --&gt; M1[Llama :free]
-    R --&gt; M2[Qwen :free]
-    R --&gt; M3[Gemma :free]
-    R --&gt; M4[DeepSeek :free]
-    R --&gt; MX[the catalog changes over time]
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>OpenRouter: one key, many <code>:free</code> models.</figcaption>
+<p><img src="images/prereq_openrouter.svg" class="img-fluid figure-img"></p>
+</figure>
 </div>
 <section id="set-up-the-key-in-zed" class="level4">
 <h4 class="anchored" data-anchor-id="set-up-the-key-in-zed">Set up the key in Zed</h4>
@@ -599,20 +572,11 @@ I am stuck. Keep your replies short.</code></pre>
 <section id="option-2-mistral-api-free-key" class="level3" data-number="2.3.2">
 <h3 data-number="2.3.2" class="anchored" data-anchor-id="option-2-mistral-api-free-key"><span class="header-section-number">2.3.2</span> Option 2 — Mistral API (free key)</h3>
 <p>Mistral “La Plateforme” offers a free Experiment plan: access to <strong>all models</strong> (Mistral Small, Medium, Large, Codestral, Magistral…), no credit card, but a phone verification is required.</p>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart TD
-    Z[Zed&lt;br&gt;OpenAI-compatible provider] --&gt; M[Mistral&lt;br&gt;https://api.mistral.ai/v1]
-    M --&gt; S[mistral-small-latest&lt;br&gt;reasoning_effort: high]
-    M --&gt; D[mistral-medium-3-5&lt;br&gt;reasoning_effort: high]
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>Mistral: a free key for all models, reasoning on.</figcaption>
+<p><img src="images/prereq_mistral.svg" class="img-fluid figure-img"></p>
+</figure>
 </div>
 <section id="set-up-the-key-in-zed-1" class="level4">
 <h4 class="anchored" data-anchor-id="set-up-the-key-in-zed-1">Set up the key in Zed</h4>

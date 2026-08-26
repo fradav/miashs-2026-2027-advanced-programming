@@ -77,9 +77,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 </head>
@@ -426,29 +423,11 @@ ul.task-list li input[type="checkbox"] {
 <section id="the-thread-parallelism-is-not-free" class="level2" data-number="14.1">
 <h2 data-number="14.1" class="anchored" data-anchor-id="the-thread-parallelism-is-not-free"><span class="header-section-number">14.1</span> The thread: parallelism is not free</h2>
 <p>The single theme of the course fits in one sentence: parallelizing means decomposing to speed up, but every decomposition has a cost (scheduling, communication, memory, synchronization). The speed curve is never linear in the number of workers.</p>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart TD
-    A[Sequential problem] --&gt; B[Identify the bottleneck]
-    B --&gt; C{I/O or CPU?}
-    C --&gt;|I/O| D[asyncio&lt;br&gt;M1]
-    C --&gt;|CPU, processes| E[multiprocessing + locks&lt;br&gt;M2]
-    C --&gt;|CPU, large volumes| F[Dask / Ray&lt;br&gt;M3]
-    C --&gt;|mathematical computation| G[SIMD vectorization&lt;br&gt;M4]
-    C --&gt;|massive parallelism| H[GPU / WebGPU&lt;br&gt;M5 / M6]
-    D --&gt; I[Measure and justify the gain]
-    E --&gt; I
-    F --&gt; I
-    G --&gt; I
-    H --&gt; I
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>The module-choice decision map.</figcaption>
+<p><img src="images/module_choice.svg" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </section>
 <section id="map-of-the-6-modules" class="level2" data-number="14.2">
