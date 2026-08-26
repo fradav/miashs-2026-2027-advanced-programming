@@ -39,6 +39,7 @@ book:
 
   appendices:
     - appendix-local-llm.qmd
+    - appendix-slides.qmd
 
 bibliography: references.bib
 csl: ieee.csl

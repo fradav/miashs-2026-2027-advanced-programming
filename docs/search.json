@@ -774,5 +774,38 @@
       "Appendices",
       "<span class='chapter-number'>A</span>  <span class='chapter-title'>Running the local model from the USB key</span>"
     ]
+  },
+  {
+    "objectID": "appendix-slides.html",
+    "href": "appendix-slides.html",
+    "title": "Appendix B — Slides",
+    "section": "",
+    "text": "B.1 Session 1 — module setup, track choice, AI policy\nEach session ships a standalone reveal.js deck with the same content as the corresponding chapters. The slides open full-screen in your browser: use the arrow keys (or the on-screen controls) to navigate, F for full-screen and S for the presenter notes — the notes include what to say and where to pause.\nOpen the Session 1 slides",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Slides</span>"
+    ]
+  },
+  {
+    "objectID": "appendix-slides.html#session-1-module-setup-track-choice-ai-policy",
+    "href": "appendix-slides.html#session-1-module-setup-track-choice-ai-policy",
+    "title": "Appendix B — Slides",
+    "section": "",
+    "text": "Structure of the module, technical program and calendar.\nThe survey run in session and how it shapes the course.\nTrack A / Track B choice and the AI use policy.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Slides</span>"
+    ]
+  },
+  {
+    "objectID": "appendix-slides.html#session-2-designing-an-ai-tutor-principles-demo",
+    "href": "appendix-slides.html#session-2-designing-an-ai-tutor-principles-demo",
+    "title": "Appendix B — Slides",
+    "section": "B.2 Session 2 — designing an AI tutor: principles & demo",
+    "text": "B.2 Session 2 — designing an AI tutor: principles & demo\nOpen the Session 2 slides\n\nReturns the survey results from the room: equipment, existing usage, and how students feel about large language models.\nWhy a configured tutor beats a plain model — system prompt, syllabus.\nTwo prompts side by side, a live demo, and how to spot a false (or harmful) answer.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Slides</span>"
+    ]
   }
 ]

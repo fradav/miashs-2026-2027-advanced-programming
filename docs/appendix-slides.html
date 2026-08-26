@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9&nbsp; Module 3 — Distributed Computing – Advanced Programming and Parallel Computing</title>
+<title>Appendix B — Slides – Advanced Programming and Parallel Computing</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -29,27 +29,26 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../Courses/04_simd.html" rel="next">
-<link href="../Courses/02_ipc-locks.html" rel="prev">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-af28502ac8d036ed35c2b305f0f54fbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-3bbd6a9bbbe52288d7dadd4871a2e2aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./appendix-local-llm.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-af28502ac8d036ed35c2b305f0f54fbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-3bbd6a9bbbe52288d7dadd4871a2e2aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -259,7 +258,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Courses/03_distributed.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 3 — Distributed Computing</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./appendix-local-llm.html">Appendices</a></li><li class="breadcrumb-item"><a href="./appendix-slides.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Slides</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -274,7 +273,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Advanced Programming and Parallel Computing</a> 
+      <a href="./">Advanced Programming and Parallel Computing</a> 
         <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -289,91 +288,91 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../prerequisites.html" class="sidebar-item-text sidebar-link">
+  <a href="./prerequisites.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Prerequisites</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../teaching-design.html" class="sidebar-item-text sidebar-link">
+  <a href="./teaching-design.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The pedagogical design</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../ai-tutor.html" class="sidebar-item-text sidebar-link">
+  <a href="./ai-tutor.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Designing an AI tutor</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../learning-plan.html" class="sidebar-item-text sidebar-link">
+  <a href="./learning-plan.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Planning your learning</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/00_intro-parallelism.html" class="sidebar-item-text sidebar-link">
+  <a href="./Courses/00_intro-parallelism.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction to Parallelism</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/01_asynchronous.html" class="sidebar-item-text sidebar-link">
+  <a href="./Courses/01_asynchronous.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 1 — Asynchronous and Concurrency</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/02_ipc-locks.html" class="sidebar-item-text sidebar-link">
+  <a href="./Courses/02_ipc-locks.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 2 — IPC &amp; Locks</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/03_distributed.html" class="sidebar-item-text sidebar-link active">
+  <a href="./Courses/03_distributed.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 3 — Distributed Computing</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/04_simd.html" class="sidebar-item-text sidebar-link">
+  <a href="./Courses/04_simd.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 4 — SIMD and Vectorization</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/05_gpu.html" class="sidebar-item-text sidebar-link">
+  <a href="./Courses/05_gpu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Module 5 — GPU</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/06_webgpu.html" class="sidebar-item-text sidebar-link">
+  <a href="./Courses/06_webgpu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Module 6 — WebGPU</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../projects.html" class="sidebar-item-text sidebar-link">
+  <a href="./projects.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Final project</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../summary.html" class="sidebar-item-text sidebar-link">
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Module summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../references.html" class="sidebar-item-text sidebar-link">
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">References</span></span></a>
   </div>
 </li>
@@ -388,13 +387,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../appendix-local-llm.html" class="sidebar-item-text sidebar-link">
+  <a href="./appendix-local-llm.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Running the local model from the USB key</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../appendix-slides.html" class="sidebar-item-text sidebar-link">
+  <a href="./appendix-slides.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Slides</span></span></a>
   </div>
 </li>
@@ -410,8 +409,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#key-points" id="toc-key-points" class="nav-link active" data-scroll-target="#key-points"><span class="header-section-number">9.1</span> Key points</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">9.2</span> Exercises</a></li>
+  <li><a href="#session-1-module-setup-track-choice-ai-policy" id="toc-session-1-module-setup-track-choice-ai-policy" class="nav-link active" data-scroll-target="#session-1-module-setup-track-choice-ai-policy"><span class="header-section-number">B.1</span> Session 1 — module setup, track choice, AI policy</a></li>
+  <li><a href="#session-2-designing-an-ai-tutor-principles-demo" id="toc-session-2-designing-an-ai-tutor-principles-demo" class="nav-link" data-scroll-target="#session-2-designing-an-ai-tutor-principles-demo"><span class="header-section-number">B.2</span> Session 2 — designing an AI tutor: principles &amp; demo</a></li>
   </ul>
 </nav>
     </div>
@@ -419,10 +418,9 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./appendix-local-llm.html">Appendices</a></li><li class="breadcrumb-item"><a href="./appendix-slides.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Slides</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 3 — Distributed Computing</span></h1>
-<p class="subtitle lead">Dask, Ray, delayed, schedulers</p>
+<h1 class="title">Appendix B — Slides</h1>
 </div>
 
 
@@ -439,34 +437,24 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Objectives (observable criteria):</p>
+<p>Each session ships a standalone reveal.js deck with the same content as the corresponding chapters. The slides open full-screen in your browser: use the arrow keys (or the on-screen controls) to navigate, <code>F</code> for full-screen and <code>S</code> for the presenter notes — the notes include what to say and where to pause.</p>
+<section id="session-1-module-setup-track-choice-ai-policy" class="level2" data-number="B.1">
+<h2 data-number="B.1" class="anchored" data-anchor-id="session-1-module-setup-track-choice-ai-policy"><span class="header-section-number">B.1</span> Session 1 — module setup, track choice, AI policy</h2>
+<p><a href="slides/2026-08-26-seance-1-slides.html">Open the Session 1 slides</a></p>
 <ul>
-<li>Build a <strong>lazy</strong> computation pipeline with <code>dask.delayed</code> and trigger it with <code>.compute()</code>.</li>
-<li>Explain the difference between <em>graph-based</em> (Dask) and <em>actor-based</em> (Ray) computing, and choose the right tool.</li>
-<li>Describe the <strong>MapReduce / Split-Apply-Combine</strong> pattern and recognize it in a problem.</li>
-<li>List and apply <code>dask.delayed</code> best practices (no mutation, no global state, no side effects).</li>
-</ul>
-<p>Resources: chapters <code>05_Distributed.qmd</code>, <code>06_Dask-Ray.qmd</code> and <code>07_Dask-delayed.qmd</code> from last year’s course; official documentation <a href="https://docs.dask.org/en/stable/delayed.html"><code>dask</code></a> and <a href="https://docs.ray.io/en/latest/">Ray</a>.</p>
-<section id="key-points" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="key-points"><span class="header-section-number">9.1</span> Key points</h2>
-<ul>
-<li><strong>MapReduce / Split-Apply-Combine</strong>: break the problem into <em>chunks</em> (split), process each chunk independently (map/apply), then <em>merge</em> the partial results (reduce/combine). Canonical application: word count.</li>
-<li><strong>Dask resembles numpy/pandas but lazy</strong>: <code>delayed</code>, <code>bag</code>, <code>dataframe</code>, <code>array</code> build a <strong>task graph</strong>; nothing runs before <code>.compute()</code>. Scheduler (threads, processes, distributed).</li>
-<li><strong><code>dask.delayed</code></strong>: turns a function into a <em>task</em> evaluated lazily; the graph nests and <code>.compute()</code> orchestrates the dependencies.</li>
-<li><strong>Ray</strong>: actor model, state preserved between calls (<code>@ray.remote</code> on a class), plus <em>futures</em>; designed for stateful services and large-scale parallelism.</li>
-<li><strong><code>delayed</code> best practices</strong>: call <code>delayed</code> on the <em>function</em>, not on the result; do not mutate inputs; avoid global state and side effects; split into small tasks but not too small; do not use <code>delayed</code> inside an already-<code>delayed</code> function; do not apply <code>delayed</code> to other Dask collections.</li>
-<li><strong>Pitfalls</strong>: data serialization between workers (<code>pickle</code>), saturated scheduler, <em>lazy vs eager</em> confusion (forgetting <code>.compute()</code>), too many tiny tasks (scheduling overhead).</li>
+<li>Structure of the module, technical program and calendar.</li>
+<li>The survey run in session and how it shapes the course.</li>
+<li>Track A / Track B choice and the AI use policy.</li>
 </ul>
 </section>
-<section id="exercises" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="exercises"><span class="header-section-number">9.2</span> Exercises</h2>
-<ol type="1">
-<li><strong>Distributed word count</strong>: count the words of a set of text files with <code>dask.bag</code> (<code>map</code> + <code>foldby</code>, or the equivalent), then with a list of files and <code>delayed</code>. Compare times on a single file, then on several.</li>
-<li><strong>Lazy pipeline</strong>: write 3–4 functions (read → clean → compute → aggregate), chain them with <code>delayed</code>, check that no computation happens before <code>.compute()</code> (how can you tell?), then trigger it.</li>
-<li><strong>Dask vs Ray</strong>: the same computation (sum of numbers, or incrementing a counter) written with Dask, then with Ray (<code>@ray.remote</code> + actor). Compare the paradigms: graph vs state.</li>
-<li><strong>Best practices</strong>: start from a <code>delayed</code> function that mutates a global list or a shared array, show the bug (result that depends on order), then fix it by <em>returning</em> the values. Justify the fix.</li>
-<li>(Track A) Have your tutor explain “why should you not call <code>delayed</code> on other Dask collections?” and “what is the difference between threads and processes for the scheduler?”. Check each answer against the official documentation. (Track B) Prepare a mini live-coding: turn a sequential loop into a Dask graph, show the gain, and the case where Dask brings nothing.</li>
-</ol>
+<section id="session-2-designing-an-ai-tutor-principles-demo" class="level2" data-number="B.2">
+<h2 data-number="B.2" class="anchored" data-anchor-id="session-2-designing-an-ai-tutor-principles-demo"><span class="header-section-number">B.2</span> Session 2 — designing an AI tutor: principles &amp; demo</h2>
+<p><a href="slides/2026-08-27-seance-2-slides.html">Open the Session 2 slides</a></p>
+<ul>
+<li>Returns the survey results from the room: equipment, existing usage, and how students feel about large language models.</li>
+<li>Why a <em>configured</em> tutor beats a plain model — system prompt, syllabus.</li>
+<li>Two prompts side by side, a live demo, and how to spot a false (or harmful) answer.</li>
+</ul>
 
 
 </section>
@@ -887,14 +875,11 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../Courses/02_ipc-locks.html" class="pagination-link" aria-label="Module 2 — IPC &amp; Locks">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 2 — IPC &amp; Locks</span></span>
+      <a href="./appendix-local-llm.html" class="pagination-link" aria-label="Running the local model from the USB key">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Running the local model from the USB key</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../Courses/04_simd.html" class="pagination-link" aria-label="Module 4 — SIMD and Vectorization">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 4 — SIMD and Vectorization</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

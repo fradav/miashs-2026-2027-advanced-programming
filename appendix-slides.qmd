@@ -1,0 +1,24 @@
+# Slides
+
+Each session ships a standalone reveal.js deck with the same content as the
+corresponding chapters. The slides open full-screen in your browser: use the
+arrow keys (or the on-screen controls) to navigate, `F` for full-screen and `S`
+for the presenter notes — the notes include what to say and where to pause.
+
+## Session 1 — module setup, track choice, AI policy
+
+[Open the Session 1 slides](slides/2026-08-26-seance-1-slides.html)
+
+- Structure of the module, technical program and calendar.
+- The survey run in session and how it shapes the course.
+- Track A / Track B choice and the AI use policy.
+
+## Session 2 — designing an AI tutor: principles & demo
+
+[Open the Session 2 slides](slides/2026-08-27-seance-2-slides.html)
+
+- Returns the survey results from the room: equipment, existing usage, and how
+  students feel about large language models.
+- Why a *configured* tutor beats a plain model — system prompt, syllabus.
+- Two prompts side by side, a live demo, and how to spot a false (or harmful)
+  answer.
