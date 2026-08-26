@@ -1,4 +1,4 @@
-# Appendix: Running the local model from the USB key
+# Running the local model from the USB key
 
 A USB key distributed in session carries a portable install of
 [llama.cpp](https://github.com/ggml-org/llama.cpp) with the **Ling-3.0-tiny**

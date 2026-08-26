@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>16&nbsp; Appendix: Running the local model from the USB key – Advanced Programming and Parallel Computing</title>
+<title>Appendix A — Running the local model from the USB key – Advanced Programming and Parallel Computing</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -293,7 +293,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./appendix-local-llm.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix: Running the local model from the USB key</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./appendix-local-llm.html">Appendices</a></li><li class="breadcrumb-item"><a href="./appendix-local-llm.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Running the local model from the USB key</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -411,12 +411,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">References</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./appendix-local-llm.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix: Running the local model from the USB key</span></span></a>
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Running the local model from the USB key</span></span></a>
   </div>
 </li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -427,21 +438,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-the-key-contains" id="toc-what-the-key-contains" class="nav-link active" data-scroll-target="#what-the-key-contains"><span class="header-section-number">16.1</span> What the key contains</a></li>
-  <li><a href="#copy-the-folder-first" id="toc-copy-the-folder-first" class="nav-link" data-scroll-target="#copy-the-folder-first"><span class="header-section-number">16.2</span> Copy the folder first</a></li>
-  <li><a href="#starting-the-server" id="toc-starting-the-server" class="nav-link" data-scroll-target="#starting-the-server"><span class="header-section-number">16.3</span> Starting the server</a>
+  <li><a href="#what-the-key-contains" id="toc-what-the-key-contains" class="nav-link active" data-scroll-target="#what-the-key-contains"><span class="header-section-number">A.1</span> What the key contains</a></li>
+  <li><a href="#copy-the-folder-first" id="toc-copy-the-folder-first" class="nav-link" data-scroll-target="#copy-the-folder-first"><span class="header-section-number">A.2</span> Copy the folder first</a></li>
+  <li><a href="#starting-the-server" id="toc-starting-the-server" class="nav-link" data-scroll-target="#starting-the-server"><span class="header-section-number">A.3</span> Starting the server</a>
   <ul>
-  <li><a href="#macos" id="toc-macos" class="nav-link" data-scroll-target="#macos"><span class="header-section-number">16.3.1</span> macOS</a></li>
-  <li><a href="#windows" id="toc-windows" class="nav-link" data-scroll-target="#windows"><span class="header-section-number">16.3.2</span> Windows</a></li>
-  <li><a href="#verifying-that-it-runs" id="toc-verifying-that-it-runs" class="nav-link" data-scroll-target="#verifying-that-it-runs"><span class="header-section-number">16.3.3</span> Verifying that it runs</a></li>
+  <li><a href="#macos" id="toc-macos" class="nav-link" data-scroll-target="#macos"><span class="header-section-number">A.3.1</span> macOS</a></li>
+  <li><a href="#windows" id="toc-windows" class="nav-link" data-scroll-target="#windows"><span class="header-section-number">A.3.2</span> Windows</a></li>
+  <li><a href="#verifying-that-it-runs" id="toc-verifying-that-it-runs" class="nav-link" data-scroll-target="#verifying-that-it-runs"><span class="header-section-number">A.3.3</span> Verifying that it runs</a></li>
   </ul></li>
-  <li><a href="#tuning-the-server" id="toc-tuning-the-server" class="nav-link" data-scroll-target="#tuning-the-server"><span class="header-section-number">16.4</span> Tuning the server</a>
+  <li><a href="#tuning-the-server" id="toc-tuning-the-server" class="nav-link" data-scroll-target="#tuning-the-server"><span class="header-section-number">A.4</span> Tuning the server</a>
   <ul>
-  <li><a href="#gpu-offload--ngl-999" id="toc-gpu-offload--ngl-999" class="nav-link" data-scroll-target="#gpu-offload--ngl-999"><span class="header-section-number">16.4.1</span> GPU offload: <code>-ngl 999</code></a></li>
-  <li><a href="#moe-offload-for-low-vram---n-cpu-moe" id="toc-moe-offload-for-low-vram---n-cpu-moe" class="nav-link" data-scroll-target="#moe-offload-for-low-vram---n-cpu-moe"><span class="header-section-number">16.4.2</span> MoE offload for low VRAM: <code>--n-cpu-moe</code></a></li>
-  <li><a href="#context-size--c" id="toc-context-size--c" class="nav-link" data-scroll-target="#context-size--c"><span class="header-section-number">16.4.3</span> Context size: <code>-c</code></a></li>
+  <li><a href="#gpu-offload--ngl-999" id="toc-gpu-offload--ngl-999" class="nav-link" data-scroll-target="#gpu-offload--ngl-999"><span class="header-section-number">A.4.1</span> GPU offload: <code>-ngl 999</code></a></li>
+  <li><a href="#moe-offload-for-low-vram---n-cpu-moe" id="toc-moe-offload-for-low-vram---n-cpu-moe" class="nav-link" data-scroll-target="#moe-offload-for-low-vram---n-cpu-moe"><span class="header-section-number">A.4.2</span> MoE offload for low VRAM: <code>--n-cpu-moe</code></a></li>
+  <li><a href="#context-size--c" id="toc-context-size--c" class="nav-link" data-scroll-target="#context-size--c"><span class="header-section-number">A.4.3</span> Context size: <code>-c</code></a></li>
   </ul></li>
-  <li><a href="#connecting-the-server-to-zed" id="toc-connecting-the-server-to-zed" class="nav-link" data-scroll-target="#connecting-the-server-to-zed"><span class="header-section-number">16.5</span> Connecting the server to Zed</a></li>
+  <li><a href="#connecting-the-server-to-zed" id="toc-connecting-the-server-to-zed" class="nav-link" data-scroll-target="#connecting-the-server-to-zed"><span class="header-section-number">A.5</span> Connecting the server to Zed</a></li>
   </ul>
 </nav>
     </div>
@@ -449,9 +460,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./appendix-local-llm.html">Appendices</a></li><li class="breadcrumb-item"><a href="./appendix-local-llm.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Running the local model from the USB key</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Appendix: Running the local model from the USB key</span></h1>
+<h1 class="title">Appendix A — Running the local model from the USB key</h1>
 </div>
 
 
@@ -470,8 +481,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>A USB key distributed in session carries a portable install of <a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a> with the <strong>Ling-3.0-tiny</strong> model, ready to serve an OpenAI-compatible API on your machine. This appendix gives the exact launch commands for Windows and macOS, explains how to tune the server when a machine is low on VRAM, and shows how to connect the server to Zed.</p>
 <p>The model card is <a href="https://huggingface.co/inclusionAI/Ling-3.0-tiny" class="uri">https://huggingface.co/inclusionAI/Ling-3.0-tiny</a>. The GGUF files are published at <a href="https://huggingface.co/bloomer010/Ling-3.0-tiny-GGUF" class="uri">https://huggingface.co/bloomer010/Ling-3.0-tiny-GGUF</a>.</p>
-<section id="what-the-key-contains" class="level2" data-number="16.1">
-<h2 data-number="16.1" class="anchored" data-anchor-id="what-the-key-contains"><span class="header-section-number">16.1</span> What the key contains</h2>
+<section id="what-the-key-contains" class="level2" data-number="A.1">
+<h2 data-number="A.1" class="anchored" data-anchor-id="what-the-key-contains"><span class="header-section-number">A.1</span> What the key contains</h2>
 <pre class="text"><code>usb-llama/
 ├── model/
 │   └── Ling-3.0-tiny-Q4_K_M.gguf   # the model, ~4.5 GB
@@ -527,27 +538,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p>Hardware expectations match <a href="./prerequisites.html">Option 3</a> of the prerequisites: about 16 GB of RAM, or a GPU with ~6 GB of VRAM for the offload settings below. At Q4_K_M the whole model fits in memory; the server also reserves memory for the conversation context, which grows with the <code>-c</code> value.</p>
 </section>
-<section id="copy-the-folder-first" class="level2" data-number="16.2">
-<h2 data-number="16.2" class="anchored" data-anchor-id="copy-the-folder-first"><span class="header-section-number">16.2</span> Copy the folder first</h2>
+<section id="copy-the-folder-first" class="level2" data-number="A.2">
+<h2 data-number="A.2" class="anchored" data-anchor-id="copy-the-folder-first"><span class="header-section-number">A.2</span> Copy the folder first</h2>
 <p>The USB key transports the folder; do not run anything from it. Copy the whole folder to your disk (Desktop, Documents, …) and launch the server from that local copy. The key is formatted exFAT, which both Windows and macOS read; the folder works identically once copied.</p>
 </section>
-<section id="starting-the-server" class="level2" data-number="16.3">
-<h2 data-number="16.3" class="anchored" data-anchor-id="starting-the-server"><span class="header-section-number">16.3</span> Starting the server</h2>
-<section id="macos" class="level3" data-number="16.3.1">
-<h3 data-number="16.3.1" class="anchored" data-anchor-id="macos"><span class="header-section-number">16.3.1</span> macOS</h3>
+<section id="starting-the-server" class="level2" data-number="A.3">
+<h2 data-number="A.3" class="anchored" data-anchor-id="starting-the-server"><span class="header-section-number">A.3</span> Starting the server</h2>
+<section id="macos" class="level3" data-number="A.3.1">
+<h3 data-number="A.3.1" class="anchored" data-anchor-id="macos"><span class="header-section-number">A.3.1</span> macOS</h3>
 <p>Double-click <code>run-mac.command</code>. If macOS blocks the double-click, open a Terminal in the folder and run <code>bash run-mac.sh</code>. The script selects <code>mac-arm64</code> (Apple Silicon, Metal) or <code>mac-x64</code> (Intel, CPU) and opens the web interface once the server is ready.</p>
 <p>Equivalent invocation on Apple Silicon:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./mac-arm64/llama-server</span> <span class="at">-m</span> ./model/Ling-3.0-tiny-Q4_K_M.gguf <span class="dt">\</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--reasoning-preserve</span> <span class="at">-ngl</span> 999 <span class="at">--port</span> 8002</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="windows" class="level3" data-number="16.3.2">
-<h3 data-number="16.3.2" class="anchored" data-anchor-id="windows"><span class="header-section-number">16.3.2</span> Windows</h3>
+<section id="windows" class="level3" data-number="A.3.2">
+<h3 data-number="A.3.2" class="anchored" data-anchor-id="windows"><span class="header-section-number">A.3.2</span> Windows</h3>
 <p>Double-click <code>run-windows.bat</code>. The script probes the real GPU devices (<code>--list-devices</code>): if a Vulkan device is available (NVIDIA, AMD, or Intel), it uses <code>win-vulkan</code> with full GPU offload; otherwise it falls back to <code>win-cpu</code>. To force a backend, create an empty file named <code>USE_VULKAN</code> or <code>USE_CPU</code> in the folder.</p>
 <p>Equivalent invocation with the Vulkan backend:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>win-vulkan\llama-server.exe <span class="at">-m</span> .\model\Ling-3.0-tiny-Q4_K_M.gguf -<span class="at">-reasoning-preserve</span> <span class="at">-ngl</span> 999 -<span class="at">-port</span> 8002</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="verifying-that-it-runs" class="level3" data-number="16.3.3">
-<h3 data-number="16.3.3" class="anchored" data-anchor-id="verifying-that-it-runs"><span class="header-section-number">16.3.3</span> Verifying that it runs</h3>
+<section id="verifying-that-it-runs" class="level3" data-number="A.3.3">
+<h3 data-number="A.3.3" class="anchored" data-anchor-id="verifying-that-it-runs"><span class="header-section-number">A.3.3</span> Verifying that it runs</h3>
 <ul>
 <li>Web interface: <a href="http://127.0.0.1:8002" class="uri">http://127.0.0.1:8002</a></li>
 <li>Health: <a href="http://127.0.0.1:8002/health" class="uri">http://127.0.0.1:8002/health</a> → <code>{"status":"ok"}</code></li>
@@ -556,8 +567,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The default port is 8002; if it is busy, the scripts switch to 8010 and print the address. Stop the server with Ctrl+C. Prefer <code>127.0.0.1</code> over <code>localhost</code> in tools and scripts: <code>localhost</code> may resolve to IPv6 <code>::1</code>, which llama.cpp does not listen on by default.</p>
 </section>
 </section>
-<section id="tuning-the-server" class="level2" data-number="16.4">
-<h2 data-number="16.4" class="anchored" data-anchor-id="tuning-the-server"><span class="header-section-number">16.4</span> Tuning the server</h2>
+<section id="tuning-the-server" class="level2" data-number="A.4">
+<h2 data-number="A.4" class="anchored" data-anchor-id="tuning-the-server"><span class="header-section-number">A.4</span> Tuning the server</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -596,23 +607,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<section id="gpu-offload--ngl-999" class="level3" data-number="16.4.1">
-<h3 data-number="16.4.1" class="anchored" data-anchor-id="gpu-offload--ngl-999"><span class="header-section-number">16.4.1</span> GPU offload: <code>-ngl 999</code></h3>
+<section id="gpu-offload--ngl-999" class="level3" data-number="A.4.1">
+<h3 data-number="A.4.1" class="anchored" data-anchor-id="gpu-offload--ngl-999"><span class="header-section-number">A.4.1</span> GPU offload: <code>-ngl 999</code></h3>
 <p><code>-ngl 999</code> pushes every layer to the GPU (Vulkan on Windows, Metal on Apple Silicon). On the demo machine it ran about 2× faster than CPU. With the GPU backend, always keep <code>-ngl 999</code>; on a GPU short on VRAM, reduce the memory of the <em>experts</em> instead, not the number of GPU layers.</p>
 </section>
-<section id="moe-offload-for-low-vram---n-cpu-moe" class="level3" data-number="16.4.2">
-<h3 data-number="16.4.2" class="anchored" data-anchor-id="moe-offload-for-low-vram---n-cpu-moe"><span class="header-section-number">16.4.2</span> MoE offload for low VRAM: <code>--n-cpu-moe</code></h3>
+<section id="moe-offload-for-low-vram---n-cpu-moe" class="level3" data-number="A.4.2">
+<h3 data-number="A.4.2" class="anchored" data-anchor-id="moe-offload-for-low-vram---n-cpu-moe"><span class="header-section-number">A.4.2</span> MoE offload for low VRAM: <code>--n-cpu-moe</code></h3>
 <p>Ling-3.0-tiny is a mixture-of-experts model: it stores 7.9B parameters but only activates ~1.3B per token. The server keeps all expert weights in memory, and by default tries to place everything in VRAM. When the 4.5 GB model does not fit on the card, <code>--n-cpu-moe N</code> (short form <code>-ncmoe N</code>) keeps the expert weights of the top N layers in system RAM, while attention, the router, and the shared experts stay on the GPU.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">llama-server</span> <span class="at">-m</span> ./model/Ling-3.0-tiny-Q4_K_M.gguf <span class="at">--reasoning-preserve</span> <span class="at">-ngl</span> 999 <span class="at">-ncmoe</span> 24 <span class="at">--port</span> 8002</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Tuning rule: raise N until the model loads without spilling VRAM, then step back one notch. Each layer moved to the CPU makes token generation slower when a token picks an expert stored in RAM, so the smallest N that fits gives the best speed. The exact number depends on your card; watch the VRAM figure printed at startup.</p>
 </section>
-<section id="context-size--c" class="level3" data-number="16.4.3">
-<h3 data-number="16.4.3" class="anchored" data-anchor-id="context-size--c"><span class="header-section-number">16.4.3</span> Context size: <code>-c</code></h3>
+<section id="context-size--c" class="level3" data-number="A.4.3">
+<h3 data-number="A.4.3" class="anchored" data-anchor-id="context-size--c"><span class="header-section-number">A.4.3</span> Context size: <code>-c</code></h3>
 <p>The server starts with a 4096-token context, which is short for a tutoring conversation. Extend it at launch, for example <code>-c 8192</code>. A larger context uses more RAM and VRAM. Set the same value in the Zed configuration (next section); the two must agree.</p>
 </section>
 </section>
-<section id="connecting-the-server-to-zed" class="level2" data-number="16.5">
-<h2 data-number="16.5" class="anchored" data-anchor-id="connecting-the-server-to-zed"><span class="header-section-number">16.5</span> Connecting the server to Zed</h2>
+<section id="connecting-the-server-to-zed" class="level2" data-number="A.5">
+<h2 data-number="A.5" class="anchored" data-anchor-id="connecting-the-server-to-zed"><span class="header-section-number">A.5</span> Connecting the server to Zed</h2>
 <p>Start the server first, with <code>--reasoning-preserve</code> and the <code>-c</code> value you chose. In Zed, add an <em>OpenAI-compatible</em> provider from the Agent settings (<code>agent: open settings</code>, <em>Add Provider</em>): API URL <code>http://127.0.0.1:8002/v1</code>, model <code>Ling-3.0-tiny</code>. Any API key works (<code>local</code>), since llama.cpp does not validate it.</p>
 <p>The same provider in <code>settings.json</code>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
