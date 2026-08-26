@@ -15,3 +15,7 @@ page.
 
 You can browse the site like a book: use the table of contents on the left. Before the first
 session, follow the [Prerequisites](prerequisites.qmd) page to install your tooling.
+
+The [Session 1 slides](slides/2026-08-26-seance-1-slides.html) are available as a standalone
+deck (same content as the first two chapters). New to large language models? Start with this
+[short general introduction to LLMs](https://chatgpt-imag-talk-francoisdavid-collin-f46d6064936d62b9b50d038c.pages.math.cnrs.fr/).
