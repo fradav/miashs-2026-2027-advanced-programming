@@ -51,6 +51,10 @@ A *system prompt* is the text that sets the chatbot's behavior. It is built from
 6. **Context (optional)**: the material to teach. You can provide an excerpt from the
    course material, a chapter outline, or precise learning objectives.
 
+![The six blocks that compose a system prompt — role, method, anti-cheating rules,
+hallucination handling, tone and format, optional context — converging into a single
+prompt.](images/s2_prompt_anatomy.svg)
+
 ## The iteration process
 
 A system prompt is never "finished". Work loop:
@@ -68,6 +72,9 @@ A system prompt is never "finished". Work loop:
 > Logically, the prompt can even start with "do not open the topic with…". In practice, the
 > iterations are won in the details: one counter-example dialogue is often worth more than
 > ten abstract rules.
+
+![The iteration process as a loop: write a v1, test on exercises, observe the
+conversations, iterate, record the changes.](images/s2_iteration_loop.svg)
 
 ## Detecting a false (or harmful) answer
 
