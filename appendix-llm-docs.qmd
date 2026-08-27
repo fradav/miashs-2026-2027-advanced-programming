@@ -1,0 +1,69 @@
+# Local documentation packs for the AI tutor
+
+Two downloadable archives give the Zed AI tutor (the `Ask` and `Write` profiles) a
+local, searchable copy of everything it needs to teach this course. The tutor
+reads the files with `read_file` and `grep` — no network `fetch`, no external site,
+and the material stays under your control.
+
+- **llm-project.zip** — the previous course, re-edited as LLM-friendly markdown
+  (47 `.llms.md` files).
+- **python-doc.zip** — the official Python 3.12 library reference for the modules
+  the course uses, converted to markdown.
+
+Download, unzip where you keep your working files, then tell the tutor where the
+folder is (or point it there in its instructions). Each archive keeps its
+top-level folder, so the two unpack cleanly side by side.
+
+## llm-project.zip — the previous course, LLM-ready
+
+The 2024–2025 course on advanced programming and parallel computing, re-edited as
+standalone markdown chapters small enough to read or search in one pass.
+
+```text
+llm-project/
+├── llms.txt            # index of the whole pack
+├── courses/
+│   ├── Courses/        # 12 chapters (code assistant, async, IPC, distributed, SIMD, GPU, WebGPU…)
+│   └── Projects/
+├── applications/       # 14 worked applications (prompt engineering, numpy, async, IPC, numba…)
+└── solutions/          # 14 exercise solutions
+```
+
+Download: [llm-project.zip](downloads/llm-project.zip)
+
+Use it to look up how a notion was taught before, reuse an application as an
+example, or hand the tutor a concrete course reference instead of a generic
+explanation.
+
+## python-doc.zip — official Python 3.12 library docs
+
+The official CPython library reference for the modules the course relies on,
+converted to markdown. `README.md` in the archive maps each module to its course
+chapter:
+
+| Files | Content | Course chapter(s) |
+|---|---|---|
+| `asyncio` (5 files) | event loops, tasks, streams, primitives, subprocess | `01_asynchronous` |
+| `concurrent.futures` | thread/process pools | `00_intro-parallelism`, `01_asynchronous` |
+| `threading` | threads, locks | `00_intro-parallelism`, `02_ipc-locks` |
+| `multiprocessing` | processes, pipes, queues, managers, locks | `02_ipc-locks`, `03_distributed` |
+| `multiprocessing.shared_memory` | shared memory | `02_ipc-locks`, `03_distributed` |
+| `queue` | thread-safe queues | `00_intro-parallelism`, `02_ipc-locks` |
+| `socket` | sockets | `02_ipc-locks`, `03_distributed` |
+| `subprocess` | subprocesses | `00_intro-parallelism`, `02_ipc-locks` |
+
+Download: [python-doc.zip](downloads/python-doc.zip)
+
+The archive keeps `fetch_docs.py`, which regenerates the markdown from the CPython
+**3.12** sources (pinned branch, needs `pandoc`), so the text matches the Python
+that runs on the course machines.
+
+A documented limit: the SIMD, GPU, and WebGPU chapters (`04_simd`, `05_gpu`,
+`06_webgpu`) rely on libraries outside the standard library — NumPy, Numba, CuPy,
+WebGPU. Their documentation is not included here; `README.md` lists the official
+links if a tutoring session needs them.
+
+Derived from the official
+[Python 3.12 documentation](https://docs.python.org/3.12/library/), under the
+Python Software Foundation License. The `llm-project` pack is the previous
+year's teaching material, provided as-is for reference.

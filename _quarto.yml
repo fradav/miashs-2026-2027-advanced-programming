@@ -3,6 +3,7 @@ project:
   output-dir: docs
   resources:
     - slides/
+    - downloads/
 
 lang: en
 
@@ -40,6 +41,7 @@ book:
   appendices:
     - appendix-local-llm.qmd
     - appendix-slides.qmd
+    - appendix-llm-docs.qmd
 
 bibliography: references.bib
 csl: ieee.csl

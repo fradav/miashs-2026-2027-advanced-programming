@@ -807,5 +807,38 @@
       "Appendices",
       "<span class='chapter-number'>B</span>  <span class='chapter-title'>Slides</span>"
     ]
+  },
+  {
+    "objectID": "appendix-llm-docs.html",
+    "href": "appendix-llm-docs.html",
+    "title": "Appendix C — Local documentation packs for the AI tutor",
+    "section": "",
+    "text": "C.1 llm-project.zip — the previous course, LLM-ready\nTwo downloadable archives give the Zed AI tutor (the Ask and Write profiles) a local, searchable copy of everything it needs to teach this course. The tutor reads the files with read_file and grep — no network fetch, no external site, and the material stays under your control.\nDownload, unzip where you keep your working files, then tell the tutor where the folder is (or point it there in its instructions). Each archive keeps its top-level folder, so the two unpack cleanly side by side.\nThe 2024–2025 course on advanced programming and parallel computing, re-edited as standalone markdown chapters small enough to read or search in one pass.\nDownload: llm-project.zip\nUse it to look up how a notion was taught before, reuse an application as an example, or hand the tutor a concrete course reference instead of a generic explanation.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Local documentation packs for the AI tutor</span>"
+    ]
+  },
+  {
+    "objectID": "appendix-llm-docs.html#llm-project.zip-the-previous-course-llm-ready",
+    "href": "appendix-llm-docs.html#llm-project.zip-the-previous-course-llm-ready",
+    "title": "Appendix C — Local documentation packs for the AI tutor",
+    "section": "",
+    "text": "llm-project/\n├── llms.txt            # index of the whole pack\n├── courses/\n│   ├── Courses/        # 12 chapters (code assistant, async, IPC, distributed, SIMD, GPU, WebGPU…)\n│   └── Projects/\n├── applications/       # 14 worked applications (prompt engineering, numpy, async, IPC, numba…)\n└── solutions/          # 14 exercise solutions",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Local documentation packs for the AI tutor</span>"
+    ]
+  },
+  {
+    "objectID": "appendix-llm-docs.html#python-doc.zip-official-python-3.12-library-docs",
+    "href": "appendix-llm-docs.html#python-doc.zip-official-python-3.12-library-docs",
+    "title": "Appendix C — Local documentation packs for the AI tutor",
+    "section": "C.2 python-doc.zip — official Python 3.12 library docs",
+    "text": "C.2 python-doc.zip — official Python 3.12 library docs\nThe official CPython library reference for the modules the course relies on, converted to markdown. README.md in the archive maps each module to its course chapter:\n\n\n\n\n\n\n\n\nFiles\nContent\nCourse chapter(s)\n\n\n\n\nasyncio (5 files)\nevent loops, tasks, streams, primitives, subprocess\n01_asynchronous\n\n\nconcurrent.futures\nthread/process pools\n00_intro-parallelism, 01_asynchronous\n\n\nthreading\nthreads, locks\n00_intro-parallelism, 02_ipc-locks\n\n\nmultiprocessing\nprocesses, pipes, queues, managers, locks\n02_ipc-locks, 03_distributed\n\n\nmultiprocessing.shared_memory\nshared memory\n02_ipc-locks, 03_distributed\n\n\nqueue\nthread-safe queues\n00_intro-parallelism, 02_ipc-locks\n\n\nsocket\nsockets\n02_ipc-locks, 03_distributed\n\n\nsubprocess\nsubprocesses\n00_intro-parallelism, 02_ipc-locks\n\n\n\nDownload: python-doc.zip\nThe archive keeps fetch_docs.py, which regenerates the markdown from the CPython 3.12 sources (pinned branch, needs pandoc), so the text matches the Python that runs on the course machines.\nA documented limit: the SIMD, GPU, and WebGPU chapters (04_simd, 05_gpu, 06_webgpu) rely on libraries outside the standard library — NumPy, Numba, CuPy, WebGPU. Their documentation is not included here; README.md lists the official links if a tutoring session needs them.\nDerived from the official Python 3.12 documentation, under the Python Software Foundation License. The llm-project pack is the previous year’s teaching material, provided as-is for reference.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Local documentation packs for the AI tutor</span>"
+    ]
   }
 ]
