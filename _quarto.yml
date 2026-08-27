@@ -42,6 +42,7 @@ book:
     - appendix-local-llm.qmd
     - appendix-slides.qmd
     - appendix-llm-docs.qmd
+    - appendix-agent-tips.qmd
 
 bibliography: references.bib
 csl: ieee.csl

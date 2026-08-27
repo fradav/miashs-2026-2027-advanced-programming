@@ -404,6 +404,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Local documentation packs for the AI tutor</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-agent-tips.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Tips and tricks for agent use</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -418,10 +424,11 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#why-configure-the-tutor" id="toc-why-configure-the-tutor" class="nav-link active" data-scroll-target="#why-configure-the-tutor"><span class="header-section-number">4.1</span> Why configure the tutor?</a></li>
   <li><a href="#the-anatomy-of-a-system-prompt" id="toc-the-anatomy-of-a-system-prompt" class="nav-link" data-scroll-target="#the-anatomy-of-a-system-prompt"><span class="header-section-number">4.2</span> The anatomy of a <em>system prompt</em></a></li>
-  <li><a href="#the-iteration-process" id="toc-the-iteration-process" class="nav-link" data-scroll-target="#the-iteration-process"><span class="header-section-number">4.3</span> The iteration process</a></li>
-  <li><a href="#detecting-a-false-or-harmful-answer" id="toc-detecting-a-false-or-harmful-answer" class="nav-link" data-scroll-target="#detecting-a-false-or-harmful-answer"><span class="header-section-number">4.4</span> Detecting a false (or harmful) answer</a></li>
-  <li><a href="#typical-exercise-block-2" id="toc-typical-exercise-block-2" class="nav-link" data-scroll-target="#typical-exercise-block-2"><span class="header-section-number">4.5</span> Typical exercise (block 2)</a></li>
-  <li><a href="#self-assessment-grid-for-a-prompt" id="toc-self-assessment-grid-for-a-prompt" class="nav-link" data-scroll-target="#self-assessment-grid-for-a-prompt"><span class="header-section-number">4.6</span> Self-assessment grid for a prompt</a></li>
+  <li><a href="#where-the-tutor-lives-in-practice-your-local-agents.md" id="toc-where-the-tutor-lives-in-practice-your-local-agents.md" class="nav-link" data-scroll-target="#where-the-tutor-lives-in-practice-your-local-agents.md"><span class="header-section-number">4.3</span> Where the tutor lives in practice: your local <code>AGENTS.md</code></a></li>
+  <li><a href="#the-iteration-process" id="toc-the-iteration-process" class="nav-link" data-scroll-target="#the-iteration-process"><span class="header-section-number">4.4</span> The iteration process</a></li>
+  <li><a href="#detecting-a-false-or-harmful-answer" id="toc-detecting-a-false-or-harmful-answer" class="nav-link" data-scroll-target="#detecting-a-false-or-harmful-answer"><span class="header-section-number">4.5</span> Detecting a false (or harmful) answer</a></li>
+  <li><a href="#typical-exercise-block-2" id="toc-typical-exercise-block-2" class="nav-link" data-scroll-target="#typical-exercise-block-2"><span class="header-section-number">4.6</span> Typical exercise (block 2)</a></li>
+  <li><a href="#self-assessment-grid-for-a-prompt" id="toc-self-assessment-grid-for-a-prompt" class="nav-link" data-scroll-target="#self-assessment-grid-for-a-prompt"><span class="header-section-number">4.7</span> Self-assessment grid for a prompt</a></li>
   </ul>
 </nav>
     </div>
@@ -454,6 +461,9 @@ ul.task-list li input[type="checkbox"] {
 <section id="why-configure-the-tutor" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="why-configure-the-tutor"><span class="header-section-number">4.1</span> Why configure the tutor?</h2>
 <p>A “raw” chatbot is often a poor teacher: it gives answers directly, which shortcuts the construction of understanding, and it <strong>hallucinates</strong>, producing false claims with confidence.</p>
+<blockquote class="blockquote">
+<p>In the session 2 demo, the first part runs the model in the editor profile “Minimal”: no tools attached, so nothing that searches or edits your files, and no tutor persona. The profile’s own system prompt is still there; what is missing is the persona you will write. This profile answers directly and states false things with confidence. The rest of the demo wraps the same model in a misconfigured prompt and in a Socratic prompt.</p>
+</blockquote>
 <p>A good Socratic tutor, by contrast:</p>
 <ul>
 <li>does not give the answer: it <strong>questions</strong> and guides;</li>
@@ -481,8 +491,12 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 </section>
-<section id="the-iteration-process" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="the-iteration-process"><span class="header-section-number">4.3</span> The iteration process</h2>
+<section id="where-the-tutor-lives-in-practice-your-local-agents.md" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="where-the-tutor-lives-in-practice-your-local-agents.md"><span class="header-section-number">4.3</span> Where the tutor lives in practice: your local <code>AGENTS.md</code></h2>
+<p>The demo builds the tutor through a custom harness. In Zed you do not need one. A profile decides the toolset and carries its own built-in system prompt: “Minimal”, “Ask” and “Write” each have one, none is prompt-less. The part you write is the persona, the blocks above. You hand it to Zed by writing it into an <code>AGENTS.md</code> file at the root of the module folder you want tutored, or into the global file in <code>~/.config/zed/AGENTS.md</code>. Zed merges that file into the system prompt of every session opened in that project, on top of the profile’s own instructions. Put the persona where you want the tutor active: in a module folder for a dedicated tutor, in the global file for a default tutor everywhere. The “Ask” profile then acts as your test bench: read-only, it searches your notes and answers without ever editing, and your persona text is live in it, with no harness involved. The global-file setup and its output-bounding rules are covered in appendix-agent-tips.qmd.</p>
+</section>
+<section id="the-iteration-process" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="the-iteration-process"><span class="header-section-number">4.4</span> The iteration process</h2>
 <p>A system prompt is never “finished”. Work loop:</p>
 <ol type="1">
 <li><strong>Write</strong> a v1 (blocks above).</li>
@@ -501,8 +515,8 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 </section>
-<section id="detecting-a-false-or-harmful-answer" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="detecting-a-false-or-harmful-answer"><span class="header-section-number">4.4</span> Detecting a false (or harmful) answer</h2>
+<section id="detecting-a-false-or-harmful-answer" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="detecting-a-false-or-harmful-answer"><span class="header-section-number">4.5</span> Detecting a false (or harmful) answer</h2>
 <ul>
 <li><strong>Cross-check sources</strong>: compare the tutor’s answer with the official documentation (e.g., <code>docs.python.org</code>), other resources, or a small execution test.</li>
 <li><strong>Test the code</strong>: never copy code without understanding it or running it.</li>
@@ -510,8 +524,8 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Document</strong>: every false answer detected and corrected goes into your logbook. That is one of the goals of the module.</li>
 </ul>
 </section>
-<section id="typical-exercise-block-2" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="typical-exercise-block-2"><span class="header-section-number">4.5</span> Typical exercise (block 2)</h2>
+<section id="typical-exercise-block-2" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="typical-exercise-block-2"><span class="header-section-number">4.6</span> Typical exercise (block 2)</h2>
 <ol type="1">
 <li>Choose a simple concept from the module (e.g., the difference between <code>thread</code> and <code>process</code>, or what a <code>coroutine</code> is).</li>
 <li>Write a v1 of the system prompt in 5 blocks (role, method, anti-cheating, hallucinations, tone).</li>
@@ -520,8 +534,8 @@ ul.task-list li input[type="checkbox"] {
 <li>Keep the v1 of the prompt: it will be attached to your learning plan and discussed at the validation (session 5).</li>
 </ol>
 </section>
-<section id="self-assessment-grid-for-a-prompt" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="self-assessment-grid-for-a-prompt"><span class="header-section-number">4.6</span> Self-assessment grid for a prompt</h2>
+<section id="self-assessment-grid-for-a-prompt" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="self-assessment-grid-for-a-prompt"><span class="header-section-number">4.7</span> Self-assessment grid for a prompt</h2>
 <ul class="task-list">
 <li><label><input type="checkbox">Does the tutor refuse direct requests for the solution?</label></li>
 <li><label><input type="checkbox">Does it ask questions that move you forward, rather than closed dead-end questions?</label></li>

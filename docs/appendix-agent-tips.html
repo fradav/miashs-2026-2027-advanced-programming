@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9&nbsp; Module 3 — Distributed Computing – Advanced Programming and Parallel Computing</title>
+<title>Appendix D — Tips and tricks for agent use – Advanced Programming and Parallel Computing</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,30 +26,64 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../Courses/04_simd.html" rel="next">
-<link href="../Courses/02_ipc-locks.html" rel="prev">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-af28502ac8d036ed35c2b305f0f54fbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-3bbd6a9bbbe52288d7dadd4871a2e2aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./appendix-llm-docs.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-af28502ac8d036ed35c2b305f0f54fbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-3bbd6a9bbbe52288d7dadd4871a2e2aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -259,7 +293,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Courses/03_distributed.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 3 — Distributed Computing</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./appendix-local-llm.html">Appendices</a></li><li class="breadcrumb-item"><a href="./appendix-agent-tips.html"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Tips and tricks for agent use</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -274,7 +308,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Advanced Programming and Parallel Computing</a> 
+      <a href="./">Advanced Programming and Parallel Computing</a> 
         <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -289,91 +323,91 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../prerequisites.html" class="sidebar-item-text sidebar-link">
+  <a href="./prerequisites.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Prerequisites</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../teaching-design.html" class="sidebar-item-text sidebar-link">
+  <a href="./teaching-design.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The pedagogical design</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../ai-tutor.html" class="sidebar-item-text sidebar-link">
+  <a href="./ai-tutor.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Designing an AI tutor</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../learning-plan.html" class="sidebar-item-text sidebar-link">
+  <a href="./learning-plan.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Planning your learning</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/00_intro-parallelism.html" class="sidebar-item-text sidebar-link">
+  <a href="./Courses/00_intro-parallelism.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction to Parallelism</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/01_asynchronous.html" class="sidebar-item-text sidebar-link">
+  <a href="./Courses/01_asynchronous.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 1 — Asynchronous and Concurrency</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/02_ipc-locks.html" class="sidebar-item-text sidebar-link">
+  <a href="./Courses/02_ipc-locks.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 2 — IPC &amp; Locks</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/03_distributed.html" class="sidebar-item-text sidebar-link active">
+  <a href="./Courses/03_distributed.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 3 — Distributed Computing</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/04_simd.html" class="sidebar-item-text sidebar-link">
+  <a href="./Courses/04_simd.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 4 — SIMD and Vectorization</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/05_gpu.html" class="sidebar-item-text sidebar-link">
+  <a href="./Courses/05_gpu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Module 5 — GPU</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Courses/06_webgpu.html" class="sidebar-item-text sidebar-link">
+  <a href="./Courses/06_webgpu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Module 6 — WebGPU</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../projects.html" class="sidebar-item-text sidebar-link">
+  <a href="./projects.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Final project</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../summary.html" class="sidebar-item-text sidebar-link">
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Module summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../references.html" class="sidebar-item-text sidebar-link">
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">References</span></span></a>
   </div>
 </li>
@@ -388,25 +422,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../appendix-local-llm.html" class="sidebar-item-text sidebar-link">
+  <a href="./appendix-local-llm.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Running the local model from the USB key</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../appendix-slides.html" class="sidebar-item-text sidebar-link">
+  <a href="./appendix-slides.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Slides</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../appendix-llm-docs.html" class="sidebar-item-text sidebar-link">
+  <a href="./appendix-llm-docs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Local documentation packs for the AI tutor</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../appendix-agent-tips.html" class="sidebar-item-text sidebar-link">
+  <a href="./appendix-agent-tips.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Tips and tricks for agent use</span></span></a>
   </div>
 </li>
@@ -422,8 +456,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#key-points" id="toc-key-points" class="nav-link active" data-scroll-target="#key-points"><span class="header-section-number">9.1</span> Key points</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">9.2</span> Exercises</a></li>
+  <li><a href="#configure-a-global-agents.md-to-avoid-context-bombs" id="toc-configure-a-global-agents.md-to-avoid-context-bombs" class="nav-link active" data-scroll-target="#configure-a-global-agents.md-to-avoid-context-bombs"><span class="header-section-number">D.1</span> Configure a global <code>AGENTS.md</code> to avoid context bombs</a></li>
+  <li><a href="#ask-with-bounds" id="toc-ask-with-bounds" class="nav-link" data-scroll-target="#ask-with-bounds"><span class="header-section-number">D.2</span> Ask with bounds</a></li>
+  <li><a href="#start-a-fresh-context-per-problem" id="toc-start-a-fresh-context-per-problem" class="nav-link" data-scroll-target="#start-a-fresh-context-per-problem"><span class="header-section-number">D.3</span> Start a fresh context per problem</a></li>
   </ul>
 </nav>
     </div>
@@ -431,10 +466,9 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./appendix-local-llm.html">Appendices</a></li><li class="breadcrumb-item"><a href="./appendix-agent-tips.html"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Tips and tricks for agent use</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 3 — Distributed Computing</span></h1>
-<p class="subtitle lead">Dask, Ray, delayed, schedulers</p>
+<h1 class="title">Appendix D — Tips and tricks for agent use</h1>
 </div>
 
 
@@ -451,34 +485,55 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Objectives (observable criteria):</p>
-<ul>
-<li>Build a <strong>lazy</strong> computation pipeline with <code>dask.delayed</code> and trigger it with <code>.compute()</code>.</li>
-<li>Explain the difference between <em>graph-based</em> (Dask) and <em>actor-based</em> (Ray) computing, and choose the right tool.</li>
-<li>Describe the <strong>MapReduce / Split-Apply-Combine</strong> pattern and recognize it in a problem.</li>
-<li>List and apply <code>dask.delayed</code> best practices (no mutation, no global state, no side effects).</li>
-</ul>
-<p>Resources: chapters <code>05_Distributed.qmd</code>, <code>06_Dask-Ray.qmd</code> and <code>07_Dask-delayed.qmd</code> from last year’s course; official documentation <a href="https://docs.dask.org/en/stable/delayed.html"><code>dask</code></a> and <a href="https://docs.ray.io/en/latest/">Ray</a>.</p>
-<section id="key-points" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="key-points"><span class="header-section-number">9.1</span> Key points</h2>
-<ul>
-<li><strong>MapReduce / Split-Apply-Combine</strong>: break the problem into <em>chunks</em> (split), process each chunk independently (map/apply), then <em>merge</em> the partial results (reduce/combine). Canonical application: word count.</li>
-<li><strong>Dask resembles numpy/pandas but lazy</strong>: <code>delayed</code>, <code>bag</code>, <code>dataframe</code>, <code>array</code> build a <strong>task graph</strong>; nothing runs before <code>.compute()</code>. Scheduler (threads, processes, distributed).</li>
-<li><strong><code>dask.delayed</code></strong>: turns a function into a <em>task</em> evaluated lazily; the graph nests and <code>.compute()</code> orchestrates the dependencies.</li>
-<li><strong>Ray</strong>: actor model, state preserved between calls (<code>@ray.remote</code> on a class), plus <em>futures</em>; designed for stateful services and large-scale parallelism.</li>
-<li><strong><code>delayed</code> best practices</strong>: call <code>delayed</code> on the <em>function</em>, not on the result; do not mutate inputs; avoid global state and side effects; split into small tasks but not too small; do not use <code>delayed</code> inside an already-<code>delayed</code> function; do not apply <code>delayed</code> to other Dask collections.</li>
-<li><strong>Pitfalls</strong>: data serialization between workers (<code>pickle</code>), saturated scheduler, <em>lazy vs eager</em> confusion (forgetting <code>.compute()</code>), too many tiny tasks (scheduling overhead).</li>
-</ul>
+<p>An agent session stays usable when you keep two things in check: how much the agent reads and how you describe the task. This appendix starts with a global <code>AGENTS.md</code> that stops tool output from flooding the context window, then a few working habits that get better answers from the same model.</p>
+<section id="configure-a-global-agents.md-to-avoid-context-bombs" class="level2" data-number="D.1">
+<h2 data-number="D.1" class="anchored" data-anchor-id="configure-a-global-agents.md-to-avoid-context-bombs"><span class="header-section-number">D.1</span> Configure a global <code>AGENTS.md</code> to avoid context bombs</h2>
+<p>An <code>AGENTS.md</code> at the root of a project carries instructions the agent applies on its own. Zed also reads a <em>global</em> file that applies to every project you open, stored in <code>~/.config/zed/AGENTS.md</code> (macOS and Linux) or <code>%APPDATA%\Zed\AGENTS.md</code> (Windows). A project-level file overrides the global one when the two conflict. Put the rules that should always hold in the global file and keep project-specific guidance in each project’s <code>AGENTS.md</code>.</p>
+<p>The first rule worth writing there is output bounding. One tool call can return more text than the model can absorb, for example a <code>grep</code> over the whole repository or an unfiltered log. A single such call saturates the context window and the session degrades from there. The block below is a ready-to-copy template of the section that prevents it.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> en</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu"># Agent Instructions (global)</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>These instructions apply to every project opened with the Zed Agent. Project-level</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>AGENTS.md files override them when there is a conflict.</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">## Bound tool outputs</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>Tool calls (grep, search_code, search_issues, fetch, read_file, terminal) can return</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>huge results that saturate the context window in a single call. Apply systematically:</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Bound every search**: use <span class="in">`perPage`</span>/<span class="in">`count`</span>/<span class="in">`maxResults`</span> with modest values</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>   (&lt;= 50 by default, 10-20 for exploration). Never paginate in a loop.</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Scope your searches**: <span class="in">`grep`</span>/<span class="in">`search_code`</span> by sub-tree or a targeted</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>   <span class="in">`include_pattern`</span>; never search the whole repo when a specific path is known</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>   or guessable.</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Read by ranges**: <span class="in">`read_file`</span> with <span class="in">`start_line`</span>/<span class="in">`end_line`</span> beyond ~200 lines;</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>   never load a whole large file in one go. For an unknown codebase, start with a</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>   targeted <span class="in">`list_directory`</span>.</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Truncate the terminal**: use <span class="in">`head_lines`</span>/<span class="in">`tail_lines`</span> and set a reasonable</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>   <span class="in">`timeout_ms`</span>. Never dump a large output in full (<span class="in">`cat`</span>, logs, build artifacts).</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>   When output may be huge (builds, tests, dumps), redirect it to a file first</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>   (e.g. <span class="in">`cmd &gt; /tmp/out.log`</span>), then <span class="in">`grep`</span> it or read it by ranges — <span class="in">`read_file`</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>   is the one tool that digests instead of dumping the whole thing.</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>**Analyze instead of copying**: from a large result, return a structured summary</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>   (key points, signatures, paths), not the raw content.</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>**Minimal calls**: aim for the fewest sufficient reads/searches; no redundant</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>   re-scans or re-reads of files already seen.</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="ss">7. </span>**Urgency**: if an output is likely to be enormous (logs, build artifacts, massive</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>   results), stop before loading it and reduce the request or ask for confirmation.</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>   If the session still saturates, recommend <span class="in">`/compact`</span> or "New From Summary" instead</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>   of stacking more content.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Put this file at <code>.config/zed/AGENTS.md</code> in your home folder and the agent applies it from the next session on. Trim the rules you do not need; keep the ones that once stopped a session from dying.</p>
 </section>
-<section id="exercises" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="exercises"><span class="header-section-number">9.2</span> Exercises</h2>
-<ol type="1">
-<li><strong>Distributed word count</strong>: count the words of a set of text files with <code>dask.bag</code> (<code>map</code> + <code>foldby</code>, or the equivalent), then with a list of files and <code>delayed</code>. Compare times on a single file, then on several.</li>
-<li><strong>Lazy pipeline</strong>: write 3–4 functions (read → clean → compute → aggregate), chain them with <code>delayed</code>, check that no computation happens before <code>.compute()</code> (how can you tell?), then trigger it.</li>
-<li><strong>Dask vs Ray</strong>: the same computation (sum of numbers, or incrementing a counter) written with Dask, then with Ray (<code>@ray.remote</code> + actor). Compare the paradigms: graph vs state.</li>
-<li><strong>Best practices</strong>: start from a <code>delayed</code> function that mutates a global list or a shared array, show the bug (result that depends on order), then fix it by <em>returning</em> the values. Justify the fix.</li>
-<li>(Track A) Have your tutor explain “why should you not call <code>delayed</code> on other Dask collections?” and “what is the difference between threads and processes for the scheduler?”. Check each answer against the official documentation. (Track B) Prepare a mini live-coding: turn a sequential loop into a Dask graph, show the gain, and the case where Dask brings nothing.</li>
-</ol>
+<section id="ask-with-bounds" class="level2" data-number="D.2">
+<h2 data-number="D.2" class="anchored" data-anchor-id="ask-with-bounds"><span class="header-section-number">D.2</span> Ask with bounds</h2>
+<p>The agent follows the scope you give it. Say <code>in src/</code> or <code>lines 40-90 of main.py</code> when that is what you want, and it spends its budget on the relevant part instead of reading the whole repository. This is the same discipline as the rules above, applied from the message instead of the config file.</p>
+</section>
+<section id="start-a-fresh-context-per-problem" class="level2" data-number="D.3">
+<h2 data-number="D.3" class="anchored" data-anchor-id="start-a-fresh-context-per-problem"><span class="header-section-number">D.3</span> Start a fresh context per problem</h2>
+<p>A context window that has carried a few unrelated problems answers worse than an empty one. Open a new session, or run <code>/compact</code> and paste a short summary, when the topic changes.</p>
 
 
 </section>
@@ -899,14 +954,11 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../Courses/02_ipc-locks.html" class="pagination-link" aria-label="Module 2 — IPC &amp; Locks">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 2 — IPC &amp; Locks</span></span>
+      <a href="./appendix-llm-docs.html" class="pagination-link" aria-label="Local documentation packs for the AI tutor">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Local documentation packs for the AI tutor</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../Courses/04_simd.html" class="pagination-link" aria-label="Module 4 — SIMD and Vectorization">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 4 — SIMD and Vectorization</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

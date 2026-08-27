@@ -194,7 +194,7 @@
     "href": "ai-tutor.html#why-configure-the-tutor",
     "title": "4  Designing an AI tutor",
     "section": "",
-    "text": "does not give the answer: it questions and guides;\nsupports (scaffolding): it breaks down, rephrases, gives a hint at the right moment;\npreserves your agency: you do the reasoning, it does not reason in your place;\nadapts: when you show an error, it adjusts its scaffolding.",
+    "text": "In the session 2 demo, the first part runs the model in the editor profile “Minimal”: no tools attached, so nothing that searches or edits your files, and no tutor persona. The profile’s own system prompt is still there; what is missing is the persona you will write. This profile answers directly and states false things with confidence. The rest of the demo wraps the same model in a misconfigured prompt and in a Socratic prompt.\n\n\n\ndoes not give the answer: it questions and guides;\nsupports (scaffolding): it breaks down, rephrases, gives a hint at the right moment;\npreserves your agency: you do the reasoning, it does not reason in your place;\nadapts: when you show an error, it adjusts its scaffolding.",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Designing an AI tutor</span>"
     ]
@@ -210,11 +210,21 @@
     ]
   },
   {
+    "objectID": "ai-tutor.html#where-the-tutor-lives-in-practice-your-local-agents.md",
+    "href": "ai-tutor.html#where-the-tutor-lives-in-practice-your-local-agents.md",
+    "title": "4  Designing an AI tutor",
+    "section": "4.3 Where the tutor lives in practice: your local AGENTS.md",
+    "text": "4.3 Where the tutor lives in practice: your local AGENTS.md\nThe demo builds the tutor through a custom harness. In Zed you do not need one. A profile decides the toolset and carries its own built-in system prompt: “Minimal”, “Ask” and “Write” each have one, none is prompt-less. The part you write is the persona, the blocks above. You hand it to Zed by writing it into an AGENTS.md file at the root of the module folder you want tutored, or into the global file in ~/.config/zed/AGENTS.md. Zed merges that file into the system prompt of every session opened in that project, on top of the profile’s own instructions. Put the persona where you want the tutor active: in a module folder for a dedicated tutor, in the global file for a default tutor everywhere. The “Ask” profile then acts as your test bench: read-only, it searches your notes and answers without ever editing, and your persona text is live in it, with no harness involved. The global-file setup and its output-bounding rules are covered in appendix-agent-tips.qmd.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Designing an AI tutor</span>"
+    ]
+  },
+  {
     "objectID": "ai-tutor.html#the-iteration-process",
     "href": "ai-tutor.html#the-iteration-process",
     "title": "4  Designing an AI tutor",
-    "section": "4.3 The iteration process",
-    "text": "4.3 The iteration process\nA system prompt is never “finished”. Work loop:\n\nWrite a v1 (blocks above).\nTest on typical module exercises: does the tutor give the right amount of help? Does it resist the request for a solution? Does it spot an error?\nObserve the conversations: where is the tutor too directive? too vague? What did it invent?\nIterate: rephrase, constrain, add an example dialogue to imitate or to avoid in the prompt.\nRecord: keep track of the prompt versions and the reason for each change. This is valuable material for your reflective report.\n\n\nLogically, the prompt can even start with “do not open the topic with…”. In practice, the iterations are won in the details: one counter-example dialogue is often worth more than ten abstract rules.\n\n\n\nThe iteration process as a loop: write a v1, test on exercises, observe the conversations, iterate, record the changes.",
+    "section": "4.4 The iteration process",
+    "text": "4.4 The iteration process\nA system prompt is never “finished”. Work loop:\n\nWrite a v1 (blocks above).\nTest on typical module exercises: does the tutor give the right amount of help? Does it resist the request for a solution? Does it spot an error?\nObserve the conversations: where is the tutor too directive? too vague? What did it invent?\nIterate: rephrase, constrain, add an example dialogue to imitate or to avoid in the prompt.\nRecord: keep track of the prompt versions and the reason for each change. This is valuable material for your reflective report.\n\n\nLogically, the prompt can even start with “do not open the topic with…”. In practice, the iterations are won in the details: one counter-example dialogue is often worth more than ten abstract rules.\n\n\n\nThe iteration process as a loop: write a v1, test on exercises, observe the conversations, iterate, record the changes.",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Designing an AI tutor</span>"
     ]
@@ -223,8 +233,8 @@
     "objectID": "ai-tutor.html#detecting-a-false-or-harmful-answer",
     "href": "ai-tutor.html#detecting-a-false-or-harmful-answer",
     "title": "4  Designing an AI tutor",
-    "section": "4.4 Detecting a false (or harmful) answer",
-    "text": "4.4 Detecting a false (or harmful) answer\n\nCross-check sources: compare the tutor’s answer with the official documentation (e.g., docs.python.org), other resources, or a small execution test.\nTest the code: never copy code without understanding it or running it.\nAsk for reasons: a good tutor must be able to justify itself; if it contradicts itself or digs its heels in, you have likely detected the error.\nDocument: every false answer detected and corrected goes into your logbook. That is one of the goals of the module.",
+    "section": "4.5 Detecting a false (or harmful) answer",
+    "text": "4.5 Detecting a false (or harmful) answer\n\nCross-check sources: compare the tutor’s answer with the official documentation (e.g., docs.python.org), other resources, or a small execution test.\nTest the code: never copy code without understanding it or running it.\nAsk for reasons: a good tutor must be able to justify itself; if it contradicts itself or digs its heels in, you have likely detected the error.\nDocument: every false answer detected and corrected goes into your logbook. That is one of the goals of the module.",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Designing an AI tutor</span>"
     ]
@@ -233,8 +243,8 @@
     "objectID": "ai-tutor.html#typical-exercise-block-2",
     "href": "ai-tutor.html#typical-exercise-block-2",
     "title": "4  Designing an AI tutor",
-    "section": "4.5 Typical exercise (block 2)",
-    "text": "4.5 Typical exercise (block 2)\n\nChoose a simple concept from the module (e.g., the difference between thread and process, or what a coroutine is).\nWrite a v1 of the system prompt in 5 blocks (role, method, anti-cheating, hallucinations, tone).\nTest it on 3 questions: “give me the answer” (the tutor must refuse), “correct my code” (it must make you think), “explain this concept” (it must support without giving everything).\nNote 2 observed flaws and propose 2 concrete changes to the prompt.\nKeep the v1 of the prompt: it will be attached to your learning plan and discussed at the validation (session 5).",
+    "section": "4.6 Typical exercise (block 2)",
+    "text": "4.6 Typical exercise (block 2)\n\nChoose a simple concept from the module (e.g., the difference between thread and process, or what a coroutine is).\nWrite a v1 of the system prompt in 5 blocks (role, method, anti-cheating, hallucinations, tone).\nTest it on 3 questions: “give me the answer” (the tutor must refuse), “correct my code” (it must make you think), “explain this concept” (it must support without giving everything).\nNote 2 observed flaws and propose 2 concrete changes to the prompt.\nKeep the v1 of the prompt: it will be attached to your learning plan and discussed at the validation (session 5).",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Designing an AI tutor</span>"
     ]
@@ -243,8 +253,8 @@
     "objectID": "ai-tutor.html#self-assessment-grid-for-a-prompt",
     "href": "ai-tutor.html#self-assessment-grid-for-a-prompt",
     "title": "4  Designing an AI tutor",
-    "section": "4.6 Self-assessment grid for a prompt",
-    "text": "4.6 Self-assessment grid for a prompt\n\nDoes the tutor refuse direct requests for the solution?\nDoes it ask questions that move you forward, rather than closed dead-end questions?\nDoes it adapt its help if you are lost?\nDoes it flag its uncertainty instead of making things up?\nDoes it check understanding before moving to the next point?\nIs the tone supportive and the format readable?",
+    "section": "4.7 Self-assessment grid for a prompt",
+    "text": "4.7 Self-assessment grid for a prompt\n\nDoes the tutor refuse direct requests for the solution?\nDoes it ask questions that move you forward, rather than closed dead-end questions?\nDoes it adapt its help if you are lost?\nDoes it flag its uncertainty instead of making things up?\nDoes it check understanding before moving to the next point?\nIs the tone supportive and the format readable?",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Designing an AI tutor</span>"
     ]
@@ -839,6 +849,50 @@
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>C</span>  <span class='chapter-title'>Local documentation packs for the AI tutor</span>"
+    ]
+  },
+  {
+    "objectID": "appendix-agent-tips.html",
+    "href": "appendix-agent-tips.html",
+    "title": "Appendix D — Tips and tricks for agent use",
+    "section": "",
+    "text": "D.1 Configure a global AGENTS.md to avoid context bombs\nAn agent session stays usable when you keep two things in check: how much the agent reads and how you describe the task. This appendix starts with a global AGENTS.md that stops tool output from flooding the context window, then a few working habits that get better answers from the same model.\nAn AGENTS.md at the root of a project carries instructions the agent applies on its own. Zed also reads a global file that applies to every project you open, stored in ~/.config/zed/AGENTS.md (macOS and Linux) or %APPDATA%\\Zed\\AGENTS.md (Windows). A project-level file overrides the global one when the two conflict. Put the rules that should always hold in the global file and keep project-specific guidance in each project’s AGENTS.md.\nThe first rule worth writing there is output bounding. One tool call can return more text than the model can absorb, for example a grep over the whole repository or an unfiltered log. A single such call saturates the context window and the session degrades from there. The block below is a ready-to-copy template of the section that prevents it.\nPut this file at .config/zed/AGENTS.md in your home folder and the agent applies it from the next session on. Trim the rules you do not need; keep the ones that once stopped a session from dying.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Tips and tricks for agent use</span>"
+    ]
+  },
+  {
+    "objectID": "appendix-agent-tips.html#configure-a-global-agents.md-to-avoid-context-bombs",
+    "href": "appendix-agent-tips.html#configure-a-global-agents.md-to-avoid-context-bombs",
+    "title": "Appendix D — Tips and tricks for agent use",
+    "section": "",
+    "text": "---\nlang: en\n---\n\n# Agent Instructions (global)\n\nThese instructions apply to every project opened with the Zed Agent. Project-level\nAGENTS.md files override them when there is a conflict.\n\n## Bound tool outputs\n\nTool calls (grep, search_code, search_issues, fetch, read_file, terminal) can return\nhuge results that saturate the context window in a single call. Apply systematically:\n\n1. **Bound every search**: use `perPage`/`count`/`maxResults` with modest values\n   (&lt;= 50 by default, 10-20 for exploration). Never paginate in a loop.\n2. **Scope your searches**: `grep`/`search_code` by sub-tree or a targeted\n   `include_pattern`; never search the whole repo when a specific path is known\n   or guessable.\n3. **Read by ranges**: `read_file` with `start_line`/`end_line` beyond ~200 lines;\n   never load a whole large file in one go. For an unknown codebase, start with a\n   targeted `list_directory`.\n4. **Truncate the terminal**: use `head_lines`/`tail_lines` and set a reasonable\n   `timeout_ms`. Never dump a large output in full (`cat`, logs, build artifacts).\n   When output may be huge (builds, tests, dumps), redirect it to a file first\n   (e.g. `cmd &gt; /tmp/out.log`), then `grep` it or read it by ranges — `read_file`\n   is the one tool that digests instead of dumping the whole thing.\n5. **Analyze instead of copying**: from a large result, return a structured summary\n   (key points, signatures, paths), not the raw content.\n6. **Minimal calls**: aim for the fewest sufficient reads/searches; no redundant\n   re-scans or re-reads of files already seen.\n7. **Urgency**: if an output is likely to be enormous (logs, build artifacts, massive\n   results), stop before loading it and reduce the request or ask for confirmation.\n   If the session still saturates, recommend `/compact` or \"New From Summary\" instead\n   of stacking more content.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Tips and tricks for agent use</span>"
+    ]
+  },
+  {
+    "objectID": "appendix-agent-tips.html#ask-with-bounds",
+    "href": "appendix-agent-tips.html#ask-with-bounds",
+    "title": "Appendix D — Tips and tricks for agent use",
+    "section": "D.2 Ask with bounds",
+    "text": "D.2 Ask with bounds\nThe agent follows the scope you give it. Say in src/ or lines 40-90 of main.py when that is what you want, and it spends its budget on the relevant part instead of reading the whole repository. This is the same discipline as the rules above, applied from the message instead of the config file.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Tips and tricks for agent use</span>"
+    ]
+  },
+  {
+    "objectID": "appendix-agent-tips.html#start-a-fresh-context-per-problem",
+    "href": "appendix-agent-tips.html#start-a-fresh-context-per-problem",
+    "title": "Appendix D — Tips and tricks for agent use",
+    "section": "D.3 Start a fresh context per problem",
+    "text": "D.3 Start a fresh context per problem\nA context window that has carried a few unrelated problems answers worse than an empty one. Open a new session, or run /compact and paste a short summary, when the topic changes.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Tips and tricks for agent use</span>"
     ]
   }
 ]

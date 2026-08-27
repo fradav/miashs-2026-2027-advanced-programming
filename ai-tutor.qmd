@@ -11,6 +11,12 @@ A "raw" chatbot is often a poor teacher: it gives answers directly, which shortc
 construction of understanding, and it **hallucinates**, producing false claims with
 confidence.
 
+> In the session 2 demo, the first part runs the model in the editor profile "Minimal":
+> no tools attached, so nothing that searches or edits your files, and no tutor persona.
+> The profile's own system prompt is still there; what is missing is the persona you will
+> write. This profile answers directly and states false things with confidence. The rest
+> of the demo wraps the same model in a misconfigured prompt and in a Socratic prompt.
+
 A good Socratic tutor, by contrast:
 
 - does not give the answer: it **questions** and guides;
@@ -54,6 +60,21 @@ A *system prompt* is the text that sets the chatbot's behavior. It is built from
 ![The six blocks that compose a system prompt — role, method, anti-cheating rules,
 hallucination handling, tone and format, optional context — converging into a single
 prompt.](images/s2_prompt_anatomy.svg)
+
+## Where the tutor lives in practice: your local `AGENTS.md`
+
+The demo builds the tutor through a custom harness. In Zed you do not need one. A
+profile decides the toolset and carries its own built-in system prompt: "Minimal",
+"Ask" and "Write" each have one, none is prompt-less. The part you write is the
+persona, the blocks above. You hand it to Zed by writing it into an `AGENTS.md` file
+at the root of the module folder you want tutored, or into the global file in
+`~/.config/zed/AGENTS.md`. Zed merges that file into the system prompt of every session
+opened in that project, on top of the profile's own instructions. Put the persona where
+you want the tutor active: in a module folder for a dedicated tutor, in the global file
+for a default tutor everywhere. The "Ask" profile then acts as your test bench:
+read-only, it searches your notes and answers without ever editing, and your persona
+text is live in it, with no harness involved. The global-file setup and its
+output-bounding rules are covered in appendix-agent-tips.qmd.
 
 ## The iteration process
 

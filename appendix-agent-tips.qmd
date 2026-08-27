@@ -1,0 +1,76 @@
+# Tips and tricks for agent use
+
+An agent session stays usable when you keep two things in check: how much the
+agent reads and how you describe the task. This appendix starts with a global
+`AGENTS.md` that stops tool output from flooding the context window, then a few
+working habits that get better answers from the same model.
+
+## Configure a global `AGENTS.md` to avoid context bombs
+
+An `AGENTS.md` at the root of a project carries instructions the agent applies on
+its own. Zed also reads a *global* file that applies to every project you open,
+stored in `~/.config/zed/AGENTS.md` (macOS and Linux) or `%APPDATA%\Zed\AGENTS.md`
+(Windows). A project-level file overrides the global one when the two conflict.
+Put the rules that should always hold in the global file and keep project-specific
+guidance in each project's `AGENTS.md`.
+
+The first rule worth writing there is output bounding. One tool call can return
+more text than the model can absorb, for example a `grep` over the whole
+repository or an unfiltered log. A single such call saturates the context window
+and the session degrades from there. The block below is a ready-to-copy template
+of the section that prevents it.
+
+```markdown
+---
+lang: en
+---
+
+# Agent Instructions (global)
+
+These instructions apply to every project opened with the Zed Agent. Project-level
+AGENTS.md files override them when there is a conflict.
+
+## Bound tool outputs
+
+Tool calls (grep, search_code, search_issues, fetch, read_file, terminal) can return
+huge results that saturate the context window in a single call. Apply systematically:
+
+1. **Bound every search**: use `perPage`/`count`/`maxResults` with modest values
+   (<= 50 by default, 10-20 for exploration). Never paginate in a loop.
+2. **Scope your searches**: `grep`/`search_code` by sub-tree or a targeted
+   `include_pattern`; never search the whole repo when a specific path is known
+   or guessable.
+3. **Read by ranges**: `read_file` with `start_line`/`end_line` beyond ~200 lines;
+   never load a whole large file in one go. For an unknown codebase, start with a
+   targeted `list_directory`.
+4. **Truncate the terminal**: use `head_lines`/`tail_lines` and set a reasonable
+   `timeout_ms`. Never dump a large output in full (`cat`, logs, build artifacts).
+   When output may be huge (builds, tests, dumps), redirect it to a file first
+   (e.g. `cmd > /tmp/out.log`), then `grep` it or read it by ranges — `read_file`
+   is the one tool that digests instead of dumping the whole thing.
+5. **Analyze instead of copying**: from a large result, return a structured summary
+   (key points, signatures, paths), not the raw content.
+6. **Minimal calls**: aim for the fewest sufficient reads/searches; no redundant
+   re-scans or re-reads of files already seen.
+7. **Urgency**: if an output is likely to be enormous (logs, build artifacts, massive
+   results), stop before loading it and reduce the request or ask for confirmation.
+   If the session still saturates, recommend `/compact` or "New From Summary" instead
+   of stacking more content.
+```
+
+Put this file at `.config/zed/AGENTS.md` in your home folder and the agent applies
+it from the next session on. Trim the rules you do not need; keep the ones that
+once stopped a session from dying.
+
+## Ask with bounds
+
+The agent follows the scope you give it. Say `in src/` or `lines 40-90 of main.py`
+when that is what you want, and it spends its budget on the relevant part instead
+of reading the whole repository. This is the same discipline as the rules above,
+applied from the message instead of the config file.
+
+## Start a fresh context per problem
+
+A context window that has carried a few unrelated problems answers worse than an
+empty one. Open a new session, or run `/compact` and paste a short summary, when
+the topic changes.

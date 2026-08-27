@@ -25509,7 +25509,7 @@ display:block!important;
 </tr>
 <tr class="even">
 <td>09:45–10:15</td>
-<td><strong>Live demo</strong> — a bad tutor vs a Socratic tutor</td>
+<td><strong>Live demo</strong> — bad vs Socratic tutor, then <strong>Ask</strong> (read-only) and <strong>Ask + good tutor</strong></td>
 </tr>
 <tr class="odd">
 <td>10:15–10:40</td>
@@ -26270,6 +26270,7 @@ display:block!important;
 </div>
 <aside class="notes">
 <ul>
+<li>Open with the raw model in the Zed “Minimal” profile (no tools): see ai-tutor.qmd.</li>
 <li>Read both columns, then launch the live demo.</li>
 <li>Track B: bring the observation grid with you.</li>
 </ul>
@@ -26305,12 +26306,16 @@ display:block!important;
 <ul>
 <li>Left: a <strong>misconfigured</strong> tutor → gives the solution directly</li>
 <li>Right: a <strong>Socratic</strong> tutor → questions, scaffolds, preserves agency</li>
+<li>Then the <strong>Ask</strong> profile: read-only tools (<code>grep</code>, <code>read_file</code>, …) search the material before answering, same turns, answers cited <code>file:line</code></li>
+<li>Then <strong>Ask + the good tutor</strong>: the same read-only bench with the Socratic persona on top — it refuses the fake <code>run_after</code> from the corpus <em>and</em> keeps guiding with a question</li>
 </ul>
 <p>Track B observes <strong><span class="rn-fragment fragment" data-rn-type="box" data-rn-color="#ffd54f">without reproducing</span></strong>.</p>
 <aside class="notes">
 <ul>
-<li>Fallback if the network drops: project the saved transcriptions of the two conversations instead of the live run (<code>seances/s2_transcript_v3.json</code>).</li>
+<li>Fallback if the network drops: project the saved transcriptions instead of the live run (bad/Socratic: <code>seances/demo-s2/s2_transcript_v3.json</code>; Ask: <code>s2_transcript_ask_v3.json</code>; Ask + good: <code>s2_transcript_ask_good_v2.json</code>).</li>
 <li>Tested on the local Ling-3.0-tiny (Q4_K_M): the misconfigured tutor <strong>reliably invents</strong> <code>asyncio.Task.run_after</code> (signature + example) with confidence — provoke it there. The Socratic tutor does <strong>not</strong> always flag it as fake (may take it at face value or redirect with a question): if it doesn’t, that is a discussion point, not a bug — no prompt makes a model detect what it does not know.</li>
+<li>Ask profile on the same model, read-only search of the corpus: zero matches for <code>time.sleep</code> and <code>run_after</code>, so it refuses both and redirects to <code>asyncio.sleep</code> / <code>create_task</code>. Of the first three configs it is the only one that does not endorse the fake API, and it stops at “not in the course material” rather than “does not exist in Python”: name that limit to the room.</li>
+<li>Ask + good tutor on the same bench: anchoring still refuses <code>run_after</code>, and the persona keeps it Socratic (a guiding question, not a correction). Expect the hidden reasoning to still believe the API exists — the prompt rules the output, not the belief.</li>
 <li>Socratic short replies occasionally arrive with the chain-of-thought glued on (or, rarely, empty): re-ask once, or run at temperature 0.0 (see harness <code>--temperature</code>).</li>
 <li>Questions from the chat at any time.</li>
 </ul>
@@ -26333,8 +26338,9 @@ display:block!important;
 <thead>
 <tr class="header">
 <th>Watch…</th>
-<th>The bad tutor</th>
-<th>The Socratic tutor</th>
+<th>Bad tutor</th>
+<th>Socratic tutor</th>
+<th>Ask (read-only)</th>
 </tr>
 </thead>
 <tbody>
@@ -26342,9 +26348,11 @@ display:block!important;
 <td>When asked the solution</td>
 <td>?</td>
 <td>?</td>
+<td>?</td>
 </tr>
 <tr class="even">
 <td>When the student errs</td>
+<td>?</td>
 <td>?</td>
 <td>?</td>
 </tr>
@@ -26352,9 +26360,11 @@ display:block!important;
 <td>When unsure</td>
 <td>?</td>
 <td>?</td>
+<td>?</td>
 </tr>
 <tr class="even">
 <td>Before moving on</td>
+<td>?</td>
 <td>?</td>
 <td>?</td>
 </tr>
