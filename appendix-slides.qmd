@@ -22,3 +22,12 @@ for the presenter notes — the notes include what to say and where to pause.
 - Why a *configured* tutor beats a plain model — system prompt, syllabus.
 - Two prompts side by side, a live demo, and how to spot a false (or harmful)
   answer.
+
+## Session 3 — designing an AI tutor: the prompt workshop
+
+[Open the Session 3 slides](slides/2026-09-01-seance-3-slides.html)
+
+- Write your v1 tutor *system prompt* from the six-block anatomy of Session 2 —
+  role, method, anti-cheating, hallucinations, tone & format, context.
+- Test it on three typical questions, a fresh session each.
+- Iterate to a v2, peer-review in pairs, and deposit your v1 before Session 4.
