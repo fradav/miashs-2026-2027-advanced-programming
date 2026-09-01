@@ -26,6 +26,7 @@ book:
     - prerequisites.qmd
     - teaching-design.qmd
     - ai-tutor.qmd
+    - socratic-prompting.qmd
     - learning-plan.qmd
     - Courses/00_intro-parallelism.qmd
     - Courses/01_asynchronous.qmd

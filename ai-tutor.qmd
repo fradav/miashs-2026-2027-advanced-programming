@@ -128,3 +128,10 @@ conversations, iterate, record the changes.](images/s2_iteration_loop.svg)
 - [ ] Does it flag its uncertainty instead of making things up?
 - [ ] Does it check understanding before moving to the next point?
 - [ ] Is the tone supportive and the format readable?
+
+## Further reading
+
+The research behind the workshop, with working examples of each technique (persona,
+guardrails against answer leakage, Pólya's four phases, few-shot exemplars, and a
+leak-detecting judge), is gathered on the
+[socratic-prompting.qmd](socratic-prompting.qmd) page.

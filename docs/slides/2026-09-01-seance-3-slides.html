@@ -1578,6 +1578,20 @@ display:block!important;
 }</style></aside>
 </section>
 
+<section id="scaffold-along-pólyas-four-phases" class="title-slide slide level1 center">
+<h1>🪜 Scaffold along Pólya’s four phases</h1>
+<p>Your <strong>Method</strong> block says <em>ask, never give</em>. Pólya (1945) gives the model a curriculum of <span class="rn-fragment fragment" data-rn-type="underline" data-rn-color="#81c784"><em>which question, when</em></span> — instead of improvising a generic <em>“what do you think?”</em> loop.</p>
+<ol type="1">
+<li><strong>Understanding</strong> — what is given, what is to be found</li>
+<li><strong>Planning</strong> — which similar problem do you already know</li>
+<li><strong>Execution</strong> — you state each step; the tutor checks it</li>
+<li><strong>Looking back</strong> — how the result is verified, generalized</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a href aria-label="1"></a>Solve with the learner across four phases (Pólya): understanding, planning,</span>
+<span id="cb2-2"><a href aria-label="2"></a>execution, looking back. Stay in the current phase until it is demonstrated;</span>
+<span id="cb2-3"><a href aria-label="3"></a>advance only when the learner shows it.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+
 <section id="test-on-3-typical-questions" class="title-slide slide level1 center">
 <h1>🧪 Test on 3 typical questions</h1>
 <p>The three tests everyone runs, in the same order:</p>
@@ -1764,6 +1778,30 @@ width: 1px!important;
 overflow: hidden!important;
 display:block!important;
 }</style></aside>
+</section>
+
+<section id="the-rules-above-are-not-arbitrary" class="title-slide slide level1 center">
+<h1>📚 The rules above are not arbitrary</h1>
+<p>A short evidence base — prompt engineering, zero fine-tuning:</p>
+<ul>
+<li><strong>Bastani et al. (2024)</strong> — RCT, ~1,000 students: a guarded GPT-4o tutor → <strong><span class="rn-fragment fragment" data-rn-type="circle" data-rn-color="#81c784">+127%</span></strong> assisted-learning gain with no penalty to unassisted learning; the same bare model left students <strong>−17%</strong> worse than a textbook control.</li>
+<li><strong>Macina et al. (2025)</strong> — MathTutorBench: a prompt scaffold alone took GPT-4o from <strong>0.50 → 0.82</strong>.</li>
+<li><strong>Dinucujianu et al. (2025)</strong> — TutorRL: trained tutor policies leak the answer in <strong>50–75%</strong> of replies; guardrails in the prompt address that better than more training.</li>
+<li><strong>Lee et al. (2026)</strong> — prompt optimization beat RL-trained tutor fine-tunes:<strong>0.719 vs 0.633</strong> aggregate reward.</li>
+</ul>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Your v1 lives in a file you can edit overnight. That is why today is a <em>writing</em> workshop — not a fine-tuning one.</p>
+</div>
+</div>
+</div>
 </section>
 
 <section id="before-you-leave" class="title-slide slide level1 center">

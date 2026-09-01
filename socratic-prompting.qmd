@@ -1,0 +1,146 @@
+---
+title: "Socratic Prompting: Techniques That Turn Any Modern LLM into a Tutor"
+---
+
+# Background: why prompt instead of fine-tune?
+
+The Hugging Face landscape of Socratic and mentor-role language models is dominated by fine-tunes of the Qwen2.5 generation, for instance the LoRA-tuned `RuudFontys/socratic-tutor-qwen2.5` [@ruudfontys2025socratictutor]. Base models that old are no longer competitive with today's general-purpose models, including the smaller local ones used in classrooms. Before paying the cost of downloading, serving, and maintaining a dedicated fine-tune, it is worth asking whether the same tutor behavior is reachable by prompting a current model.
+
+The evidence so far says yes, and the gap is measurable.
+
+- A training-free system-prompt optimization on a general model reached an aggregate tutoring reward of 0.719, above the 0.633 of the RL-trained tutor fine-tunes it was compared against (numbers as reported by the authors) [@lee2026tutors].
+- Adding a careful scaffold to GPT-4o raised its MathTutorBench score from 0.50 to 0.82 without any fine-tuning [@macina2025mathtutorbench].
+- In a pre-registered RCT with roughly 1,000 high-school students, a guided GPT-4o tutor produced a 127% assisted-learning gain with no penalty to unassisted learning, while the same base model used without guidance left students 17% worse off than the control group [@bastani2024generative].
+
+Two observations explain why prompting can match dedicated models. First, asking questions instead of answering is an in-context capability of a strong base model, so a good system prompt unlocks it. The creator of one tutor fine-tune admits as much: the model's card ships with a custom system prompt and states that the Socratic behavior depends on it [@ruudfontys2025socratictutor]. Second, the main failure mode of tutor-role models is answer leakage: trained to be helpful, they hand over the solution, which actively harms learning [@dinucujianu2025tutorrl]. That failure is better addressed with explicit guardrails in the prompt than by more training.
+
+The rest of this page catalogues the prompting techniques that showed up again and again in the research, explains what each does, and gives working examples.
+
+# 1. Activate the tutor persona in the system prompt
+
+**What it is.** Write an explicit role into the system prompt: the model is a Socratic tutor whose job is to guide, not to deliver. For a fine-tuned model this persona prompt is what actually switches on the trained behavior; for a general model it does the same job from scratch.
+
+**Why it works.** The SocraticLM card ships paired "solver" and "Socratic" system prompts for identical weights, making the persona a pure prompting toggle (Hugging Face model card). The RuudFontys fine-tune behaves as a tutor only when its system prompt is present [@ruudfontys2025socratictutor]. MathTutorBench similarly found that a described tutor scaffold changes what even GPT-4o produces [@macina2025mathtutorbench]. The persona prompt is the cheapest intervention and the base everything else builds on.
+
+**Example (reconstructed from the RuudFontys model card).** The card's system prompt has three parts: a role declaration, a list of working principles, and a closing restatement of the goal.
+
+```
+You are a Socratic tutor. Your purpose is to help the learner reach the
+answer themselves through guided questioning. To do this:
+
+- Ask thought-provoking questions that stimulate the learner's thinking.
+- Avoid giving direct explanations unless the learner explicitly asks.
+- Build on the learner's own responses with follow-up questions.
+- Encourage step-by-step reasoning rather than leaps to the result.
+- Foster curiosity so the learner wants to solve problems on their own.
+
+Remember: your goal is to make the learner capable of solving problems
+independently, not to deliver the solution yourself.
+```
+
+The same structure transfers to any current model: declare the role, list two or three behavioral rules, close with the goal statement [@ruudfontys2025socratictutor].
+
+# 2. Guard against answer leakage: "hint, never solve"
+
+**What it is.** A short, explicit block of instructions that forbids revealing the answer and forces every response to move the learner forward with a hint or a smaller question.
+
+**Why it works.** Leakage is the dominant failure of tutor-role models. TutorRL reports that trained tutor policies give away the answer in roughly 50 to 75% of responses across the models they tested, because being "helpful" is what the underlying optimization rewarded [@dinucujianu2025tutorrl]. The cleanest demonstration of the guardrail's value is the Bastani RCT: the same underlying GPT-4o, wrapped in a tutor system that refuses direct answers, produced a 127% assisted gain, while the bare "GPT Base" condition (no guardrails) was 17% worse than a plain textbook group [@bastani2024generative]. MathTutorBench's scaffold likewise credits the no-answer rule for much of the 0.50 to 0.82 jump [@macina2025mathtutorbench].
+
+**Example.**
+
+```
+Ground rules for this tutoring session:
+- Never present the final answer. If the learner asks for it, respond with
+  a hint or a smaller sub-question.
+- Each reply must contain at least one question that advances the learner.
+- If you are about to write the numeric result or the full derivation,
+  stop and reformulate it as a next step the learner can take.
+```
+
+# 3. Scaffold reasoning along Pólya's problem-solving phases
+
+**What it is.** Structure the conversation around the phases of mathematical problem solving popularized by Pólya: understand the problem, devise a plan, carry it out, and look back [@polya1945howtosolveit]. The prompt tells the model which phase it is in and what kind of question belongs there.
+
+**Why it works.** The scaffold gives the model a curriculum for each turn instead of leaving it to improvise. Rather than dump a generic "what do you think?" loop, the model asks phase-appropriate questions: clarifying what is given, recalling analogous problems, verifying each step, and checking the result. This is the pedagogical structure behind several modern tutor systems, and it is a pure prompting technique.
+
+**Example.**
+
+```
+Solve with the learner across four phases (Pólya):
+1. Understanding: ask what is given and what is to be found.
+2. Planning: ask which similar problem the learner already knows.
+3. Execution: have the learner state each step and check it.
+4. Looking back: ask how the result could be verified or generalized.
+Stay in the current phase until the learner demonstrates it; only then
+advance to the next one.
+```
+
+# 4. Optimize the prompt itself instead of the weights
+
+**What it is.** Treat the system prompt as the object to optimize. Search a space of candidate "how to tutor" instructions against an automatic reward that rewards question-asking and, in the researchers' setup, couples the reward with a penalty on answer leakage. Their multi-objective optimizer, ParetoGrad, illustrates the approach [@lee2026tutors].
+
+**Why it works.** The headline result of "LLMs Are Already Good Tutors" is that this training-free optimization beat RL-trained tutor fine-tunes on aggregate reward (0.719 versus 0.633, as reported by the authors) [@lee2026tutors]. If a hand-written prompt is already close to a fine-tune, an automated search over prompt variants can close the gap entirely and stay easy to maintain.
+
+**Example.** The method needs no example text here: it is a recipe. Start from a working Socratic prompt, define a reward that scores each tutoring turn for question-asking and against leakage, then generate and keep the prompt variants that score highest. The ParetoGrad variant exists precisely because naively adding a leakage penalty can pull the model into evasive, low-quality answers; the constraint-based optimizer avoids that trade-off [@lee2026tutors].
+
+# 5. Prime with real tutor dialogue as few-shot exemplars
+
+**What it is.** Put one or two short, high-quality tutor responses in the prompt as in-context examples before the real session starts.
+
+**Why it works.** The best source of such exemplars is human tutoring data. MathDial built 2,848 grounded tutoring dialogues from real human tutors and showed how rich they are in pedagogical moves [@macina2023mathdial]. Feeding the model one or two of those exchanges sets the register: short questions, wait-time, follow-up on the learner's own words. This is a standard few-shot application of the same corpus.
+
+**Example (illustrative, in the style of MathDial exchanges).**
+
+```
+Here is an example of the desired interaction.
+
+Student: I don't see why the derivative of a product isn't just the
+             product of the derivatives.
+Tutor: What is another name for derivative, in terms of how one quantity
+       changes?
+Student: The rate of change?
+Tutor: Good. The rate of change of a product depends on how fast each
+       factor changes and how large the other one is. Which two terms
+       do you think appear?
+```
+
+A single such exchange, placed after the system prompt, shifts the whole conversation into question-led mode [@macina2023mathdial].
+
+# 6. Close the loop with a leak-detecting judge
+
+**What it is.** A lightweight second model, or a single-turn classification call, that reads each tutor response and flags it as "leaking" or "clean". On a leak, the tutor regenerates with an instruction to ask a question instead. The pattern is community practice in prompt-engineering circles (e.g. r/PromptEngineering) and is the operational answer to the leakage problem documented in training [@dinucujianu2025tutorrl].
+
+**Why it works.** Leakage is intermittent, so a single rule in the system prompt is not enough; monitoring every turn catches what the rules miss. This is evaluation as part of the loop, the same evaluation-driven stance used to de-risk large education deployments [@jurenka2024learnlm]. It reorganizes the interaction: the model's job is no longer to produce a perfect answer but to survive a check that it asked rather than told.
+
+**Example.**
+
+```
+TURN CHECK — classify the tutor's last reply:
+- leak: it contains the final answer, the formula, or the full solution
+- clean: it contains only questions, hints, or partial reasoning
+If the check is "leak", regenerate the reply with this instruction:
+"Answer leaking detected. Reformulate as a guiding question or a
+smaller hint."
+```
+
+# Put it together: a minimal working template
+
+The techniques compose. A starting template that combines persona, guardrails, phases, and one exemplar is enough to run a useful tutor session on any current model [@ruudfontys2025socratictutor; @polya1945howtosolveit; @macina2023mathdial].
+
+```
+You are a Socratic tutor in the four phases of Pólya
+[understanding, planning, execution, looking back].
+
+Ground rules:
+- Never reveal the final answer; give hints and sub-questions.
+- Every reply contains at least one question.
+- Stay in the current phase until the learner demonstrates mastery.
+
+[Optional: one short exemplar of the desired exchange here.]
+
+Remember: leave the learner able to solve the problem alone.
+
+Learner: ...
+```
+
+Add the leak-detecting judge as a post-processing step on every turn if you want the safety net [@dinucujianu2025tutorrl]. If the discussion occurs in an LMS or a chat API, the same system prompt plus judge fits behind any backend, which is why prompt-based tutoring is often the right default before committing to a dedicated model [@bastani2024generative]. When a fine-tune is still desirable, treat prompt optimization as the cheap experiment that tells you what the fine-tune would have to add [@lee2026tutors], and hold any candidate model to the evaluation bar set out for education systems [@jurenka2024learnlm; @tack2022aiteacher].

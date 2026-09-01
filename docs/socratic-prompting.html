@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; Planning your learning – Advanced Programming and Parallel Computing</title>
+<title>5&nbsp; Socratic Prompting: Techniques That Turn Any Modern LLM into a Tutor – Advanced Programming and Parallel Computing</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,42 +26,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
 }
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
 }
-</style>
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -71,8 +56,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Courses/00_intro-parallelism.html" rel="next">
-<link href="./socratic-prompting.html" rel="prev">
+<link href="./learning-plan.html" rel="next">
+<link href="./ai-tutor.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -294,7 +279,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./learning-plan.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Planning your learning</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./socratic-prompting.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Socratic Prompting: Techniques That Turn Any Modern LLM into a Tutor</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -348,13 +333,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./socratic-prompting.html" class="sidebar-item-text sidebar-link">
+  <a href="./socratic-prompting.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Socratic Prompting: Techniques That Turn Any Modern LLM into a Tutor</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./learning-plan.html" class="sidebar-item-text sidebar-link active">
+  <a href="./learning-plan.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Planning your learning</span></span></a>
   </div>
 </li>
@@ -463,18 +448,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#why-a-plan" id="toc-why-a-plan" class="nav-link active" data-scroll-target="#why-a-plan"><span class="header-section-number">6.1</span> Why a plan?</a></li>
-  <li><a href="#what-the-plan-must-contain" id="toc-what-the-plan-must-contain" class="nav-link" data-scroll-target="#what-the-plan-must-contain"><span class="header-section-number">6.2</span> What the plan must contain</a>
-  <ul>
-  <li><a href="#objectives-per-technical-module" id="toc-objectives-per-technical-module" class="nav-link" data-scroll-target="#objectives-per-technical-module"><span class="header-section-number">6.2.1</span> 1. Objectives (per technical module)</a></li>
-  <li><a href="#sequencing" id="toc-sequencing" class="nav-link" data-scroll-target="#sequencing"><span class="header-section-number">6.2.2</span> 2. Sequencing</a></li>
-  <li><a href="#success-criteria-and-evidence" id="toc-success-criteria-and-evidence" class="nav-link" data-scroll-target="#success-criteria-and-evidence"><span class="header-section-number">6.2.3</span> 3. Success criteria and evidence</a></li>
-  <li><a href="#follow-up-schedule" id="toc-follow-up-schedule" class="nav-link" data-scroll-target="#follow-up-schedule"><span class="header-section-number">6.2.4</span> 4. Follow-up schedule</a></li>
-  <li><a href="#contract" id="toc-contract" class="nav-link" data-scroll-target="#contract"><span class="header-section-number">6.2.5</span> 5. Contract</a></li>
-  </ul></li>
-  <li><a href="#plan-template" id="toc-plan-template" class="nav-link" data-scroll-target="#plan-template"><span class="header-section-number">6.3</span> Plan template</a></li>
-  <li><a href="#validation-flow-session-5" id="toc-validation-flow-session-5" class="nav-link" data-scroll-target="#validation-flow-session-5"><span class="header-section-number">6.4</span> Validation flow (session 5)</a></li>
-  <li><a href="#classic-mistakes-to-avoid" id="toc-classic-mistakes-to-avoid" class="nav-link" data-scroll-target="#classic-mistakes-to-avoid"><span class="header-section-number">6.5</span> Classic mistakes to avoid</a></li>
+  <li><a href="#background-why-prompt-instead-of-fine-tune" id="toc-background-why-prompt-instead-of-fine-tune" class="nav-link active" data-scroll-target="#background-why-prompt-instead-of-fine-tune"><span class="header-section-number">6</span> Background: why prompt instead of fine-tune?</a></li>
+  <li><a href="#activate-the-tutor-persona-in-the-system-prompt" id="toc-activate-the-tutor-persona-in-the-system-prompt" class="nav-link" data-scroll-target="#activate-the-tutor-persona-in-the-system-prompt"><span class="header-section-number">7</span> 1. Activate the tutor persona in the system prompt</a></li>
+  <li><a href="#guard-against-answer-leakage-hint-never-solve" id="toc-guard-against-answer-leakage-hint-never-solve" class="nav-link" data-scroll-target="#guard-against-answer-leakage-hint-never-solve"><span class="header-section-number">8</span> 2. Guard against answer leakage: “hint, never solve”</a></li>
+  <li><a href="#scaffold-reasoning-along-pólyas-problem-solving-phases" id="toc-scaffold-reasoning-along-pólyas-problem-solving-phases" class="nav-link" data-scroll-target="#scaffold-reasoning-along-pólyas-problem-solving-phases"><span class="header-section-number">9</span> 3. Scaffold reasoning along Pólya’s problem-solving phases</a></li>
+  <li><a href="#optimize-the-prompt-itself-instead-of-the-weights" id="toc-optimize-the-prompt-itself-instead-of-the-weights" class="nav-link" data-scroll-target="#optimize-the-prompt-itself-instead-of-the-weights"><span class="header-section-number">10</span> 4. Optimize the prompt itself instead of the weights</a></li>
+  <li><a href="#prime-with-real-tutor-dialogue-as-few-shot-exemplars" id="toc-prime-with-real-tutor-dialogue-as-few-shot-exemplars" class="nav-link" data-scroll-target="#prime-with-real-tutor-dialogue-as-few-shot-exemplars"><span class="header-section-number">11</span> 5. Prime with real tutor dialogue as few-shot exemplars</a></li>
+  <li><a href="#close-the-loop-with-a-leak-detecting-judge" id="toc-close-the-loop-with-a-leak-detecting-judge" class="nav-link" data-scroll-target="#close-the-loop-with-a-leak-detecting-judge"><span class="header-section-number">12</span> 6. Close the loop with a leak-detecting judge</a></li>
+  <li><a href="#put-it-together-a-minimal-working-template" id="toc-put-it-together-a-minimal-working-template" class="nav-link" data-scroll-target="#put-it-together-a-minimal-working-template"><span class="header-section-number">13</span> Put it together: a minimal working template</a></li>
   </ul>
 </nav>
     </div>
@@ -484,7 +465,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Planning your learning</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Socratic Prompting: Techniques That Turn Any Modern LLM into a Tutor</span></h1>
 </div>
 
 
@@ -501,100 +482,144 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<blockquote class="blockquote">
-<p>Working page for <strong>block 3</strong> (valid for both tracks). The goal is to produce a <strong>learning plan</strong> validated by the instructor before starting the autonomous work.</p>
-</blockquote>
-<section id="why-a-plan" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="why-a-plan"><span class="header-section-number">6.1</span> Why a plan?</h2>
-<p>Learning autonomously without a plan is navigating without a map: you skim and drift, and you never know when you are done. A learning plan (inspired by <em>learning contracts</em>) turns intention into <strong>commitment</strong>: objectives, an order, success criteria, a schedule. The plan is validated in session 5: it is your roadmap for block 5.</p>
-</section>
-<section id="what-the-plan-must-contain" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="what-the-plan-must-contain"><span class="header-section-number">6.2</span> What the plan must contain</h2>
-<section id="objectives-per-technical-module" class="level3" data-number="6.2.1">
-<h3 data-number="6.2.1" class="anchored" data-anchor-id="objectives-per-technical-module"><span class="header-section-number">6.2.1</span> 1. Objectives (per technical module)</h3>
-<p>For each of the 6 modules (async, IPC/locks, distributed, SIMD, GPU, WebGPU), write <strong>2–3 objectives</strong> as <em>observable criteria</em>:</p>
-<blockquote class="blockquote">
-<p>“I am able to write a program using <code>asyncio.gather</code> to parallelize I/O and to explain when it speeds things up (and when it does not).”</p>
-</blockquote>
-<p>Avoid vague wording (“understand asyncio”). An objective must allow a <strong>yes or no</strong> answer: “I can do it without help.”</p>
-</section>
-<section id="sequencing" class="level3" data-number="6.2.2">
-<h3 data-number="6.2.2" class="anchored" data-anchor-id="sequencing"><span class="header-section-number">6.2.2</span> 2. Sequencing</h3>
+<section id="background-why-prompt-instead-of-fine-tune" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Background: why prompt instead of fine-tune?</h1>
+<p>The Hugging Face landscape of Socratic and mentor-role language models is dominated by fine-tunes of the Qwen2.5 generation, for instance the LoRA-tuned <code>RuudFontys/socratic-tutor-qwen2.5</code> <span class="citation" data-cites="ruudfontys2025socratictutor"><a href="#ref-ruudfontys2025socratictutor" role="doc-biblioref">[1]</a></span>. Base models that old are no longer competitive with today’s general-purpose models, including the smaller local ones used in classrooms. Before paying the cost of downloading, serving, and maintaining a dedicated fine-tune, it is worth asking whether the same tutor behavior is reachable by prompting a current model.</p>
+<p>The evidence so far says yes, and the gap is measurable.</p>
 <ul>
-<li><strong>Order of the modules</strong> (recommended: async → IPC/locks → distributed → SIMD → GPU → WebGPU) and <strong>justification</strong> of your order if you change it.</li>
-<li><strong>Breakdown</strong>: for each module, 2–4 steps with a time estimate.</li>
+<li>A training-free system-prompt optimization on a general model reached an aggregate tutoring reward of 0.719, above the 0.633 of the RL-trained tutor fine-tunes it was compared against (numbers as reported by the authors) <span class="citation" data-cites="lee2026tutors"><a href="#ref-lee2026tutors" role="doc-biblioref">[2]</a></span>.</li>
+<li>Adding a careful scaffold to GPT-4o raised its MathTutorBench score from 0.50 to 0.82 without any fine-tuning <span class="citation" data-cites="macina2025mathtutorbench"><a href="#ref-macina2025mathtutorbench" role="doc-biblioref">[3]</a></span>.</li>
+<li>In a pre-registered RCT with roughly 1,000 high-school students, a guided GPT-4o tutor produced a 127% assisted-learning gain with no penalty to unassisted learning, while the same base model used without guidance left students 17% worse off than the control group <span class="citation" data-cites="bastani2024generative"><a href="#ref-bastani2024generative" role="doc-biblioref">[4]</a></span>.</li>
 </ul>
+<p>Two observations explain why prompting can match dedicated models. First, asking questions instead of answering is an in-context capability of a strong base model, so a good system prompt unlocks it. The creator of one tutor fine-tune admits as much: the model’s card ships with a custom system prompt and states that the Socratic behavior depends on it <span class="citation" data-cites="ruudfontys2025socratictutor"><a href="#ref-ruudfontys2025socratictutor" role="doc-biblioref">[1]</a></span>. Second, the main failure mode of tutor-role models is answer leakage: trained to be helpful, they hand over the solution, which actively harms learning <span class="citation" data-cites="dinucujianu2025tutorrl"><a href="#ref-dinucujianu2025tutorrl" role="doc-biblioref">[5]</a></span>. That failure is better addressed with explicit guardrails in the prompt than by more training.</p>
+<p>The rest of this page catalogues the prompting techniques that showed up again and again in the research, explains what each does, and gives working examples.</p>
 </section>
-<section id="success-criteria-and-evidence" class="level3" data-number="6.2.3">
-<h3 data-number="6.2.3" class="anchored" data-anchor-id="success-criteria-and-evidence"><span class="header-section-number">6.2.3</span> 3. Success criteria and evidence</h3>
-<ul>
-<li>How will you know the objective is reached? (a successful exercise, a mini-project, an oral or written explanation, a quiz…)</li>
-<li><strong>Track A</strong>: a <em>conversation</em> with the tutor that shows mastery (e.g.&nbsp;an exercise carried through without the tutor giving away the answer).</li>
-<li><strong>Track B</strong>: an <em>exercise</em> done alone, ready to be live-coded in front of the instructor.</li>
-</ul>
+<section id="activate-the-tutor-persona-in-the-system-prompt" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> 1. Activate the tutor persona in the system prompt</h1>
+<p><strong>What it is.</strong> Write an explicit role into the system prompt: the model is a Socratic tutor whose job is to guide, not to deliver. For a fine-tuned model this persona prompt is what actually switches on the trained behavior; for a general model it does the same job from scratch.</p>
+<p><strong>Why it works.</strong> The SocraticLM card ships paired “solver” and “Socratic” system prompts for identical weights, making the persona a pure prompting toggle (Hugging Face model card). The RuudFontys fine-tune behaves as a tutor only when its system prompt is present <span class="citation" data-cites="ruudfontys2025socratictutor"><a href="#ref-ruudfontys2025socratictutor" role="doc-biblioref">[1]</a></span>. MathTutorBench similarly found that a described tutor scaffold changes what even GPT-4o produces <span class="citation" data-cites="macina2025mathtutorbench"><a href="#ref-macina2025mathtutorbench" role="doc-biblioref">[3]</a></span>. The persona prompt is the cheapest intervention and the base everything else builds on.</p>
+<p><strong>Example (reconstructed from the RuudFontys model card).</strong> The card’s system prompt has three parts: a role declaration, a list of working principles, and a closing restatement of the goal.</p>
+<pre><code>You are a Socratic tutor. Your purpose is to help the learner reach the
+answer themselves through guided questioning. To do this:
+
+- Ask thought-provoking questions that stimulate the learner's thinking.
+- Avoid giving direct explanations unless the learner explicitly asks.
+- Build on the learner's own responses with follow-up questions.
+- Encourage step-by-step reasoning rather than leaps to the result.
+- Foster curiosity so the learner wants to solve problems on their own.
+
+Remember: your goal is to make the learner capable of solving problems
+independently, not to deliver the solution yourself.</code></pre>
+<p>The same structure transfers to any current model: declare the role, list two or three behavioral rules, close with the goal statement <span class="citation" data-cites="ruudfontys2025socratictutor"><a href="#ref-ruudfontys2025socratictutor" role="doc-biblioref">[1]</a></span>.</p>
 </section>
-<section id="follow-up-schedule" class="level3" data-number="6.2.4">
-<h3 data-number="6.2.4" class="anchored" data-anchor-id="follow-up-schedule"><span class="header-section-number">6.2.4</span> 4. Follow-up schedule</h3>
-<p>Spread the work between the follow-up points (sessions 6, 7, 8) and the autonomous periods. Plan for <strong>slack</strong>: the last third of the time stays available for the unexpected and for review.</p>
+<section id="guard-against-answer-leakage-hint-never-solve" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> 2. Guard against answer leakage: “hint, never solve”</h1>
+<p><strong>What it is.</strong> A short, explicit block of instructions that forbids revealing the answer and forces every response to move the learner forward with a hint or a smaller question.</p>
+<p><strong>Why it works.</strong> Leakage is the dominant failure of tutor-role models. TutorRL reports that trained tutor policies give away the answer in roughly 50 to 75% of responses across the models they tested, because being “helpful” is what the underlying optimization rewarded <span class="citation" data-cites="dinucujianu2025tutorrl"><a href="#ref-dinucujianu2025tutorrl" role="doc-biblioref">[5]</a></span>. The cleanest demonstration of the guardrail’s value is the Bastani RCT: the same underlying GPT-4o, wrapped in a tutor system that refuses direct answers, produced a 127% assisted gain, while the bare “GPT Base” condition (no guardrails) was 17% worse than a plain textbook group <span class="citation" data-cites="bastani2024generative"><a href="#ref-bastani2024generative" role="doc-biblioref">[4]</a></span>. MathTutorBench’s scaffold likewise credits the no-answer rule for much of the 0.50 to 0.82 jump <span class="citation" data-cites="macina2025mathtutorbench"><a href="#ref-macina2025mathtutorbench" role="doc-biblioref">[3]</a></span>.</p>
+<p><strong>Example.</strong></p>
+<pre><code>Ground rules for this tutoring session:
+- Never present the final answer. If the learner asks for it, respond with
+  a hint or a smaller sub-question.
+- Each reply must contain at least one question that advances the learner.
+- If you are about to write the numeric result or the full derivation,
+  stop and reformulate it as a next step the learner can take.</code></pre>
 </section>
-<section id="contract" class="level3" data-number="6.2.5">
-<h3 data-number="6.2.5" class="anchored" data-anchor-id="contract"><span class="header-section-number">6.2.5</span> 5. Contract</h3>
-<p>A short commitment section: your working arrangements (hours, environment, communication channel with the instructor), your “warning signals” (when to ask for help), and any personal adaptations.</p>
+<section id="scaffold-reasoning-along-pólyas-problem-solving-phases" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> 3. Scaffold reasoning along Pólya’s problem-solving phases</h1>
+<p><strong>What it is.</strong> Structure the conversation around the phases of mathematical problem solving popularized by Pólya: understand the problem, devise a plan, carry it out, and look back <span class="citation" data-cites="polya1945howtosolveit"><a href="#ref-polya1945howtosolveit" role="doc-biblioref">[6]</a></span>. The prompt tells the model which phase it is in and what kind of question belongs there.</p>
+<p><strong>Why it works.</strong> The scaffold gives the model a curriculum for each turn instead of leaving it to improvise. Rather than dump a generic “what do you think?” loop, the model asks phase-appropriate questions: clarifying what is given, recalling analogous problems, verifying each step, and checking the result. This is the pedagogical structure behind several modern tutor systems, and it is a pure prompting technique.</p>
+<p><strong>Example.</strong></p>
+<pre><code>Solve with the learner across four phases (Pólya):
+1. Understanding: ask what is given and what is to be found.
+2. Planning: ask which similar problem the learner already knows.
+3. Execution: have the learner state each step and check it.
+4. Looking back: ask how the result could be verified or generalized.
+Stay in the current phase until the learner demonstrates it; only then
+advance to the next one.</code></pre>
 </section>
+<section id="optimize-the-prompt-itself-instead-of-the-weights" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> 4. Optimize the prompt itself instead of the weights</h1>
+<p><strong>What it is.</strong> Treat the system prompt as the object to optimize. Search a space of candidate “how to tutor” instructions against an automatic reward that rewards question-asking and, in the researchers’ setup, couples the reward with a penalty on answer leakage. Their multi-objective optimizer, ParetoGrad, illustrates the approach <span class="citation" data-cites="lee2026tutors"><a href="#ref-lee2026tutors" role="doc-biblioref">[2]</a></span>.</p>
+<p><strong>Why it works.</strong> The headline result of “LLMs Are Already Good Tutors” is that this training-free optimization beat RL-trained tutor fine-tunes on aggregate reward (0.719 versus 0.633, as reported by the authors) <span class="citation" data-cites="lee2026tutors"><a href="#ref-lee2026tutors" role="doc-biblioref">[2]</a></span>. If a hand-written prompt is already close to a fine-tune, an automated search over prompt variants can close the gap entirely and stay easy to maintain.</p>
+<p><strong>Example.</strong> The method needs no example text here: it is a recipe. Start from a working Socratic prompt, define a reward that scores each tutoring turn for question-asking and against leakage, then generate and keep the prompt variants that score highest. The ParetoGrad variant exists precisely because naively adding a leakage penalty can pull the model into evasive, low-quality answers; the constraint-based optimizer avoids that trade-off <span class="citation" data-cites="lee2026tutors"><a href="#ref-lee2026tutors" role="doc-biblioref">[2]</a></span>.</p>
 </section>
-<section id="plan-template" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="plan-template"><span class="header-section-number">6.3</span> Plan template</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Learning plan — [First name]</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Track: A (AI tutor) / B (classic)</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Objectives per module</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">### M1 — Asynchronous</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Objective 1: ...</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Objective 2: ...</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Evidence: ...</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">### M2 — IPC &amp; locks</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>...</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">## Sequencing</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Module <span class="pp">|</span> Steps <span class="pp">|</span> Estimated time <span class="pp">|</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="pp">|---|---|---|</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> M1 <span class="pp">|</span> ... <span class="pp">|</span> ... <span class="pp">|</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## Success criteria</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>...</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">## Schedule</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Due <span class="pp">|</span> Planned <span class="pp">|</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="pp">|---|---|</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Session 6 <span class="pp">|</span> ... <span class="pp">|</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Session 7 <span class="pp">|</span> ... <span class="pp">|</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Session 8 <span class="pp">|</span> ... <span class="pp">|</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 20/10 <span class="pp">|</span> Intermediate report <span class="pp">|</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu">## Contract</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Working arrangements: ...</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Warning signals: ...</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Adaptations: ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="prime-with-real-tutor-dialogue-as-few-shot-exemplars" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> 5. Prime with real tutor dialogue as few-shot exemplars</h1>
+<p><strong>What it is.</strong> Put one or two short, high-quality tutor responses in the prompt as in-context examples before the real session starts.</p>
+<p><strong>Why it works.</strong> The best source of such exemplars is human tutoring data. MathDial built 2,848 grounded tutoring dialogues from real human tutors and showed how rich they are in pedagogical moves <span class="citation" data-cites="macina2023mathdial"><a href="#ref-macina2023mathdial" role="doc-biblioref">[7]</a></span>. Feeding the model one or two of those exchanges sets the register: short questions, wait-time, follow-up on the learner’s own words. This is a standard few-shot application of the same corpus.</p>
+<p><strong>Example (illustrative, in the style of MathDial exchanges).</strong></p>
+<pre><code>Here is an example of the desired interaction.
+
+Student: I don't see why the derivative of a product isn't just the
+             product of the derivatives.
+Tutor: What is another name for derivative, in terms of how one quantity
+       changes?
+Student: The rate of change?
+Tutor: Good. The rate of change of a product depends on how fast each
+       factor changes and how large the other one is. Which two terms
+       do you think appear?</code></pre>
+<p>A single such exchange, placed after the system prompt, shifts the whole conversation into question-led mode <span class="citation" data-cites="macina2023mathdial"><a href="#ref-macina2023mathdial" role="doc-biblioref">[7]</a></span>.</p>
 </section>
-<section id="validation-flow-session-5" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="validation-flow-session-5"><span class="header-section-number">6.4</span> Validation flow (session 5)</h2>
-<ul>
-<li>Your plan is <strong>reviewed individually</strong> (~15 min with the instructor).</li>
-<li><strong>Track A</strong>: the v1 of your system prompt is tested on a simple exercise; the tutor must already “behave” (refuse the solution, guide).</li>
-<li>The requested adjustments are to be carried over into the plan; it then becomes your reference for block 5.</li>
-</ul>
+<section id="close-the-loop-with-a-leak-detecting-judge" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> 6. Close the loop with a leak-detecting judge</h1>
+<p><strong>What it is.</strong> A lightweight second model, or a single-turn classification call, that reads each tutor response and flags it as “leaking” or “clean”. On a leak, the tutor regenerates with an instruction to ask a question instead. The pattern is community practice in prompt-engineering circles (e.g.&nbsp;r/PromptEngineering) and is the operational answer to the leakage problem documented in training <span class="citation" data-cites="dinucujianu2025tutorrl"><a href="#ref-dinucujianu2025tutorrl" role="doc-biblioref">[5]</a></span>.</p>
+<p><strong>Why it works.</strong> Leakage is intermittent, so a single rule in the system prompt is not enough; monitoring every turn catches what the rules miss. This is evaluation as part of the loop, the same evaluation-driven stance used to de-risk large education deployments <span class="citation" data-cites="jurenka2024learnlm"><a href="#ref-jurenka2024learnlm" role="doc-biblioref">[8]</a></span>. It reorganizes the interaction: the model’s job is no longer to produce a perfect answer but to survive a check that it asked rather than told.</p>
+<p><strong>Example.</strong></p>
+<pre><code>TURN CHECK — classify the tutor's last reply:
+- leak: it contains the final answer, the formula, or the full solution
+- clean: it contains only questions, hints, or partial reasoning
+If the check is "leak", regenerate the reply with this instruction:
+"Answer leaking detected. Reformulate as a guiding question or a
+smaller hint."</code></pre>
 </section>
-<section id="classic-mistakes-to-avoid" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="classic-mistakes-to-avoid"><span class="header-section-number">6.5</span> Classic mistakes to avoid</h2>
-<ul>
-<li>Vague objectives (no observable criterion);</li>
-<li>Overly ambitious sequencing (underestimating time);</li>
-<li>Missing evidence (“I will read the docs”);</li>
-<li>A “perfect” plan never revisited after session 5; the plan is a <strong>living tool</strong>, you update it (and document why) in the logbook.</li>
-</ul>
+<section id="put-it-together-a-minimal-working-template" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> Put it together: a minimal working template</h1>
+<p>The techniques compose. A starting template that combines persona, guardrails, phases, and one exemplar is enough to run a useful tutor session on any current model <span class="citation" data-cites="ruudfontys2025socratictutor polya1945howtosolveit macina2023mathdial"><a href="#ref-ruudfontys2025socratictutor" role="doc-biblioref">[1]</a>, <a href="#ref-polya1945howtosolveit" role="doc-biblioref">[6]</a>, <a href="#ref-macina2023mathdial" role="doc-biblioref">[7]</a></span>.</p>
+<pre><code>You are a Socratic tutor in the four phases of Pólya
+[understanding, planning, execution, looking back].
+
+Ground rules:
+- Never reveal the final answer; give hints and sub-questions.
+- Every reply contains at least one question.
+- Stay in the current phase until the learner demonstrates mastery.
+
+[Optional: one short exemplar of the desired exchange here.]
+
+Remember: leave the learner able to solve the problem alone.
+
+Learner: ...</code></pre>
+<p>Add the leak-detecting judge as a post-processing step on every turn if you want the safety net <span class="citation" data-cites="dinucujianu2025tutorrl"><a href="#ref-dinucujianu2025tutorrl" role="doc-biblioref">[5]</a></span>. If the discussion occurs in an LMS or a chat API, the same system prompt plus judge fits behind any backend, which is why prompt-based tutoring is often the right default before committing to a dedicated model <span class="citation" data-cites="bastani2024generative"><a href="#ref-bastani2024generative" role="doc-biblioref">[4]</a></span>. When a fine-tune is still desirable, treat prompt optimization as the cheap experiment that tells you what the fine-tune would have to add <span class="citation" data-cites="lee2026tutors"><a href="#ref-lee2026tutors" role="doc-biblioref">[2]</a></span>, and hold any candidate model to the evaluation bar set out for education systems <span class="citation" data-cites="jurenka2024learnlm tack2022aiteacher"><a href="#ref-jurenka2024learnlm" role="doc-biblioref">[8]</a>, <a href="#ref-tack2022aiteacher" role="doc-biblioref">[9]</a></span>.</p>
 
 
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-ruudfontys2025socratictutor" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">RuudFontys, <span>“Socratic-tutor-qwen2.5: A fine-tuned Qwen2.5-7B model for socratic tutoring dialogue.”</span> Hugging Face model repository, 2025. Available: <a href="https://huggingface.co/RuudFontys/socratic-tutor-qwen2.5">https://huggingface.co/RuudFontys/socratic-tutor-qwen2.5</a></div>
+</div>
+<div id="ref-lee2026tutors" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline"><span class="nocase">U. Lee <em>et al.</em></span>, <span>“LLMs are already good tutors: Training-free prompt optimization for pedagogical math tutoring,”</span> <em>arXiv preprint arXiv:2605.27088</em>. 2026. Available: <a href="https://arxiv.org/abs/2605.27088">https://arxiv.org/abs/2605.27088</a></div>
+</div>
+<div id="ref-macina2025mathtutorbench" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">J. Macina, N. Daheim, I. Hakimi, M. Kapur, I. Gurevych, and M. Sachan, <span>“MathTutorBench: A benchmark for measuring open-ended pedagogical capabilities of LLM tutors,”</span> <em>arXiv preprint arXiv:2502.18940</em>. 2025. Available: <a href="https://arxiv.org/abs/2502.18940">https://arxiv.org/abs/2502.18940</a></div>
+</div>
+<div id="ref-bastani2024generative" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">H. Bastani, O. Bastani, A. Sungu, H. Ge, Ö. Kabakcı, and R. Mariman, <span>“Generative AI can harm learning,”</span> <em>SSRN Scholarly Paper 4895486</em>, 2024, Available: <a href="https://papers.ssrn.com/abstract=4895486">https://papers.ssrn.com/abstract=4895486</a></div>
+</div>
+<div id="ref-dinucujianu2025tutorrl" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">D. Dinucu-Jianu, J. Macina, N. Daheim, I. Hakimi, I. Gurevych, and M. Sachan, <span>“From problem-solving to teaching problem-solving: Aligning LLMs with pedagogy using reinforcement learning,”</span> <em>arXiv preprint arXiv:2505.15607</em>, 2025, Available: <a href="https://arxiv.org/abs/2505.15607">https://arxiv.org/abs/2505.15607</a></div>
+</div>
+<div id="ref-polya1945howtosolveit" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">G. Pólya, <em>How to solve it: A new aspect of mathematical method</em>. Princeton, NJ: Princeton University Press, 1945.</div>
+</div>
+<div id="ref-macina2023mathdial" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">J. Macina <em>et al.</em>, <span>“MathDial: A dialogue tutoring dataset with rich pedagogical properties grounded in math reasoning problems,”</span> in <em>Proceedings of the 18th workshop on innovative use of NLP for building educational applications (BEA 2023)</em>, 2023, pp. 785–795.</div>
+</div>
+<div id="ref-jurenka2024learnlm" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline"><span class="nocase">I. Jurenka, M. Kunesch, <em>et al.</em></span>, <span>“Towards responsible development of generative AI for education: An evaluation-driven approach,”</span> <em>arXiv preprint arXiv:2407.12687</em>, 2024, Available: <a href="https://arxiv.org/abs/2407.12687">https://arxiv.org/abs/2407.12687</a></div>
+</div>
+<div id="ref-tack2022aiteacher" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">A. Tack and C. Piech, <span>“The AI teacher test: Measuring the pedagogical ability of blender and GPT-3 in educational dialogues,”</span> <em>arXiv preprint arXiv:2205.07540</em>. 2022. Available: <a href="https://arxiv.org/abs/2205.07540">https://arxiv.org/abs/2205.07540</a></div>
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -1013,13 +1038,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./socratic-prompting.html" class="pagination-link" aria-label="Socratic Prompting: Techniques That Turn Any Modern LLM into a Tutor">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Socratic Prompting: Techniques That Turn Any Modern LLM into a Tutor</span></span>
+      <a href="./ai-tutor.html" class="pagination-link" aria-label="Designing an AI tutor">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Designing an AI tutor</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Courses/00_intro-parallelism.html" class="pagination-link" aria-label="Introduction to Parallelism">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction to Parallelism</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./learning-plan.html" class="pagination-link" aria-label="Planning your learning">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Planning your learning</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
