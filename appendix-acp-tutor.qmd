@@ -50,11 +50,13 @@ What you need, all in the files your instructor distributes:
 
 ### 1. Get the runner and its dependencies
 
-Clone the runner repository (or copy the `Tutor-agent/` folder your instructor
-distributes), then install its single Python dependency with `uv`:
+Clone the runner — public repository <https://github.com/fradav/tutor-agent> —
+or copy the `Tutor-agent/` folder your instructor distributes, then install
+its single Python dependency with `uv`:
 
 ```bash
-cd path/to/Tutor-agent
+git clone https://github.com/fradav/tutor-agent
+cd tutor-agent        # repo folder name (lowercase): keep it in steps 3 and 5
 uv sync
 ```
 
