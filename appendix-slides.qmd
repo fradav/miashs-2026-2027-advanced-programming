@@ -1,4 +1,4 @@
-# Slides
+## Slides
 
 Each session ships a standalone reveal.js deck with the same content as the
 corresponding chapters. The slides open full-screen in your browser: use the

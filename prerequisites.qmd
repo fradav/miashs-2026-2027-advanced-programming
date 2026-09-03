@@ -1,4 +1,4 @@
-# Prerequisites
+## Prerequisites
 
 For this module you need **two basic tools** (a code editor and a Python environment
 manager), plus, for [Track A](teaching-design.qmd), access to a language model. All the

@@ -1,0 +1,183 @@
+## The Socratic tutor as an ACP agent
+
+This annex explains how to install and run the course's Socratic tutor as an
+**external agent** in Zed — the setup the instructor uses in the classroom
+demos. It is a companion to
+[appendix-local-llm.qmd](appendix-local-llm.qmd), which covers the plain local
+model (Ling-3.0-tiny) inside the built-in agent. The tutor version is a separate
+Python runner that speaks the Agent Client Protocol (ACP) to Zed and gives the
+model a **fully controlled system prompt**.
+
+## Why an ACP agent and not the built-in agent?
+
+The tutor is normally started from an `AGENTS.md` persona inside Zed's built-in
+agent (ai-tutor.qmd). That works, but with a constraint you cannot remove with
+the built-in agent: **Zed always prefixes a large system prompt** of its own
+(communication rules, formatting, detailed tool use — on the order of 3–4k
+tokens), and `AGENTS.md` can only be *appended* to that scaffolding, never
+replace it. For a 4–9B local model this scaffolding is noise that steers it off
+course (tool-format confusion, answer leakage, repetition).
+
+An **external ACP agent** removes that constraint. Zed only hosts the
+conversation thread; the agent owns the model call, the system prompt, and the
+tools. The prompt that reaches the model is exactly what the agent sends —
+**no default, no scaffolding**. What the model gets comes from the project you
+have open in Zed:
+
+- `<workspace>/AGENTS.<model>.md` — used when that model is selected;
+- otherwise `<workspace>/AGENTS.md` — the shared base;
+- if neither exists, no system message at all.
+
+Because the variant *replaces* the base, each `AGENTS.<model>.md` you deploy is
+a **full** system prompt. The runner adds two extras on top of the prompt
+control:
+
+- **read-only, scoped tools** — the model can read the course material
+  (`Courses/*.qmd`, the rendered book) and the files of your open project, with
+  bounded paths (absolute paths and `..` are refused); there is no write tool;
+- **clickable citations** — references the model writes as `fichier.qmd:line`
+  and `python:<reference>` come back as links that open the locally served book
+  page and the official Python documentation.
+
+What you need, all in the files your instructor distributes:
+
+- the **runner folder** (`Tutor-agent/`, generic and in English — it also
+  downloads the tutor models, so it is large);
+- the **corpus** (folder holding `Courses/`, `www/`, `sections.json`);
+- the **tutor prompts** (pre-assembled `AGENTS*.md` files).
+
+## Installation step by step
+
+### 1. Get the runner and its dependencies
+
+Clone the runner repository (or copy the `Tutor-agent/` folder your instructor
+distributes), then install its single Python dependency with `uv`:
+
+```bash
+cd path/to/Tutor-agent
+uv sync
+```
+
+Prerequisites: Python 3.10+, `uv` (https://docs.astral.sh/uv/), and
+`llama-server` from llama.cpp (Homebrew: `brew install llama.cpp`,
+**≥ 0.3.0** — the version with router mode).
+
+### 2. Download the tutor models
+
+The runner serves three local models through one `llama-server` router on port
+`8025`. Fetch the GGUF weights (resumable; run again to finish):
+
+```bash
+uv run python models/fetch_models.py            # all 3 .gguf → models/
+uv run python models/fetch_models.py --list     # names + expected sizes
+```
+
+About 17 GB of free disk is needed for the three files.
+
+### 3. Point the runner at the course corpus
+
+The corpus is not shipped inside the public `Tutor-agent/` repo — it is
+centralized. If the distributed files already contain a `config.local.json`,
+skip this step. Otherwise create one in `Tutor-agent/` (it is gitignored) that
+redirects the corpus to the folder you received:
+
+```json
+{
+  "paths": {
+    "course_dir": "/path/to/your/distributed/MIASHS-Configuration-Tutorat"
+  }
+}
+```
+
+`course_dir` is the anchor: `Courses/`, `www/` and `sections.json` are resolved
+under it.
+
+### 4. Deploy the prompts into your workspace
+
+Create a folder for your tutoring sessions (where you will write and test your
+code — this is the workspace you will open in Zed), then copy the prompts into
+it:
+
+```bash
+cp path/to/distributed/agents/AGENTS.md  ~/tutorat/
+cp path/to/distributed/agents/AGENTS.qwen3.5-4B.md   ~/tutorat/   # default model
+```
+
+`AGENTS.md` is the shared preamble. Each `AGENTS.<model>.md` is the *full*
+prompt for that model, so copy the variants for the models you intend to use
+(`AGENTS.ornith-1.5-9B.md`, `AGENTS.gemma-4-E4B.md`). You can always add more
+later — no script involved.
+
+### 5. Register the agent in Zed
+
+Add an entry under `agent_servers` in `settings.json` (macOS:
+`~/.config/zed/settings.json`), or use *Agent Settings → External Agents → Add
+Custom Agent*, which writes the same block:
+
+```json
+{
+  "agent_servers": {
+    "tuteur": {
+      "type": "custom",
+      "command": ["uv", "run", "--project", "/abs/path/to/Tutor-agent", "python", "/abs/path/to/Tutor-agent/acp_agent.py"]
+    }
+  }
+}
+```
+
+Point both paths at your copy of the runner folder. If `uv` is not on Zed's
+PATH, use its absolute path (e.g. `/opt/homebrew/bin/uv`). Reload the window.
+
+### 6. Choose the agent and the model in Zed
+
+Open the workspace folder where you deployed the prompts, then:
+
+1. In the Agent panel, `+` shows the external agents — select **tuteur**.
+2. Pick the model in the agent's **Modèle** selector — one option per profile:
+   `qwen3.5-4B`, `ornith-1.5-9B`, `gemma-4-E4B`. The choice applies when the
+   session starts.
+3. Start a conversation.
+
+On the first prompt the runner starts the local router it needs (port 8025) and
+the docs server (port 8765) that the clickable citations open — no manual
+start. For manual control from a terminal:
+
+```bash
+uv run run.py start qwen3.5-4B   # ensure the router serves the model
+uv run run.py status             # port + served aliases
+uv run run.py stop               # stop the managed router
+```
+
+## Choosing a model
+
+Start with **qwen3.5-4B**. It is the best overall balance for this tutor: it
+keeps the Socratic back-and-forth (asks, does not hand out answers), anchors its
+replies to the course pages and cites them, resists inventing content on modest
+hardware, and runs comfortably on a laptop (4B class, quantized). There is no
+reason to pick another model first.
+
+Pick another model only for a specific reason:
+
+| Model | Size | Use it when | Watch out for |
+|---|---|---|---|
+| `ornith-1.5-9B` | 9B | you have a bit more RAM/VRAM and want a more patient, longer dialogue | its first turns can be verbose |
+| `gemma-4-E4B` | 4B | factual accuracy of the course citations matters to you | it can leak "internal notes" into its reply; insist it only writes for you |
+
+Both alternatives are about the same memory-footprint class as the default in
+practice; `ornith` is heavier.
+
+A limit that applies to all three: every provided model eventually hands over a
+full code block if you insist long enough ("just give me the code"). That is a
+known failure mode of this setup, not something a specific model fixes. The
+tutor tries to walk you through the reasoning first — cooperate with it: state
+what you have tried, let it read your code, keep the "show me, don't tell me"
+rule.
+
+Notes:
+
+- `temperature 0.6` is set for all three — deterministic enough, varied enough.
+  Do not raise it past ~0.7; the tutor starts to ramble.
+- If the model's answer comes back empty or stuck (a known qwen + thinking
+  quirk on llama.cpp), just send the prompt again. The runner streams the
+  reasoning on its own channel and re-injects it across turns automatically;
+  there is no per-model toggle to flip.

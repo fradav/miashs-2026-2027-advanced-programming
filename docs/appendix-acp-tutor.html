@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>15&nbsp; Module summary – Advanced Programming and Parallel Computing</title>
+<title>Appendix B — The Socratic tutor as an ACP agent – Advanced Programming and Parallel Computing</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -36,8 +71,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
-<link href="./projects.html" rel="prev">
+<link href="./appendix-slides.html" rel="next">
+<link href="./appendix-local-llm.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -259,7 +294,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./summary.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Module summary</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./appendix-local-llm.html">Appendices</a></li><li class="breadcrumb-item"><a href="./appendix-acp-tutor.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">The Socratic tutor as an ACP agent</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -373,7 +408,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link active">
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Module summary</span></span></a>
   </div>
 </li>
@@ -400,7 +435,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./appendix-acp-tutor.html" class="sidebar-item-text sidebar-link">
+  <a href="./appendix-acp-tutor.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">The Socratic tutor as an ACP agent</span></span></a>
   </div>
 </li>
@@ -434,11 +469,17 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-thread-parallelism-is-not-free" id="toc-the-thread-parallelism-is-not-free" class="nav-link active" data-scroll-target="#the-thread-parallelism-is-not-free"><span class="header-section-number">15.1</span> The thread: parallelism is not free</a></li>
-  <li><a href="#map-of-the-6-modules" id="toc-map-of-the-6-modules" class="nav-link" data-scroll-target="#map-of-the-6-modules"><span class="header-section-number">15.2</span> Map of the 6 modules</a></li>
-  <li><a href="#cross-cutting-watch-points" id="toc-cross-cutting-watch-points" class="nav-link" data-scroll-target="#cross-cutting-watch-points"><span class="header-section-number">15.3</span> Cross-cutting watch points</a></li>
-  <li><a href="#indicative-deadlines" id="toc-indicative-deadlines" class="nav-link" data-scroll-target="#indicative-deadlines"><span class="header-section-number">15.4</span> Indicative deadlines</a></li>
-  <li><a href="#where-to-start" id="toc-where-to-start" class="nav-link" data-scroll-target="#where-to-start"><span class="header-section-number">15.5</span> Where to start</a></li>
+  <li><a href="#why-an-acp-agent-and-not-the-built-in-agent" id="toc-why-an-acp-agent-and-not-the-built-in-agent" class="nav-link active" data-scroll-target="#why-an-acp-agent-and-not-the-built-in-agent"><span class="header-section-number">B.1</span> Why an ACP agent and not the built-in agent?</a></li>
+  <li><a href="#installation-step-by-step" id="toc-installation-step-by-step" class="nav-link" data-scroll-target="#installation-step-by-step"><span class="header-section-number">B.2</span> Installation step by step</a>
+  <ul>
+  <li><a href="#get-the-runner-and-its-dependencies" id="toc-get-the-runner-and-its-dependencies" class="nav-link" data-scroll-target="#get-the-runner-and-its-dependencies"><span class="header-section-number">B.2.1</span> 1. Get the runner and its dependencies</a></li>
+  <li><a href="#download-the-tutor-models" id="toc-download-the-tutor-models" class="nav-link" data-scroll-target="#download-the-tutor-models"><span class="header-section-number">B.2.2</span> 2. Download the tutor models</a></li>
+  <li><a href="#point-the-runner-at-the-course-corpus" id="toc-point-the-runner-at-the-course-corpus" class="nav-link" data-scroll-target="#point-the-runner-at-the-course-corpus"><span class="header-section-number">B.2.3</span> 3. Point the runner at the course corpus</a></li>
+  <li><a href="#deploy-the-prompts-into-your-workspace" id="toc-deploy-the-prompts-into-your-workspace" class="nav-link" data-scroll-target="#deploy-the-prompts-into-your-workspace"><span class="header-section-number">B.2.4</span> 4. Deploy the prompts into your workspace</a></li>
+  <li><a href="#register-the-agent-in-zed" id="toc-register-the-agent-in-zed" class="nav-link" data-scroll-target="#register-the-agent-in-zed"><span class="header-section-number">B.2.5</span> 5. Register the agent in Zed</a></li>
+  <li><a href="#choose-the-agent-and-the-model-in-zed" id="toc-choose-the-agent-and-the-model-in-zed" class="nav-link" data-scroll-target="#choose-the-agent-and-the-model-in-zed"><span class="header-section-number">B.2.6</span> 6. Choose the agent and the model in Zed</a></li>
+  </ul></li>
+  <li><a href="#choosing-a-model" id="toc-choosing-a-model" class="nav-link" data-scroll-target="#choosing-a-model"><span class="header-section-number">B.3</span> Choosing a model</a></li>
   </ul>
 </nav>
     </div>
@@ -446,10 +487,9 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./appendix-local-llm.html">Appendices</a></li><li class="breadcrumb-item"><a href="./appendix-acp-tutor.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">The Socratic tutor as an ACP agent</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Module summary</span></h1>
-<p class="subtitle lead">What to remember, and where to start</p>
+<h1 class="title">Appendix B — The Socratic tutor as an ACP agent</h1>
 </div>
 
 
@@ -466,138 +506,129 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This page recaps the thread of the module and serves as a <strong>navigation map</strong> for the autonomous work. It complements the modules: it helps you situate each concept.</p>
-<section id="the-thread-parallelism-is-not-free" class="level2" data-number="15.1">
-<h2 data-number="15.1" class="anchored" data-anchor-id="the-thread-parallelism-is-not-free"><span class="header-section-number">15.1</span> The thread: parallelism is not free</h2>
-<p>The single theme of the course fits in one sentence: parallelizing means decomposing to speed up, but every decomposition has a cost (scheduling, communication, memory, synchronization). The speed curve is never linear in the number of workers.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<figcaption>The module-choice decision map.</figcaption>
-<p><img src="images/module_choice.svg" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</section>
-<section id="map-of-the-6-modules" class="level2" data-number="15.2">
-<h2 data-number="15.2" class="anchored" data-anchor-id="map-of-the-6-modules"><span class="header-section-number">15.2</span> Map of the 6 modules</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Module</th>
-<th>Question it addresses</th>
-<th>Main tools</th>
-<th>Bottleneck targeted</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>M0 — Intro</td>
-<td>What does <em>parallelizing</em> mean?</td>
-<td>Amdahl/Gustafson laws, Flynn’s taxonomy</td>
-<td>vocabulary</td>
-</tr>
-<tr class="even">
-<td>M1 — Asynchronous</td>
-<td>How not to <em>wait</em>?</td>
-<td><code>asyncio</code>, event loop, <code>gather</code></td>
-<td>I/O</td>
-</tr>
-<tr class="odd">
-<td>M2 — IPC &amp; locks</td>
-<td>How to <em>coordinate</em> processes?</td>
-<td><code>multiprocessing</code>, <code>Queue</code>, <code>Lock</code></td>
-<td>shared CPU</td>
-</tr>
-<tr class="even">
-<td>M3 — Distributed</td>
-<td>How to <em>split</em> a large computation?</td>
-<td><code>dask</code>, <code>ray</code>, <code>delayed</code></td>
-<td>large volumes</td>
-</tr>
-<tr class="odd">
-<td>M4 — SIMD</td>
-<td>How to use one <em>instruction</em> for several data?</td>
-<td>numpy, numba</td>
-<td>vector computation</td>
-</tr>
-<tr class="even">
-<td>M5 — GPU</td>
-<td>How to exploit <em>many</em> simple cores?</td>
-<td>CuPy, numba-CUDA</td>
-<td>massive parallelism</td>
-</tr>
-<tr class="odd">
-<td>M6 — WebGPU</td>
-<td>How to compute in the <em>browser</em>?</td>
-<td>WebGPU, WGSL</td>
-<td>GPU access</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="cross-cutting-watch-points" class="level2" data-number="15.3">
-<h2 data-number="15.3" class="anchored" data-anchor-id="cross-cutting-watch-points"><span class="header-section-number">15.3</span> Cross-cutting watch points</h2>
+<p>This annex explains how to install and run the course’s Socratic tutor as an <strong>external agent</strong> in Zed — the setup the instructor uses in the classroom demos. It is a companion to <a href="./appendix-local-llm.html">appendix-local-llm.qmd</a>, which covers the plain local model (Ling-3.0-tiny) inside the built-in agent. The tutor version is a separate Python runner that speaks the Agent Client Protocol (ACP) to Zed and gives the model a <strong>fully controlled system prompt</strong>.</p>
+<section id="why-an-acp-agent-and-not-the-built-in-agent" class="level2" data-number="B.1">
+<h2 data-number="B.1" class="anchored" data-anchor-id="why-an-acp-agent-and-not-the-built-in-agent"><span class="header-section-number">B.1</span> Why an ACP agent and not the built-in agent?</h2>
+<p>The tutor is normally started from an <code>AGENTS.md</code> persona inside Zed’s built-in agent (ai-tutor.qmd). That works, but with a constraint you cannot remove with the built-in agent: <strong>Zed always prefixes a large system prompt</strong> of its own (communication rules, formatting, detailed tool use — on the order of 3–4k tokens), and <code>AGENTS.md</code> can only be <em>appended</em> to that scaffolding, never replace it. For a 4–9B local model this scaffolding is noise that steers it off course (tool-format confusion, answer leakage, repetition).</p>
+<p>An <strong>external ACP agent</strong> removes that constraint. Zed only hosts the conversation thread; the agent owns the model call, the system prompt, and the tools. The prompt that reaches the model is exactly what the agent sends — <strong>no default, no scaffolding</strong>. What the model gets comes from the project you have open in Zed:</p>
 <ul>
-<li><strong>Python’s GIL</strong> only blocks threads on CPU-bound work; asyncio is for I/O, multiprocessing is for CPU-bound work.</li>
-<li><strong>Always measure</strong> before and after: only timing (with the cost of transfers for the GPU) justifies an architecture choice.</li>
-<li><strong>A lock serializes a critical section</strong>: it prevents races but introduces waiting and a risk of <em>deadlock</em>.</li>
-<li><strong>Shared state is the enemy of parallelism</strong>: prefer pure tasks (no mutation, no side effects) as recommended by Dask best practices.</li>
+<li><code>&lt;workspace&gt;/AGENTS.&lt;model&gt;.md</code> — used when that model is selected;</li>
+<li>otherwise <code>&lt;workspace&gt;/AGENTS.md</code> — the shared base;</li>
+<li>if neither exists, no system message at all.</li>
+</ul>
+<p>Because the variant <em>replaces</em> the base, each <code>AGENTS.&lt;model&gt;.md</code> you deploy is a <strong>full</strong> system prompt. The runner adds two extras on top of the prompt control:</p>
+<ul>
+<li><strong>read-only, scoped tools</strong> — the model can read the course material (<code>Courses/*.qmd</code>, the rendered book) and the files of your open project, with bounded paths (absolute paths and <code>..</code> are refused); there is no write tool;</li>
+<li><strong>clickable citations</strong> — references the model writes as <code>fichier.qmd:line</code> and <code>python:&lt;reference&gt;</code> come back as links that open the locally served book page and the official Python documentation.</li>
+</ul>
+<p>What you need, all in the files your instructor distributes:</p>
+<ul>
+<li>the <strong>runner folder</strong> (<code>Tutor-agent/</code>, generic and in English — it also downloads the tutor models, so it is large);</li>
+<li>the <strong>corpus</strong> (folder holding <code>Courses/</code>, <code>www/</code>, <code>sections.json</code>);</li>
+<li>the <strong>tutor prompts</strong> (pre-assembled <code>AGENTS*.md</code> files).</li>
 </ul>
 </section>
-<section id="indicative-deadlines" class="level2" data-number="15.4">
-<h2 data-number="15.4" class="anchored" data-anchor-id="indicative-deadlines"><span class="header-section-number">15.4</span> Indicative deadlines</h2>
+<section id="installation-step-by-step" class="level2" data-number="B.2">
+<h2 data-number="B.2" class="anchored" data-anchor-id="installation-step-by-step"><span class="header-section-number">B.2</span> Installation step by step</h2>
+<section id="get-the-runner-and-its-dependencies" class="level3" data-number="B.2.1">
+<h3 data-number="B.2.1" class="anchored" data-anchor-id="get-the-runner-and-its-dependencies"><span class="header-section-number">B.2.1</span> 1. Get the runner and its dependencies</h3>
+<p>Clone the runner repository (or copy the <code>Tutor-agent/</code> folder your instructor distributes), then install its single Python dependency with <code>uv</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> path/to/Tutor-agent</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Prerequisites: Python 3.10+, <code>uv</code> (https://docs.astral.sh/uv/), and <code>llama-server</code> from llama.cpp (Homebrew: <code>brew install llama.cpp</code>, <strong>≥ 0.3.0</strong> — the version with router mode).</p>
+</section>
+<section id="download-the-tutor-models" class="level3" data-number="B.2.2">
+<h3 data-number="B.2.2" class="anchored" data-anchor-id="download-the-tutor-models"><span class="header-section-number">B.2.2</span> 2. Download the tutor models</h3>
+<p>The runner serves three local models through one <code>llama-server</code> router on port <code>8025</code>. Fetch the GGUF weights (resumable; run again to finish):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python models/fetch_models.py            <span class="co"># all 3 .gguf → models/</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python models/fetch_models.py <span class="at">--list</span>     <span class="co"># names + expected sizes</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>About 17 GB of free disk is needed for the three files.</p>
+</section>
+<section id="point-the-runner-at-the-course-corpus" class="level3" data-number="B.2.3">
+<h3 data-number="B.2.3" class="anchored" data-anchor-id="point-the-runner-at-the-course-corpus"><span class="header-section-number">B.2.3</span> 3. Point the runner at the course corpus</h3>
+<p>The corpus is not shipped inside the public <code>Tutor-agent/</code> repo — it is centralized. If the distributed files already contain a <code>config.local.json</code>, skip this step. Otherwise create one in <code>Tutor-agent/</code> (it is gitignored) that redirects the corpus to the folder you received:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"paths"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"course_dir"</span><span class="fu">:</span> <span class="st">"/path/to/your/distributed/MIASHS-Configuration-Tutorat"</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>course_dir</code> is the anchor: <code>Courses/</code>, <code>www/</code> and <code>sections.json</code> are resolved under it.</p>
+</section>
+<section id="deploy-the-prompts-into-your-workspace" class="level3" data-number="B.2.4">
+<h3 data-number="B.2.4" class="anchored" data-anchor-id="deploy-the-prompts-into-your-workspace"><span class="header-section-number">B.2.4</span> 4. Deploy the prompts into your workspace</h3>
+<p>Create a folder for your tutoring sessions (where you will write and test your code — this is the workspace you will open in Zed), then copy the prompts into it:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> path/to/distributed/agents/AGENTS.md  ~/tutorat/</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> path/to/distributed/agents/AGENTS.qwen3.5-4B.md   ~/tutorat/   <span class="co"># default model</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>AGENTS.md</code> is the shared preamble. Each <code>AGENTS.&lt;model&gt;.md</code> is the <em>full</em> prompt for that model, so copy the variants for the models you intend to use (<code>AGENTS.ornith-1.5-9B.md</code>, <code>AGENTS.gemma-4-E4B.md</code>). You can always add more later — no script involved.</p>
+</section>
+<section id="register-the-agent-in-zed" class="level3" data-number="B.2.5">
+<h3 data-number="B.2.5" class="anchored" data-anchor-id="register-the-agent-in-zed"><span class="header-section-number">B.2.5</span> 5. Register the agent in Zed</h3>
+<p>Add an entry under <code>agent_servers</code> in <code>settings.json</code> (macOS: <code>~/.config/zed/settings.json</code>), or use <em>Agent Settings → External Agents → Add Custom Agent</em>, which writes the same block:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"agent_servers"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"tuteur"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"custom"</span><span class="fu">,</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"command"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"uv"</span><span class="ot">,</span> <span class="st">"run"</span><span class="ot">,</span> <span class="st">"--project"</span><span class="ot">,</span> <span class="st">"/abs/path/to/Tutor-agent"</span><span class="ot">,</span> <span class="st">"python"</span><span class="ot">,</span> <span class="st">"/abs/path/to/Tutor-agent/acp_agent.py"</span><span class="ot">]</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Point both paths at your copy of the runner folder. If <code>uv</code> is not on Zed’s PATH, use its absolute path (e.g.&nbsp;<code>/opt/homebrew/bin/uv</code>). Reload the window.</p>
+</section>
+<section id="choose-the-agent-and-the-model-in-zed" class="level3" data-number="B.2.6">
+<h3 data-number="B.2.6" class="anchored" data-anchor-id="choose-the-agent-and-the-model-in-zed"><span class="header-section-number">B.2.6</span> 6. Choose the agent and the model in Zed</h3>
+<p>Open the workspace folder where you deployed the prompts, then:</p>
+<ol type="1">
+<li>In the Agent panel, <code>+</code> shows the external agents — select <strong>tuteur</strong>.</li>
+<li>Pick the model in the agent’s <strong>Modèle</strong> selector — one option per profile: <code>qwen3.5-4B</code>, <code>ornith-1.5-9B</code>, <code>gemma-4-E4B</code>. The choice applies when the session starts.</li>
+<li>Start a conversation.</li>
+</ol>
+<p>On the first prompt the runner starts the local router it needs (port 8025) and the docs server (port 8765) that the clickable citations open — no manual start. For manual control from a terminal:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run run.py start qwen3.5-4B   <span class="co"># ensure the router serves the model</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run run.py status             <span class="co"># port + served aliases</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run run.py stop               <span class="co"># stop the managed router</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="choosing-a-model" class="level2" data-number="B.3">
+<h2 data-number="B.3" class="anchored" data-anchor-id="choosing-a-model"><span class="header-section-number">B.3</span> Choosing a model</h2>
+<p>Start with <strong>qwen3.5-4B</strong>. It is the best overall balance for this tutor: it keeps the Socratic back-and-forth (asks, does not hand out answers), anchors its replies to the course pages and cites them, resists inventing content on modest hardware, and runs comfortably on a laptop (4B class, quantized). There is no reason to pick another model first.</p>
+<p>Pick another model only for a specific reason:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Deliverable</th>
-<th>Due</th>
+<th>Model</th>
+<th>Size</th>
+<th>Use it when</th>
+<th>Watch out for</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Track choice + survey</td>
-<td>S1 (26/08)</td>
+<td><code>ornith-1.5-9B</code></td>
+<td>9B</td>
+<td>you have a bit more RAM/VRAM and want a more patient, longer dialogue</td>
+<td>its first turns can be verbose</td>
 </tr>
 <tr class="even">
-<td>Learning plan (+ prompt for A)</td>
-<td>before S5, validated in S5 (22/09)</td>
-</tr>
-<tr class="odd">
-<td>Logbook</td>
-<td>ongoing, checks S6–S8, synthesis before S9</td>
-</tr>
-<tr class="even">
-<td>Comparative report (reflexive + observational)</td>
-<td>before S9 (indicative 20/10)</td>
-</tr>
-<tr class="odd">
-<td>Final project (report + defense)</td>
-<td>defense S11 (18/11), report before</td>
-</tr>
-<tr class="even">
-<td>Final metacognitive report</td>
-<td>S12 (19/11)</td>
+<td><code>gemma-4-E4B</code></td>
+<td>4B</td>
+<td>factual accuracy of the course citations matters to you</td>
+<td>it can leak “internal notes” into its reply; insist it only writes for you</td>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="where-to-start" class="level2" data-number="15.5">
-<h2 data-number="15.5" class="anchored" data-anchor-id="where-to-start"><span class="header-section-number">15.5</span> Where to start</h2>
-<ol type="1">
-<li><strong>Read the teaching design</strong> (<code>teaching-design.qmd</code>): it is the framework, everything follows from it.</li>
-<li><strong>Choose your hardware</strong> (see <code>prerequisites.qmd</code> to install the tooling, online or local LLM depending on your machine).</li>
-<li><strong>Write your learning plan</strong> (template in <code>learning-plan.qmd</code>): it sets the order and the success criteria; it is your roadmap.</li>
-<li><strong>Module 0 first</strong>, then M1 → M2 → M3, and depending on your objectives M4 → M5 → M6.</li>
-</ol>
+<p>Both alternatives are about the same memory-footprint class as the default in practice; <code>ornith</code> is heavier.</p>
+<p>A limit that applies to all three: every provided model eventually hands over a full code block if you insist long enough (“just give me the code”). That is a known failure mode of this setup, not something a specific model fixes. The tutor tries to walk you through the reasoning first — cooperate with it: state what you have tried, let it read your code, keep the “show me, don’t tell me” rule.</p>
+<p>Notes:</p>
+<ul>
+<li><code>temperature 0.6</code> is set for all three — deterministic enough, varied enough. Do not raise it past ~0.7; the tutor starts to ramble.</li>
+<li>If the model’s answer comes back empty or stuck (a known qwen + thinking quirk on llama.cpp), just send the prompt again. The runner streams the reasoning on its own channel and re-injects it across turns automatically; there is no per-model toggle to flip.</li>
+</ul>
 
 
 </section>
@@ -1018,13 +1049,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./projects.html" class="pagination-link" aria-label="Final project">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Final project</span></span>
+      <a href="./appendix-local-llm.html" class="pagination-link" aria-label="Running the local model from the USB key">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Running the local model from the USB key</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">References</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./appendix-slides.html" class="pagination-link" aria-label="Slides">
+        <span class="nav-page-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Slides</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -1,4 +1,4 @@
-# Running the local model from the USB key
+## Running the local model from the USB key
 
 A USB key distributed in session carries a portable install of
 [llama.cpp](https://github.com/ggml-org/llama.cpp) with the **Ling-3.0-tiny**
@@ -189,133 +189,10 @@ Meaningful fields for this endpoint:
 Select **Ling-3.0-tiny** in the Agent panel. The model reasons by default, and
 Zed shows the trace (thinking) as it does for other reasoning models.
 
-## The Socratic tutor as an external agent
+## The Socratic tutor as an ACP agent
 
-The tutor in this course is normally started from an `AGENTS.md` persona
-(ai-tutor.qmd). The instructor's demos run a different setup underneath: a small
-Python runner that drives the model as an **external agent** in Zed (Agent
-Client Protocol, ACP) and hands it a **fully controlled system prompt** — Zed's
-own agent scaffolding is not injected, so every token of the prompt is the
-tutor's. That control matters for small local models, which steer off course
-under the large prompt the built-in agent always prefixes.
-
-The runner adds three extras:
-
-- read-only tools scoped to the course folder (`Courses/*.qmd`) and to the
-  project you open in Zed;
-- citations written as `filename.qmd:line` and `python:<reference>` that come
-  back as clickable links to the rendered book and to the official Python
-  documentation;
-- a system prompt with **no default**: it comes from the `AGENTS.md` /
-  `AGENTS.<model>.md` files in the folder you have open.
-
-Two pieces are needed, both in the files your instructor distributes:
-
-- a copy of the **runner folder** (`Tutor-agent/` — it ships the tutor models,
-  so it is large);
-- the **tutor prompts** (French `tuteur-*.md` files plus the shared preamble).
-
-### Deploy the prompts into your workspace
-
-Create a folder for your tutoring sessions (where you will write and test your
-code), then deploy the French prompts as AGENTS files:
-
-```bash
-cd /path/to/your/distributed-tutor-files
-./prompts/install-prompts.sh ~/tutorat
-```
-
-The script writes `AGENTS.md` (shared preamble) and one `AGENTS.<model>.md` per
-tutor model. When you pick a model in Zed, Zed uses its `AGENTS.<model>.md`
-variant as the system prompt; a model without a variant falls back to
-`AGENTS.md`. There is no other configuration — the runner ships **no default
-prompt**.
-
-### Serve one of the tutor models
-
-The runner talks to a local llama.cpp server over its OpenAI-compatible API,
-exactly like the Ling setup above, but on the port the runner expects by default
-(`8025`) and with the course's three tutor models. Starting one by hand:
-
-```bash
-llama-server -m path/to/Qwen3.5-4B-UD-Q8_K_XL.gguf -ngl 999 --port 8025
-```
-
-`-ngl 999` pushes every layer to the GPU — see "Tuning the server" above.
-Replace the model path with one of the alternatives in "Choosing a model"
-below. The runner can also drive the router for you: `uv run run.py start
-qwen3.5-4B` (ensure it serves the model), `uv run run.py status`, `uv run run.py
-stop`. When launched from Zed, it auto-starts the router it needs on the first
-prompt.
-
-### Give the tutor something to read
-
-- The runner serves the **rendered course book** and the **official Python
-  documentation** locally, and the citation links resolve against them. In the
-  distributed setup this is already wired (`config.local.json` points at the
-  course folder and the Python doc). If you work from a fresh course checkout
-  instead, serve the rendered site yourself:
-
-  ```bash
-  python3 -m http.server 8765 --directory docs
-  ```
-
-  Run it in the course checkout: `docs/` holds the rendered site, so
-  `01_sample.qmd:4` becomes a link to
-  `http://127.0.0.1:8765/01_sample.html#slug`. Prefer `127.0.0.1` over
-  `localhost` here too.
-
-### Register the tutor in Zed
-
-Zed launches the runner as an external agent over stdio. Add an entry under
-`agent_servers` in `settings.json` (macOS: `~/.config/zed/settings.json`), or
-use *Agent Settings → External Agents → Add Custom Agent*, which writes the same
-block:
-
-```json
-{
-  "agent_servers": {
-    "Socratic tutor": {
-      "type": "custom",
-      "command": ["uv", "run", "--project", "/abs/path/to/Tutor-agent", "python", "/abs/path/to/Tutor-agent/acp_agent.py"]
-    }
-  }
-}
-```
-
-Point both paths at your copy of the runner folder. Select **Socratic tutor** in
-the Agent panel (`+` shows it as an external agent), then pick the model in its
-**Modèle** selector — one option per profile (`qwen3.5-4B`, `ornith-1.5-9B`,
-`gemma-4-E4B`). The choice applies when the session starts. Open the workspace
-folder where you deployed the prompts and start a conversation.
-
-### Choosing a model
-
-Start with **qwen3.5-4B**. It is the best overall balance for this tutor: it
-keeps the socratic back-and-forth (asks, does not hand out answers), anchors its
-replies to the course pages and cites them, resists inventing content on modest
-hardware, and runs comfortably on a laptop (4B class, quantized). There is no
-reason to pick another model first.
-
-Pick another model only for a specific reason:
-
-| Model | Size | Use it when | Watch out for |
-|---|---|---|---|
-| `ornith-1.5-9B` | 9B | you have a bit more RAM/VRAM and want a more patient, longer dialogue | its first turns can be verbose |
-| `gemma-4-E4B` | 4B | factual accuracy of the course citations matters to you | it can leak internal notes into its reply; insist it only writes for you |
-
-A limit that applies to all three: every provided model eventually hands over a
-full code block if you insist long enough ("just give me the code"). That is a
-known failure mode of this setup, not something a specific model fixes. The
-tutor tries to walk you through the reasoning first — cooperate with it: state
-what you have tried, let it read your code, keep the "show me, don't tell me"
-rule.
-
-Notes:
-
-- `temperature 0.6` is set for all three — deterministic enough, varied enough.
-  Do not raise it past ~0.7; the tutor starts to ramble.
-- If the model's answer comes back empty or stuck (a known qwen + thinking
-  quirk on llama.cpp), just send the prompt again. The runner streams the
-  reasoning on its own channel and re-injects it across turns automatically;
-  there is no per-model toggle to flip.
+The Socratic tutor for this course runs as an **external ACP agent** in Zed,
+with a fully controlled system prompt, read-only tools scoped to the course and
+the project, and clickable citations. The step-by-step installation (runner,
+models, Zed registration, selecting the agent and the model) is in
+[appendix-acp-tutor.qmd](appendix-acp-tutor.qmd).

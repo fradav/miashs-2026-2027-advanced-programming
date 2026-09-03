@@ -1,4 +1,4 @@
-# Planning your learning
+## Planning your learning
 
 > Working page for **block 3** (valid for both tracks). The goal is to produce a **learning
 > plan** validated by the instructor before starting the autonomous work.
@@ -52,7 +52,7 @@ personal adaptations.
 ## Plan template
 
 ```markdown
-# Learning plan — [First name]
+## Learning plan — [First name]
 
 ## Track: A (AI tutor) / B (classic)
 

@@ -71,7 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./appendix-slides.html" rel="next">
+<link href="./appendix-acp-tutor.html" rel="next">
 <link href="./references.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -435,20 +435,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./appendix-acp-tutor.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">The Socratic tutor as an ACP agent</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./appendix-slides.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Slides</span></span></a>
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Slides</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./appendix-llm-docs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Local documentation packs for the AI tutor</span></span></a>
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Local documentation packs for the AI tutor</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./appendix-agent-tips.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Tips and tricks for agent use</span></span></a>
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Tips and tricks for agent use</span></span></a>
   </div>
 </li>
       </ul>
@@ -478,14 +484,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#context-size--c" id="toc-context-size--c" class="nav-link" data-scroll-target="#context-size--c"><span class="header-section-number">A.4.3</span> Context size: <code>-c</code></a></li>
   </ul></li>
   <li><a href="#connecting-the-server-to-zed" id="toc-connecting-the-server-to-zed" class="nav-link" data-scroll-target="#connecting-the-server-to-zed"><span class="header-section-number">A.5</span> Connecting the server to Zed</a></li>
-  <li><a href="#the-socratic-tutor-as-an-external-agent" id="toc-the-socratic-tutor-as-an-external-agent" class="nav-link" data-scroll-target="#the-socratic-tutor-as-an-external-agent"><span class="header-section-number">A.6</span> The Socratic tutor as an external agent</a>
-  <ul>
-  <li><a href="#deploy-the-prompts-into-your-workspace" id="toc-deploy-the-prompts-into-your-workspace" class="nav-link" data-scroll-target="#deploy-the-prompts-into-your-workspace"><span class="header-section-number">A.6.1</span> Deploy the prompts into your workspace</a></li>
-  <li><a href="#serve-one-of-the-tutor-models" id="toc-serve-one-of-the-tutor-models" class="nav-link" data-scroll-target="#serve-one-of-the-tutor-models"><span class="header-section-number">A.6.2</span> Serve one of the tutor models</a></li>
-  <li><a href="#give-the-tutor-something-to-read" id="toc-give-the-tutor-something-to-read" class="nav-link" data-scroll-target="#give-the-tutor-something-to-read"><span class="header-section-number">A.6.3</span> Give the tutor something to read</a></li>
-  <li><a href="#register-the-tutor-in-zed" id="toc-register-the-tutor-in-zed" class="nav-link" data-scroll-target="#register-the-tutor-in-zed"><span class="header-section-number">A.6.4</span> Register the tutor in Zed</a></li>
-  <li><a href="#choosing-a-model" id="toc-choosing-a-model" class="nav-link" data-scroll-target="#choosing-a-model"><span class="header-section-number">A.6.5</span> Choosing a model</a></li>
-  </ul></li>
+  <li><a href="#the-socratic-tutor-as-an-acp-agent" id="toc-the-socratic-tutor-as-an-acp-agent" class="nav-link" data-scroll-target="#the-socratic-tutor-as-an-acp-agent"><span class="header-section-number">A.6</span> The Socratic tutor as an ACP agent</a></li>
   </ul>
 </nav>
     </div>
@@ -695,97 +694,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Select <strong>Ling-3.0-tiny</strong> in the Agent panel. The model reasons by default, and Zed shows the trace (thinking) as it does for other reasoning models.</p>
 </section>
-<section id="the-socratic-tutor-as-an-external-agent" class="level2" data-number="A.6">
-<h2 data-number="A.6" class="anchored" data-anchor-id="the-socratic-tutor-as-an-external-agent"><span class="header-section-number">A.6</span> The Socratic tutor as an external agent</h2>
-<p>The tutor in this course is normally started from an <code>AGENTS.md</code> persona (ai-tutor.qmd). The instructor’s demos run a different setup underneath: a small Python runner that drives the model as an <strong>external agent</strong> in Zed (Agent Client Protocol, ACP) and hands it a <strong>fully controlled system prompt</strong> — Zed’s own agent scaffolding is not injected, so every token of the prompt is the tutor’s. That control matters for small local models, which steer off course under the large prompt the built-in agent always prefixes.</p>
-<p>The runner adds three extras:</p>
-<ul>
-<li>read-only tools scoped to the course folder (<code>Courses/*.qmd</code>) and to the project you open in Zed;</li>
-<li>citations written as <code>filename.qmd:line</code> and <code>python:&lt;reference&gt;</code> that come back as clickable links to the rendered book and to the official Python documentation;</li>
-<li>a system prompt with <strong>no default</strong>: it comes from the <code>AGENTS.md</code> / <code>AGENTS.&lt;model&gt;.md</code> files in the folder you have open.</li>
-</ul>
-<p>Two pieces are needed, both in the files your instructor distributes:</p>
-<ul>
-<li>a copy of the <strong>runner folder</strong> (<code>Tutor-agent/</code> — it ships the tutor models, so it is large);</li>
-<li>the <strong>tutor prompts</strong> (French <code>tuteur-*.md</code> files plus the shared preamble).</li>
-</ul>
-<section id="deploy-the-prompts-into-your-workspace" class="level3" data-number="A.6.1">
-<h3 data-number="A.6.1" class="anchored" data-anchor-id="deploy-the-prompts-into-your-workspace"><span class="header-section-number">A.6.1</span> Deploy the prompts into your workspace</h3>
-<p>Create a folder for your tutoring sessions (where you will write and test your code), then deploy the French prompts as AGENTS files:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /path/to/your/distributed-tutor-files</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./prompts/install-prompts.sh</span> ~/tutorat</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The script writes <code>AGENTS.md</code> (shared preamble) and one <code>AGENTS.&lt;model&gt;.md</code> per tutor model. When you pick a model in Zed, Zed uses its <code>AGENTS.&lt;model&gt;.md</code> variant as the system prompt; a model without a variant falls back to <code>AGENTS.md</code>. There is no other configuration — the runner ships <strong>no default prompt</strong>.</p>
-</section>
-<section id="serve-one-of-the-tutor-models" class="level3" data-number="A.6.2">
-<h3 data-number="A.6.2" class="anchored" data-anchor-id="serve-one-of-the-tutor-models"><span class="header-section-number">A.6.2</span> Serve one of the tutor models</h3>
-<p>The runner talks to a local llama.cpp server over its OpenAI-compatible API, exactly like the Ling setup above, but on the port the runner expects by default (<code>8025</code>) and with the course’s three tutor models. Starting one by hand:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">llama-server</span> <span class="at">-m</span> path/to/Qwen3.5-4B-UD-Q8_K_XL.gguf <span class="at">-ngl</span> 999 <span class="at">--port</span> 8025</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>-ngl 999</code> pushes every layer to the GPU — see “Tuning the server” above. Replace the model path with one of the alternatives in “Choosing a model” below. The runner can also drive the router for you: <code>uv run run.py start qwen3.5-4B</code> (ensure it serves the model), <code>uv run run.py status</code>, <code>uv run run.py stop</code>. When launched from Zed, it auto-starts the router it needs on the first prompt.</p>
-</section>
-<section id="give-the-tutor-something-to-read" class="level3" data-number="A.6.3">
-<h3 data-number="A.6.3" class="anchored" data-anchor-id="give-the-tutor-something-to-read"><span class="header-section-number">A.6.3</span> Give the tutor something to read</h3>
-<ul>
-<li><p>The runner serves the <strong>rendered course book</strong> and the <strong>official Python documentation</strong> locally, and the citation links resolve against them. In the distributed setup this is already wired (<code>config.local.json</code> points at the course folder and the Python doc). If you work from a fresh course checkout instead, serve the rendered site yourself:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> http.server 8765 <span class="at">--directory</span> docs</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Run it in the course checkout: <code>docs/</code> holds the rendered site, so <code>01_sample.qmd:4</code> becomes a link to <code>http://127.0.0.1:8765/01_sample.html#slug</code>. Prefer <code>127.0.0.1</code> over <code>localhost</code> here too.</p></li>
-</ul>
-</section>
-<section id="register-the-tutor-in-zed" class="level3" data-number="A.6.4">
-<h3 data-number="A.6.4" class="anchored" data-anchor-id="register-the-tutor-in-zed"><span class="header-section-number">A.6.4</span> Register the tutor in Zed</h3>
-<p>Zed launches the runner as an external agent over stdio. Add an entry under <code>agent_servers</code> in <code>settings.json</code> (macOS: <code>~/.config/zed/settings.json</code>), or use <em>Agent Settings → External Agents → Add Custom Agent</em>, which writes the same block:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"agent_servers"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"Socratic tutor"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"custom"</span><span class="fu">,</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"command"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"uv"</span><span class="ot">,</span> <span class="st">"run"</span><span class="ot">,</span> <span class="st">"--project"</span><span class="ot">,</span> <span class="st">"/abs/path/to/Tutor-agent"</span><span class="ot">,</span> <span class="st">"python"</span><span class="ot">,</span> <span class="st">"/abs/path/to/Tutor-agent/acp_agent.py"</span><span class="ot">]</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Point both paths at your copy of the runner folder. Select <strong>Socratic tutor</strong> in the Agent panel (<code>+</code> shows it as an external agent), then pick the model in its <strong>Modèle</strong> selector — one option per profile (<code>qwen3.5-4B</code>, <code>ornith-1.5-9B</code>, <code>gemma-4-E4B</code>). The choice applies when the session starts. Open the workspace folder where you deployed the prompts and start a conversation.</p>
-</section>
-<section id="choosing-a-model" class="level3" data-number="A.6.5">
-<h3 data-number="A.6.5" class="anchored" data-anchor-id="choosing-a-model"><span class="header-section-number">A.6.5</span> Choosing a model</h3>
-<p>Start with <strong>qwen3.5-4B</strong>. It is the best overall balance for this tutor: it keeps the socratic back-and-forth (asks, does not hand out answers), anchors its replies to the course pages and cites them, resists inventing content on modest hardware, and runs comfortably on a laptop (4B class, quantized). There is no reason to pick another model first.</p>
-<p>Pick another model only for a specific reason:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Model</th>
-<th>Size</th>
-<th>Use it when</th>
-<th>Watch out for</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>ornith-1.5-9B</code></td>
-<td>9B</td>
-<td>you have a bit more RAM/VRAM and want a more patient, longer dialogue</td>
-<td>its first turns can be verbose</td>
-</tr>
-<tr class="even">
-<td><code>gemma-4-E4B</code></td>
-<td>4B</td>
-<td>factual accuracy of the course citations matters to you</td>
-<td>it can leak internal notes into its reply; insist it only writes for you</td>
-</tr>
-</tbody>
-</table>
-<p>A limit that applies to all three: every provided model eventually hands over a full code block if you insist long enough (“just give me the code”). That is a known failure mode of this setup, not something a specific model fixes. The tutor tries to walk you through the reasoning first — cooperate with it: state what you have tried, let it read your code, keep the “show me, don’t tell me” rule.</p>
-<p>Notes:</p>
-<ul>
-<li><code>temperature 0.6</code> is set for all three — deterministic enough, varied enough. Do not raise it past ~0.7; the tutor starts to ramble.</li>
-<li>If the model’s answer comes back empty or stuck (a known qwen + thinking quirk on llama.cpp), just send the prompt again. The runner streams the reasoning on its own channel and re-injects it across turns automatically; there is no per-model toggle to flip.</li>
-</ul>
+<section id="the-socratic-tutor-as-an-acp-agent" class="level2" data-number="A.6">
+<h2 data-number="A.6" class="anchored" data-anchor-id="the-socratic-tutor-as-an-acp-agent"><span class="header-section-number">A.6</span> The Socratic tutor as an ACP agent</h2>
+<p>The Socratic tutor for this course runs as an <strong>external ACP agent</strong> in Zed, with a fully controlled system prompt, read-only tools scoped to the course and the project, and clickable citations. The step-by-step installation (runner, models, Zed registration, selecting the agent and the model) is in <a href="./appendix-acp-tutor.html">appendix-acp-tutor.qmd</a>.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -1209,8 +1122,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./appendix-slides.html" class="pagination-link" aria-label="Slides">
-        <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Slides</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./appendix-acp-tutor.html" class="pagination-link" aria-label="The Socratic tutor as an ACP agent">
+        <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">The Socratic tutor as an ACP agent</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

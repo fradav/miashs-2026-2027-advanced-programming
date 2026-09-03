@@ -1,4 +1,4 @@
-# Tips and tricks for agent use
+## Tips and tricks for agent use
 
 An agent session stays usable when you keep two things in check: how much the
 agent reads and how you describe the task. This appendix starts with a global
@@ -25,7 +25,7 @@ of the section that prevents it.
 lang: en
 ---
 
-# Agent Instructions (global)
+## Agent Instructions (global)
 
 These instructions apply to every project opened with the Zed Agent. Project-level
 AGENTS.md files override them when there is a conflict.

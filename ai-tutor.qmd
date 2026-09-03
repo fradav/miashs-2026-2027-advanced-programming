@@ -1,4 +1,4 @@
-# Designing an AI tutor
+## Designing an AI tutor
 
 > Working page for **block 2** (Track A). Track B students attend the workshop as observers:
 > they observe the design process without having to reproduce it. The ideas on this page are

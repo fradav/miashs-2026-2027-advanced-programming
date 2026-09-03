@@ -1,4 +1,4 @@
-# The pedagogical design
+## The pedagogical design
 
 This page explains **the design** of this module: how you will learn and why this choice was made.
 Read it carefully: everything for the semester follows from it.

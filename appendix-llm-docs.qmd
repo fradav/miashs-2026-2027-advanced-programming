@@ -1,4 +1,4 @@
-# Local documentation packs for the AI tutor
+## Local documentation packs for the AI tutor
 
 Two downloadable archives give the Zed AI tutor (the `Ask` and `Write` profiles) a
 local, searchable copy of everything it needs to teach this course. The tutor

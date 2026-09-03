@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Appendix D — Tips and tricks for agent use – Advanced Programming and Parallel Computing</title>
+<title>Appendix E — Tips and tricks for agent use – Advanced Programming and Parallel Computing</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -293,7 +293,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./appendix-local-llm.html">Appendices</a></li><li class="breadcrumb-item"><a href="./appendix-agent-tips.html"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Tips and tricks for agent use</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./appendix-local-llm.html">Appendices</a></li><li class="breadcrumb-item"><a href="./appendix-agent-tips.html"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Tips and tricks for agent use</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -434,20 +434,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./appendix-acp-tutor.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">The Socratic tutor as an ACP agent</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./appendix-slides.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Slides</span></span></a>
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Slides</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./appendix-llm-docs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Local documentation packs for the AI tutor</span></span></a>
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Local documentation packs for the AI tutor</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./appendix-agent-tips.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Tips and tricks for agent use</span></span></a>
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Tips and tricks for agent use</span></span></a>
   </div>
 </li>
       </ul>
@@ -462,9 +468,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#configure-a-global-agents.md-to-avoid-context-bombs" id="toc-configure-a-global-agents.md-to-avoid-context-bombs" class="nav-link active" data-scroll-target="#configure-a-global-agents.md-to-avoid-context-bombs"><span class="header-section-number">D.1</span> Configure a global <code>AGENTS.md</code> to avoid context bombs</a></li>
-  <li><a href="#ask-with-bounds" id="toc-ask-with-bounds" class="nav-link" data-scroll-target="#ask-with-bounds"><span class="header-section-number">D.2</span> Ask with bounds</a></li>
-  <li><a href="#start-a-fresh-context-per-problem" id="toc-start-a-fresh-context-per-problem" class="nav-link" data-scroll-target="#start-a-fresh-context-per-problem"><span class="header-section-number">D.3</span> Start a fresh context per problem</a></li>
+  <li><a href="#configure-a-global-agents.md-to-avoid-context-bombs" id="toc-configure-a-global-agents.md-to-avoid-context-bombs" class="nav-link active" data-scroll-target="#configure-a-global-agents.md-to-avoid-context-bombs"><span class="header-section-number">E.1</span> Configure a global <code>AGENTS.md</code> to avoid context bombs</a></li>
+  <li><a href="#ask-with-bounds" id="toc-ask-with-bounds" class="nav-link" data-scroll-target="#ask-with-bounds"><span class="header-section-number">E.2</span> Ask with bounds</a></li>
+  <li><a href="#start-a-fresh-context-per-problem" id="toc-start-a-fresh-context-per-problem" class="nav-link" data-scroll-target="#start-a-fresh-context-per-problem"><span class="header-section-number">E.3</span> Start a fresh context per problem</a></li>
   </ul>
 </nav>
     </div>
@@ -472,9 +478,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./appendix-local-llm.html">Appendices</a></li><li class="breadcrumb-item"><a href="./appendix-agent-tips.html"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Tips and tricks for agent use</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./appendix-local-llm.html">Appendices</a></li><li class="breadcrumb-item"><a href="./appendix-agent-tips.html"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Tips and tricks for agent use</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Appendix D — Tips and tricks for agent use</h1>
+<h1 class="title">Appendix E — Tips and tricks for agent use</h1>
 </div>
 
 
@@ -492,15 +498,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>An agent session stays usable when you keep two things in check: how much the agent reads and how you describe the task. This appendix starts with a global <code>AGENTS.md</code> that stops tool output from flooding the context window, then a few working habits that get better answers from the same model.</p>
-<section id="configure-a-global-agents.md-to-avoid-context-bombs" class="level2" data-number="D.1">
-<h2 data-number="D.1" class="anchored" data-anchor-id="configure-a-global-agents.md-to-avoid-context-bombs"><span class="header-section-number">D.1</span> Configure a global <code>AGENTS.md</code> to avoid context bombs</h2>
+<section id="configure-a-global-agents.md-to-avoid-context-bombs" class="level2" data-number="E.1">
+<h2 data-number="E.1" class="anchored" data-anchor-id="configure-a-global-agents.md-to-avoid-context-bombs"><span class="header-section-number">E.1</span> Configure a global <code>AGENTS.md</code> to avoid context bombs</h2>
 <p>An <code>AGENTS.md</code> at the root of a project carries instructions the agent applies on its own. Zed also reads a <em>global</em> file that applies to every project you open, stored in <code>~/.config/zed/AGENTS.md</code> (macOS and Linux) or <code>%APPDATA%\Zed\AGENTS.md</code> (Windows). A project-level file overrides the global one when the two conflict. Put the rules that should always hold in the global file and keep project-specific guidance in each project’s <code>AGENTS.md</code>.</p>
 <p>The first rule worth writing there is output bounding. One tool call can return more text than the model can absorb, for example a <code>grep</code> over the whole repository or an unfiltered log. A single such call saturates the context window and the session degrades from there. The block below is a ready-to-copy template of the section that prevents it.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> en</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu"># Agent Instructions (global)</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Agent Instructions (global)</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>These instructions apply to every project opened with the Zed Agent. Project-level</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>AGENTS.md files override them when there is a conflict.</span>
@@ -533,12 +539,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>   of stacking more content.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Put this file at <code>.config/zed/AGENTS.md</code> in your home folder and the agent applies it from the next session on. Trim the rules you do not need; keep the ones that once stopped a session from dying.</p>
 </section>
-<section id="ask-with-bounds" class="level2" data-number="D.2">
-<h2 data-number="D.2" class="anchored" data-anchor-id="ask-with-bounds"><span class="header-section-number">D.2</span> Ask with bounds</h2>
+<section id="ask-with-bounds" class="level2" data-number="E.2">
+<h2 data-number="E.2" class="anchored" data-anchor-id="ask-with-bounds"><span class="header-section-number">E.2</span> Ask with bounds</h2>
 <p>The agent follows the scope you give it. Say <code>in src/</code> or <code>lines 40-90 of main.py</code> when that is what you want, and it spends its budget on the relevant part instead of reading the whole repository. This is the same discipline as the rules above, applied from the message instead of the config file.</p>
 </section>
-<section id="start-a-fresh-context-per-problem" class="level2" data-number="D.3">
-<h2 data-number="D.3" class="anchored" data-anchor-id="start-a-fresh-context-per-problem"><span class="header-section-number">D.3</span> Start a fresh context per problem</h2>
+<section id="start-a-fresh-context-per-problem" class="level2" data-number="E.3">
+<h2 data-number="E.3" class="anchored" data-anchor-id="start-a-fresh-context-per-problem"><span class="header-section-number">E.3</span> Start a fresh context per problem</h2>
 <p>A context window that has carried a few unrelated problems answers worse than an empty one. Open a new session, or run <code>/compact</code> and paste a short summary, when the topic changes.</p>
 
 
@@ -961,7 +967,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./appendix-llm-docs.html" class="pagination-link" aria-label="Local documentation packs for the AI tutor">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Local documentation packs for the AI tutor</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Local documentation packs for the AI tutor</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

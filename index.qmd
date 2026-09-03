@@ -1,4 +1,4 @@
-# Preface
+## Preface
 
 This site is the support for the **"Advanced Programming and Parallel Computing"** module of
 the MIASHS master's degree (Mathematics and Computer Science Applied to the Humanities and

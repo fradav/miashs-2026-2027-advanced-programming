@@ -41,6 +41,7 @@ book:
 
   appendices:
     - appendix-local-llm.qmd
+    - appendix-acp-tutor.qmd
     - appendix-slides.qmd
     - appendix-llm-docs.qmd
     - appendix-agent-tips.qmd
