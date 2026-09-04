@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Appendix C — Slides – Advanced Programming and Parallel Computing</title>
+<title>Appendix D — Slides – Advanced Programming and Parallel Computing</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -37,7 +37,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./appendix-llm-docs.html" rel="next">
-<link href="./appendix-acp-tutor.html" rel="prev">
+<link href="./appendix-acp-tutor-demos.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -259,7 +259,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./appendix-local-llm.html">Appendices</a></li><li class="breadcrumb-item"><a href="./appendix-slides.html"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Slides</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./appendix-local-llm.html">Appendices</a></li><li class="breadcrumb-item"><a href="./appendix-slides.html"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Slides</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -406,20 +406,26 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./appendix-acp-tutor-demos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Tutor demo sessions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./appendix-slides.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Slides</span></span></a>
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Slides</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./appendix-llm-docs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Local documentation packs for the AI tutor</span></span></a>
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Local documentation packs for the AI tutor</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./appendix-agent-tips.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Tips and tricks for agent use</span></span></a>
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Tips and tricks for agent use</span></span></a>
   </div>
 </li>
       </ul>
@@ -434,10 +440,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#session-1-module-setup-track-choice-ai-policy" id="toc-session-1-module-setup-track-choice-ai-policy" class="nav-link active" data-scroll-target="#session-1-module-setup-track-choice-ai-policy"><span class="header-section-number">C.1</span> Session 1 — module setup, track choice, AI policy</a></li>
-  <li><a href="#session-2-designing-an-ai-tutor-principles-demo" id="toc-session-2-designing-an-ai-tutor-principles-demo" class="nav-link" data-scroll-target="#session-2-designing-an-ai-tutor-principles-demo"><span class="header-section-number">C.2</span> Session 2 — designing an AI tutor: principles &amp; demo</a></li>
-  <li><a href="#session-3-designing-an-ai-tutor-the-prompt-workshop" id="toc-session-3-designing-an-ai-tutor-the-prompt-workshop" class="nav-link" data-scroll-target="#session-3-designing-an-ai-tutor-the-prompt-workshop"><span class="header-section-number">C.3</span> Session 3 — designing an AI tutor: the prompt workshop</a></li>
-  <li><a href="#session-4-learning-plan-contract" id="toc-session-4-learning-plan-contract" class="nav-link" data-scroll-target="#session-4-learning-plan-contract"><span class="header-section-number">C.4</span> Session 4 — learning plan &amp; contract</a></li>
+  <li><a href="#session-1-module-setup-track-choice-ai-policy" id="toc-session-1-module-setup-track-choice-ai-policy" class="nav-link active" data-scroll-target="#session-1-module-setup-track-choice-ai-policy"><span class="header-section-number">D.1</span> Session 1 — module setup, track choice, AI policy</a></li>
+  <li><a href="#session-2-designing-an-ai-tutor-principles-demo" id="toc-session-2-designing-an-ai-tutor-principles-demo" class="nav-link" data-scroll-target="#session-2-designing-an-ai-tutor-principles-demo"><span class="header-section-number">D.2</span> Session 2 — designing an AI tutor: principles &amp; demo</a></li>
+  <li><a href="#session-3-designing-an-ai-tutor-the-prompt-workshop" id="toc-session-3-designing-an-ai-tutor-the-prompt-workshop" class="nav-link" data-scroll-target="#session-3-designing-an-ai-tutor-the-prompt-workshop"><span class="header-section-number">D.3</span> Session 3 — designing an AI tutor: the prompt workshop</a></li>
+  <li><a href="#session-4-learning-plan-contract" id="toc-session-4-learning-plan-contract" class="nav-link" data-scroll-target="#session-4-learning-plan-contract"><span class="header-section-number">D.4</span> Session 4 — learning plan &amp; contract</a></li>
   </ul>
 </nav>
     </div>
@@ -445,9 +451,9 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./appendix-local-llm.html">Appendices</a></li><li class="breadcrumb-item"><a href="./appendix-slides.html"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Slides</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./appendix-local-llm.html">Appendices</a></li><li class="breadcrumb-item"><a href="./appendix-slides.html"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Slides</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Appendix C — Slides</h1>
+<h1 class="title">Appendix D — Slides</h1>
 </div>
 
 
@@ -465,8 +471,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>Each session ships a standalone reveal.js deck with the same content as the corresponding chapters. The slides open full-screen in your browser: use the arrow keys (or the on-screen controls) to navigate, <code>F</code> for full-screen and <code>S</code> for the presenter notes — the notes include what to say and where to pause.</p>
-<section id="session-1-module-setup-track-choice-ai-policy" class="level2" data-number="C.1">
-<h2 data-number="C.1" class="anchored" data-anchor-id="session-1-module-setup-track-choice-ai-policy"><span class="header-section-number">C.1</span> Session 1 — module setup, track choice, AI policy</h2>
+<section id="session-1-module-setup-track-choice-ai-policy" class="level2" data-number="D.1">
+<h2 data-number="D.1" class="anchored" data-anchor-id="session-1-module-setup-track-choice-ai-policy"><span class="header-section-number">D.1</span> Session 1 — module setup, track choice, AI policy</h2>
 <p><a href="slides/2026-08-26-seance-1-slides.html">Open the Session 1 slides</a></p>
 <ul>
 <li>Structure of the module, technical program and calendar.</li>
@@ -474,8 +480,8 @@ ul.task-list li input[type="checkbox"] {
 <li>Track A / Track B choice and the AI use policy.</li>
 </ul>
 </section>
-<section id="session-2-designing-an-ai-tutor-principles-demo" class="level2" data-number="C.2">
-<h2 data-number="C.2" class="anchored" data-anchor-id="session-2-designing-an-ai-tutor-principles-demo"><span class="header-section-number">C.2</span> Session 2 — designing an AI tutor: principles &amp; demo</h2>
+<section id="session-2-designing-an-ai-tutor-principles-demo" class="level2" data-number="D.2">
+<h2 data-number="D.2" class="anchored" data-anchor-id="session-2-designing-an-ai-tutor-principles-demo"><span class="header-section-number">D.2</span> Session 2 — designing an AI tutor: principles &amp; demo</h2>
 <p><a href="slides/2026-08-27-seance-2-slides.html">Open the Session 2 slides</a></p>
 <ul>
 <li>Returns the survey results from the room: equipment, existing usage, and how students feel about large language models.</li>
@@ -483,8 +489,8 @@ ul.task-list li input[type="checkbox"] {
 <li>Two prompts side by side, a live demo, and how to spot a false (or harmful) answer.</li>
 </ul>
 </section>
-<section id="session-3-designing-an-ai-tutor-the-prompt-workshop" class="level2" data-number="C.3">
-<h2 data-number="C.3" class="anchored" data-anchor-id="session-3-designing-an-ai-tutor-the-prompt-workshop"><span class="header-section-number">C.3</span> Session 3 — designing an AI tutor: the prompt workshop</h2>
+<section id="session-3-designing-an-ai-tutor-the-prompt-workshop" class="level2" data-number="D.3">
+<h2 data-number="D.3" class="anchored" data-anchor-id="session-3-designing-an-ai-tutor-the-prompt-workshop"><span class="header-section-number">D.3</span> Session 3 — designing an AI tutor: the prompt workshop</h2>
 <p><a href="slides/2026-09-01-seance-3-slides.html">Open the Session 3 slides</a></p>
 <ul>
 <li>Write your v1 tutor <em>system prompt</em> from the six-block anatomy of Session 2 — role, method, anti-cheating, hallucinations, tone &amp; format, context.</li>
@@ -492,8 +498,8 @@ ul.task-list li input[type="checkbox"] {
 <li>Iterate to a v2, peer-review in pairs, and deposit your v1 before Session 4.</li>
 </ul>
 </section>
-<section id="session-4-learning-plan-contract" class="level2" data-number="C.4">
-<h2 data-number="C.4" class="anchored" data-anchor-id="session-4-learning-plan-contract"><span class="header-section-number">C.4</span> Session 4 — learning plan &amp; contract</h2>
+<section id="session-4-learning-plan-contract" class="level2" data-number="D.4">
+<h2 data-number="D.4" class="anchored" data-anchor-id="session-4-learning-plan-contract"><span class="header-section-number">D.4</span> Session 4 — learning plan &amp; contract</h2>
 <p><a href="slides/2026-09-03-seance-4-slides.html">Open the Session 4 slides</a></p>
 <ul>
 <li>The five-section learning plan: objectives per module, sequencing, success criteria &amp; evidence, follow-up schedule, and the contract.</li>
@@ -920,13 +926,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./appendix-acp-tutor.html" class="pagination-link" aria-label="The Socratic tutor as an ACP agent">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">The Socratic tutor as an ACP agent</span></span>
+      <a href="./appendix-acp-tutor-demos.html" class="pagination-link" aria-label="Tutor demo sessions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Tutor demo sessions</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./appendix-llm-docs.html" class="pagination-link" aria-label="Local documentation packs for the AI tutor">
-        <span class="nav-page-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Local documentation packs for the AI tutor</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Local documentation packs for the AI tutor</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

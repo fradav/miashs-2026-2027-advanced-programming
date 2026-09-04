@@ -941,135 +941,201 @@
     ]
   },
   {
-    "objectID": "appendix-slides.html",
-    "href": "appendix-slides.html",
-    "title": "Appendix C — Slides",
+    "objectID": "appendix-acp-tutor-demos.html",
+    "href": "appendix-acp-tutor-demos.html",
+    "title": "Appendix C — Tutor demo sessions",
     "section": "",
-    "text": "C.1 Session 1 — module setup, track choice, AI policy\nEach session ships a standalone reveal.js deck with the same content as the corresponding chapters. The slides open full-screen in your browser: use the arrow keys (or the on-screen controls) to navigate, F for full-screen and S for the presenter notes — the notes include what to say and where to pause.\nOpen the Session 1 slides",
+    "text": "C.0.1 qwen3.5-4B — Naomi Bernard: Le piège time.sleep vs asyncio.sleep\nFour real tutoring sessions recorded through the ACP runner (appendix-acp-tutor.qmd, ai-tutor.qmd). Each demo pairs a persona — a simulated student profile used to drive the exchange — with a local model served by the runner. The sessions were not scripted: a persona reacts turn after turn to whatever the tutor answers, and the recordings below are exactly what happened, timed-out runs, dead ends and all.\nThe running commentary is in English; the students’ messages and the tutor’s replies are reproduced verbatim in French (the language of the experiment). Per turn you will see:\nStart with the first session — the only one of the four where the model keeps the Socratic rule (“hint, never solve”), anchors every answer in the course pages and never hands over the correction. The other three fail that contract in different, instructive ways: one hands out the fix almost immediately (anti-invention defeated), the next answers from general knowledge without ever opening the course file (no anchoring at all), and the last one invents the student’s file back at her, the fix already inside, until she pushes back and it corrects itself. All three still get the student to the solution — but not by asking first.\nqwen3.5-4B — Naomi falls into the time.sleep trap in asyncio (exercise 3, 01_asynchronous.qmd)\n01_asynchronous.qmd (exercice 3) · focus: débogage — anti-fuite, reformulation\nWhat this session shows - the tutor questions and does not hand out the code (Pólya checklist, anti-leak) - answers are anchored in the course pages, with clickable references - the student runs her program, observes 2 s instead of 1 s, then fixes and re-runs on her own",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Slides</span>"
+      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Tutor demo sessions</span>"
+    ]
+  },
+  {
+    "objectID": "appendix-acp-tutor-demos.html#ta-conclusion-pour-lexercice",
+    "href": "appendix-acp-tutor-demos.html#ta-conclusion-pour-lexercice",
+    "title": "Appendix C — Tutor demo sessions",
+    "section": "C.1 Ta conclusion pour l’exercice",
+    "text": "C.1 Ta conclusion pour l’exercice\nAvec time.sleep : le bloqueur synchronisé. Le loop attend → séquentiel → 2 s.\nAvec await asyncio.sleep : rend la main → le loop enchaîne → parallèle → 1 s.\nTu n’as pas d’erreur là-dessus. ✅",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Tutor demo sessions</span>"
+    ]
+  },
+  {
+    "objectID": "appendix-acp-tutor-demos.html#réponse-à-ta-question-cpu-bound-vs-io-bound",
+    "href": "appendix-acp-tutor-demos.html#réponse-à-ta-question-cpu-bound-vs-io-bound",
+    "title": "Appendix C — Tutor demo sessions",
+    "section": "C.2 Réponse à ta question : CPU-bound vs I/O-bound",
+    "text": "C.2 Réponse à ta question : CPU-bound vs I/O-bound\nNon, asyncio ne sert que pour les attentes (I/O-bound).\nPour du calcul pur (puissance brute, traitement de données, boucles for lourdes), asyncio n’apporte rien et le temps d’exécution sera le même (voire pire). Voici pourquoi, en trois points :\n\nL’event loop est monothread : il ne peut pas exécuter deux tâches en même temps. Si une tâche fait un calcul lourd, elle bloque le loop et l’autre tâche ne peut pas tourner.\nLe GIL de Python : Python interdit le parallélisme natif sur CPU. Même avec des threads, tu ne peux pas exécuter deux bouts de Python en parallèle (sauf via multiprocessing). En asyncio, c’est encore pire car il n’y a qu’un seul thread.\nCe que le cours montre : dans 01_asynchronous.qmd, les points 3 et 4 mentionnent explicitement que l’événement loop s’active quand on attend (I/O, sleep), mais pas quand on calcule.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Tutor demo sessions</span>"
+    ]
+  },
+  {
+    "objectID": "appendix-acp-tutor-demos.html#en-résumé",
+    "href": "appendix-acp-tutor-demos.html#en-résumé",
+    "title": "Appendix C — Tutor demo sessions",
+    "section": "C.3 En résumé",
+    "text": "C.3 En résumé\n\n\n\n\n\n\n\n\n\nCas\ntime.sleep\nawait asyncio.sleep\ncalc() (CPU)\n\n\n\n\nI/O-bound\nséquentiel\nparallèle\nne sert à rien (trop lent)\n\n\nCPU-bound\nséquentiel\nne sert pas (bloque le loop)\nsérieux : il faut multiprocessing",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Tutor demo sessions</span>"
+    ]
+  },
+  {
+    "objectID": "appendix-acp-tutor-demos.html#question-pour-toi",
+    "href": "appendix-acp-tutor-demos.html#question-pour-toi",
+    "title": "Appendix C — Tutor demo sessions",
+    "section": "C.4 Question pour toi",
+    "text": "C.4 Question pour toi\nL’exercice 3 te demande d’explorer le choix entre threads et asyncio. La distinction clé : - CPU-bound → threads (ou multiprocessing) - I/O-bound → asyncio\nQu’est-ce que tu as compris à ce point ? Veux-tu que je te montre la différence avec les threads (avec time.sleep bloquant aussi) pour comparer ?\n\n\nTurn 6\n\nNaomi closes the exercise: the trap is a synchronous time.sleep inside an async function — it freezes the event loop and cancels gather’s parallelism — and the lesson is to always use asyncio.sleep for waits. She thanks the tutor, adding that the “find the file” detour was the one part that confused her.\n\n🎓 Naomi — Ah d accord, je vois ! Donc asyncio, c est vraiment fait pour les attentes, pas pour le calcul. Si mes deux tâches additionnaient des nombres, le loop serait occupé par le calcul de la première et la deuxième attendrait quand même son tour. C est un peu décevant dit comme ça, mais au moins je sais à quoi sert chaque outil. Je comprends mieux pourquoi le cours parle de GIL et de threads : pour le calcul, il faudrait plutôt multiprocessing. Juste pour être sûre d avoir bien bouclé l exercice 3 : le piège, c est bien le time.sleep dans une fonction asyncio, parce qu il bloque le loop et annule le parallélisme du gather. La leçon, c est de toujours vérifier que mes attentes sont faites avec asyncio.sleep. C est bien ça ? Et une dernière chose, sans rancune : quand tu me demandais de chercher le fichier, je ne savais pas quoi répondre, je ne voyais pas l intérêt. Là, sans cette étape, tout était beaucoup plus clair pour moi. Merci pour ton aide, j ai appris quelque chose aujourd hui. Je pense que je suis prête à rédiger ma réponse pour l exercice.\n🔎 tutor tools — greps time\\.sleep|asyncio\\.sleep in 01_asynchronous.qmd → 2 match(es) · greps bloqu|event loop|I/O|GIL in 01_asynchronous.qmd → 9 match(es) · reads 01_asynchronous.qmd (lines 28-41)\n🤖 Ling-3.0-tiny tutor — Voilà, ton conclusion est bonne et complète. Je te confirme : tu as bien compris. Voici la structure de ta réponse pour l’exercice 3, avec les points clés à inclure :",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Tutor demo sessions</span>"
+    ]
+  },
+  {
+    "objectID": "appendix-acp-tutor-demos.html#structure-suggérée-pour-lexercice-3",
+    "href": "appendix-acp-tutor-demos.html#structure-suggérée-pour-lexercice-3",
+    "title": "Appendix C — Tutor demo sessions",
+    "section": "C.5 Structure suggérée pour l’exercice 3",
+    "text": "C.5 Structure suggérée pour l’exercice 3\n1. Le piège &gt; Tu as défini deux tâches concurrentes (via asyncio.gather) dans lesquelles chaque tâche utilise time.sleep(1).\n2. Le résultat mesuré &gt; Les deux tâches ont pris 2 secondes au lieu de 1. Affiche le résultat de l’exécution (Temps écoulé : 2.00 s vs 1.00 s).\n3. L’explication (le cœur de la réponse) &gt; Pourquoi ? Parce que time.sleep est une fonction synchrone qui bloque l’événement loop tant qu’elle est en cours. Pendant ce temps, l’événement loop ne peut pas passer à la tâche suivante. Résultat : les tâches s’exécutent l’une après l’autre, séquentiellement.\n4. La correction &gt; Remplacer time.sleep(1) par await asyncio.sleep(1). Cette fois, la tâche rend la main à l’événement loop pendant sa pause, ce qui permet au loop de lancer la tâche suivante immédiatement. Les deux tâches s’exécutent en parallèle.\n5. Le constat &gt; C’est un piège car la différence entre time.sleep et await asyncio.sleep réside dans le fait que l’un bloque le loop et l’autre le rend libre.\n\nQuestion pour toi :\nVoulez-vous que je te montre ton code exact (la fonction pause avec time.sleep vs asyncio.sleep) pour que tu puisses le comparer à l’exemple ci-dessus ? Ou est-ce que tu as déjà le code dans ton fichier et tu veux juste valider la structure ?",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Tutor demo sessions</span>"
+    ]
+  },
+  {
+    "objectID": "appendix-slides.html",
+    "href": "appendix-slides.html",
+    "title": "Appendix D — Slides",
+    "section": "",
+    "text": "D.1 Session 1 — module setup, track choice, AI policy\nEach session ships a standalone reveal.js deck with the same content as the corresponding chapters. The slides open full-screen in your browser: use the arrow keys (or the on-screen controls) to navigate, F for full-screen and S for the presenter notes — the notes include what to say and where to pause.\nOpen the Session 1 slides",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Slides</span>"
     ]
   },
   {
     "objectID": "appendix-slides.html#session-1-module-setup-track-choice-ai-policy",
     "href": "appendix-slides.html#session-1-module-setup-track-choice-ai-policy",
-    "title": "Appendix C — Slides",
+    "title": "Appendix D — Slides",
     "section": "",
     "text": "Structure of the module, technical program and calendar.\nThe survey run in session and how it shapes the course.\nTrack A / Track B choice and the AI use policy.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Slides</span>"
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Slides</span>"
     ]
   },
   {
     "objectID": "appendix-slides.html#session-2-designing-an-ai-tutor-principles-demo",
     "href": "appendix-slides.html#session-2-designing-an-ai-tutor-principles-demo",
-    "title": "Appendix C — Slides",
-    "section": "C.2 Session 2 — designing an AI tutor: principles & demo",
-    "text": "C.2 Session 2 — designing an AI tutor: principles & demo\nOpen the Session 2 slides\n\nReturns the survey results from the room: equipment, existing usage, and how students feel about large language models.\nWhy a configured tutor beats a plain model — system prompt, syllabus.\nTwo prompts side by side, a live demo, and how to spot a false (or harmful) answer.",
+    "title": "Appendix D — Slides",
+    "section": "D.2 Session 2 — designing an AI tutor: principles & demo",
+    "text": "D.2 Session 2 — designing an AI tutor: principles & demo\nOpen the Session 2 slides\n\nReturns the survey results from the room: equipment, existing usage, and how students feel about large language models.\nWhy a configured tutor beats a plain model — system prompt, syllabus.\nTwo prompts side by side, a live demo, and how to spot a false (or harmful) answer.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Slides</span>"
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Slides</span>"
     ]
   },
   {
     "objectID": "appendix-slides.html#session-3-designing-an-ai-tutor-the-prompt-workshop",
     "href": "appendix-slides.html#session-3-designing-an-ai-tutor-the-prompt-workshop",
-    "title": "Appendix C — Slides",
-    "section": "C.3 Session 3 — designing an AI tutor: the prompt workshop",
-    "text": "C.3 Session 3 — designing an AI tutor: the prompt workshop\nOpen the Session 3 slides\n\nWrite your v1 tutor system prompt from the six-block anatomy of Session 2 — role, method, anti-cheating, hallucinations, tone & format, context.\nTest it on three typical questions, a fresh session each.\nIterate to a v2, peer-review in pairs, and deposit your v1 before Session 4.",
+    "title": "Appendix D — Slides",
+    "section": "D.3 Session 3 — designing an AI tutor: the prompt workshop",
+    "text": "D.3 Session 3 — designing an AI tutor: the prompt workshop\nOpen the Session 3 slides\n\nWrite your v1 tutor system prompt from the six-block anatomy of Session 2 — role, method, anti-cheating, hallucinations, tone & format, context.\nTest it on three typical questions, a fresh session each.\nIterate to a v2, peer-review in pairs, and deposit your v1 before Session 4.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Slides</span>"
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Slides</span>"
     ]
   },
   {
     "objectID": "appendix-slides.html#session-4-learning-plan-contract",
     "href": "appendix-slides.html#session-4-learning-plan-contract",
-    "title": "Appendix C — Slides",
-    "section": "C.4 Session 4 — learning plan & contract",
-    "text": "C.4 Session 4 — learning plan & contract\nOpen the Session 4 slides\n\nThe five-section learning plan: objectives per module, sequencing, success criteria & evidence, follow-up schedule, and the contract.\nThe fill-in template, classic mistakes to avoid, and how the plan counts in your assessment.\nWrite your plan v0 in class and deposit it before Session 5, where it is validated.",
+    "title": "Appendix D — Slides",
+    "section": "D.4 Session 4 — learning plan & contract",
+    "text": "D.4 Session 4 — learning plan & contract\nOpen the Session 4 slides\n\nThe five-section learning plan: objectives per module, sequencing, success criteria & evidence, follow-up schedule, and the contract.\nThe fill-in template, classic mistakes to avoid, and how the plan counts in your assessment.\nWrite your plan v0 in class and deposit it before Session 5, where it is validated.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>C</span>  <span class='chapter-title'>Slides</span>"
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Slides</span>"
     ]
   },
   {
     "objectID": "appendix-llm-docs.html",
     "href": "appendix-llm-docs.html",
-    "title": "Appendix D — Local documentation packs for the AI tutor",
+    "title": "Appendix E — Local documentation packs for the AI tutor",
     "section": "",
-    "text": "D.1 llm-project.zip — the previous course, LLM-ready\nTwo downloadable archives give the Zed AI tutor (the Ask and Write profiles) a local, searchable copy of everything it needs to teach this course. The tutor reads the files with read_file and grep — no network fetch, no external site, and the material stays under your control.\nDownload, unzip where you keep your working files, then tell the tutor where the folder is (or point it there in its instructions). Each archive keeps its top-level folder, so the two unpack cleanly side by side.\nThe 2024–2025 course on advanced programming and parallel computing, re-edited as standalone markdown chapters small enough to read or search in one pass.\nDownload: llm-project.zip\nUse it to look up how a notion was taught before, reuse an application as an example, or hand the tutor a concrete course reference instead of a generic explanation.",
+    "text": "E.1 llm-project.zip — the previous course, LLM-ready\nTwo downloadable archives give the Zed AI tutor (the Ask and Write profiles) a local, searchable copy of everything it needs to teach this course. The tutor reads the files with read_file and grep — no network fetch, no external site, and the material stays under your control.\nDownload, unzip where you keep your working files, then tell the tutor where the folder is (or point it there in its instructions). Each archive keeps its top-level folder, so the two unpack cleanly side by side.\nThe 2024–2025 course on advanced programming and parallel computing, re-edited as standalone markdown chapters small enough to read or search in one pass.\nDownload: llm-project.zip\nUse it to look up how a notion was taught before, reuse an application as an example, or hand the tutor a concrete course reference instead of a generic explanation.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Local documentation packs for the AI tutor</span>"
+      "<span class='chapter-number'>E</span>  <span class='chapter-title'>Local documentation packs for the AI tutor</span>"
     ]
   },
   {
     "objectID": "appendix-llm-docs.html#llm-project.zip-the-previous-course-llm-ready",
     "href": "appendix-llm-docs.html#llm-project.zip-the-previous-course-llm-ready",
-    "title": "Appendix D — Local documentation packs for the AI tutor",
+    "title": "Appendix E — Local documentation packs for the AI tutor",
     "section": "",
     "text": "llm-project/\n├── llms.txt            # index of the whole pack\n├── courses/\n│   ├── Courses/        # 12 chapters (code assistant, async, IPC, distributed, SIMD, GPU, WebGPU…)\n│   └── Projects/\n├── applications/       # 14 worked applications (prompt engineering, numpy, async, IPC, numba…)\n└── solutions/          # 14 exercise solutions",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Local documentation packs for the AI tutor</span>"
+      "<span class='chapter-number'>E</span>  <span class='chapter-title'>Local documentation packs for the AI tutor</span>"
     ]
   },
   {
     "objectID": "appendix-llm-docs.html#python-doc.zip-official-python-3.12-library-docs",
     "href": "appendix-llm-docs.html#python-doc.zip-official-python-3.12-library-docs",
-    "title": "Appendix D — Local documentation packs for the AI tutor",
-    "section": "D.2 python-doc.zip — official Python 3.12 library docs",
-    "text": "D.2 python-doc.zip — official Python 3.12 library docs\nThe official CPython library reference for the modules the course relies on, converted to markdown. README.md in the archive maps each module to its course chapter:\n\n\n\n\n\n\n\n\nFiles\nContent\nCourse chapter(s)\n\n\n\n\nasyncio (5 files)\nevent loops, tasks, streams, primitives, subprocess\n01_asynchronous\n\n\nconcurrent.futures\nthread/process pools\n00_intro-parallelism, 01_asynchronous\n\n\nthreading\nthreads, locks\n00_intro-parallelism, 02_ipc-locks\n\n\nmultiprocessing\nprocesses, pipes, queues, managers, locks\n02_ipc-locks, 03_distributed\n\n\nmultiprocessing.shared_memory\nshared memory\n02_ipc-locks, 03_distributed\n\n\nqueue\nthread-safe queues\n00_intro-parallelism, 02_ipc-locks\n\n\nsocket\nsockets\n02_ipc-locks, 03_distributed\n\n\nsubprocess\nsubprocesses\n00_intro-parallelism, 02_ipc-locks\n\n\n\nDownload: python-doc.zip\nThe archive keeps fetch_docs.py, which regenerates the markdown from the CPython 3.12 sources (pinned branch, needs pandoc), so the text matches the Python that runs on the course machines.\nA documented limit: the SIMD, GPU, and WebGPU chapters (04_simd, 05_gpu, 06_webgpu) rely on libraries outside the standard library — NumPy, Numba, CuPy, WebGPU. Their documentation is not included here; README.md lists the official links if a tutoring session needs them.\nDerived from the official Python 3.12 documentation, under the Python Software Foundation License. The llm-project pack is the previous year’s teaching material, provided as-is for reference.",
+    "title": "Appendix E — Local documentation packs for the AI tutor",
+    "section": "E.2 python-doc.zip — official Python 3.12 library docs",
+    "text": "E.2 python-doc.zip — official Python 3.12 library docs\nThe official CPython library reference for the modules the course relies on, converted to markdown. README.md in the archive maps each module to its course chapter:\n\n\n\n\n\n\n\n\nFiles\nContent\nCourse chapter(s)\n\n\n\n\nasyncio (5 files)\nevent loops, tasks, streams, primitives, subprocess\n01_asynchronous\n\n\nconcurrent.futures\nthread/process pools\n00_intro-parallelism, 01_asynchronous\n\n\nthreading\nthreads, locks\n00_intro-parallelism, 02_ipc-locks\n\n\nmultiprocessing\nprocesses, pipes, queues, managers, locks\n02_ipc-locks, 03_distributed\n\n\nmultiprocessing.shared_memory\nshared memory\n02_ipc-locks, 03_distributed\n\n\nqueue\nthread-safe queues\n00_intro-parallelism, 02_ipc-locks\n\n\nsocket\nsockets\n02_ipc-locks, 03_distributed\n\n\nsubprocess\nsubprocesses\n00_intro-parallelism, 02_ipc-locks\n\n\n\nDownload: python-doc.zip\nThe archive keeps fetch_docs.py, which regenerates the markdown from the CPython 3.12 sources (pinned branch, needs pandoc), so the text matches the Python that runs on the course machines.\nA documented limit: the SIMD, GPU, and WebGPU chapters (04_simd, 05_gpu, 06_webgpu) rely on libraries outside the standard library — NumPy, Numba, CuPy, WebGPU. Their documentation is not included here; README.md lists the official links if a tutoring session needs them.\nDerived from the official Python 3.12 documentation, under the Python Software Foundation License. The llm-project pack is the previous year’s teaching material, provided as-is for reference.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Local documentation packs for the AI tutor</span>"
+      "<span class='chapter-number'>E</span>  <span class='chapter-title'>Local documentation packs for the AI tutor</span>"
     ]
   },
   {
     "objectID": "appendix-agent-tips.html",
     "href": "appendix-agent-tips.html",
-    "title": "Appendix E — Tips and tricks for agent use",
+    "title": "Appendix F — Tips and tricks for agent use",
     "section": "",
-    "text": "E.1 Configure a global AGENTS.md to avoid context bombs\nAn agent session stays usable when you keep two things in check: how much the agent reads and how you describe the task. This appendix starts with a global AGENTS.md that stops tool output from flooding the context window, then a few working habits that get better answers from the same model.\nAn AGENTS.md at the root of a project carries instructions the agent applies on its own. Zed also reads a global file that applies to every project you open, stored in ~/.config/zed/AGENTS.md (macOS and Linux) or %APPDATA%\\Zed\\AGENTS.md (Windows). A project-level file overrides the global one when the two conflict. Put the rules that should always hold in the global file and keep project-specific guidance in each project’s AGENTS.md.\nThe first rule worth writing there is output bounding. One tool call can return more text than the model can absorb, for example a grep over the whole repository or an unfiltered log. A single such call saturates the context window and the session degrades from there. The block below is a ready-to-copy template of the section that prevents it.\nPut this file at .config/zed/AGENTS.md in your home folder and the agent applies it from the next session on. Trim the rules you do not need; keep the ones that once stopped a session from dying.",
+    "text": "F.1 Configure a global AGENTS.md to avoid context bombs\nAn agent session stays usable when you keep two things in check: how much the agent reads and how you describe the task. This appendix starts with a global AGENTS.md that stops tool output from flooding the context window, then a few working habits that get better answers from the same model.\nAn AGENTS.md at the root of a project carries instructions the agent applies on its own. Zed also reads a global file that applies to every project you open, stored in ~/.config/zed/AGENTS.md (macOS and Linux) or %APPDATA%\\Zed\\AGENTS.md (Windows). A project-level file overrides the global one when the two conflict. Put the rules that should always hold in the global file and keep project-specific guidance in each project’s AGENTS.md.\nThe first rule worth writing there is output bounding. One tool call can return more text than the model can absorb, for example a grep over the whole repository or an unfiltered log. A single such call saturates the context window and the session degrades from there. The block below is a ready-to-copy template of the section that prevents it.\nPut this file at .config/zed/AGENTS.md in your home folder and the agent applies it from the next session on. Trim the rules you do not need; keep the ones that once stopped a session from dying.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>E</span>  <span class='chapter-title'>Tips and tricks for agent use</span>"
+      "<span class='chapter-number'>F</span>  <span class='chapter-title'>Tips and tricks for agent use</span>"
     ]
   },
   {
     "objectID": "appendix-agent-tips.html#configure-a-global-agents.md-to-avoid-context-bombs",
     "href": "appendix-agent-tips.html#configure-a-global-agents.md-to-avoid-context-bombs",
-    "title": "Appendix E — Tips and tricks for agent use",
+    "title": "Appendix F — Tips and tricks for agent use",
     "section": "",
     "text": "---\nlang: en\n---\n\n## Agent Instructions (global)\n\nThese instructions apply to every project opened with the Zed Agent. Project-level\nAGENTS.md files override them when there is a conflict.\n\n## Bound tool outputs\n\nTool calls (grep, search_code, search_issues, fetch, read_file, terminal) can return\nhuge results that saturate the context window in a single call. Apply systematically:\n\n1. **Bound every search**: use `perPage`/`count`/`maxResults` with modest values\n   (&lt;= 50 by default, 10-20 for exploration). Never paginate in a loop.\n2. **Scope your searches**: `grep`/`search_code` by sub-tree or a targeted\n   `include_pattern`; never search the whole repo when a specific path is known\n   or guessable.\n3. **Read by ranges**: `read_file` with `start_line`/`end_line` beyond ~200 lines;\n   never load a whole large file in one go. For an unknown codebase, start with a\n   targeted `list_directory`.\n4. **Truncate the terminal**: use `head_lines`/`tail_lines` and set a reasonable\n   `timeout_ms`. Never dump a large output in full (`cat`, logs, build artifacts).\n   When output may be huge (builds, tests, dumps), redirect it to a file first\n   (e.g. `cmd &gt; /tmp/out.log`), then `grep` it or read it by ranges — `read_file`\n   is the one tool that digests instead of dumping the whole thing.\n5. **Analyze instead of copying**: from a large result, return a structured summary\n   (key points, signatures, paths), not the raw content.\n6. **Minimal calls**: aim for the fewest sufficient reads/searches; no redundant\n   re-scans or re-reads of files already seen.\n7. **Urgency**: if an output is likely to be enormous (logs, build artifacts, massive\n   results), stop before loading it and reduce the request or ask for confirmation.\n   If the session still saturates, recommend `/compact` or \"New From Summary\" instead\n   of stacking more content.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>E</span>  <span class='chapter-title'>Tips and tricks for agent use</span>"
+      "<span class='chapter-number'>F</span>  <span class='chapter-title'>Tips and tricks for agent use</span>"
     ]
   },
   {
     "objectID": "appendix-agent-tips.html#ask-with-bounds",
     "href": "appendix-agent-tips.html#ask-with-bounds",
-    "title": "Appendix E — Tips and tricks for agent use",
-    "section": "E.2 Ask with bounds",
-    "text": "E.2 Ask with bounds\nThe agent follows the scope you give it. Say in src/ or lines 40-90 of main.py when that is what you want, and it spends its budget on the relevant part instead of reading the whole repository. This is the same discipline as the rules above, applied from the message instead of the config file.",
+    "title": "Appendix F — Tips and tricks for agent use",
+    "section": "F.2 Ask with bounds",
+    "text": "F.2 Ask with bounds\nThe agent follows the scope you give it. Say in src/ or lines 40-90 of main.py when that is what you want, and it spends its budget on the relevant part instead of reading the whole repository. This is the same discipline as the rules above, applied from the message instead of the config file.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>E</span>  <span class='chapter-title'>Tips and tricks for agent use</span>"
+      "<span class='chapter-number'>F</span>  <span class='chapter-title'>Tips and tricks for agent use</span>"
     ]
   },
   {
     "objectID": "appendix-agent-tips.html#start-a-fresh-context-per-problem",
     "href": "appendix-agent-tips.html#start-a-fresh-context-per-problem",
-    "title": "Appendix E — Tips and tricks for agent use",
-    "section": "E.3 Start a fresh context per problem",
-    "text": "E.3 Start a fresh context per problem\nA context window that has carried a few unrelated problems answers worse than an empty one. Open a new session, or run /compact and paste a short summary, when the topic changes.",
+    "title": "Appendix F — Tips and tricks for agent use",
+    "section": "F.3 Start a fresh context per problem",
+    "text": "F.3 Start a fresh context per problem\nA context window that has carried a few unrelated problems answers worse than an empty one. Open a new session, or run /compact and paste a short summary, when the topic changes.",
     "crumbs": [
       "Appendices",
-      "<span class='chapter-number'>E</span>  <span class='chapter-title'>Tips and tricks for agent use</span>"
+      "<span class='chapter-number'>F</span>  <span class='chapter-title'>Tips and tricks for agent use</span>"
     ]
   }
 ]
