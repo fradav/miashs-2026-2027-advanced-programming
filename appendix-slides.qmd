@@ -31,3 +31,13 @@ for the presenter notes — the notes include what to say and where to pause.
   role, method, anti-cheating, hallucinations, tone & format, context.
 - Test it on three typical questions, a fresh session each.
 - Iterate to a v2, peer-review in pairs, and deposit your v1 before Session 4.
+
+## Session 4 — learning plan & contract
+
+[Open the Session 4 slides](slides/2026-09-03-seance-4-slides.html)
+
+- The five-section learning plan: objectives per module, sequencing, success criteria
+  & evidence, follow-up schedule, and the contract.
+- The fill-in template, classic mistakes to avoid, and how the plan counts in your
+  assessment.
+- Write your plan v0 in class and deposit it before Session 5, where it is validated.

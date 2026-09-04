@@ -532,9 +532,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="B.2" class="anchored" data-anchor-id="installation-step-by-step"><span class="header-section-number">B.2</span> Installation step by step</h2>
 <section id="get-the-runner-and-its-dependencies" class="level3" data-number="B.2.1">
 <h3 data-number="B.2.1" class="anchored" data-anchor-id="get-the-runner-and-its-dependencies"><span class="header-section-number">B.2.1</span> 1. Get the runner and its dependencies</h3>
-<p>Clone the runner repository (or copy the <code>Tutor-agent/</code> folder your instructor distributes), then install its single Python dependency with <code>uv</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> path/to/Tutor-agent</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Clone the runner — public repository <a href="https://github.com/fradav/tutor-agent" class="uri">https://github.com/fradav/tutor-agent</a> — or copy the <code>Tutor-agent/</code> folder your instructor distributes, then install its single Python dependency with <code>uv</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/fradav/tutor-agent</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> tutor-agent        <span class="co"># repo folder name (lowercase): keep it in steps 3 and 5</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Prerequisites: Python 3.10+, <code>uv</code> (https://docs.astral.sh/uv/), and <code>llama-server</code> from llama.cpp (Homebrew: <code>brew install llama.cpp</code>, <strong>≥ 0.3.0</strong> — the version with router mode).</p>
 </section>
 <section id="download-the-tutor-models" class="level3" data-number="B.2.2">
