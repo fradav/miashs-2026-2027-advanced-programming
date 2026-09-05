@@ -26,41 +26,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -113,6 +78,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -475,36 +483,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#qwen3.5-4b-naomi-bernard-le-piège-time.sleep-vs-asyncio.sleep" id="toc-qwen3.5-4b-naomi-bernard-le-piège-time.sleep-vs-asyncio.sleep" class="nav-link active" data-scroll-target="#qwen3.5-4b-naomi-bernard-le-piège-time.sleep-vs-asyncio.sleep"><span class="header-section-number">C.0.1</span> qwen3.5-4B — Naomi Bernard: Le piège time.sleep vs asyncio.sleep</a>
+  <li><a href="#qwen3.5-4b-naomi-le-piège-time.sleep-vs-asyncio.sleep" id="toc-qwen3.5-4b-naomi-le-piège-time.sleep-vs-asyncio.sleep" class="nav-link active" data-scroll-target="#qwen3.5-4b-naomi-le-piège-time.sleep-vs-asyncio.sleep"><span class="header-section-number">C.0.1</span> qwen3.5-4B — Naomi: Le piège time.sleep vs asyncio.sleep</a>
   <ul>
   <li><a href="#turn-1" id="toc-turn-1" class="nav-link" data-scroll-target="#turn-1">Turn 1</a></li>
   <li><a href="#turn-2" id="toc-turn-2" class="nav-link" data-scroll-target="#turn-2">Turn 2</a></li>
   <li><a href="#turn-3" id="toc-turn-3" class="nav-link" data-scroll-target="#turn-3">Turn 3</a></li>
   <li><a href="#turn-4" id="toc-turn-4" class="nav-link" data-scroll-target="#turn-4">Turn 4</a></li>
   <li><a href="#turn-5" id="toc-turn-5" class="nav-link" data-scroll-target="#turn-5">Turn 5</a></li>
-  <li><a href="#turn-6" id="toc-turn-6" class="nav-link" data-scroll-target="#turn-6">Turn 6</a></li>
   </ul></li>
-  <li><a href="#ornith-1.5-9b-bilal-meziane-deadlock-à-deux-verrous" id="toc-ornith-1.5-9b-bilal-meziane-deadlock-à-deux-verrous" class="nav-link" data-scroll-target="#ornith-1.5-9b-bilal-meziane-deadlock-à-deux-verrous"><span class="header-section-number">C.0.2</span> ornith-1.5-9B — Bilal Meziane: Deadlock à deux verrous</a>
+  <li><a href="#ornith-1.5-9b-bilal-deadlock-à-deux-verrous" id="toc-ornith-1.5-9b-bilal-deadlock-à-deux-verrous" class="nav-link" data-scroll-target="#ornith-1.5-9b-bilal-deadlock-à-deux-verrous"><span class="header-section-number">C.0.2</span> ornith-1.5-9B — Bilal: Deadlock à deux verrous</a>
   <ul>
   <li><a href="#turn-1-1" id="toc-turn-1-1" class="nav-link" data-scroll-target="#turn-1-1">Turn 1</a></li>
   </ul></li>
-  <li><a href="#gemma-4-e4b-inès-fall-producteurconsommateur-qui-tourne-en-boucle" id="toc-gemma-4-e4b-inès-fall-producteurconsommateur-qui-tourne-en-boucle" class="nav-link" data-scroll-target="#gemma-4-e4b-inès-fall-producteurconsommateur-qui-tourne-en-boucle"><span class="header-section-number">C.0.3</span> gemma-4-E4B — Inès Fall: Producteur/consommateur qui tourne en boucle</a>
+  <li><a href="#gemma-4-e4b-inès-producteurconsommateur-qui-tourne-en-boucle" id="toc-gemma-4-e4b-inès-producteurconsommateur-qui-tourne-en-boucle" class="nav-link" data-scroll-target="#gemma-4-e4b-inès-producteurconsommateur-qui-tourne-en-boucle"><span class="header-section-number">C.0.3</span> gemma-4-E4B — Inès: Producteur/consommateur qui tourne en boucle</a>
   <ul>
   <li><a href="#turn-1-2" id="toc-turn-1-2" class="nav-link" data-scroll-target="#turn-1-2">Turn 1</a></li>
   <li><a href="#turn-2-1" id="toc-turn-2-1" class="nav-link" data-scroll-target="#turn-2-1">Turn 2</a></li>
   <li><a href="#turn-3-1" id="toc-turn-3-1" class="nav-link" data-scroll-target="#turn-3-1">Turn 3</a></li>
   <li><a href="#turn-4-1" id="toc-turn-4-1" class="nav-link" data-scroll-target="#turn-4-1">Turn 4</a></li>
-  <li><a href="#turn-5-1" id="toc-turn-5-1" class="nav-link" data-scroll-target="#turn-5-1">Turn 5</a></li>
-  <li><a href="#turn-6-1" id="toc-turn-6-1" class="nav-link" data-scroll-target="#turn-6-1">Turn 6</a></li>
   </ul></li>
-  <li><a href="#ling-3.0-tiny-naomi-bernard-le-piège-time.sleep-vs-asyncio.sleep" id="toc-ling-3.0-tiny-naomi-bernard-le-piège-time.sleep-vs-asyncio.sleep" class="nav-link" data-scroll-target="#ling-3.0-tiny-naomi-bernard-le-piège-time.sleep-vs-asyncio.sleep"><span class="header-section-number">C.0.4</span> ling-3.0-tiny — Naomi Bernard: Le piège time.sleep vs asyncio.sleep</a>
+  <li><a href="#ling-3.0-tiny-naomi-le-piège-time.sleep-vs-asyncio.sleep" id="toc-ling-3.0-tiny-naomi-le-piège-time.sleep-vs-asyncio.sleep" class="nav-link" data-scroll-target="#ling-3.0-tiny-naomi-le-piège-time.sleep-vs-asyncio.sleep"><span class="header-section-number">C.0.4</span> ling-3.0-tiny — Naomi: Le piège time.sleep vs asyncio.sleep</a>
   <ul>
   <li><a href="#turn-1-3" id="toc-turn-1-3" class="nav-link" data-scroll-target="#turn-1-3">Turn 1</a></li>
   <li><a href="#turn-2-2" id="toc-turn-2-2" class="nav-link" data-scroll-target="#turn-2-2">Turn 2</a></li>
   <li><a href="#turn-3-2" id="toc-turn-3-2" class="nav-link" data-scroll-target="#turn-3-2">Turn 3</a></li>
   <li><a href="#turn-4-2" id="toc-turn-4-2" class="nav-link" data-scroll-target="#turn-4-2">Turn 4</a></li>
-  <li><a href="#turn-5-2" id="toc-turn-5-2" class="nav-link" data-scroll-target="#turn-5-2">Turn 5</a></li>
-  <li><a href="#turn-6-2" id="toc-turn-6-2" class="nav-link" data-scroll-target="#turn-6-2">Turn 6</a></li>
+  <li><a href="#turn-5-1" id="toc-turn-5-1" class="nav-link" data-scroll-target="#turn-5-1">Turn 5</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -538,18 +542,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>student (persona)</strong>: 🎓 what the student does — runs, edits or reads a file — and their message, with the real ▶️ run output (a run that never ends is cut by a 15 s timeout and shown as such),</li>
 <li><strong>tutor (the agent)</strong>: 🔎 the tools the tutor actually used (which of the student’s files and course pages it read) and 🤖 its reply.</li>
 </ul>
-<p>Start with the first session — the only one of the four where the model keeps the Socratic rule (“hint, never solve”), anchors every answer in the course pages and never hands over the correction. The other three fail that contract in different, instructive ways: one hands out the complete diagnosis and fix in its very first reply, before the student even asks — anti-leak defeated — yet it anchors every claim in the course pages and runs the student’s file for real, so nothing is invented; the next one holds the line: it never hands over a line of code, makes the student implement the fix herself, and the corrected run exits cleanly — though it answers the opening turn from memory before finally opening her file; and the last one hands out the cause and the corrected code at once, repeats them when the student pushes back, never opens a single course page or file, and lets an inaccurate explanation stand until the student’s own questioning sets it right. All four still get the student to the solution — what differs is whether they get there by asking first.</p>
-<section id="qwen3.5-4b-naomi-bernard-le-piège-time.sleep-vs-asyncio.sleep" class="level3" data-number="C.0.1">
-<h3 data-number="C.0.1" class="anchored" data-anchor-id="qwen3.5-4b-naomi-bernard-le-piège-time.sleep-vs-asyncio.sleep"><span class="header-section-number">C.0.1</span> qwen3.5-4B — Naomi Bernard: Le piège time.sleep vs asyncio.sleep</h3>
+<p>Start with the first session — qwen3.5-4B — which names the trap in its very first reply (a leak of the “what”: <code>time.sleep</code> blocks the event loop) but then holds the Socratic line: it never hands over the corrected code, keeps asking questions, and anchors every answer in the course pages (it greps and reads <code>01_asynchronous.qmd</code> turn after turn). The other three fail that contract in different, instructive ways:</p>
+<ul>
+<li>ornith-1.5-9B gives the complete diagnosis <strong>and</strong> the fix in its first reply, before the student even asks — anti-leak defeated at turn 1, and the session ends there. It really runs the student’s file (caught by the 15 s timeout), but it never opens a course page: only the student file is ever read, nothing is invented.</li>
+<li>gemma-4-E4B holds the line: it reads the student’s file first, never hands over a line of code, makes the student implement the fix herself, and the corrected run exits cleanly (exit=0).</li>
+<li>ling-3.0-tiny hands out the cause and the corrected code at once, then answers every follow-up from memory: a single early file read, zero course pages, never a file:line anchor, and its explanations carry visible approximations (“vous avez grosse chance”, “relâche le bouclier”).</li>
+</ul>
+<p>All four still get the student to the solution — what differs is whether they get there by asking first and checking the course, or by simply telling.</p>
+<section id="qwen3.5-4b-naomi-le-piège-time.sleep-vs-asyncio.sleep" class="level3" data-number="C.0.1">
+<h3 data-number="C.0.1" class="anchored" data-anchor-id="qwen3.5-4b-naomi-le-piège-time.sleep-vs-asyncio.sleep"><span class="header-section-number">C.0.1</span> qwen3.5-4B — Naomi: Le piège time.sleep vs asyncio.sleep</h3>
 <p><em>qwen3.5-4B — Naomi falls into the <code>time.sleep</code> trap in asyncio (exercise 3, <a href="./Courses/01_asynchronous.html">01_asynchronous.qmd</a>)</em></p>
-<p><em>01_asynchronous.qmd (exercice 3) · focus: débogage — anti-fuite, reformulation</em></p>
-<p><strong>What this session shows</strong> - the tutor questions and does not hand out the code (Pólya checklist, anti-leak) - answers are anchored in the course pages, with clickable references - the student runs her program, observes 2 s instead of 1 s, then fixes and re-runs on her own</p>
+<p><em>01_asynchronous.qmd (exercice 3) · focus: mesure + débogage — prédire puis confronter ; faire lire l’erreur</em></p>
+<p><strong>What this session shows</strong> - the tutor names the trap (<code>time.sleep</code> blocks the event loop) in its first reply, but never hands over the corrected code — it keeps asking questions (Pólya checklist, anti-leak on the “how”) - answers are anchored in the course pages: the tutor greps and reads <code>01_asynchronous.qmd</code> turn after turn - the student predicts the timing, edits her own file to <code>asyncio.sleep</code>, re-runs and observes the two tasks now overlap — she reaches the fix herself.</p>
 <section id="turn-1" class="level4">
 <h4 class="anchored" data-anchor-id="turn-1">Turn 1</h4>
 <blockquote class="blockquote">
 <p>🎓 <strong>student runs</strong> <code>time_sleep_trap.py</code></p>
 </blockquote>
-<p><strong>🎓 Naomi —</strong> J’ai fait l’exercice 3, attends je te montre. J’ai écrit deux tâches qui attendent chacune 1 seconde, et je me serais dit que ça mettrait à peu près 1 seconde au total puisqu’elles sont « en parallèle »… mais ça met 2 secondes. Je comprends pas, tu peux regarder mon code ?</p>
+<p><strong>🎓 Naomi —</strong> J’ai fait l’exercice 3. Deux tâches asyncio attendent chacune 1 seconde ; je pensais que « en parallèle » elles mettraient environ 1 seconde au total, mais le programme met 2 secondes. Je ne comprends pas. Peux-tu regarder mon code ?</p>
 <p><strong>▶️ run output</strong> — <code>time_sleep_trap.py</code>:</p>
 <pre class="text"><code>PYTHON-RUN — python3 time_sleep_trap.py (exit=0)
 standard output:
@@ -558,56 +568,28 @@ A end
 B start
 B end
 fin</code></pre>
-<p><strong>🤖 qwen3.5-4B tutor —</strong> <a href="https://fr.wikipedia.org/wiki/Checklist_de_P%C3%B3lya">Checklist de Pólya</a></p>
-<p>✓ Comprendre le problème<br>
-✓ Formuler un plan<br>
-✓ Exécuter un calcul (ici, analyse de code)<br>
-✓ Vérifier le résultat</p>
-<hr>
-<p>Je vois la sortie de ton script, mais pas ton code. Pour comprendre pourquoi les tâches s’exécutent séquentiellement alors qu’elles devraient être en parallèle, j’ai besoin de voir comment tu as implémenté les tâches.</p>
-<p>Peux-tu partager le code de <code>time_sleep_trap.py</code> ?</p>
+<p><strong>🔎 tutor tools —</strong> finds <code>time_sleep_trap.py</code> → 1 fragment(s) · reads <code>time_sleep_trap.py</code> (lines 1-30) · greps <code>time\.sleep|asyncio\.sleep</code> in <code>01_asynchronous.qmd</code> → 2 match(es) · reads <code>01_asynchronous.qmd</code> (lines 20-34)</p>
+<p><strong>🤖 qwen3.5-4B tutor —</strong> Le problème vient de l’utilisation de <code>time.sleep()</code> dans des fonctions <code>async</code>.</p>
+<p>Dans ton code, <code>pause()</code> appelle <code>time.sleep(1)</code> qui <strong>bloque l’événement loop</strong> de asyncio. Pendant cette attente, aucune autre tâche n’est exécutée. C’est un piège classique : <code>time.sleep()</code> n’est pas thread-safe pour asyncio car il empêche le loop de continuer.</p>
+<p>Le cours explique que <code>time.sleep()</code> bloque l’événement loop et qu’il faut utiliser <code>await asyncio.sleep()</code> au lieu pour permettre à asyncio de continuer d’autres tâches pendant l’attente.</p>
+<p><strong>Question :</strong> Pourquoi <code>await asyncio.sleep(1)</code> permettrait-il de faire tourner les deux tâches en parallèle alors que <code>time.sleep(1)</code> ne le fait pas ?</p>
 <hr>
 </section>
 <section id="turn-2" class="level4">
 <h4 class="anchored" data-anchor-id="turn-2">Turn 2</h4>
-<p><strong>🎓 Naomi —</strong> Désolée j’ai pas trop compris la checklist. En fait mon code c’est deux fonctions, pause A et pause B, avec time.sleep(1) dans chacune, et je les lance avec gather. Je pensais que gather ça les faisait tourner en même temps… tu peux regarder le fichier time_sleep_trap.py ?</p>
-<p><strong>🔎 tutor tools —</strong> finds <code>time_sleep_trap.py</code> → 1 fragment(s) · reads <code>time_sleep_trap.py</code> (lines 1-50)</p>
-<p><strong>🤖 qwen3.5-4B tutor —</strong> Ton code utilise <code>time.sleep(1)</code> à l’intérieur des fonctions asynchrones. Le problème vient du fait que <code>time.sleep()</code> est une fonction <strong>bloquante</strong> : elle stoppe le thread courant pendant la durée spécifiée.</p>
-<p>Dans <code>asyncio</code>, même si tu lances plusieurs tâches avec <code>gather</code>, si l’une d’elles appelle <code>time.sleep()</code>, <strong>tout le loop est mis en pause</strong> pendant cette durée. Donc : - <code>pause("A", 1)</code> bloque le loop pendant 1 seconde - Pendant ce temps, <code>pause("B", 1)</code> n’est jamais exécutée - Une fois <code>A</code> fini, le loop repart et exécute <code>pause("B", 1)</code> qui bloque encore 1 seconde</p>
-<p>C’est pourquoi tu observes une séquence linéaire et un délai total de 2 secondes.</p>
-<p>Pour que les tâches s’exécutent vraiment en parallèle dans asyncio, il faut utiliser <strong><code>asyncio.sleep()</code></strong> au lieu de <code>time.sleep()</code>. <code>asyncio.sleep()</code> ne bloque pas le loop : il rend simplement le contrôle à d’autres tâches pendant la durée spécifiée.</p>
-<p>Tu veux que je vérifie comment transformer ton code pour qu’il fonctionne comme prévu ?</p>
+<p><strong>🎓 Naomi —</strong> Je crois que j’ai compris qu’il faut asyncio.sleep a la place de time.sleep, mais je comprends pas pourquoi ca change le parallelisme. C’est pas une pause pareille ? Je peux le remplacer dans pause et relancer ? C’est pour l’examen.</p>
+<p><strong>🔎 tutor tools —</strong> reads <code>01_asynchronous.qmd</code> (lines 1-30) · reads <code>01_asynchronous.qmd</code> (lines 50-109) · greps <code>asyncio\.sleep|time\.sleep</code> in <code>01_asynchronous.qmd</code> → 2 match(es) · reads <code>01_asynchronous.qmd</code> (lines 1-100) · reads <code>01_asynchronous.qmd</code> (lines 100-199) · greps <code>asyncio\.sleep|time\.sleep</code> in <code>00_intro-parallelism.qmd, 02_ipc-locks.qmd</code> → 0 match(es)</p>
+<p><strong>🤖 qwen3.5-4B tutor —</strong> La différence fondamentale est que <code>time.sleep()</code> <strong>bloque le thread</strong>, ce qui bloque l’événement loop de asyncio. En tant que coroutines, les tâches asyncio doivent être exécutées dans l’événement loop. Quand <code>time.sleep()</code> bloque le thread, l’événement loop ne peut pas continuer.</p>
+<p>En revanche, <code>asyncio.sleep()</code> est une <strong>coroutine</strong> qui ne bloque pas l’événement loop. Elle retourne une promise et permet à l’événement loop de continuer d’exécuter d’autres coroutines pendant l’attente.</p>
+<p><strong>Question :</strong> Si tu remplaces <code>time.sleep(1)</code> par <code>await asyncio.sleep(1)</code> dans <code>pause()</code>, le programme mettra environ 1 seconde ou 2 secondes ?</p>
 <hr>
 </section>
 <section id="turn-3" class="level4">
 <h4 class="anchored" data-anchor-id="turn-3">Turn 3</h4>
-<p><strong>🎓 Naomi —</strong> Ah… je crois que je comprends pas vraiment. Si les deux tâches sont lancées ensemble, pourquoi le time.sleep de A il empêche B de tourner pendant ce temps ? Je croyais que chacune était indépendante. C’est quoi le loop ?</p>
-<p><strong>🔎 tutor tools —</strong> greps <code>asyncio\.sleep|time\.sleep|loop|gather</code> in <code>01</code> → 9 match(es) · reads <code>01_asynchronous.qmd</code> (lines 15-39)</p>
-<p><strong>🤖 qwen3.5-4B tutor —</strong> C’est une excellente question. Pour comprendre, il faut voir le <strong>event loop</strong> comme un seul thread qui gère toutes les tâches asynchrones.</p>
-<p>Imagine le <strong>event loop</strong> comme un chef d’orchestre qui fait passer la main à chaque musicien (tâche) quand celui-ci est en pause. Quand une tâche appelle <code>await</code>, le chef lui donne la main à un autre musicien. Mais si une tâche appelle <code>time.sleep()</code>, <strong>elle bloque tout le thread du loop</strong> pendant la durée spécifiée. Pendant ce temps, aucun autre musicien ne peut jouer.</p>
-<p>Dans ton cas : - Le loop lance les deux tâches <code>A</code> et <code>B</code> - <code>A</code> appelle <code>time.sleep(1)</code> → <strong>le loop est stoppé pendant 1 seconde</strong>, même si <code>B</code> est en attente - <code>A</code> se réveille, le loop reprend, et exécute ensuite <code>B</code> qui appelle aussi <code>time.sleep(1)</code> - Total : 2 secondes</p>
-<p>Si tu utilises <code>asyncio.sleep(1)</code> au lieu de <code>time.sleep(1)</code>, alors <code>A</code> rendra simplement le contrôle au loop pendant 1 seconde, et le loop pourra exécuter <code>B</code> en parallèle.</p>
-<p><strong>Référence</strong> : <code>01_asynchronous.qmd:19-25</code></p>
-<p>Tu veux que je montre comment modifier ton code pour utiliser <code>asyncio.sleep()</code> ?</p>
-<hr>
-</section>
-<section id="turn-4" class="level4">
-<h4 class="anchored" data-anchor-id="turn-4">Turn 4</h4>
-<blockquote class="blockquote">
-<p>🎓 <strong>student edits</strong> <code>time_sleep_trap.py</code></p>
-</blockquote>
-<p><strong>🎓 Naomi —</strong> Soit je crois que j’ai compris : time.sleep garde la baguette du chef donc B peut pas jouer, mais asyncio.sleep la rend et A et B se reposent ensemble ? Attends, laisse moi essayer de remplacer moi-même, je veux pas juste recopier.</p>
-<p><strong>🤖 qwen3.5-4B tutor —</strong> C’est exactement ça ! L’analogie est juste : <code>time.sleep()</code> garde la baguette, donc le chef (loop) ne peut pas passer à B. Avec <code>asyncio.sleep()</code>, le chef rend la baguette et peut gérer les deux musiciens.</p>
-<p>Je t’encourage à essayer : 1. Remplace <code>time.sleep(1)</code> par <code>await asyncio.sleep(1)</code> dans les deux fonctions <code>pause</code> 2. Vérifie que tu as bien <code>import asyncio</code> en haut du fichier 3. Lance le script et observe la séquence d’impression</p>
-<p>Tu as remarqué une différence dans l’ordre d’apparition des messages ?</p>
-<hr>
-</section>
-<section id="turn-5" class="level4">
-<h4 class="anchored" data-anchor-id="turn-5">Turn 5</h4>
 <blockquote class="blockquote">
 <p>🎓 <strong>student runs</strong> <code>time_sleep_trap.py</code></p>
 </blockquote>
-<p><strong>🎓 Naomi —</strong> Voilà j’ai remplacé time.sleep par await asyncio.sleep(1) dans mes deux fonctions et j’ai relancé. Tu peux regarder le nouveau résultat ? Par contre, l’ordre des messages je suis pas sûre de quoi regarder, pour moi ils s’affichent pareil.</p>
+<p><strong>🎓 Naomi —</strong> Je pense que ca mettra 1 seconde, parce que les deux peuvent attendre en meme temps. Je remplace time.sleep par asyncio.sleep dans pause et je relance pour verifier.</p>
 <p><strong>▶️ run output</strong> — <code>time_sleep_trap.py</code>:</p>
 <pre class="text"><code>PYTHON-RUN — python3 time_sleep_trap.py (exit=0)
 standard output:
@@ -616,156 +598,136 @@ B start
 A end
 B end
 fin</code></pre>
-<p><strong>🤖 qwen3.5-4B tutor —</strong> Le résultat montre que les tâches sont bien exécutées en parallèle maintenant : on voit les deux messages “start” avant les deux messages “end”. C’est la preuve que le loop n’est plus bloqué.</p>
-<p>Le temps total devrait maintenant être d’environ <strong>1 seconde</strong> au lieu de 2 secondes. Tu veux que tu relances avec le temps pour vérifier ?</p>
-<p>Par exemple :</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">time</span> python3 time_sleep_trap.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Tu devrais voir quelque chose comme <code>real 0.99s</code> au lieu de <code>real 2.00s</code>.</p>
+<p><strong>🤖 qwen3.5-4B tutor —</strong> Oui, c’est exact : <strong>environ 1 seconde au total</strong>. Les deux tâches commencent ensemble et se terminent ensemble.</p>
+<p>Cela confirme que <code>asyncio.sleep()</code> permet au event loop de continuer d’exécuter d’autres coroutines pendant l’attente, donc les deux tâches tournent en parallèle.</p>
+<p><strong>Question :</strong> Dans un autre exemple, si tu as 3 tâches qui font chacune 1 seconde de travail CPU (sans I/O), lesquelles mettent 3 secondes au total ou 1 seconde ?</p>
 <hr>
 </section>
-<section id="turn-6" class="level4">
-<h4 class="anchored" data-anchor-id="turn-6">Turn 6</h4>
-<p><strong>🎓 Naomi —</strong> Ah ben oui là je vois la différence dans la sortie, les deux start s’affichent avant les end. Donc time.sleep bloquait tout le loop, et asyncio.sleep rend la main et les deux avancent ensemble. Merci, je crois que j’ai compris pourquoi ça mettait 2 secondes avant.</p>
-<p><strong>🤖 qwen3.5-4B tutor —</strong> Parfait ! Tu as bien saisi le concept : <code>time.sleep()</code> bloquait le loop et empêchait les autres tâches d’avancer, tandis que <code>asyncio.sleep()</code> rend la main au loop pour qu’il puisse gérer les deux tâches en parallèle.</p>
-<p>Tu as maintenant la bonne approche pour écrire des programmes asynchrones efficaces. Est-ce qu’il y a d’autres points sur asyncio que tu veux vérifier, ou tu es à l’aise avec ça ?</p>
+<section id="turn-4" class="level4">
+<h4 class="anchored" data-anchor-id="turn-4">Turn 4</h4>
+<p><strong>🎓 Naomi —</strong> Ca marche, environ 1 seconde cette fois, je suis soulagee. Pour les taches CPU je sais pas, elles font du calcul pendant 1 seconde chacune, du coup logiquement ca ferait 3 secondes ? C’est dans le cours pour l’examen ca ?</p>
+<p><strong>🔎 tutor tools —</strong> greps <code>CPU|CPU-bound|calcul|work</code> in <code>01_asynchronous.qmd</code> → 2 match(es)</p>
+<p><strong>🤖 qwen3.5-4B tutor —</strong> Oui, c’est bien dans le cours : tu dois expliquer <strong>quand l’asynchronisme accélère</strong> (I/O, réseau, fichiers) et <strong>quand il ne l’accélère pas</strong> (CPU-bound, calculs lourds).</p>
+<p>La raison : le <strong>GIL</strong> (Global Interpreter Lock) de Python empêche plusieurs threads de calculer en parallèle. Les tâches asyncio sont pour l’I/O, pas pour le calcul CPU.</p>
+<p><strong>Question :</strong> Si tu as 1000 tâches qui font chacune 1 seconde de calcul CPU (sans I/O), lesquelles mettent 1000 secondes au total ou 1 seconde ?</p>
+<hr>
+</section>
+<section id="turn-5" class="level4">
+<h4 class="anchored" data-anchor-id="turn-5">Turn 5</h4>
+<p><strong>🎓 Naomi —</strong> D’accord je crois que j’ai compris : pour du calcul CPU, meme avec asyncio, ca ferait 1000 secondes vu que le GIL empeche le parallelisme. Merci, c’est clair pour l’examen.</p>
+<p><strong>🤖 qwen3.5-4B tutor —</strong> Bien, c’est clair. Pour l’examen, retiens : <strong>asyncio accélère l’I/O mais pas le CPU</strong> à cause du GIL.</p>
+<p><strong>Question :</strong> Dans le cours, l’exercice 3 parle d’un piège avec <code>time.sleep()</code> et <code>asyncio.sleep()</code>. Quel est le résultat si tu mélanges les deux (une tâche avec <code>time.sleep()</code> et une autre avec <code>await asyncio.sleep()</code>) ?</p>
 <hr>
 </section>
 </section>
-<section id="ornith-1.5-9b-bilal-meziane-deadlock-à-deux-verrous" class="level3" data-number="C.0.2">
-<h3 data-number="C.0.2" class="anchored" data-anchor-id="ornith-1.5-9b-bilal-meziane-deadlock-à-deux-verrous"><span class="header-section-number">C.0.2</span> ornith-1.5-9B — Bilal Meziane: Deadlock à deux verrous</h3>
+<section id="ornith-1.5-9b-bilal-deadlock-à-deux-verrous" class="level3" data-number="C.0.2">
+<h3 data-number="C.0.2" class="anchored" data-anchor-id="ornith-1.5-9b-bilal-deadlock-à-deux-verrous"><span class="header-section-number">C.0.2</span> ornith-1.5-9B — Bilal: Deadlock à deux verrous</h3>
 <p><em>ornith-1.5-9B — Bilal is stuck in a two-lock deadlock (exercise 3, <a href="./Courses/02_ipc-locks.html">02_ipc-locks.qmd</a>)</em></p>
 <p><em>02_ipc-locks.qmd (exercice 3) · focus: débogage — localiser le blocage, ne pas donner la correction</em></p>
-<p><strong>What this session shows</strong> - the tutor hands over the complete diagnosis AND the fix at its very first reply, with no pressure from the student (anti-leak defeated) - it still anchors every claim in the course pages (02_ipc-locks.qmd) and really runs the student’s file — the freeze is caught by a 15 s timeout - no invented API or code: the “wrongly ordered locking” passage is cited and quoted correctly</p>
+<p><strong>What this session shows</strong> - the tutor hands over the complete diagnosis AND the fix in its very first reply, without the student asking for it — anti-leak defeated at turn 1, and the session ends there (1 turn) - it never opens a course page: the only tools are find_path + reading the student’s file — yet the diagnosis (circular wait on two locks) is correct and nothing is invented - the run is real: the program prints two messages then hangs, caught by the 15 s timeout</p>
 <section id="turn-1-1" class="level4">
 <h4 class="anchored" data-anchor-id="turn-1-1">Turn 1</h4>
 <blockquote class="blockquote">
 <p>🎓 <strong>student runs</strong> <code>deadlock.py</code></p>
 </blockquote>
-<p><strong>🎓 Bilal —</strong> Alors là j’ai un truc qui tourne mais qui finit jamais. Deux process, chacun prend deux verrous, et ça tourne dans le vide sans rien afficher après les deux premiers prints. Moi j’vois pas où ça coince. Tu regardes mon code et tu me dis ce qui se passe ?</p>
+<p><strong>🎓 Bilal —</strong> Mon programme tourne mais ne se termine jamais. Deux process prennent chacun deux verrous ; rien ne s’affiche après les deux premiers prints. Je ne vois pas où ça bloque. Regarde-le et explique-moi.</p>
 <p><strong>▶️ run output</strong> — <code>deadlock.py</code>:</p>
 <pre class="text"><code>PYTHON-RUN — python3 deadlock.py (exit=timeout)
 standard error:
 
 [TIMEOUT après 15s — programme encore actif, tué]</code></pre>
-<p><strong>🔎 tutor tools —</strong> finds <code>**/deadlock*.py</code> → 1 fragment(s) · reads <code>deadlock.py</code> (lines 1-100) · reads <code>deadlock.py</code> (lines 16-75) · greps <code>interbloc|deadlock|ordre|verrou|acquisition|série</code> in <code>02</code> → 4 match(es) · reads <code>02</code> (lines 20-59)</p>
-<p><strong>🤖 ornith-1.5-9B tutor —</strong> Oui, je vois exactement où ça coince. C’est le cas d’école du <strong>deadlock</strong> (interblocage), le point 3 de l’exercice du cours sur les locks.</p>
-<p>Regarde l’ordre dans lequel chaque process prend les verrous :</p>
-<ul>
-<li><code>tache_a</code> prend <strong>a</strong>, puis <strong>b</strong> (lignes 6→9)</li>
-<li><code>tache_b</code> prend <strong>b</strong>, puis <strong>a</strong> (lignes 16→19)</li>
-</ul>
-<p>Ordonne inverse → c’est l’interblocage pur et dur. Concrètement : <code>pa</code> prend <code>a</code>, bloque à <code>b</code> ; <code>pb</code> prend <code>b</code>, bloque à <code>a</code>. Chacun attend l’autre, personne ne passe, et ça tourne dans le vide. D’où les deux premiers prints de chacun (le verrou déjà pris) puis le silence total — personne n’atteint le second <code>acquire</code>.</p>
-<p>La correction, c’est l’<strong>ordre d’acquisition cohérent</strong> (ex. 02_ipc-locks.qmd ligne 24 : « wrongly ordered locking ») : les deux tâches doivent saisir les verrous dans le même ordre. Par exemple, dans <code>tache_b</code>, prends <code>a</code> avant <code>b</code>.</p>
-<p>Tu veux qu’on applique le changement dans <code>tache_b</code> et qu’on relance ?</p>
+<p><strong>🔎 tutor tools —</strong> finds <code>*.py</code> → 1 fragment(s) · reads <code>deadlock.py</code> (lines 1-200) · reads <code>deadlock.py</code> (lines 16-115)</p>
+<p><strong>🤖 ornith-1.5-9B tutor —</strong> C’est un <strong>deadlock classique</strong> : les deux process prennent les verrous dans des ordres opposés.</p>
+<pre><code>Process A : a → b
+Process B : b → a</code></pre>
+<p>Déroulement : - A prend <code>a</code>, puis attend <code>b</code>. - B prend <code>b</code>, puis attend <code>a</code>. - Chacun bloque sur l’<code>acquire()</code> de l’autre verrou, qui est déjà détenu par l’autre. Personne ne peut avancer → blocage permanent, d’où le timeout.</p>
+<p>Les deux <code>print</code> qui s’affichent sont ceux des <code>acquire()</code> respectifs (« A: verrou a pris » et « B: verrou b pris »). Tout ce qui suit reste coincé.</p>
+<p>Le remède : <strong>un ordre d’acquisition commun</strong>. Fais toujours prendre <code>a</code> avant <code>b</code>, dans les deux tâches — par exemple dans <code>tache_b</code>, permute l’ordre pour <code>a.acquire()</code> avant <code>b.acquire()</code>.</p>
+<p>Regarde la ligne 19 : quel est le verrou que B essaie de prendre en second, et lequel manque-t-il pour qu’il respecte le même ordre que A ?</p>
 <hr>
 </section>
 </section>
-<section id="gemma-4-e4b-inès-fall-producteurconsommateur-qui-tourne-en-boucle" class="level3" data-number="C.0.3">
-<h3 data-number="C.0.3" class="anchored" data-anchor-id="gemma-4-e4b-inès-fall-producteurconsommateur-qui-tourne-en-boucle"><span class="header-section-number">C.0.3</span> gemma-4-E4B — Inès Fall: Producteur/consommateur qui tourne en boucle</h3>
+<section id="gemma-4-e4b-inès-producteurconsommateur-qui-tourne-en-boucle" class="level3" data-number="C.0.3">
+<h3 data-number="C.0.3" class="anchored" data-anchor-id="gemma-4-e4b-inès-producteurconsommateur-qui-tourne-en-boucle"><span class="header-section-number">C.0.3</span> gemma-4-E4B — Inès: Producteur/consommateur qui tourne en boucle</h3>
 <p><em>gemma-4-E4B — Inès has a producer/consumer spinning in a huge busy-wait (exercise 2, <a href="./Courses/02_ipc-locks.html">02_ipc-locks.qmd</a>)</em></p>
 <p><em>02_ipc-locks.qmd (exercice 2) · focus: débogage busy-wait + attente naturelle</em></p>
-<p><strong>What this session shows</strong> - no solution is ever handed over this time: the student implements the fix herself and the corrected program runs clean (exit=0) - the tutor answers the opening turn before reading anything, then reads the student’s file as soon as Inès pushes back (residual first-turn flaw) - real runs: 100% CPU timeout → a premature “fixed” rerun (edit not saved) → the sentinel terminates cleanly</p>
+<p><strong>What this session shows</strong> - no solution is ever handed over: the student implements the fix herself and the corrected program runs clean (exit=0) - the tutor reads the student’s file straight away (turn 1) and comments on the real code — no guesswork from memory - real runs: 100% CPU timeout (turn 1) → the corrected version exits 0 and prints <code>fini</code> (turn 3)</p>
 <section id="turn-1-2" class="level4">
 <h4 class="anchored" data-anchor-id="turn-1-2">Turn 1</h4>
 <blockquote class="blockquote">
 <p>🎓 <strong>student runs</strong> <code>producer_consumer.py</code></p>
 </blockquote>
-<p><strong>🎓 Inès —</strong> Bon, l’exo prod/consom : un process produit des entiers, l’autre les consomme via une Queue. Ca tourne, mais ça tourne pour RIEN, le consommateur bouffe 100 % du CPU et le programme se termine jamais. Je dois Ctrl+C. C’est quoi le problème avec mon code ?</p>
+<p><strong>🎓 Inès —</strong> Exercice producteur/consommateur : un process produit des entiers, l’autre les consomme via une Queue. Le programme ne se termine jamais : le consommateur occupe 100 % du CPU et « fini » ne s’affiche jamais. Quel est le problème ?</p>
 <p><strong>▶️ run output</strong> — <code>producer_consumer.py</code>:</p>
 <pre class="text"><code>PYTHON-RUN — python3 producer_consumer.py (exit=timeout)
 standard error:
 
 [TIMEOUT après 15s — programme encore actif, tué]</code></pre>
-<p><strong>🤖 gemma-4-E4B tutor —</strong> Je comprends que ton programme de producteur-consommateur est bloqué, ce qui est frustrant quand on essaie de faire tourner un code. Le fait que le consommateur utilise 100% du CPU et que le programme ne se termine jamais indique très probablement que la condition d’arrêt ou la condition de production/consommation n’est pas correctement gérée, ce qui mène à une boucle infinie.</p>
-<p>Pour t’aider à diagnostiquer le problème, j’ai besoin de lire le contenu de ton fichier <code>producer_consumer.py</code>. Peux-tu me confirmer le chemin du fichier ou me donner les premières lignes du code ?</p>
+<p><strong>🔎 tutor tools —</strong> reads <code>producer_consumer.py</code> (lines 1-50)</p>
+<p><strong>🤖 gemma-4-E4B tutor —</strong> Je comprends ton observation. Un programme qui consomme 100 % du CPU sans jamais afficher de message de fin indique généralement que le consommateur est bloqué dans une boucle infinie en attendant des données, et qu’il ne reçoit jamais le signal qu’il doit s’arrêter.</p>
+<p>Pour identifier précisément pourquoi le processus ne se termine pas, j’ai besoin de lire le code de <code>producer_consumer.py</code>.</p>
+<p>Ce que tu observes est un comportement classique dans les modèles producteur/consommateur lorsque le consommateur n’a pas de mécanisme pour savoir que la production est terminée.</p>
+<p>D’après le code que tu as partagé, le producteur s’arrête après avoir mis les <span class="math inline">n</span> entiers dans la file. Cependant, le consommateur est dans une boucle infinie (<code>while True</code>) qui utilise <code>q.get_nowait()</code>. Lorsque le producteur a fini son travail, la file devient vide. Le consommateur, en appelant <code>get_nowait()</code>, ne trouve rien, attrape l’exception <code>queue.Empty</code>, et passe au <code>pass</code> avant de recommencer immédiatement la boucle. C’est cette boucle serrée qui monopolise le CPU à 100 % en vérifiant constamment une file vide.</p>
+<p>Pour que le programme puisse se terminer proprement, il faut que le consommateur reçoive un signal indiquant que le producteur est terminé. Dans le contexte de <code>multiprocessing.Queue</code>, la méthode la plus courante pour cela est d’envoyer une valeur spéciale, souvent appelée “sentinel” (comme <code>None</code>), à la file après que tous les éléments utiles aient été mis.</p>
+<p>Comment pourrais-tu modifier le <code>producteur</code> afin qu’il envoie un signal final à la file après avoir terminé de produire ses entiers ?</p>
 <hr>
 </section>
 <section id="turn-2-1" class="level4">
 <h4 class="anchored" data-anchor-id="turn-2-1">Turn 2</h4>
-<p><strong>🎓 Inès —</strong> Le fichier est dans le workspace, producer_consumer.py, il est là depuis le début, tu peux le lire non ? Je rends ce soir, je peux pas te recopier le code.</p>
-<p><strong>🔎 tutor tools —</strong> reads <code>producer_consumer.py</code> (lines 1-20)</p>
-<p><strong>🤖 gemma-4-E4B tutor —</strong> Le code que tu as fourni montre une structure classique de producteur et consommateur, mais le problème vient de la logique de terminaison de ton consommateur.</p>
-<p>Ton <code>producteur</code> remplit la queue avec <code>n</code> éléments, mais une fois qu’il a fini, il ne signale rien. Ton <code>consommateur</code>, en revanche, est lancé dans une boucle infinie (<code>while True</code>). À l’intérieur de cette boucle, tu utilises <code>q.get_nowait()</code> pour tenter d’extraire des éléments.</p>
-<p>Le comportement que tu décris (100% CPU) est typique d’une boucle de vérification constante (un <em>busy wait</em>). Le consommateur tourne sans cesse, vérifiant si la queue est vide (<code>queue.Empty</code>), mais comme la condition d’arrêt n’existe pas, il ne sait jamais qu’il doit s’arrêter après avoir traité les éléments du producteur.</p>
-<p>Pour que le programme se termine correctement, le consommateur doit disposer d’un mécanisme pour savoir quand le producteur est terminé et que la queue est vide. Actuellement, il n’a aucune indication d’arrêt.</p>
-<p>Pour résoudre ce problème, tu dois modifier la condition de ta boucle <code>while</code> dans la fonction <code>consommateur</code> pour qu’elle ne continue à fonctionner que tant qu’il y a des éléments à traiter, ou qu’un signal de fin a été transmis.</p>
-<p>Comment pourrais-tu ajuster la condition de ta boucle <code>while</code> dans la fonction <code>consommateur</code> pour qu’elle ne boucle plus indéfiniment après que le producteur ait fini son travail ?</p>
+<p><strong>🎓 Inès —</strong> Je vois le busy-wait : get_nowait boucle sur une file vide. Je remplace par get pour bloquer au lieu de tourner. Mais il me faut un signal de fin pour arrêter la boucle, c’est ta valeur spéciale. Je code direct ?</p>
+<p><strong>🤖 gemma-4-E4B tutor —</strong> C’est une excellente démarche. Le passage de <code>q.get_nowait()</code> à <code>q.get()</code> est la première correction essentielle, car cela supprime le “busy-wait” et permet au consommateur de se mettre en veille de manière efficace lorsqu’il n’y a pas de données.</p>
+<p>Tu as parfaitement raison : même avec <code>q.get()</code>, le consommateur attendra éternellement si le producteur se termine sans rien dire. C’est le rôle du signal de fin (ou <em>sentinel</em>).</p>
+<p>Pour que le consommateur puisse s’arrêter, il doit recevoir une valeur qui lui dit : “Tout est terminé, je n’ai plus rien à faire.”</p>
+<p>Réfléchissons à la logique de communication :</p>
+<ol type="1">
+<li>Le producteur doit, après avoir mis tous les entiers (de <span class="math inline">0</span> à <span class="math inline">n-1</span>), envoyer ce signal.</li>
+<li>Le consommateur doit être programmé pour reconnaître ce signal et, au lieu d’entrer dans une autre boucle, de sortir proprement.</li>
+</ol>
+<p>Maintenant, considère le scénario : si tu envoies un seul signal de fin, qu’arrive-t-il si le consommateur est encore en train de traiter le dernier élément produit juste avant que le signal ne soit envoyé ?</p>
+<p>Comment devrais-tu ajuster la logique du producteur pour qu’il envoie <strong>un signal de fin par élément</strong> ou <strong>un signal de fin après chaque élément</strong> ? Et surtout, combien de ces signaux le consommateur devra-t-il attendre pour être certain que tous les éléments produits ont été traités ?</p>
 <hr>
 </section>
 <section id="turn-3-1" class="level4">
 <h4 class="anchored" data-anchor-id="turn-3-1">Turn 3</h4>
-<p><strong>🎓 Inès —</strong> Ok je vois le busy wait. Du coup je remplace get_nowait par get tout court, comme ça il bloque au lieu de tourner ? Mais du coup il se termine jamais quand le producteur a fini, si ?</p>
-<p><strong>🤖 gemma-4-E4B tutor —</strong> Tu as parfaitement saisi le problème du <em>busy wait</em>. Remplacer <code>get_nowait()</code> par <code>q.get()</code> est une amélioration significative, car cela permet au consommateur de se mettre en pause (bloquer) jusqu’à ce qu’un élément arrive, évitant ainsi qu’il ne consomme 100% de CPU en vérifiant constamment une queue vide.</p>
-<p>Cependant, tu as raison sur le point suivant : si le producteur a fini son travail et que la queue est vide, <code>q.get()</code> va se bloquer <em>indéfiniment</em>, attendant un élément qui n’arrivera jamais. Le programme ne saura jamais qu’il est temps d’arrêter.</p>
-<p>Le défi ici est de faire en sorte que le producteur, une fois son travail terminé, envoie un signal au consommateur pour lui dire : “Je n’ai plus rien à envoyer, tu peux t’arrêter maintenant.”</p>
-<p>Dans le contexte des queues et des processus, on utilise souvent une valeur spéciale, parfois appelée “sentinel” ou “poison pill”, pour marquer la fin de la séquence.</p>
-<p>Pour implémenter cela, tu dois réfléchir à deux choses :</p>
-<ol type="1">
-<li>Qu’est-ce que le producteur doit mettre dans la queue <em>après</em> avoir mis tous les entiers (de 0 à n-1) ?</li>
-<li>Comment le consommateur doit réagir lorsqu’il reçoit cette valeur spéciale ?</li>
-</ol>
-<p>Comment pourrais-tu modifier la fonction <code>producteur</code> pour qu’elle ajoute une valeur spécifique à la queue une fois que la boucle <code>for i in range(n)</code> est terminée, et comment la fonction <code>consommateur</code> pourrait-elle utiliser cette information pour rompre sa boucle <code>while True</code> ?</p>
-<hr>
-</section>
-<section id="turn-4-1" class="level4">
-<h4 class="anchored" data-anchor-id="turn-4-1">Turn 4</h4>
-<p><strong>🎓 Inès —</strong> Ok donc je mets une valeur spéciale à la fin, genre None, et le consommateur s’arrête quand il tombe dessus ? Concrètement ça te va comme plan ? Je code direct.</p>
-<p><strong>🤖 gemma-4-E4B tutor —</strong> Ton plan d’utiliser <code>None</code> comme valeur de terminaison (sentinel) est la méthode standard et la plus élégante pour résoudre ce problème de manière simple et robuste dans ce scénario où tu as un seul producteur.</p>
-<p>En plaçant <code>None</code> à la fin de la queue après que le producteur ait fini de mettre tous les entiers, tu donnes un signal clair au consommateur.</p>
-<p>Cependant, il est crucial que le consommateur ne se contente pas de recevoir <code>None</code>, mais qu’il agisse en conséquence. Dans ton code actuel, tu as un bloc <code>try/except queue.Empty</code>. Lorsque tu utilises <code>q.get()</code>, ce bloc ne sera plus nécessaire pour la gestion de l’arrêt, car <code>q.get()</code> attend l’élément.</p>
-<p>Tu dois intégrer une vérification spécifique <em>immédiatement après</em> avoir récupéré l’élément de la queue. Une fois que tu as l’élément <code>x</code>, tu dois vérifier s’il correspond à ton signal d’arrêt (<code>None</code>). Si c’est le cas, tu dois sortir de la boucle de consommation.</p>
-<p>En résumé, le consommateur doit devenir un mécanisme qui dit : “J’attends un élément, si cet élément est le signal de fin, j’arrête tout ; sinon, je le traite.”</p>
-<p>Peux-tu détailler comment tu vas modifier le corps de ta boucle <code>while True</code> dans la fonction <code>consommateur</code> pour intégrer cette vérification du signal de fin et garantir que le consommateur se termine proprement après avoir vu <code>None</code> ?</p>
-<hr>
-</section>
-<section id="turn-5-1" class="level4">
-<h4 class="anchored" data-anchor-id="turn-5-1">Turn 5</h4>
 <blockquote class="blockquote">
 <p>🎓 <strong>student runs</strong> <code>producer_consumer.py</code></p>
 </blockquote>
-<p><strong>🎓 Inès —</strong> C’est fait, get normal, None en signal de fin, break dans le consommateur. Ca tourne plus en boucle, je vois fini. Le import queue me sert plus à rien non ?</p>
-<p><strong>▶️ run output</strong> — <code>producer_consumer.py</code>:</p>
-<pre class="text"><code>PYTHON-RUN — python3 producer_consumer.py (exit=timeout)
-standard error:
-
-[TIMEOUT après 15s — programme encore actif, tué]</code></pre>
-<p><strong>🤖 gemma-4-E4B tutor —</strong> C’est une excellente nouvelle que l’approche du signal de fin ait résolu le problème du <em>busy wait</em> ! Cependant, le fait que le programme atteigne toujours le <em>timeout</em> après 15 secondes indique que, bien que le consommateur ne tourne plus en boucle, il est toujours bloqué en attente d’un élément qui, dans ce scénario, est le signal d’arrêt.</p>
-<p>Si le programme se termine par un <em>timeout</em>, cela signifie qu’il est en attente (bloqué sur <code>q.get()</code>) et que le signal de fin (<code>None</code>) n’a pas été transmis ou n’a pas été correctement intercepté pour permettre au programme de se sortir gracieusement.</p>
-<p>Il est possible que le signal de fin ne soit pas ajouté à la queue au bon moment, ou que la condition de rupture dans le consommateur ne soit pas assez stricte pour garantir l’arrêt immédiat.</p>
-<p>Pour que le programme se termine, il faut que le consommateur ne se contente pas de <em>lire</em> le signal de fin, mais qu’il <em>réagisse</em> à sa réception.</p>
-<p>En regardant la structure de ton consommateur, as-tu mis la vérification du signal de fin (<code>if x is None: break</code>) <strong>avant</strong> ou <strong>après</strong> la ligne de traitement de l’élément (là où tu fais le travail réel avec <code>x</code>) ?</p>
-<hr>
-</section>
-<section id="turn-6-1" class="level4">
-<h4 class="anchored" data-anchor-id="turn-6-1">Turn 6</h4>
-<blockquote class="blockquote">
-<p>🎓 <strong>student runs</strong> <code>producer_consumer.py</code></p>
-</blockquote>
-<p><strong>🎓 Inès —</strong> Ah j’avais pas enregistré ma modif, my bad. La c’est la bonne version : get normal, None en fin, break dessus. Je relance pour verifier.</p>
+<p><strong>🎓 Inès —</strong> Un seul producteur, un seul signal donc, mis apres la boucle for. J ai mis None, le consommateur break des qu il le recoit. J ai code, je relance.</p>
 <p><strong>▶️ run output</strong> — <code>producer_consumer.py</code>:</p>
 <pre class="text"><code>PYTHON-RUN — python3 producer_consumer.py (exit=0)
 standard output:
 fini</code></pre>
-<p><strong>🤖 gemma-4-E4B tutor —</strong> Le programme se termine correctement, c’est une très bonne nouvelle !</p>
-<p>Le succès de cette exécution repose sur la résolution de deux problèmes fondamentaux de la concurrence : le <em>busy wait</em> et l’arrêt du processus.</p>
-<p>En remplaçant <code>get_nowait()</code> par <code>get()</code>, tu as transformé un consommateur qui vérifiait constamment la queue (ce qui consommait 100% de CPU) en un consommateur <em>bloqué</em> qui attend passivement les éléments, ce qui est beaucoup plus efficace.</p>
-<p>L’utilisation de la valeur <code>None</code> comme signal de fin (ou “sentinel”) est la solution classique pour un seul producteur. En le plaçant à la fin de la queue, tu garantis que le consommateur reçoit un message clair indiquant que le flux de données est terminé. Dès que le consommateur détecte ce signal, il peut sortir de son cycle de travail de manière ordonnée, permettant au programme de se terminer proprement.</p>
-<p>Cela illustre parfaitement la différence entre une simple attente (bloquer sur <code>q.get()</code>) et une attente conditionnelle (bloquer <em>et</em> savoir quand arrêter).</p>
-<p>Maintenant que tu maîtrises les mécanismes de communication entre processus, si tu devais adapter ce code pour gérer plusieurs producteurs qui envoient des données dans la même queue, comment changerais-tu la manière dont le consommateur saurait quand tous les producteurs ont fini leur travail ?</p>
+<p><strong>🤖 gemma-4-E4B tutor —</strong> C’est une excellente nouvelle, et félicitations pour avoir trouvé la solution ! Le fait que le programme s’exécute jusqu’à afficher “fini” et qu’il s’arrête proprement prouve que tu as bien compris le problème de la terminaison.</p>
+<p>Ce que tu as mis en place est un cas classique de pattern de conception appelé “sentinel” ou “poison pill”.</p>
+<p>Le comportement de ton code fonctionne parce que tu as introduit un signal distinct (<code>None</code>) qui est impossible à confondre avec les données réelles (les entiers <span class="math inline">0</span> à <span class="math inline">n-1</span>). En plaçant ce signal à la fin de la production, tu garantis deux choses :</p>
+<ol type="1">
+<li>Le consommateur, qui attend toujours grâce à <code>q.get()</code>, reçoit enfin un élément.</li>
+<li>En le reconnaissant, tu peux implémenter une condition de sortie (<code>if x is None: break</code>) au lieu d’attendre une condition de fin d’état qui n’existerait pas naturellement dans la file.</li>
+</ol>
+<p>Ceci est la manière standard de gérer la terminaison dans les systèmes producteur/consommateur basés sur des files de messages.</p>
+<p>Maintenant que tu maîtrises le cas d’un seul producteur, imagine un scénario plus complexe : que se passerait-il si tu avais un <strong>groupe de cinq processus producteurs</strong> qui injectent des données dans la même file, et que chaque producteur envoyait son propre signal de fin (<code>None</code>) ? Comment devrais-tu adapter la logique de ton consommateur pour être certain de ne pas s’arrêter prématurément ?</p>
+<hr>
+</section>
+<section id="turn-4-1" class="level4">
+<h4 class="anchored" data-anchor-id="turn-4-1">Turn 4</h4>
+<p><strong>🎓 Inès —</strong> Chaque producteur envoie son None, le consommateur doit compter les None et ne sortir qu apres en avoir recu cinq. Je peux utiliser un compteur pour ca. C est bon, mon exercice passe, je rends ce soir, merci.</p>
+<p><strong>🤖 gemma-4-E4B tutor —</strong> Ton approche est parfaitement logique et constitue une solution très robuste pour gérer la terminaison dans un système multi-producteurs où le nombre de producteurs est connu. Utiliser un compteur pour suivre les signaux de fin (<code>None</code>) est la manière standard de s’assurer que tous les flux de données ont été correctement terminés.</p>
+<p>Pour que cette solution soit la plus élégante possible, il est important de penser à la <strong>généralité</strong> de ton code. Si, par exemple, tu devais modifier le programme pour supporter un nombre dynamique de producteurs (par exemple, si le nombre de producteurs est lu depuis un fichier de configuration au lieu d’être codé en dur), comment pourrais-tu faire en sorte que le consommateur ne dépende pas d’un compteur fixe, mais plutôt de l’état du système lui-même ?</p>
+<p>C’est une réflexion qui te mènera vers une conception de programme encore plus flexible. Bravo pour ton travail sur cet exercice.</p>
 <hr>
 </section>
 </section>
-<section id="ling-3.0-tiny-naomi-bernard-le-piège-time.sleep-vs-asyncio.sleep" class="level3" data-number="C.0.4">
-<h3 data-number="C.0.4" class="anchored" data-anchor-id="ling-3.0-tiny-naomi-bernard-le-piège-time.sleep-vs-asyncio.sleep"><span class="header-section-number">C.0.4</span> ling-3.0-tiny — Naomi Bernard: Le piège time.sleep vs asyncio.sleep</h3>
+<section id="ling-3.0-tiny-naomi-le-piège-time.sleep-vs-asyncio.sleep" class="level3" data-number="C.0.4">
+<h3 data-number="C.0.4" class="anchored" data-anchor-id="ling-3.0-tiny-naomi-le-piège-time.sleep-vs-asyncio.sleep"><span class="header-section-number">C.0.4</span> ling-3.0-tiny — Naomi: Le piège time.sleep vs asyncio.sleep</h3>
 <p><em>ling-3.0-tiny — Naomi falls into the <code>time.sleep</code> trap in asyncio (exercise 3, <a href="./Courses/01_asynchronous.html">01_asynchronous.qmd</a>)</em></p>
 <p><em>01_asynchronous.qmd (exercice 3) · focus: mesure + débogage — prédire puis confronter ; faire lire l’erreur</em></p>
-<p><strong>What this session shows</strong> - the tutor hands over the complete cause AND the corrected code at its first reply, then repeats the whole fixed file when Naomi pushes back (anti-leak defeated all the way) - zero tool calls across all six turns: every answer comes from memory, no course page and no student file is ever opened (no anchoring, no file:line) - no invented API or file — but turn 2 carries an inaccurate explanation (“the coroutine yields, yet the thread stays blocked”), which Naomi’s own questioning exposes and the tutor only corrects at turn 4, without acknowledging it</p>
+<p><strong>What this session shows</strong> - the tutor hands over the cause AND the corrected code in its very first reply, without the student asking for it (anti-leak defeated at turn 1) - zero tool calls after reading the file once in turn 1: every answer comes from memory, no course page is ever opened, no file:line anchor - the explanations carry language approximations (“vous avez grosse chance”, “relâche le bouclier”), and the tutor never checks the course — the student reaches the right takeaway mostly on her own</p>
 <section id="turn-1-3" class="level4">
 <h4 class="anchored" data-anchor-id="turn-1-3">Turn 1</h4>
 <blockquote class="blockquote">
 <p>🎓 <strong>student runs</strong> <code>time_sleep_trap.py</code></p>
 </blockquote>
-<p><strong>🎓 Naomi —</strong> J’ai fait l’exercice 3, attends je te montre. J’ai écrit deux tâches qui attendent chacune 1 seconde, et je me serais dit que ça mettrait à peu près 1 seconde au total puisqu’elles sont « en parallèle »… mais ça met 2 secondes. Je comprends pas, tu peux regarder mon code ?</p>
+<p><strong>🎓 Naomi —</strong> J’ai fait l’exercice 3. Deux tâches asyncio attendent chacune 1 seconde ; je pensais que « en parallèle » elles mettraient environ 1 seconde au total, mais le programme met 2 secondes. Je ne comprends pas. Peux-tu regarder mon code ?</p>
 <p><strong>▶️ run output</strong> — <code>time_sleep_trap.py</code>:</p>
 <pre class="text"><code>PYTHON-RUN — python3 time_sleep_trap.py (exit=0)
 standard output:
@@ -774,68 +736,32 @@ A end
 B start
 B end
 fin</code></pre>
-<p><strong>🤖 ling-3.0-tiny tutor —</strong> Ton code utilise <code>time.sleep()</code>, une fonction synchrone qui bloque l’événement loop. Quand <code>asyncio.gather</code> lance A et B, il les exécute l’une après l’autre, mais chaque tâche bloque l’interface jusqu’à la fin de <code>time.sleep(1)</code>. Résultat : A finit, puis B commence, donc 2 secondes au total.</p>
-<p>Si tu veux que les tâches s’exécutent en parallèle, il faut utiliser <code>asyncio.sleep(1)</code> au lieu de <code>time.sleep(1)</code>. <code>asyncio.sleep()</code> est une fonction asynchrone : l’événement loop peut basculer vers l’autre tâche pendant l’attente. L’output avec <code>asyncio.sleep()</code> serait alors A start, B start, A end, B end, fin (1 seconde au total).</p>
+<p><strong>🔎 tutor tools —</strong> reads <code>time_sleep_trap.py</code> (lines 1-40)</p>
+<p><strong>🤖 ling-3.0-tiny tutor —</strong> Le problème vient de l’utilisation de <code>time.sleep</code> dans vos coroutines. <code>time.sleep</code> bloque la coroutine et ne permet pas le parallélisme réel dans un event loop. En revanche, <code>asyncio.sleep</code> est non-bloquant et permet aux tâches de s’exécuter en parallèle. Avec <code>time.sleep(1)</code>, la coroutine A bloque pendant 1 seconde, puis la coroutine B bloque pendant 1 seconde : c’est 2 secondes au total. Si vous remplacez par <code>asyncio.sleep(1)</code>, <code>asyncio.gather</code> les exécuterait vraiment en parallèle et le résultat serait d’environ 1 seconde.</p>
 <hr>
 </section>
 <section id="turn-2-2" class="level4">
 <h4 class="anchored" data-anchor-id="turn-2-2">Turn 2</h4>
-<p><strong>🎓 Naomi —</strong> Euh attends, tu me donnes juste le code corrigé ? J’aimerais comprendre pourquoi ça change tout. C’est quoi exactement la boucle d’événements que time.sleep bloque ? Pourquoi du coup les deux tâches s’enchaînent au lieu de tourner ensemble ?</p>
-<p><strong>🤖 ling-3.0-tiny tutor —</strong> Le code corrigé :</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> asyncio</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> pause(nom, duree):</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>nom<span class="sc">}</span><span class="ss"> start"</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> asyncio.sleep(duree)  <span class="co"># ← async, pas time.sleep</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>nom<span class="sc">}</span><span class="ss"> end"</span>)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> main():</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> asyncio.gather(pause(<span class="st">"A"</span>, <span class="dv">1</span>), pause(<span class="st">"B"</span>, <span class="dv">1</span>))</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"fin"</span>)</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>asyncio.run(main())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Explication : l’événement loop est un gestionnaire de « coroutines » qui tourne les tâches les unes après les autres, mais peut basculer d’une tâche à l’autre dès que l’une s’abandonne (en attente d’un <code>await</code>).</p>
-<ul>
-<li><code>asyncio.sleep(1)</code> : la coroutine se rend, rend la main au loop, et le loop lance <code>B</code> pendant 1 seconde. Fin A, fin B → 1 seconde au total.</li>
-<li><code>time.sleep(1)</code> : la coroutine se rend, mais le thread est bloqué. Le loop ne peut rien faire entre les deux appels → A bloque 1 seconde, puis B bloque 1 seconde → 2 secondes au total.</li>
-</ul>
-<p>Donc l’astuce, c’est de remplacer <code>time.sleep</code> par <code>asyncio.sleep</code>, qui rend la main à l’événement loop et permet le parallélisme.</p>
+<p><strong>🎓 Naomi —</strong> Merci, mais tu me donnes juste le code corrigé. Moi je veux comprendre pour l’examen, pas recopier. C’est quoi exactement la boucle d’événements que time.sleep bloque ? Je suis perdue.</p>
+<p><strong>🤖 ling-3.0-tiny tutor —</strong> Le blocage vient de la façon dont les coroutines sont exécutées. Une coroutine suspendue par <code>time.sleep</code> entre dans un <strong>boucle d’événements</strong> (event loop) et reste bloquée à cet instant : le programme attend que le timer expire, mais pendant cette attente, aucune autre tâche ne peut être traitée. C’est comme un passager qui reste immobile dans un bus : il ne peut pas prendre la prochaine ligne tant qu’il ne s’arrête pas. Avec <code>time.sleep(1)</code>, la coroutine A bloque le bus pendant 1 seconde, puis B bloque le bus pendant 1 seconde. Résultat : séquentiel, 2 secondes. Si vous remplacez par <code>asyncio.sleep(1)</code>, c’est différent : l’événement loop ne bloque pas la coroutine, il la rend disponible à d’autres tâches, et elles s’exécutent en parallèle (1 seconde). Pour l’examen, retenez cette distinction.</p>
 <hr>
 </section>
 <section id="turn-3-2" class="level4">
 <h4 class="anchored" data-anchor-id="turn-3-2">Turn 3</h4>
-<blockquote class="blockquote">
-<p>🎓 <strong>student edits</strong> <code>time_sleep_trap.py</code></p>
-</blockquote>
-<p><strong>🎓 Naomi —</strong> Attends, si la coroutine se rendait pendant time.sleep, le loop pourrait basculer non ? Bon j’ai essayé : j’ai remplacé par asyncio.sleep et relancé, là j’ai bien A start, B start, A end, B end, fin, en une seconde.</p>
-<p><strong>▶️ run output</strong> — <code>time_sleep_trap.py</code>:</p>
-<pre class="text"><code>PYTHON-RUN — python3 time_sleep_trap.py (exit=0)
-standard output:
-A start
-B start
-A end
-B end
-fin</code></pre>
-<p><strong>🤖 ling-3.0-tiny tutor —</strong> C’est bon : tu as bien le comportement attendu. Les deux tâches se déroulent simultanément pendant 1 seconde, puis l’événement loop bascule vers l’autre au moment de l’await.</p>
+<p><strong>🎓 Naomi —</strong> Ah, je crois que je commence à comprendre. time.sleep bloque tout le programme, le loop entier, donc les tâches se font l’une après l’autre. C’est bien ça ? Et asyncio.sleep laisse le loop faire autre chose ?</p>
+<p><strong>🤖 ling-3.0-tiny tutor —</strong> Oui, vous avez grosse chance d’avoir compris : <code>time.sleep</code> met la boucle d’événements dans un état de pause, donc les tâches s’exécutent les unes après les autres (séquentiel). <code>asyncio.sleep</code>, en revanche, relâche le bouclier — le loop peut continuer à traiter d’autres coroutines en parallèle. Pour l’examen, retenez bien la différence : <code>time.sleep</code> = bloque tout, <code>asyncio.sleep</code> = relâche le loop pour que les autres tâches puissent tourner.</p>
 <hr>
 </section>
 <section id="turn-4-2" class="level4">
 <h4 class="anchored" data-anchor-id="turn-4-2">Turn 4</h4>
-<p><strong>🎓 Naomi —</strong> Mais je veux être sûre de comprendre pour l’examen : avec time.sleep, la coroutine se rendait ou pas ? Si elle se rendait, le loop aurait pu basculer… donc en fait elle ne se rend jamais, c’est ça qui rend le tout séquentiel ?</p>
-<p><strong>🤖 ling-3.0-tiny tutor —</strong> Oui, c’est exactement ça : <code>time.sleep</code> est une fonction <strong>synchrone</strong> qui bloque le thread. Elle ne rend jamais la main à l’événement loop, donc le loop ne peut rien faire entre A et B. L’exécution est donc strictement séquentielle.</p>
-<p><code>asyncio.sleep</code> est une fonction <strong>asynchrone</strong> : elle se rend au moment de l’await, libérant le loop pour que B puisse tourner pendant la seconde d’attente.</p>
+<p><strong>🎓 Naomi —</strong> Je crois que je sais refaire. Je remplacerais time.sleep par await asyncio.sleep dans pause. Alors le loop n’est plus bloqué, les deux tâches s’entrelacent et le total fait environ 1 seconde. C’est ça ? Je peux le refaire seule pour l’examen.</p>
+<p><strong>🤖 ling-3.0-tiny tutor —</strong> Exact. En remplaçant <code>time.sleep</code> par <code>await asyncio.sleep</code>, le loop d’événements ne se bloque plus : il peut gérer la tâche B pendant que A attend, et les deux tâches s’entrelacent. Le résultat total sera d’environ 1 seconde. Vous pouvez le refaire seul pour l’examen — le principe est le même, juste le changement de <code>time.sleep</code> vers <code>asyncio.sleep</code>.</p>
 <hr>
 </section>
-<section id="turn-5-2" class="level4">
-<h4 class="anchored" data-anchor-id="turn-5-2">Turn 5</h4>
-<p><strong>🎓 Naomi —</strong> OK merci, je crois que j’ai compris. Donc la leçon : time.sleep dans une coroutine, ça bloque toute la boucle, tout le programme attend, alors que asyncio.sleep laisse tourner les autres. C’est bien ça que je dois retenir ?</p>
-<p><strong>🤖 ling-3.0-tiny tutor —</strong> Exactement. C’est bien la bonne leçon : <code>time.sleep</code> bloque tout le thread (séquentiel), <code>asyncio.sleep</code> libère l’événement loop pour que les autres coroutines continuent de tourner (parallèle).</p>
-<hr>
-</section>
-<section id="turn-6-2" class="level4">
-<h4 class="anchored" data-anchor-id="turn-6-2">Turn 6</h4>
-<p><strong>🎓 Naomi —</strong> Merci beaucoup. J’avais peur de ne pas y arriver mais là je crois que je sais refaire l’exercice toute seule. Bonne journée !</p>
-<p><strong>🤖 ling-3.0-tiny tutor —</strong> Bonne journée à toi aussi ! Si tu as d’autres questions, je suis là.</p>
+<section id="turn-5-1" class="level4">
+<h4 class="anchored" data-anchor-id="turn-5-1">Turn 5</h4>
+<p><strong>🎓 Naomi —</strong> D’accord, merci beaucoup. J’ai compris la différence et je suis moins paniquée pour l’examen. Je vais refaire l’exercice seule ce soir pour vérifier. Merci pour votre aide.</p>
+<p><strong>🤖 ling-3.0-tiny tutor —</strong> Très bien, vous êtes bien sur la bonne voie. Ne vous inquiétez plus, la distinction entre <code>time.sleep</code> et <code>asyncio.sleep</code> est le cœur de ce concept, et vous la maîtrisez déjà. Bon courage pour l’examen, et n’hésitez pas si vous avez d’autres questions !</p>
 <hr>
 
 
