@@ -5,7 +5,7 @@ subtitle: "Basic concepts, laws, and taxonomy"
 
 **Introductory module**: common to both tracks, covered at the start of the semester. It
 provides the vocabulary used everywhere else. Full resource: chapter
-`02_Parallel-intro.qmd` from last year's course; use it as-is or have your AI tutor "teach"
+[02_Parallel-intro.qmd from last year's course](https://fradav.github.io/miashs-2025-2026-advanced-programming/Courses/02_Parallel-intro.html); use it as-is or have your AI tutor "teach"
 it to you.
 
 ## Notions to master
@@ -31,7 +31,7 @@ it to you.
    access → bottleneck.
 
 > **Experiment to redo**: the time vs number-of-workers curve is *never* linear. Go back
-> to last year's illustrations and interpret the loss (scheduling overhead, I/O, memory).
+> to [last year's illustrations](https://fradav.github.io/miashs-2025-2026-advanced-programming/Courses/02_Parallel-intro.html) and interpret the loss (scheduling overhead, I/O, memory).
 
 ## Laws and taxonomy
 

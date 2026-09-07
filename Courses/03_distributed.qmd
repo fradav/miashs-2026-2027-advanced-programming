@@ -13,7 +13,7 @@ Objectives (observable criteria):
 - List and apply `dask.delayed` best practices (no mutation, no global state, no side
   effects).
 
-Resources: chapters `05_Distributed.qmd`, `06_Dask-Ray.qmd` and `07_Dask-delayed.qmd`
+Resources: chapters [05_Distributed.qmd](https://fradav.github.io/miashs-2025-2026-advanced-programming/Courses/05_Distributed.html), [06_Dask-Ray.qmd](https://fradav.github.io/miashs-2025-2026-advanced-programming/Courses/06_Dask-Ray.html) and [07_Dask-delayed.qmd](https://fradav.github.io/miashs-2025-2026-advanced-programming/Courses/07_Dask-delayed.html)
 from last year's course; official documentation
 [`dask`](https://docs.dask.org/en/stable/delayed.html) and
 [Ray](https://docs.ray.io/en/latest/).

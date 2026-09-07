@@ -19,54 +19,10 @@ topic).
 
 ## Proposed topics
 
-Each topic is an entry point; you can adapt it or propose another one, as long as it covers
-the module's technical objectives.
-
-### 1. Parallel ETL pipeline
-
-Collect (extraction), clean/merge (transformation), then load data to a target format (CSV,
-Parquet, SQLite database).
-
-- **Extraction**: concurrent retrieval of sources (paginated APIs, files), with `asyncio` +
-  `httpx`.
-- **Transformation**: cleaning, aggregations, joins, with `multiprocessing`, `dask` or
-  vectorized `numpy` depending on the data shape.
-- **Loading**: writing in Parquet/SQLite; analysis of the impact of parallelism at each
-  step.
-- **Deliverable**: a pipeline replayable with a single command, with sequential vs parallel
-  time.
-
-### 2. OLAP analysis / multidimensional aggregation
-
-Load a dataset (for example ~1 GB of table-typed data, *star schema* or logs) and prepare
-aggregations (roll-up, drill-down, cube) used to answer business questions.
-
-- Implemented with `dask.dataframe` / `dask.delayed`, or `cupy`/GPU if the hardware allows;
-  comparison with pure `pandas`.
-- **Deliverable**: a "questions → queries → timing visualization" notebook and a report on
-  partitioning strategies.
-
-### 3. Document retrieval agent (deep research)
-
-An agent that queries several sources simultaneously (web pages, APIs, databases), extracts
-relevant information, aggregates an argued synthesis and cites its sources.
-
-- **Collection**: concurrent I/O (`asyncio`, `httpx`, queues).
-- **Processing**: splitting into tasks (`dask.delayed`) for cleaning and extraction of
-  relevant snippets; LLM-assisted synthesis (optional, not graded per se).
-- **Deliverable**: the agent answers a given question, with traceability (sources, time per
-  step) and evidence of the concurrency gain of the collection.
-
-### 4. Stream processing
-
-Produce a mini continuous-processing system: a producer generates events (logs, simulated
-sensors), a pipeline aggregates by **sliding windows**, a consumer displays or stores the
-results.
-
-- **Architecture**: `asyncio` (queues, `asyncio.Queue`) for production/consumption, or
-  `multiprocessing` + `Queue`; managing order and *backpressure*.
-- **Deliverable**: a demo showing statistics updating continuously, an architecture diagram
-  and an analysis of the concurrency choices.
+> **Work in progress** — the list of projects is not finalized yet. The proposed topics
+> previously listed here have been removed; a definitive list of projects (with their
+> technical objectives and constraints) will be published here later. The framework,
+> deadlines, defense and grading rubric above already hold.
 
 ## Minimal specification
 

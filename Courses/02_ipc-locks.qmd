@@ -10,7 +10,7 @@ Objectives (observable criteria):
   tool.
 - Protect a critical section with a **lock** and diagnose a *deadlock*.
 
-Resources: chapter `04_IPC-and-Locking.qmd` from last year's course; documentation
+Resources: chapter [04_IPC-and-Locking.qmd from last year's course](https://fradav.github.io/miashs-2025-2026-advanced-programming/Courses/04_IPC-and-Locking.html); documentation
 [`multiprocessing`](https://docs.python.org/3/library/multiprocessing.html).
 
 ## Key points

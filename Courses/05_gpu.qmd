@@ -12,7 +12,7 @@ Objectives (observable criteria):
 - Run a simple computation on GPU with **CuPy** (API close to numpy) and with
   **numba-CUDA** (`@cuda.jit`), measuring the copy cost.
 
-Resources: chapter `09_GPU-Caching-etc.qmd` from last year's course; documentation
+Resources: chapter [09_GPU-Caching-etc.qmd from last year's course](https://fradav.github.io/miashs-2025-2026-advanced-programming/Courses/09_GPU-Caching-etc.html); documentation
 [`cupy`](https://docs.cupy.dev/) and
 [numba CUDA](https://numba.readthedocs.io/en/stable/cuda/index.html).
 

@@ -9,7 +9,7 @@ Objectives (observable criteria):
 - Explain *when* asynchronicity speeds things up (I/O) and *when* it does not (CPU-bound).
 - Describe the role of the **event loop** and of coroutines.
 
-Resources: chapter `03_Asynchronous.qmd` from last year's course; official documentation
+Resources: chapter [03_Asynchronous.qmd from last year's course](https://fradav.github.io/miashs-2025-2026-advanced-programming/Courses/03_Asynchronous.html); official documentation
 [`asyncio`](https://docs.python.org/3/library/asyncio.html).
 
 ## Key points

@@ -10,7 +10,7 @@ Objectives (observable criteria):
   **WGSL**.
 - Write a **matrix multiplication kernel** in WGSL and compare it to a numpy version.
 
-Resources: chapters `10_WebGPU-First-App.qmd` and `11_1_WebGPU-matmul.qmd` from last
+Resources: chapters [10_WebGPU-First-App.qmd](https://fradav.github.io/miashs-2025-2026-advanced-programming/Courses/10_WebGPU-First-App.html) and [11_1_WebGPU-matmul.qmd](https://fradav.github.io/miashs-2025-2026-advanced-programming/Courses/11_1_WebGPU-matmul.html) from last
 year's course; official documentation [WebGPU](https://gpuweb.github.io/gpuweb/) and
 [WGSL](https://www.w3.org/TR/WGSL/).
 
@@ -36,7 +36,7 @@ year's course; official documentation [WebGPU](https://gpuweb.github.io/gpuweb/)
 
 1. **First app**: create a minimal page that initializes WebGPU, writes a constant into a
    *storage* buffer through a compute shader, and reads the result in JS to display it.
-   Reuse last year's template.
+   Reuse [last year's template](https://fradav.github.io/miashs-2025-2026-advanced-programming/Courses/10_WebGPU-First-App.html).
 2. **Matmul (naive)**: write a WGSL matmul shader (two matrices passed in storage),
    compute the product on GPU, compare the result with `numpy.dot` and measure the time.
 3. **Matmul (tiled)**: write a "tiled" version that reuses blocks via `var<workgroup>`

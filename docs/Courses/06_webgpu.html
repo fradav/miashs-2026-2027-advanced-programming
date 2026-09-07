@@ -475,7 +475,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Initialize a WebGPU <em>device</em>, create <strong>buffers</strong> and launch a <strong>compute pass</strong> in <strong>WGSL</strong>.</li>
 <li>Write a <strong>matrix multiplication kernel</strong> in WGSL and compare it to a numpy version.</li>
 </ul>
-<p>Resources: chapters <code>10_WebGPU-First-App.qmd</code> and <code>11_1_WebGPU-matmul.qmd</code> from last year’s course; official documentation <a href="https://gpuweb.github.io/gpuweb/">WebGPU</a> and <a href="https://www.w3.org/TR/WGSL/">WGSL</a>.</p>
+<p>Resources: chapters <a href="https://fradav.github.io/miashs-2025-2026-advanced-programming/Courses/10_WebGPU-First-App.html">10_WebGPU-First-App.qmd</a> and <a href="https://fradav.github.io/miashs-2025-2026-advanced-programming/Courses/11_1_WebGPU-matmul.html">11_1_WebGPU-matmul.qmd</a> from last year’s course; official documentation <a href="https://gpuweb.github.io/gpuweb/">WebGPU</a> and <a href="https://www.w3.org/TR/WGSL/">WGSL</a>.</p>
 <section id="key-points" class="level2" data-number="13.1">
 <h2 data-number="13.1" class="anchored" data-anchor-id="key-points"><span class="header-section-number">13.1</span> Key points</h2>
 <ul>
@@ -489,7 +489,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="exercises" class="level2" data-number="13.2">
 <h2 data-number="13.2" class="anchored" data-anchor-id="exercises"><span class="header-section-number">13.2</span> Exercises</h2>
 <ol type="1">
-<li><strong>First app</strong>: create a minimal page that initializes WebGPU, writes a constant into a <em>storage</em> buffer through a compute shader, and reads the result in JS to display it. Reuse last year’s template.</li>
+<li><strong>First app</strong>: create a minimal page that initializes WebGPU, writes a constant into a <em>storage</em> buffer through a compute shader, and reads the result in JS to display it. Reuse <a href="https://fradav.github.io/miashs-2025-2026-advanced-programming/Courses/10_WebGPU-First-App.html">last year’s template</a>.</li>
 <li><strong>Matmul (naive)</strong>: write a WGSL matmul shader (two matrices passed in storage), compute the product on GPU, compare the result with <code>numpy.dot</code> and measure the time.</li>
 <li><strong>Matmul (tiled)</strong>: write a “tiled” version that reuses blocks via <code>var&lt;workgroup&gt;</code> (local <em>shared</em> memory). Compare with the naive version and explain the gain, if any.</li>
 <li><strong>Platform choice</strong>: on the same computation (512×512 matmul), compare (a) WebGPU in the browser, (b) CuPy/numba on your GPU, (c) numpy on CPU. What criteria make you choose one or the other?</li>

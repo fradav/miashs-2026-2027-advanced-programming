@@ -483,7 +483,8 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#qwen3.5-4b-naomi-le-piège-time.sleep-vs-asyncio.sleep" id="toc-qwen3.5-4b-naomi-le-piège-time.sleep-vs-asyncio.sleep" class="nav-link active" data-scroll-target="#qwen3.5-4b-naomi-le-piège-time.sleep-vs-asyncio.sleep"><span class="header-section-number">C.0.1</span> qwen3.5-4B — Naomi: Le piège time.sleep vs asyncio.sleep</a>
+  <li><a href="#the-personas-in-these-demos" id="toc-the-personas-in-these-demos" class="nav-link active" data-scroll-target="#the-personas-in-these-demos"><span class="header-section-number">C.0.1</span> The personas in these demos</a></li>
+  <li><a href="#qwen3.5-4b-naomi-le-piège-time.sleep-vs-asyncio.sleep" id="toc-qwen3.5-4b-naomi-le-piège-time.sleep-vs-asyncio.sleep" class="nav-link" data-scroll-target="#qwen3.5-4b-naomi-le-piège-time.sleep-vs-asyncio.sleep"><span class="header-section-number">C.0.2</span> qwen3.5-4B — Naomi: Le piège time.sleep vs asyncio.sleep</a>
   <ul>
   <li><a href="#turn-1" id="toc-turn-1" class="nav-link" data-scroll-target="#turn-1">Turn 1</a></li>
   <li><a href="#turn-2" id="toc-turn-2" class="nav-link" data-scroll-target="#turn-2">Turn 2</a></li>
@@ -491,18 +492,18 @@ window.Quarto = {
   <li><a href="#turn-4" id="toc-turn-4" class="nav-link" data-scroll-target="#turn-4">Turn 4</a></li>
   <li><a href="#turn-5" id="toc-turn-5" class="nav-link" data-scroll-target="#turn-5">Turn 5</a></li>
   </ul></li>
-  <li><a href="#ornith-1.5-9b-bilal-deadlock-à-deux-verrous" id="toc-ornith-1.5-9b-bilal-deadlock-à-deux-verrous" class="nav-link" data-scroll-target="#ornith-1.5-9b-bilal-deadlock-à-deux-verrous"><span class="header-section-number">C.0.2</span> ornith-1.5-9B — Bilal: Deadlock à deux verrous</a>
+  <li><a href="#ornith-1.5-9b-bilal-deadlock-à-deux-verrous" id="toc-ornith-1.5-9b-bilal-deadlock-à-deux-verrous" class="nav-link" data-scroll-target="#ornith-1.5-9b-bilal-deadlock-à-deux-verrous"><span class="header-section-number">C.0.3</span> ornith-1.5-9B — Bilal: Deadlock à deux verrous</a>
   <ul>
   <li><a href="#turn-1-1" id="toc-turn-1-1" class="nav-link" data-scroll-target="#turn-1-1">Turn 1</a></li>
   </ul></li>
-  <li><a href="#gemma-4-e4b-inès-producteurconsommateur-qui-tourne-en-boucle" id="toc-gemma-4-e4b-inès-producteurconsommateur-qui-tourne-en-boucle" class="nav-link" data-scroll-target="#gemma-4-e4b-inès-producteurconsommateur-qui-tourne-en-boucle"><span class="header-section-number">C.0.3</span> gemma-4-E4B — Inès: Producteur/consommateur qui tourne en boucle</a>
+  <li><a href="#gemma-4-e4b-inès-producteurconsommateur-qui-tourne-en-boucle" id="toc-gemma-4-e4b-inès-producteurconsommateur-qui-tourne-en-boucle" class="nav-link" data-scroll-target="#gemma-4-e4b-inès-producteurconsommateur-qui-tourne-en-boucle"><span class="header-section-number">C.0.4</span> gemma-4-E4B — Inès: Producteur/consommateur qui tourne en boucle</a>
   <ul>
   <li><a href="#turn-1-2" id="toc-turn-1-2" class="nav-link" data-scroll-target="#turn-1-2">Turn 1</a></li>
   <li><a href="#turn-2-1" id="toc-turn-2-1" class="nav-link" data-scroll-target="#turn-2-1">Turn 2</a></li>
   <li><a href="#turn-3-1" id="toc-turn-3-1" class="nav-link" data-scroll-target="#turn-3-1">Turn 3</a></li>
   <li><a href="#turn-4-1" id="toc-turn-4-1" class="nav-link" data-scroll-target="#turn-4-1">Turn 4</a></li>
   </ul></li>
-  <li><a href="#ling-3.0-tiny-naomi-le-piège-time.sleep-vs-asyncio.sleep" id="toc-ling-3.0-tiny-naomi-le-piège-time.sleep-vs-asyncio.sleep" class="nav-link" data-scroll-target="#ling-3.0-tiny-naomi-le-piège-time.sleep-vs-asyncio.sleep"><span class="header-section-number">C.0.4</span> ling-3.0-tiny — Naomi: Le piège time.sleep vs asyncio.sleep</a>
+  <li><a href="#ling-3.0-tiny-naomi-le-piège-time.sleep-vs-asyncio.sleep" id="toc-ling-3.0-tiny-naomi-le-piège-time.sleep-vs-asyncio.sleep" class="nav-link" data-scroll-target="#ling-3.0-tiny-naomi-le-piège-time.sleep-vs-asyncio.sleep"><span class="header-section-number">C.0.5</span> ling-3.0-tiny — Naomi: Le piège time.sleep vs asyncio.sleep</a>
   <ul>
   <li><a href="#turn-1-3" id="toc-turn-1-3" class="nav-link" data-scroll-target="#turn-1-3">Turn 1</a></li>
   <li><a href="#turn-2-2" id="toc-turn-2-2" class="nav-link" data-scroll-target="#turn-2-2">Turn 2</a></li>
@@ -537,6 +538,7 @@ window.Quarto = {
 
 
 <p>Four real tutoring sessions recorded through the ACP runner (<a href="./appendix-acp-tutor.html">appendix-acp-tutor.qmd</a>, <a href="./ai-tutor.html">ai-tutor.qmd</a>). Each demo pairs a <strong>persona</strong> — a simulated student profile used to drive the exchange — with a local model served by the runner. The sessions were <strong>not scripted</strong>: a persona reacts turn after turn to whatever the tutor answers, and the recordings below are exactly what happened, timed-out runs, dead ends and all.</p>
+<p><strong>Important — these are not real students.</strong> The “students” below (Naomi, Bilal, Inès) are <strong>personas</strong>: simulated student profiles, not real people. The tutor role is served by the small local model named in each heading (qwen3.5-4B, ornith-1.5-9B, gemma-4-E4B, ling-3.0-tiny), while the persona reacting turn after turn is played live by the LLM behind the sub-agents that ran these sessions — <a href="https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash">DeepSeek V4 Flash</a>. The whole sequence is therefore <strong>synthetic</strong>: every student message was generated by a language model, unscripted but not human. What is real is the tool layer — the grep/read results over the course pages and the ▶️ Python runs are the runner’s actual output, timed-out runs, dead ends and all.</p>
 <p>The comments are in English; the students’ messages and the tutor’s replies are reproduced <strong>verbatim in French</strong> (the language of the experiment). Each turn separates the two sides of the exchange:</p>
 <ul>
 <li><strong>student (persona)</strong>: 🎓 what the student does — runs, edits or reads a file — and their message, with the real ▶️ run output (a run that never ends is cut by a 15 s timeout and shown as such),</li>
@@ -549,8 +551,17 @@ window.Quarto = {
 <li>ling-3.0-tiny hands out the cause and the corrected code at once, then answers every follow-up from memory: a single early file read, zero course pages, never a file:line anchor, and its explanations carry visible approximations (“vous avez grosse chance”, “relâche le bouclier”).</li>
 </ul>
 <p>All four still get the student to the solution — what differs is whether they get there by asking first and checking the course, or by simply telling.</p>
-<section id="qwen3.5-4b-naomi-le-piège-time.sleep-vs-asyncio.sleep" class="level3" data-number="C.0.1">
-<h3 data-number="C.0.1" class="anchored" data-anchor-id="qwen3.5-4b-naomi-le-piège-time.sleep-vs-asyncio.sleep"><span class="header-section-number">C.0.1</span> qwen3.5-4B — Naomi: Le piège time.sleep vs asyncio.sleep</h3>
+<section id="the-personas-in-these-demos" class="level3" data-number="C.0.1">
+<h3 data-number="C.0.1" class="anchored" data-anchor-id="the-personas-in-these-demos"><span class="header-section-number">C.0.1</span> The personas in these demos</h3>
+<p>Only three of the five experiment personas appear below:</p>
+<ul>
+<li><strong>Naomi</strong> — 27, a career switcher (law → economics → data) who says she “starts from zero”: very weak programmer, anxious, afraid of “breaking something”. She freezes on error messages and pastes them raw; needs to be reassured to keep going. Tested here on the <code>time.sleep</code> vs <code>asyncio.sleep</code> trap (she measures ~2 s instead of 1 s).</li>
+<li><strong>Bilal</strong> — 23, self-taught in CS since high school, confident to the point of overconfidence: he tests rarely, defends his intuition, and invents APIs he “saw in a video” (e.g.&nbsp;<code>asyncio.Task.run_after</code>). Tested here on a voluntary two-lock deadlock he cannot locate.</li>
+<li><strong>Inès</strong> — 29, junior data analyst studying in parallel: confident, but in a hurry — she asks several questions at once, skips the comprehension steps and wants “a complete action plan” before rushing off. Tested here on a producer/consumer loop that spins at 100 % CPU.</li>
+</ul>
+</section>
+<section id="qwen3.5-4b-naomi-le-piège-time.sleep-vs-asyncio.sleep" class="level3" data-number="C.0.2">
+<h3 data-number="C.0.2" class="anchored" data-anchor-id="qwen3.5-4b-naomi-le-piège-time.sleep-vs-asyncio.sleep"><span class="header-section-number">C.0.2</span> qwen3.5-4B — Naomi: Le piège time.sleep vs asyncio.sleep</h3>
 <p><em>qwen3.5-4B — Naomi falls into the <code>time.sleep</code> trap in asyncio (exercise 3, <a href="./Courses/01_asynchronous.html">01_asynchronous.qmd</a>)</em></p>
 <p><em>01_asynchronous.qmd (exercice 3) · focus: mesure + débogage — prédire puis confronter ; faire lire l’erreur</em></p>
 <p><strong>What this session shows</strong> - the tutor names the trap (<code>time.sleep</code> blocks the event loop) in its first reply, but never hands over the corrected code — it keeps asking questions (Pólya checklist, anti-leak on the “how”) - answers are anchored in the course pages: the tutor greps and reads <code>01_asynchronous.qmd</code> turn after turn - the student predicts the timing, edits her own file to <code>asyncio.sleep</code>, re-runs and observes the two tasks now overlap — she reaches the fix herself.</p>
@@ -620,8 +631,8 @@ fin</code></pre>
 <hr>
 </section>
 </section>
-<section id="ornith-1.5-9b-bilal-deadlock-à-deux-verrous" class="level3" data-number="C.0.2">
-<h3 data-number="C.0.2" class="anchored" data-anchor-id="ornith-1.5-9b-bilal-deadlock-à-deux-verrous"><span class="header-section-number">C.0.2</span> ornith-1.5-9B — Bilal: Deadlock à deux verrous</h3>
+<section id="ornith-1.5-9b-bilal-deadlock-à-deux-verrous" class="level3" data-number="C.0.3">
+<h3 data-number="C.0.3" class="anchored" data-anchor-id="ornith-1.5-9b-bilal-deadlock-à-deux-verrous"><span class="header-section-number">C.0.3</span> ornith-1.5-9B — Bilal: Deadlock à deux verrous</h3>
 <p><em>ornith-1.5-9B — Bilal is stuck in a two-lock deadlock (exercise 3, <a href="./Courses/02_ipc-locks.html">02_ipc-locks.qmd</a>)</em></p>
 <p><em>02_ipc-locks.qmd (exercice 3) · focus: débogage — localiser le blocage, ne pas donner la correction</em></p>
 <p><strong>What this session shows</strong> - the tutor hands over the complete diagnosis AND the fix in its very first reply, without the student asking for it — anti-leak defeated at turn 1, and the session ends there (1 turn) - it never opens a course page: the only tools are find_path + reading the student’s file — yet the diagnosis (circular wait on two locks) is correct and nothing is invented - the run is real: the program prints two messages then hangs, caught by the 15 s timeout</p>
@@ -647,8 +658,8 @@ Process B : b → a</code></pre>
 <hr>
 </section>
 </section>
-<section id="gemma-4-e4b-inès-producteurconsommateur-qui-tourne-en-boucle" class="level3" data-number="C.0.3">
-<h3 data-number="C.0.3" class="anchored" data-anchor-id="gemma-4-e4b-inès-producteurconsommateur-qui-tourne-en-boucle"><span class="header-section-number">C.0.3</span> gemma-4-E4B — Inès: Producteur/consommateur qui tourne en boucle</h3>
+<section id="gemma-4-e4b-inès-producteurconsommateur-qui-tourne-en-boucle" class="level3" data-number="C.0.4">
+<h3 data-number="C.0.4" class="anchored" data-anchor-id="gemma-4-e4b-inès-producteurconsommateur-qui-tourne-en-boucle"><span class="header-section-number">C.0.4</span> gemma-4-E4B — Inès: Producteur/consommateur qui tourne en boucle</h3>
 <p><em>gemma-4-E4B — Inès has a producer/consumer spinning in a huge busy-wait (exercise 2, <a href="./Courses/02_ipc-locks.html">02_ipc-locks.qmd</a>)</em></p>
 <p><em>02_ipc-locks.qmd (exercice 2) · focus: débogage busy-wait + attente naturelle</em></p>
 <p><strong>What this session shows</strong> - no solution is ever handed over: the student implements the fix herself and the corrected program runs clean (exit=0) - the tutor reads the student’s file straight away (turn 1) and comments on the real code — no guesswork from memory - real runs: 100% CPU timeout (turn 1) → the corrected version exits 0 and prints <code>fini</code> (turn 3)</p>
@@ -717,8 +728,8 @@ fini</code></pre>
 <hr>
 </section>
 </section>
-<section id="ling-3.0-tiny-naomi-le-piège-time.sleep-vs-asyncio.sleep" class="level3" data-number="C.0.4">
-<h3 data-number="C.0.4" class="anchored" data-anchor-id="ling-3.0-tiny-naomi-le-piège-time.sleep-vs-asyncio.sleep"><span class="header-section-number">C.0.4</span> ling-3.0-tiny — Naomi: Le piège time.sleep vs asyncio.sleep</h3>
+<section id="ling-3.0-tiny-naomi-le-piège-time.sleep-vs-asyncio.sleep" class="level3" data-number="C.0.5">
+<h3 data-number="C.0.5" class="anchored" data-anchor-id="ling-3.0-tiny-naomi-le-piège-time.sleep-vs-asyncio.sleep"><span class="header-section-number">C.0.5</span> ling-3.0-tiny — Naomi: Le piège time.sleep vs asyncio.sleep</h3>
 <p><em>ling-3.0-tiny — Naomi falls into the <code>time.sleep</code> trap in asyncio (exercise 3, <a href="./Courses/01_asynchronous.html">01_asynchronous.qmd</a>)</em></p>
 <p><em>01_asynchronous.qmd (exercice 3) · focus: mesure + débogage — prédire puis confronter ; faire lire l’erreur</em></p>
 <p><strong>What this session shows</strong> - the tutor hands over the cause AND the corrected code in its very first reply, without the student asking for it (anti-leak defeated at turn 1) - zero tool calls after reading the file once in turn 1: every answer comes from memory, no course page is ever opened, no file:line anchor - the explanations carry language approximations (“vous avez grosse chance”, “relâche le bouclier”), and the tutor never checks the course — the student reaches the right takeaway mostly on her own</p>
