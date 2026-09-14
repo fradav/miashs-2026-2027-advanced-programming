@@ -441,7 +441,28 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#framework" id="toc-framework" class="nav-link active" data-scroll-target="#framework"><span class="header-section-number">14.1</span> Framework</a></li>
-  <li><a href="#proposed-topics" id="toc-proposed-topics" class="nav-link" data-scroll-target="#proposed-topics"><span class="header-section-number">14.2</span> Proposed topics</a></li>
+  <li><a href="#proposed-topics" id="toc-proposed-topics" class="nav-link" data-scroll-target="#proposed-topics"><span class="header-section-number">14.2</span> Proposed topics</a>
+  <ul>
+  <li><a href="#code-assistants" id="toc-code-assistants" class="nav-link" data-scroll-target="#code-assistants"><span class="header-section-number">14.2.1</span> Code assistants</a>
+  <ul class="collapse">
+  <li><a href="#deep-research-assistant-for-creating-a-readme-for-a-codebase-agenticmcp-version" id="toc-deep-research-assistant-for-creating-a-readme-for-a-codebase-agenticmcp-version" class="nav-link" data-scroll-target="#deep-research-assistant-for-creating-a-readme-for-a-codebase-agenticmcp-version">Deep research assistant for creating a README for a codebase (agentic/MCP version)</a></li>
+  </ul></li>
+  <li><a href="#parallel-systems" id="toc-parallel-systems" class="nav-link" data-scroll-target="#parallel-systems"><span class="header-section-number">14.2.2</span> Parallel systems</a>
+  <ul class="collapse">
+  <li><a href="#locking-strategy-lab-coarse-vs-fine-vs-optimistic-vs-rw-locks" id="toc-locking-strategy-lab-coarse-vs-fine-vs-optimistic-vs-rw-locks" class="nav-link" data-scroll-target="#locking-strategy-lab-coarse-vs-fine-vs-optimistic-vs-rw-locks">Locking Strategy Lab: coarse vs fine vs optimistic vs RW locks</a></li>
+  <li><a href="#multi-stage-image-pipeline-with-backpressure-and-flow-control" id="toc-multi-stage-image-pipeline-with-backpressure-and-flow-control" class="nav-link" data-scroll-target="#multi-stage-image-pipeline-with-backpressure-and-flow-control">Multi-stage image pipeline with backpressure and flow control</a></li>
+  </ul></li>
+  <li><a href="#distributed-dask-and-ray" id="toc-distributed-dask-and-ray" class="nav-link" data-scroll-target="#distributed-dask-and-ray"><span class="header-section-number">14.2.3</span> Distributed: Dask and Ray</a>
+  <ul class="collapse">
+  <li><a href="#synthetic-dask-dag-generator-for-evaluating-task-fusion-and-scheduling-strategies" id="toc-synthetic-dask-dag-generator-for-evaluating-task-fusion-and-scheduling-strategies" class="nav-link" data-scroll-target="#synthetic-dask-dag-generator-for-evaluating-task-fusion-and-scheduling-strategies">Synthetic Dask DAG generator for evaluating task fusion and scheduling strategies</a></li>
+  </ul></li>
+  <li><a href="#webgpu" id="toc-webgpu" class="nav-link" data-scroll-target="#webgpu"><span class="header-section-number">14.2.4</span> WebGPU</a>
+  <ul class="collapse">
+  <li><a href="#proof-of-concept-webgpu-for-olap-queries-in-the-browser" id="toc-proof-of-concept-webgpu-for-olap-queries-in-the-browser" class="nav-link" data-scroll-target="#proof-of-concept-webgpu-for-olap-queries-in-the-browser">Proof of concept: WebGPU for OLAP queries in the browser</a></li>
+  <li><a href="#webgpu-path-tracing" id="toc-webgpu-path-tracing" class="nav-link" data-scroll-target="#webgpu-path-tracing">WebGPU path tracing</a></li>
+  <li><a href="#etl-webgpu-visualization-dashboard-with-dask-and-streamlit" id="toc-etl-webgpu-visualization-dashboard-with-dask-and-streamlit" class="nav-link" data-scroll-target="#etl-webgpu-visualization-dashboard-with-dask-and-streamlit">ETL + WebGPU visualization dashboard with Dask and Streamlit</a></li>
+  </ul></li>
+  </ul></li>
   <li><a href="#minimal-specification" id="toc-minimal-specification" class="nav-link" data-scroll-target="#minimal-specification"><span class="header-section-number">14.3</span> Minimal specification</a></li>
   <li><a href="#grading-rubric-overall-weight-30" id="toc-grading-rubric-overall-weight-30" class="nav-link" data-scroll-target="#grading-rubric-overall-weight-30"><span class="header-section-number">14.4</span> Grading rubric (overall weight: 30%)</a></li>
   <li><a href="#defense-s11-1811-13301530" id="toc-defense-s11-1811-13301530" class="nav-link" data-scroll-target="#defense-s11-1811-13301530"><span class="header-section-number">14.5</span> Defense (S11, 18/11, 13:30–15:30)</a></li>
@@ -485,8 +506,133 @@ ul.task-list li input[type="checkbox"] {
 <section id="proposed-topics" class="level2" data-number="14.2">
 <h2 data-number="14.2" class="anchored" data-anchor-id="proposed-topics"><span class="header-section-number">14.2</span> Proposed topics</h2>
 <blockquote class="blockquote">
-<p><strong>Work in progress</strong> — the list of projects is not finalized yet. The proposed topics previously listed here have been removed; a definitive list of projects (with their technical objectives and constraints) will be published here later. The framework, deadlines, defense and grading rubric above already hold.</p>
+<p><strong>Work in progress</strong> — the list of projects is not finalized. The seven topics below are <em>candidates</em>: none of them was run last year, so taking one means being the first team on it. More topics will be added before the launch. The framework, deadlines, defense and grading rubric above already hold, and you can still propose your own topic as long as it uses the module’s techniques.</p>
 </blockquote>
+<section id="code-assistants" class="level3" data-number="14.2.1">
+<h3 data-number="14.2.1" class="anchored" data-anchor-id="code-assistants"><span class="header-section-number">14.2.1</span> Code assistants</h3>
+<section id="deep-research-assistant-for-creating-a-readme-for-a-codebase-agenticmcp-version" class="level4">
+<h4 class="anchored" data-anchor-id="deep-research-assistant-for-creating-a-readme-for-a-codebase-agenticmcp-version">Deep research assistant for creating a README for a codebase (agentic/MCP version)</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>Icon: README generator.</figcaption>
+<p><img src="images/p02_readme_agentic.png" class="img-fluid figure-img" width="200"></p>
+</figure>
+</div>
+<p>Build an <strong>agentic</strong> assistant (tools + retrieval, not a fixed pipeline) that analyzes a codebase, infers the project structure, and generates a high-quality README with a summary, usage and architecture details. Unlike the classic pipeline version (done last year), the challenge here is the agent loop: which tools the assistant calls, in which order, and how it validates its own output.</p>
+<p><strong>Deliverables</strong>: a set of LLM configurations with MCP servers and prompts (Zed, Continue, or any harness you prefer) that generate a <code>README.md</code> for a given codebase, plus a short comparison with the non-agentic pipeline approach.</p>
+<p>Background: <a href="https://huggingface.co/blog/open-deep-research">Open Deep Research</a> (“deep research” = an LLM driven by an agentic framework that organizes its actions in steps; here the “search” is codebase extraction instead of web search) and <a href="https://www.newsletter.swirlai.com/p/building-deep-research-agent-from">Building Deep Research from scratch</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>The deep-research pattern: an LLM orchestrating retrieval steps over a corpus.</figcaption>
+<p><img src="images/p02_deep_research.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="parallel-systems" class="level3" data-number="14.2.2">
+<h3 data-number="14.2.2" class="anchored" data-anchor-id="parallel-systems"><span class="header-section-number">14.2.2</span> Parallel systems</h3>
+<section id="locking-strategy-lab-coarse-vs-fine-vs-optimistic-vs-rw-locks" class="level4">
+<h4 class="anchored" data-anchor-id="locking-strategy-lab-coarse-vs-fine-vs-optimistic-vs-rw-locks">Locking Strategy Lab: coarse vs fine vs optimistic vs RW locks</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>Icon: locking strategies.</figcaption>
+<p><img src="images/p08_locking_lab.png" class="img-fluid figure-img" width="200"></p>
+</figure>
+</div>
+<p>Implement and compare several locking strategies on a shared structure (e.g., a graph or a ledger):</p>
+<ul>
+<li><strong>Coarse grain</strong>: one global lock protecting the whole structure;</li>
+<li><strong>Fine grain</strong>: sharded locks or per-node locks;</li>
+<li><strong>Reader–Writer lock</strong>: shared readers, exclusive writers;</li>
+<li><strong>Optimistic reads</strong> (versioning / retry): read without lock, validate a version or CAS;</li>
+<li>optional: lock-free / CAS implementations in a lower-level language.</li>
+</ul>
+<p><strong>Deliverables</strong>: the implementations, a micro-benchmark harness, plots comparing throughput vs contention, and a write-up with recommendations.</p>
+<p>References: <a href="https://en.wikipedia.org/wiki/Lock_(computer_science)">locks and trade-offs</a>, <a href="https://en.wikipedia.org/wiki/Readers%E2%80%93writer_lock">readers–writer locks</a>, <a href="https://en.wikipedia.org/wiki/Optimistic_concurrency_control">optimistic concurrency control</a>, <a href="https://docs.python.org/3/library/threading.html#lock-objects">Python threading locks</a>, <a href="https://github.com/doodspav/atomics">Python atomics</a>.</p>
+</section>
+<section id="multi-stage-image-pipeline-with-backpressure-and-flow-control" class="level4">
+<h4 class="anchored" data-anchor-id="multi-stage-image-pipeline-with-backpressure-and-flow-control">Multi-stage image pipeline with backpressure and flow control</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>Icon: multi-stage pipeline.</figcaption>
+<p><img src="images/p09_multistage.png" class="img-fluid figure-img" width="200"></p>
+</figure>
+</div>
+<p>Implement a 3+ stage image processing pipeline with <strong>bounded queues, backpressure propagation, and dynamic scaling heuristics</strong> — what happens when one stage is slower than the others, and how the pipeline degrades.</p>
+<p><strong>Deliverables</strong>: pipeline code, scaling heuristics, benchmark, a short UI or logging dashboard.</p>
+<p>Typical pipelines: a generic supervised computer-vision pipeline (classification or recognition), or an OCR pipeline (detection + recognition).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>A multi-stage pipeline with bounded queues between stages.</figcaption>
+<p><img src="images/p09_multistage.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="distributed-dask-and-ray" class="level3" data-number="14.2.3">
+<h3 data-number="14.2.3" class="anchored" data-anchor-id="distributed-dask-and-ray"><span class="header-section-number">14.2.3</span> Distributed: Dask and Ray</h3>
+<section id="synthetic-dask-dag-generator-for-evaluating-task-fusion-and-scheduling-strategies" class="level4">
+<h4 class="anchored" data-anchor-id="synthetic-dask-dag-generator-for-evaluating-task-fusion-and-scheduling-strategies">Synthetic Dask DAG generator for evaluating task fusion and scheduling strategies</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>Icon: synthetic DAG generator.</figcaption>
+<p><img src="images/p14_dask_dags.png" class="img-fluid figure-img" width="200"></p>
+</figure>
+</div>
+<p>Create a synthetic DAG generator that varies task sizes, dependencies, and fusion parameters, and use it to evaluate how the Dask scheduler behaves.</p>
+<p><strong>Deliverables</strong>: the generator, a benchmark harness, plots, and scheduler tuning recommendations.</p>
+<p>A small starter script is provided: <a href="downloads/synthetic_dask_dag.py">synthetic_dask_dag.py</a> (builds a random acyclic task graph with <code>dask.delayed</code>, visualizes it with graphviz, and optionally runs it under different schedulers — it is a starting point, not the project).</p>
+<p>References: <a href="https://github.com/dask/dask-benchmarks">official Dask benchmarks</a>, <a href="https://docs.dask.org/en/latest/graphs.html">Dask graphs</a>, <a href="https://docs.dask.org/en/stable/optimize.html">Dask optimizations</a>.</p>
+</section>
+</section>
+<section id="webgpu" class="level3" data-number="14.2.4">
+<h3 data-number="14.2.4" class="anchored" data-anchor-id="webgpu"><span class="header-section-number">14.2.4</span> WebGPU</h3>
+<section id="proof-of-concept-webgpu-for-olap-queries-in-the-browser" class="level4">
+<h4 class="anchored" data-anchor-id="proof-of-concept-webgpu-for-olap-queries-in-the-browser">Proof of concept: WebGPU for OLAP queries in the browser</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>Icon: OLAP in the browser.</figcaption>
+<p><img src="images/p16_olap.png" class="img-fluid figure-img" width="200"></p>
+</figure>
+</div>
+<p>Demonstrate how WebGPU can accelerate in-browser <strong>OLAP</strong> operations (filters, group-bys, aggregates) on columnar data. What is OLAP? See <a href="https://en.wikipedia.org/wiki/Online_analytical_processing">Online Analytical Processing</a> — fast, consistent, interactive access to data for analysis.</p>
+<p><strong>Deliverables</strong>: an in-browser demo and a short performance report.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>OLAP: aggregating and slicing columnar data.</figcaption>
+<p><img src="images/p16_olap.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="webgpu-path-tracing" class="level4">
+<h4 class="anchored" data-anchor-id="webgpu-path-tracing">WebGPU path tracing</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>Icon: path tracing.</figcaption>
+<p><img src="images/p18_path_tracing.png" class="img-fluid figure-img" width="200"></p>
+</figure>
+</div>
+<p>Starting point: the existing repo <a href="https://github.com/ferminLR/webgpu-path-tracing">ferminLR/webgpu-path-tracing</a>. Implement one or more of the TODO items it lists: advanced shader/task mapping, performance tuning, etc.</p>
+<p><strong>Deliverables</strong>: a pull request to the repo with one or more completed TODO items.</p>
+</section>
+<section id="etl-webgpu-visualization-dashboard-with-dask-and-streamlit" class="level4">
+<h4 class="anchored" data-anchor-id="etl-webgpu-visualization-dashboard-with-dask-and-streamlit">ETL + WebGPU visualization dashboard with Dask and Streamlit</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>Icon: ETL to WebGPU dashboard.</figcaption>
+<p><img src="images/p20_etl_webgpu.png" class="img-fluid figure-img" width="200"></p>
+</figure>
+</div>
+<p>Run the ETL at scale locally with Dask, and visualize large aggregated results in the browser using WebGPU for rendering (or via a Streamlit embedding).</p>
+<p><strong>Deliverables</strong>: the Dask ETL pipeline, a WebGPU visualizer front-end, a fallback renderer, and a performance report.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>ETL: extract, transform, load.</figcaption>
+<p><img src="images/p20_etl.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</section>
+</section>
 </section>
 <section id="minimal-specification" class="level2" data-number="14.3">
 <h2 data-number="14.3" class="anchored" data-anchor-id="minimal-specification"><span class="header-section-number">14.3</span> Minimal specification</h2>

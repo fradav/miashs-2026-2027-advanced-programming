@@ -68,6 +68,29 @@ Mid-semester, a **cross-review session** (anonymous reading of the reports and c
 discussion) pools these observations. The goal is not to decide who is right, but to develop
 an **informed relationship** with technology.
 
+### Grading the comparative report
+
+The comparative report (20 % of the grade) is graded on the criteria below. They apply to
+both parts of the report, with track-specific variants.
+
+**Reflective part:**
+
+- Identification of patterns in your own learning process.
+- Analysis of the causes of your difficulties, and of the strategies you used to resolve
+  them.
+- Track A: the link you draw between the tutor's limits and your own learning strategies.
+- Track B: analysis of your "without AI" stance and of its impacts, positive and negative.
+- Evolution of your understanding over the semester.
+
+**Observational part:**
+
+- Precision of your description of what the other track actually does.
+- Identification of the psychosocial mechanisms at work (in others, and in yourself).
+- Distinction between factual observation and interpretation.
+- Track A: your ability to distinguish your own use of AI from mere over-reliance.
+- Track B: analysis of the AI group's metacognitive processes, without a priori judgment.
+- Evolution of your own stance towards technology and learning methods.
+
 ## Working modes
 
 The module is designed so that each student finds a format that suits them. **Every working
@@ -149,7 +172,9 @@ tracking and unblocking checkpoints, and the rest is done at your own pace, at h
 | Final project | 30% | Technical project | Technical project |
 | Final metacognitive report | 20% | Reflection on the overall process | Reflection on the overall process |
 
-The final project is assessed **with the same rubric for both tracks**.
+The comparative report is graded on the criteria listed in
+[Reciprocal observation](#grading-the-comparative-report). The final project is assessed
+**with the same rubric for both tracks**.
 
 ## The safeguards (why they are there)
 
