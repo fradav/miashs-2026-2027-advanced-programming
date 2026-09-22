@@ -88,9 +88,13 @@ personal adaptations.
 
 ## Validation flow (session 5)
 
-- Your plan is **reviewed individually** (~15 min with the instructor).
-- **Track A**: the v1 of your system prompt is tested on a simple exercise; the tutor must
-  already "behave" (refuse the solution, guide).
+- The instructor **circulates in the room**; each student or pair presents their plan in
+  about 5 minutes (where you are stuck, the hardest objective you wrote, when and how you
+  will prove it). Verdict on the spot: validated, or a short list of adjustments. Anyone
+  not seen during the session validates asynchronously before Friday.
+- **Track A**: the v1 of your system prompt is tested on a simple exercise (live during
+  the presentation if it is loaded, otherwise asynchronously); the tutor must already
+  "behave" (refuse the solution, guide).
 - The requested adjustments are to be carried over into the plan; it then becomes your
   reference for block 5.
 

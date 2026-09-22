@@ -134,7 +134,7 @@
     "href": "teaching-design.html#semester-timeline-course-plan",
     "title": "3  The pedagogical design",
     "section": "3.5 Semester timeline (course plan)",
-    "text": "3.5 Semester timeline (course plan)\nFull details in the instructor’s course plan. In brief:\n\n\n\n\n\n\n\n\nPeriod\nBlock\nContent\n\n\n\n\nS1 (26/08)\n1\nIntroduction, framework, track choice\n\n\nS2–S3 (27/08, 01/09)\n2\nDesigning an AI tutor (principles, system prompt workshop)\n\n\nS4–S5 (03/09, 22/09)\n3–4\nLearning plan, validation\n\n\nS6–S8 (24/09 → 01/10)\n5\nAutonomous work + progress check-ins\n\n\nS9 (22/10)\n6\nCross-review of reports\n\n\nS10 (23/10) → S11 (18/11)\n7 + exam\nFinal project, defense\n\n\nS12 (19/11)\n7\nWrap-up, metacognitive report\n\n\n\nAutonomous work takes up a large share of the module: the supervised sessions serve as tracking and unblocking checkpoints, and the rest is done at your own pace, at home.",
+    "text": "3.5 Semester timeline (course plan)\nFull details in the instructor’s course plan. In brief:\n\n\n\n\n\n\n\n\nPeriod\nBlock\nContent\n\n\n\n\nS1 (26/08)\n1\nIntroduction, framework, track choice\n\n\nS2–S3 (27/08, 01/09)\n2\nDesigning an AI tutor (principles, system prompt workshop)\n\n\nS4–S5 (03/09, 22/09)\n3–4\nLearning plan, validation\n\n\nS6–S8 (28/09 → 01/10)\n5\nAutonomous work + progress check-ins\n\n\nS9 (22/10)\n6\nCross-review of reports\n\n\nS10 (23/10) → S11 (18/11)\n7 + exam\nFinal project, defense\n\n\nS12 (19/11)\n7\nWrap-up, metacognitive report\n\n\n\nAutonomous work takes up a large share of the module: the supervised sessions serve as tracking and unblocking checkpoints, and the rest is done at your own pace, at home.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>The pedagogical design</span>"
     ]
@@ -394,7 +394,7 @@
     "href": "learning-plan.html#validation-flow-session-5",
     "title": "6  Planning your learning",
     "section": "6.4 Validation flow (session 5)",
-    "text": "6.4 Validation flow (session 5)\n\nYour plan is reviewed individually (~15 min with the instructor).\nTrack A: the v1 of your system prompt is tested on a simple exercise; the tutor must already “behave” (refuse the solution, guide).\nThe requested adjustments are to be carried over into the plan; it then becomes your reference for block 5.",
+    "text": "6.4 Validation flow (session 5)\n\nThe instructor circulates in the room; each student or pair presents their plan in about 5 minutes (where you are stuck, the hardest objective you wrote, when and how you will prove it). Verdict on the spot: validated, or a short list of adjustments. Anyone not seen during the session validates asynchronously before Friday.\nTrack A: the v1 of your system prompt is tested on a simple exercise (live during the presentation if it is loaded, otherwise asynchronously); the tutor must already “behave” (refuse the solution, guide).\nThe requested adjustments are to be carried over into the plan; it then becomes your reference for block 5.",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Planning your learning</span>"
     ]

@@ -154,7 +154,7 @@ Full details in the instructor's course plan. In brief:
 | S1 (26/08) | 1 | Introduction, framework, track choice |
 | S2–S3 (27/08, 01/09) | 2 | Designing an AI tutor (principles, system prompt workshop) |
 | S4–S5 (03/09, 22/09) | 3–4 | Learning plan, validation |
-| S6–S8 (24/09 → 01/10) | 5 | Autonomous work + progress check-ins |
+| S6–S8 (28/09 → 01/10) | 5 | Autonomous work + progress check-ins |
 | S9 (22/10) | 6 | Cross-review of reports |
 | S10 (23/10) → S11 (18/11) | 7 + exam | Final project, defense |
 | S12 (19/11) | 7 | Wrap-up, metacognitive report |
