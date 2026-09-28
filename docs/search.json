@@ -1007,6 +1007,28 @@
     ]
   },
   {
+    "objectID": "appendix-slides.html#session-5-learning-plan-validation-walk-through",
+    "href": "appendix-slides.html#session-5-learning-plan-validation-walk-through",
+    "title": "Appendix D — Slides",
+    "section": "D.5 Session 5 — learning plan validation (walk-through)",
+    "text": "D.5 Session 5 — learning plan validation (walk-through)\nOpen the Session 5 slides\n\nYou present your learning plan in a short pitch (~5 min) while the instructor circulates in the room.\nThree questions: where you are stuck, the hardest objective you wrote, when and how you will prove it.\nVerdict on the spot: validated, or a short list of adjustments. Anyone not seen during the session validates asynchronously before Friday.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Slides</span>"
+    ]
+  },
+  {
+    "objectID": "appendix-slides.html#session-6-first-follow-up-m1m2",
+    "href": "appendix-slides.html#session-6-first-follow-up-m1m2",
+    "title": "Appendix D — Slides",
+    "section": "D.6 Session 6 — first follow-up (M1–M2)",
+    "text": "D.6 Session 6 — first follow-up (M1–M2)\nOpen the Session 6 slides\n\nFirst check-in on autonomous work: M1 (async) and M2 (IPC & locks).\nA quick common mini-review, then the four classic pitfalls (GIL, deadlock, blocking the event loop, fork vs spawn).\nRotating stand-ups (~5 min per group) while the rest works, and the first logbook check.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Slides</span>"
+    ]
+  },
+  {
     "objectID": "appendix-llm-docs.html",
     "href": "appendix-llm-docs.html",
     "title": "Appendix E — Local documentation packs for the AI tutor",

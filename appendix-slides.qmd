@@ -41,3 +41,23 @@ for the presenter notes — the notes include what to say and where to pause.
 - The fill-in template, classic mistakes to avoid, and how the plan counts in your
   assessment.
 - Write your plan v0 in class and deposit it before Session 5, where it is validated.
+
+## Session 5 — learning plan validation (walk-through)
+
+[Open the Session 5 slides](slides/2026-09-22-seance-5-slides.html)
+
+- You present your learning plan in a short pitch (~5 min) while the instructor circulates
+  in the room.
+- Three questions: where you are stuck, the hardest objective you wrote, when and how you
+  will prove it.
+- Verdict on the spot: validated, or a short list of adjustments. Anyone not seen during
+  the session validates asynchronously before Friday.
+
+## Session 6 — first follow-up (M1–M2)
+
+[Open the Session 6 slides](slides/2026-09-28-seance-6-slides.html)
+
+- First check-in on autonomous work: M1 (async) and M2 (IPC & locks).
+- A quick common mini-review, then the four classic pitfalls (GIL, deadlock, blocking the
+  event loop, fork vs spawn).
+- Rotating stand-ups (~5 min per group) while the rest works, and the first logbook check.
