@@ -61,3 +61,12 @@ for the presenter notes — the notes include what to say and where to pause.
 - A quick common mini-review, then the four classic pitfalls (GIL, deadlock, blocking the
   event loop, fork vs spawn).
 - Rotating stand-ups (~5 min per group) while the rest works, and the first logbook check.
+
+## Session 7 — second follow-up (M3)
+
+[Open the Session 7 slides](slides/2026-09-29-seance-7-slides.html)
+
+- Second check-in on autonomous work: M3 (distributed computing: Dask, Ray).
+- A quick mini-review, then the classic M3 pitfalls (serialization, saturated scheduler,
+  lazy vs eager, side effects).
+- A 20-minute workshop comparing Dask vs Ray, then rotating stand-ups while the rest works.

@@ -1029,6 +1029,17 @@
     ]
   },
   {
+    "objectID": "appendix-slides.html#session-7-second-follow-up-m3",
+    "href": "appendix-slides.html#session-7-second-follow-up-m3",
+    "title": "Appendix D — Slides",
+    "section": "D.7 Session 7 — second follow-up (M3)",
+    "text": "D.7 Session 7 — second follow-up (M3)\nOpen the Session 7 slides\n\nSecond check-in on autonomous work: M3 (distributed computing: Dask, Ray).\nA quick mini-review, then the classic M3 pitfalls (serialization, saturated scheduler, lazy vs eager, side effects).\nA 20-minute workshop comparing Dask vs Ray, then rotating stand-ups while the rest works.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Slides</span>"
+    ]
+  },
+  {
     "objectID": "appendix-llm-docs.html",
     "href": "appendix-llm-docs.html",
     "title": "Appendix E — Local documentation packs for the AI tutor",
