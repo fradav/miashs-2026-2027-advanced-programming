@@ -70,3 +70,13 @@ for the presenter notes — the notes include what to say and where to pause.
 - A quick mini-review, then the classic M3 pitfalls (serialization, saturated scheduler,
   lazy vs eager, side effects).
 - A 20-minute workshop comparing Dask vs Ray, then rotating stand-ups while the rest works.
+
+## Session 8 — third follow-up (M4–M6) + report
+
+[Open the Session 8 slides](slides/2026-10-01-seance-8-slides.html)
+
+- Third check-in on autonomous work: M4 (SIMD), M5 (GPU), M6 (WebGPU).
+- A quick mini-review, then the classic M4–M6 pitfalls (measuring the transfer, first-call
+  compile, non-contiguous data, too-small workload).
+- The intermediate comparative report is handed out: reflective + observational parts, due
+  before S9 (20/10), graded 20 %.

@@ -1040,6 +1040,17 @@
     ]
   },
   {
+    "objectID": "appendix-slides.html#session-8-third-follow-up-m4m6-report",
+    "href": "appendix-slides.html#session-8-third-follow-up-m4m6-report",
+    "title": "Appendix D — Slides",
+    "section": "D.8 Session 8 — third follow-up (M4–M6) + report",
+    "text": "D.8 Session 8 — third follow-up (M4–M6) + report\nOpen the Session 8 slides\n\nThird check-in on autonomous work: M4 (SIMD), M5 (GPU), M6 (WebGPU).\nA quick mini-review, then the classic M4–M6 pitfalls (measuring the transfer, first-call compile, non-contiguous data, too-small workload).\nThe intermediate comparative report is handed out: reflective + observational parts, due before S9 (20/10), graded 20 %.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Slides</span>"
+    ]
+  },
+  {
     "objectID": "appendix-llm-docs.html",
     "href": "appendix-llm-docs.html",
     "title": "Appendix E — Local documentation packs for the AI tutor",
