@@ -44,9 +44,9 @@ synchronization). The speed curve is never linear in the number of workers.
 | Track choice + survey | S1 (26/08) |
 | Learning plan (+ prompt for A) | before S5, validated in S5 (22/09) |
 | Logbook | ongoing, checks S6–S8, synthesis before S9 |
-| Comparative report (reflexive + observational) | before S9 (indicative 20/10) |
-| Final project (report + defense) | defense S11 (18/11), report before |
-| Final metacognitive report | S12 (19/11) |
+| Comparative report (reflexive + observational) | before S9 (23/10) |
+| Final project (report + defense) | defense S11 (19/11), report before |
+| Final metacognitive report | S12 (date to be confirmed) |
 
 ## Where to start
 

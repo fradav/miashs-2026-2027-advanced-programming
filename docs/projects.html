@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.11.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -40,16 +40,17 @@ ul.task-list li input[type="checkbox"] {
 <link href="./Courses/06_webgpu.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-447e42e69aaa9833c0ba1b986f430b20.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-af28502ac8d036ed35c2b305f0f54fbb.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-3bbd6a9bbbe52288d7dadd4871a2e2aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-c355b8a4e545cfe5ad742ea52b882dd3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-ac6004c1064cc9caa952d6c8c3200d73.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -81,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar floating quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar floating quarto-dark"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -104,6 +105,7 @@ ul.task-list li input[type="checkbox"] {
       for (let i=0; i < toggles.length; i++) {
         const toggle = toggles[i];
         if (toggle) {
+          toggle.setAttribute("aria-checked", alternate ? "true" : "false");
           if (alternate) {
             toggle.classList.add("alternate");
           } else {
@@ -133,13 +135,19 @@ ul.task-list li input[type="checkbox"] {
       manageTransitions('#quarto-margin-sidebar .nav-link', true);
       // Switch the toggles
       setColorSchemeToggle(alternate)
-      // Hack to workaround the fact that safari doesn't
-      // properly recolor the scrollbar when toggling (#1455)
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455).
+    // Not run on load: stylesheets are set before first paint there, and
+    // scrolling would undo the scroll to a URL fragment (#14973).
+    // The one pixel nudge keeps the reader where they were.
+    const refreshSafariScrollbar = () => {
       if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
         manageTransitions("body", false);
-        window.scrollTo(0, 1);
+        const scrollY = window.scrollY;
+        window.scrollTo(0, scrollY > 0 ? scrollY - 1 : 1);
         setTimeout(() => {
-          window.scrollTo(0, 0);
+          window.scrollTo(0, scrollY);
           manageTransitions("body", true);
         }, 40);
       }
@@ -232,6 +240,7 @@ ul.task-list li input[type="checkbox"] {
       // Read the current dark / light value
       let toAlternate = !hasAlternateSentinel();
       toggleColorMode(toAlternate);
+      refreshSafariScrollbar();
       setStyleSentinel(toAlternate);
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
@@ -241,6 +250,7 @@ ul.task-list li input[type="checkbox"] {
         return;
       const alternate = e.matches
       toggleColorMode(alternate);
+      refreshSafariScrollbar();
       localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
       toggleGiscusIfUsed(alternate, darkModeDefault);
     });
@@ -254,13 +264,13 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
+  <nav class="quarto-secondary-nav" aria-label="Toolbar">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./projects.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Final project</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./projects.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Final project</span></a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -271,12 +281,12 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" aria-label="Site">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Advanced Programming and Parallel Computing</a> 
         <div class="sidebar-tools-main">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="bi"></i></button>
 </div>
     </div>
       </div>
@@ -385,13 +395,10 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">Appendices</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./appendix-local-llm.html" class="sidebar-item-text sidebar-link">
@@ -436,7 +443,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
@@ -446,17 +453,32 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#code-assistants" id="toc-code-assistants" class="nav-link" data-scroll-target="#code-assistants"><span class="header-section-number">14.2.1</span> Code assistants</a>
   <ul class="collapse">
   <li><a href="#deep-research-assistant-for-creating-a-readme-for-a-codebase-agenticmcp-version" id="toc-deep-research-assistant-for-creating-a-readme-for-a-codebase-agenticmcp-version" class="nav-link" data-scroll-target="#deep-research-assistant-for-creating-a-readme-for-a-codebase-agenticmcp-version">Deep research assistant for creating a README for a codebase (agentic/MCP version)</a></li>
+  <li><a href="#agentic-code-review-agent" id="toc-agentic-code-review-agent" class="nav-link" data-scroll-target="#agentic-code-review-agent">Agentic code review agent</a></li>
   </ul></li>
-  <li><a href="#parallel-systems" id="toc-parallel-systems" class="nav-link" data-scroll-target="#parallel-systems"><span class="header-section-number">14.2.2</span> Parallel systems</a>
+  <li><a href="#llm-agents-evaluation" id="toc-llm-agents-evaluation" class="nav-link" data-scroll-target="#llm-agents-evaluation"><span class="header-section-number">14.2.2</span> LLM agents &amp; evaluation</a>
+  <ul class="collapse">
+  <li><a href="#rag-with-an-evaluation-framework" id="toc-rag-with-an-evaluation-framework" class="nav-link" data-scroll-target="#rag-with-an-evaluation-framework">RAG with an evaluation framework</a></li>
+  <li><a href="#socratic-tutor-agent" id="toc-socratic-tutor-agent" class="nav-link" data-scroll-target="#socratic-tutor-agent">Socratic tutor agent</a></li>
+  </ul></li>
+  <li><a href="#local-models-multimodal-inference" id="toc-local-models-multimodal-inference" class="nav-link" data-scroll-target="#local-models-multimodal-inference"><span class="header-section-number">14.2.3</span> Local models &amp; multimodal inference</a>
+  <ul class="collapse">
+  <li><a href="#local-decision-model-pipeline-jev-d3" id="toc-local-decision-model-pipeline-jev-d3" class="nav-link" data-scroll-target="#local-decision-model-pipeline-jev-d3">Local decision-model pipeline (Jev / d3)</a></li>
+  <li><a href="#multimodal-embedding-pipeline-embeddinggemma-2" id="toc-multimodal-embedding-pipeline-embeddinggemma-2" class="nav-link" data-scroll-target="#multimodal-embedding-pipeline-embeddinggemma-2">Multimodal embedding pipeline (EmbeddingGemma 2)</a></li>
+  <li><a href="#multi-agent-llm-orchestration-parallel-endpoints" id="toc-multi-agent-llm-orchestration-parallel-endpoints" class="nav-link" data-scroll-target="#multi-agent-llm-orchestration-parallel-endpoints">Multi-agent LLM orchestration (parallel endpoints)</a></li>
+  </ul></li>
+  <li><a href="#parallel-systems" id="toc-parallel-systems" class="nav-link" data-scroll-target="#parallel-systems"><span class="header-section-number">14.2.4</span> Parallel systems</a>
   <ul class="collapse">
   <li><a href="#locking-strategy-lab-coarse-vs-fine-vs-optimistic-vs-rw-locks" id="toc-locking-strategy-lab-coarse-vs-fine-vs-optimistic-vs-rw-locks" class="nav-link" data-scroll-target="#locking-strategy-lab-coarse-vs-fine-vs-optimistic-vs-rw-locks">Locking Strategy Lab: coarse vs fine vs optimistic vs RW locks</a></li>
   <li><a href="#multi-stage-image-pipeline-with-backpressure-and-flow-control" id="toc-multi-stage-image-pipeline-with-backpressure-and-flow-control" class="nav-link" data-scroll-target="#multi-stage-image-pipeline-with-backpressure-and-flow-control">Multi-stage image pipeline with backpressure and flow control</a></li>
+  <li><a href="#simd-vectorized-kernel-lab" id="toc-simd-vectorized-kernel-lab" class="nav-link" data-scroll-target="#simd-vectorized-kernel-lab">SIMD / vectorized kernel lab</a></li>
+  <li><a href="#ipc-shared-memory-pipeline" id="toc-ipc-shared-memory-pipeline" class="nav-link" data-scroll-target="#ipc-shared-memory-pipeline">IPC / shared-memory pipeline</a></li>
   </ul></li>
-  <li><a href="#distributed-dask-and-ray" id="toc-distributed-dask-and-ray" class="nav-link" data-scroll-target="#distributed-dask-and-ray"><span class="header-section-number">14.2.3</span> Distributed: Dask and Ray</a>
+  <li><a href="#distributed-dask-and-ray" id="toc-distributed-dask-and-ray" class="nav-link" data-scroll-target="#distributed-dask-and-ray"><span class="header-section-number">14.2.5</span> Distributed: Dask and Ray</a>
   <ul class="collapse">
   <li><a href="#synthetic-dask-dag-generator-for-evaluating-task-fusion-and-scheduling-strategies" id="toc-synthetic-dask-dag-generator-for-evaluating-task-fusion-and-scheduling-strategies" class="nav-link" data-scroll-target="#synthetic-dask-dag-generator-for-evaluating-task-fusion-and-scheduling-strategies">Synthetic Dask DAG generator for evaluating task fusion and scheduling strategies</a></li>
+  <li><a href="#ray-distributed-training-of-small-llms" id="toc-ray-distributed-training-of-small-llms" class="nav-link" data-scroll-target="#ray-distributed-training-of-small-llms">Ray distributed training of small LLMs</a></li>
   </ul></li>
-  <li><a href="#webgpu" id="toc-webgpu" class="nav-link" data-scroll-target="#webgpu"><span class="header-section-number">14.2.4</span> WebGPU</a>
+  <li><a href="#webgpu" id="toc-webgpu" class="nav-link" data-scroll-target="#webgpu"><span class="header-section-number">14.2.6</span> WebGPU</a>
   <ul class="collapse">
   <li><a href="#proof-of-concept-webgpu-for-olap-queries-in-the-browser" id="toc-proof-of-concept-webgpu-for-olap-queries-in-the-browser" class="nav-link" data-scroll-target="#proof-of-concept-webgpu-for-olap-queries-in-the-browser">Proof of concept: WebGPU for OLAP queries in the browser</a></li>
   <li><a href="#webgpu-path-tracing" id="toc-webgpu-path-tracing" class="nav-link" data-scroll-target="#webgpu-path-tracing">WebGPU path tracing</a></li>
@@ -465,13 +487,13 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#minimal-specification" id="toc-minimal-specification" class="nav-link" data-scroll-target="#minimal-specification"><span class="header-section-number">14.3</span> Minimal specification</a></li>
   <li><a href="#grading-rubric-overall-weight-30" id="toc-grading-rubric-overall-weight-30" class="nav-link" data-scroll-target="#grading-rubric-overall-weight-30"><span class="header-section-number">14.4</span> Grading rubric (overall weight: 30%)</a></li>
-  <li><a href="#defense-s11-1811-13301530" id="toc-defense-s11-1811-13301530" class="nav-link" data-scroll-target="#defense-s11-1811-13301530"><span class="header-section-number">14.5</span> Defense (S11, 18/11, 13:30–15:30)</a></li>
+  <li><a href="#defense-s11-1911-13301530" id="toc-defense-s11-1911-13301530" class="nav-link" data-scroll-target="#defense-s11-1911-13301530"><span class="header-section-number">14.5</span> Defense (S11, 19/11, 13:30–15:30)</a></li>
   <li><a href="#frequently-asked-questions" id="toc-frequently-asked-questions" class="nav-link" data-scroll-target="#frequently-asked-questions"><span class="header-section-number">14.6</span> Frequently asked questions</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content" tabindex="-1">
 
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -499,14 +521,14 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="14.1" class="anchored" data-anchor-id="framework"><span class="header-section-number">14.1</span> Framework</h2>
 <ul>
 <li><strong>Alone or in a pair</strong> (communication arrangements chosen by the pair).</li>
-<li><strong>Duration</strong>: from the launch (end of October) to the <strong>defense on 18/11</strong>; the <strong>report</strong> is handed in before the defense.</li>
+<li><strong>Duration</strong>: from the launch (end of October) to the <strong>defense on 19/11</strong>; the <strong>report</strong> is handed in before the defense.</li>
 <li><strong>Common constraints</strong>: the project must <em>actually</em> use parallelism (not disguised sequential code), the gains must be <strong>measured and justified</strong>, and the code must be <strong>reproducible</strong> (readable README, demonstration script).</li>
 </ul>
 </section>
 <section id="proposed-topics" class="level2" data-number="14.2">
 <h2 data-number="14.2" class="anchored" data-anchor-id="proposed-topics"><span class="header-section-number">14.2</span> Proposed topics</h2>
 <blockquote class="blockquote">
-<p><strong>Work in progress</strong> — the list of projects is not finalized. The seven topics below are <em>candidates</em>: none of them was run last year, so taking one means being the first team on it. More topics will be added before the launch. The framework, deadlines, defense and grading rubric above already hold, and you can still propose your own topic as long as it uses the module’s techniques.</p>
+<p><strong>Work in progress</strong> — the list of projects is not finalized. The <strong>sixteen topics below are <em>candidates</em></strong>: the first seven were not run last year, and the nine new ones are either new directions or higher-expectation extensions of topics already done last year. Taking any one means being the first team on it. More topics may be added before the launch. The framework, deadlines, defense and grading rubric above already hold, and you can still propose your own topic as long as it uses the module’s techniques.</p>
 </blockquote>
 <section id="code-assistants" class="level3" data-number="14.2.1">
 <h3 data-number="14.2.1" class="anchored" data-anchor-id="code-assistants"><span class="header-section-number">14.2.1</span> Code assistants</h3>
@@ -528,9 +550,129 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 </section>
+<section id="agentic-code-review-agent" class="level4">
+<h4 class="anchored" data-anchor-id="agentic-code-review-agent">Agentic code review agent</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>Icon: AI code review.</figcaption>
+<p><img src="images/p21_agentic_code_review.png" class="img-fluid figure-img" width="200"></p>
+</figure>
+</div>
+<p>Build an <strong>agentic</strong> assistant that reviews code changes (a diff / pull request) and produces structured findings (bug, style, missing tests) with severity and justification. The challenge is the agent loop and the parallelization: reviewing several files in parallel (asyncio / threads or parallel sub-agents), then a “judge” agent that deduplicates and filters low-confidence findings before publication.</p>
+<p><strong>Deliverables</strong>: a CLI or MCP server that fetches a PR, analyzes the diff per file, and emits findings; optionally a benchmark (precision/recall/F1) on a set of labeled PRs, and a short comparison with a human review.</p>
+<p>Background: <a href="https://docs.github.com/en/copilot/how-tos/review-code/">GitHub Copilot code review</a>, <a href="https://github.com/qodo-ai/pr-agent">Qodo / PR-Agent</a> (open-source, Apache 2.0), <a href="https://www.coderabbit.ai/">CodeRabbit</a>, <a href="https://docs.github.com/en/rest/pulls/pulls#list-pull-request-files">GitHub PR files API</a>, <a href="https://github.com/PyGithub/PyGithub">PyGithub</a>.</p>
+<p><strong>Starter / concrete example</strong>: pick a real PR — e.g.&nbsp;a recent pull request from <code>dask/dask</code> or one in the module’s own repos. Fetch it with the GitHub REST API (<code>GET /repos/{owner}/{repo}/pulls/{n}/files</code>), split the diff per file, and review each file in parallel with <code>asyncio.gather</code> + a <code>Semaphore(3)</code>. Have each reviewer return a typed JSON finding (<code>{"severity": "high|medium|low", "category": "bug|style|test|perf", "justification": "..."}</code>), then a judge agent that merges, deduplicates and drops findings below a confidence threshold. For the benchmark, label 10–20 PRs (known bugs, missing tests) and report precision/recall/F1 vs a human review.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>An LLM orchestrating parallel reviewers, then a judge.</figcaption>
+<p><img src="images/p21_agentic_code_review.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </section>
-<section id="parallel-systems" class="level3" data-number="14.2.2">
-<h3 data-number="14.2.2" class="anchored" data-anchor-id="parallel-systems"><span class="header-section-number">14.2.2</span> Parallel systems</h3>
+</section>
+<section id="llm-agents-evaluation" class="level3" data-number="14.2.2">
+<h3 data-number="14.2.2" class="anchored" data-anchor-id="llm-agents-evaluation"><span class="header-section-number">14.2.2</span> LLM agents &amp; evaluation</h3>
+<section id="rag-with-an-evaluation-framework" class="level4">
+<h4 class="anchored" data-anchor-id="rag-with-an-evaluation-framework">RAG with an evaluation framework</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>Icon: RAG evaluation.</figcaption>
+<p><img src="images/p22_rag_evaluation.png" class="img-fluid figure-img" width="200"></p>
+</figure>
+</div>
+<p>Build a <strong>hybrid RAG pipeline</strong> (BM25 + dense embeddings, RRF fusion, reranker) on a corpus, and — the real challenge — an <strong>evaluation</strong> module that measures retrieval and answer quality (faithfulness, context relevance, precision, recall, MRR/NDCG). Compare several chunking × retrieval configurations and produce a comparative report.</p>
+<p><strong>Deliverables</strong>: the RAG pipeline, the evaluation harness (RAGAS/TruLens or an in-house metric suite), a comparative report, and a dashboard (Streamlit).</p>
+<p>References: <a href="https://github.com/explodinggradients/ragas">RAGAS</a>, <a href="https://github.com/truera/trulens">TruLens</a>, <a href="https://weaviate.io/blog/documents/hybrid-search">hybrid retrieval</a>, <a href="https://huggingface.co/Qwen/Qwen3-Embedding-0.6B">Qwen3-Embedding-0.6B</a>, <a href="https://huggingface.co/Qwen/Qwen3-Reranker-0.6B">Qwen3-Reranker-0.6B</a>, <a href="https://en.wikipedia.org/wiki/Reciprocal_rank_fusion">Reciprocal Rank Fusion</a>, <a href="https://microsoft.github.io/msmarco/">MS MARCO</a>.</p>
+<p><strong>Starter / concrete example</strong>: index a concrete corpus — e.g.&nbsp;the module’s own Quarto book (<code>Cours-programmation-MIASHS-2026</code>) or a set of the course PDFs — as Markdown chunks. Build hybrid retrieval: BM25 (sparse) + dense embeddings (<code>Qwen3-Embedding-0.6B</code>), fuse with RRF, then rerank the top-20 with <code>Qwen3-Reranker-0.6B</code>. For evaluation, use RAGAS metrics (faithfulness, answer relevancy, context precision/recall) plus retrieval metrics (MRR@10, nDCG@10) on ~50 hand-written questions with gold passages. Run a grid over chunk sizes (256/512/1024) × top-k and output a comparative table.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>Hybrid retrieval, fusion, then evaluation of answers.</figcaption>
+<p><img src="images/p22_rag_evaluation.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="socratic-tutor-agent" class="level4">
+<h4 class="anchored" data-anchor-id="socratic-tutor-agent">Socratic tutor agent</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>Icon: socratic tutor.</figcaption>
+<p><img src="images/p26_socratic_tutor.png" class="img-fluid figure-img" width="200"></p>
+</figure>
+</div>
+<p>Build a <strong>socratic tutoring agent</strong>: a prompt system + question templates (by Bloom level) that guides a student through a programming exercise with questions instead of answers. Evaluate it against a simulated student (or a small corpus): number of steps before resolution, hints given, conceptual progression, and a LLM-as-judge pedagogical score. Compare 2–3 models/prompts and produce a session report with an automatic log.</p>
+<p><strong>Deliverables</strong>: the tutor agent, an evaluation harness, a session log, and a comparative report.</p>
+<p>References: <a href="https://github.com/Ljyustc/SocraticLM">SocraticLM</a> (NeurIPS 2024; SocraTeach dataset), <a href="https://github.com/eth-lre/mathtutorbench">MathTutorBench</a> (EMNLP 2025; 7 tutor tasks incl.&nbsp;socratic questioning), <a href="https://eth-lre.github.io/mathtutorbench/">MathTutorBench site</a>, <a href="https://huggingface.co/CogBase/SocraticLM">Qwen2.5-Math SocraticLM</a>.</p>
+<p><strong>Starter / concrete example</strong>: drive the tutor on a real exercise — e.g.&nbsp;“write a recursive function to compute Fibonacci” or “fix this bug in a loop”. Use a prompt system + question templates by Bloom level (remember, understand, apply, analyse, evaluate) and log every turn (student answer, hint, escalation). For evaluation, reuse the MathTutorBench tasks (e.g. <code>socratic_questioning.yaml</code>) or the SocraTeach dialogues (<code>github.com/Ljyustc/SocraticLM</code>), and score with an LLM-as-judge rubric (hint timing, scaffolding, conceptual progression). Compare 2–3 models/prompts and report steps-to-resolution + hints given.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>Tutor asks, student answers, hints escalate, session logged.</figcaption>
+<p><img src="images/p26_socratic_tutor.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="local-models-multimodal-inference" class="level3" data-number="14.2.3">
+<h3 data-number="14.2.3" class="anchored" data-anchor-id="local-models-multimodal-inference"><span class="header-section-number">14.2.3</span> Local models &amp; multimodal inference</h3>
+<section id="local-decision-model-pipeline-jev-d3" class="level4">
+<h4 class="anchored" data-anchor-id="local-decision-model-pipeline-jev-d3">Local decision-model pipeline (Jev / d3)</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>Icon: decision pipeline.</figcaption>
+<p><img src="images/p27_decision_pipeline.png" class="img-fluid figure-img" width="200"></p>
+</figure>
+</div>
+<p>Build a fully local pipeline that uses a <strong>decision model</strong> (Jev / d3, or a cross-encoder reranker + zero-shot classifier) instead of an autoregressive LLM: the model outputs probabilities / typed decisions without decoding text, so responses are fast and cheap. Use it to rerank retrieval candidates and to zero-shot classify / route queries or documents, then measure latency and throughput against an LLM baseline.</p>
+<p><strong>Deliverables</strong>: the pipeline, a latency/throughput benchmark, a short quality comparison (nDCG@10, accuracy), and a write-up.</p>
+<p>References: <a href="https://huggingface.co/autotrust/JEV-9B">Jev / JEV-9B</a>, <a href="https://huggingface.co/blog/hotchpotch/introducing-jev-reranker">jev-reranker (Jev as a reranker)</a>, <a href="https://huggingface.co/vllm-sr/d3">d3 decision model</a>, <a href="https://huggingface.co/collections/vllm-sr/decision-30">Decision 3.0 collection</a>, <a href="https://huggingface.co/spaces/multimodalart/jev-decision-index">Jev Decision Index</a>, <a href="https://huggingface.co/Qwen/Qwen3-Reranker-0.6B">Qwen3-Reranker-0.6B</a>, <a href="https://huggingface.co/BAAI/bge-reranker-v2-m3">bge-reranker-v2-m3</a>, <a href="https://huggingface.co/facebook/bart-large-mnli">zero-shot classification (bart-large-mnli)</a>, <a href="https://arxiv.org/html/2603.11991">BTZSC benchmark</a>.</p>
+<p><strong>Starter / concrete example</strong>: build a concrete router/reranker. Take a query, retrieve top-100 candidates via hybrid search, then use Jev (<code>autotrust/JEV-9B</code>) or d3 (<code>vllm-sr/d3</code>) to score each candidate: ask “is this candidate relevant to the query?” and get back a calibrated probability (no text decoding). Also zero-shot classify the query into a label set (e.g.&nbsp;<code>factual | math | code | summary | other</code>) using <code>facebook/bart-large-mnli</code> or d3. Measure latency (ms/decision) and throughput (decisions/s) vs the LLM baseline (<code>Qwen3-Reranker-0.6B</code> cross-encoder), and compare nDCG@10 / accuracy. See the <code>jev-reranker</code> blog for the pattern.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>Candidates → reranker → zero-shot classifier → probabilities.</figcaption>
+<p><img src="images/p27_decision_pipeline.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="multimodal-embedding-pipeline-embeddinggemma-2" class="level4">
+<h4 class="anchored" data-anchor-id="multimodal-embedding-pipeline-embeddinggemma-2">Multimodal embedding pipeline (EmbeddingGemma 2)</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>Icon: multimodal embedding.</figcaption>
+<p><img src="images/p28_multimodal_embedding.png" class="img-fluid figure-img" width="200"></p>
+</figure>
+</div>
+<p>Build a local <strong>multimodal index</strong> with <code>google/embeddinggemma-2</code>: text, code, images, video and audio all project into one 768-dimensional space. Index a mixed corpus (PDFs + images + audio + code), search across modalities, and measure latency/memory across truncation (768→512/256/128) and quantization (BF16 vs GGUF). Optionally add a reranker as a second stage.</p>
+<p><strong>Deliverables</strong>: the encoder + index, a cross-modal retrieval demo, a latency/memory report, and a quality comparison (Recall@k/MRR by modality).</p>
+<p>References: <a href="https://huggingface.co/google/embeddinggemma-2">EmbeddingGemma 2</a>, <a href="https://developers.googleblog.com/embeddinggemma-2-the-developer-guide/">EmbeddingGemma 2 developer guide</a>, <a href="https://huggingface.co/unsloth/embeddinggemma-2-GGUF">EmbeddingGemma 2 GGUF (unsloth)</a>, <a href="https://huggingface.co/docs/transformers/en/model_doc/embedding_gemma2">EmbeddingGemma2 in transformers</a>, <a href="https://en.wikipedia.org/wiki/Matryoshka_representation_learning">Matryoshka truncation</a>, <a href="https://qdrant.tech/">Qdrant</a>, <a href="https://sbert.net/">sentence-transformers</a>.</p>
+<p><strong>Starter / concrete example</strong>: index a mixed local corpus: PDFs of the course, figures (PNG/SVG), audio recordings, and <code>.qmd</code>/<code>.py</code> code. Use <code>google/embeddinggemma-2</code> (740M full multimodal; you can also load only the 270M text encoder for a cheap baseline). All modalities project into one 768-dim space, so a text query can retrieve an image or an audio segment. Demonstrate cross-modal search: “find the figure about SIMD”, “find the audio segment about backpressure”. Then measure Recall@k / MRR per modality, and memory/latency across MRL truncation (768→512→256→128) and quantization (BF16 vs the <code>unsloth/embeddinggemma-2-GGUF</code> GGUF). See the developer guide for the modular-encoder trick.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>Text / image / video / audio → EmbeddingGemma 2 → index → cross-modal top-k.</figcaption>
+<p><img src="images/p28_multimodal_embedding.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="multi-agent-llm-orchestration-parallel-endpoints" class="level4">
+<h4 class="anchored" data-anchor-id="multi-agent-llm-orchestration-parallel-endpoints">Multi-agent LLM orchestration (parallel endpoints)</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>Icon: multi-agent orchestration.</figcaption>
+<p><img src="images/p29_multiagent_parallel.png" class="img-fluid figure-img" width="200"></p>
+</figure>
+</div>
+<p>Build an <strong>orchestrator</strong> that fans out a query to several <strong>parallel agents</strong> (each on one of the 7 Gemma-4-26B-A4B endpoints provided), then a <strong>judge</strong> agent that fuses, deduplicates and filters the results. Measure the speedup (1 vs 2 vs 4 vs 7 agents), latency, throughput, and the quality of the ensemble vs a single agent.</p>
+<p><strong>Deliverables</strong>: the orchestrator (asyncio/HTTP, retries, backpressure), the judge, a speedup/quality benchmark, and a write-up.</p>
+<p>References: <a href="https://github.com/langchain-ai/langgraph">LangGraph</a>, <a href="https://github.com/crewAIInc/crewAI">CrewAI</a>, <a href="https://github.com/microsoft/autogen">AutoGen</a>, <a href="https://docs.vllm.ai/">vLLM data-parallel</a>, <a href="https://docs.python.org/3/library/asyncio-sync.html">asyncio Semaphore</a>, <a href="https://github.com/jd/tenacity">Tenacity retries</a>.</p>
+<p><strong>Starter / concrete example</strong>: fan out a concrete query (e.g.&nbsp;“explain the trade-offs of optimistic locking, with a Python example”) to the 7 Gemma-4-26B-A4B endpoints, each with a distinct role prompt (correctness, performance, security, style, completeness, concurrency, simplicity). Run them in parallel with <code>asyncio</code> + a <code>Semaphore</code> (per-request timeout + exponential backoff), then a judge agent that fuses and deduplicates. Measure wall-clock speedup (1 vs 2 vs 4 vs 7 agents), latency, throughput, and ensemble quality (LLM-as-judge vs a single agent). See vLLM data-parallel and LangGraph/CrewAI/AutoGen for the orchestration patterns.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>Task → orchestrator → 7 parallel agents → judge → ensemble answer.</figcaption>
+<p><img src="images/p29_multiagent_parallel.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="parallel-systems" class="level3" data-number="14.2.4">
+<h3 data-number="14.2.4" class="anchored" data-anchor-id="parallel-systems"><span class="header-section-number">14.2.4</span> Parallel systems</h3>
 <section id="locking-strategy-lab-coarse-vs-fine-vs-optimistic-vs-rw-locks" class="level4">
 <h4 class="anchored" data-anchor-id="locking-strategy-lab-coarse-vs-fine-vs-optimistic-vs-rw-locks">Locking Strategy Lab: coarse vs fine vs optimistic vs RW locks</h4>
 <div class="quarto-figure quarto-figure-center">
@@ -568,9 +710,47 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 </section>
+<section id="simd-vectorized-kernel-lab" class="level4">
+<h4 class="anchored" data-anchor-id="simd-vectorized-kernel-lab">SIMD / vectorized kernel lab</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>Icon: SIMD kernels.</figcaption>
+<p><img src="images/p23_simd_kernel.png" class="img-fluid figure-img" width="200"></p>
+</figure>
+</div>
+<p>Write and benchmark the same numerical kernel (sum, dot product, stencil, haversine, Mandelbrot) in several implementations: numpy vectorized, numexpr, numba <code>@njit</code>/<code>@vectorize</code>, Cython, and C + SIMD intrinsics. Compare explicit SIMD vs auto-vectorization, measure throughput/bandwidth, and produce an automated benchmark report with profiling.</p>
+<p><strong>Deliverables</strong>: the kernels, a reproducible benchmark harness (perf_counter / pytest-benchmark), plots, and a write-up with recommendations.</p>
+<p>References: <a href="https://numba.readthedocs.io/en/stable/user/vectorize.html">Numba vectorize</a>, <a href="https://github.com/numba/numba-examples/blob/master/notebooks/simd.ipynb">Numba SIMD examples</a>, <a href="https://tbetcke.github.io/hpc_lecture_notes/simd.html">SIMD autovectorization in Numba</a>, <a href="https://github.com/pydata/numexpr">Numexpr</a>, <a href="https://cython.org/">Cython</a>, <a href="https://pythonspeed.com/articles/faster-cython-simd/">Speeding up Cython with SIMD</a>, <a href="https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html">Intel intrinsics guide</a>.</p>
+<p><strong>Starter / concrete example</strong>: implement the same kernels (dot product, 2D stencil, haversine, Mandelbrot) in: numpy (vectorized), numexpr, numba <code>@njit</code> + <code>@vectorize</code>, Cython, and C + AVX intrinsics. For each, measure throughput/bandwidth with <code>perf_counter</code>/<code>pytest-benchmark</code> and inspect the generated SIMD instructions (e.g.&nbsp;<code>objdump -d</code>, or Numba’s <code>find_instr</code>). Compare explicit SIMD vs auto-vectorization: write the C kernel with <code>#pragma omp simd</code> or <code>-march=native</code>, then a version with <code>_mm256_add_ps</code> intrinsics. Report speedups vs the numpy baseline and note when auto-vectorization fails (branches inside the loop).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>From a scalar loop to vectorized lanes, then benchmark.</figcaption>
+<p><img src="images/p23_simd_kernel.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </section>
-<section id="distributed-dask-and-ray" class="level3" data-number="14.2.3">
-<h3 data-number="14.2.3" class="anchored" data-anchor-id="distributed-dask-and-ray"><span class="header-section-number">14.2.3</span> Distributed: Dask and Ray</h3>
+<section id="ipc-shared-memory-pipeline" class="level4">
+<h4 class="anchored" data-anchor-id="ipc-shared-memory-pipeline">IPC / shared-memory pipeline</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>Icon: shared-memory pipeline.</figcaption>
+<p><img src="images/p24_ipc_pipeline.png" class="img-fluid figure-img" width="200"></p>
+</figure>
+</div>
+<p>Build a 3+ stage producer–consumer pipeline that passes data between processes using shared memory (<code>multiprocessing.shared_memory</code>), bounded queues, and optional Unix sockets / ZeroMQ. Measure throughput and latency, compare the mechanisms (Queue vs Pipe vs shared_memory vs ZeroMQ/Redis), and add backpressure / flow control and a multi-consumer variant.</p>
+<p><strong>Deliverables</strong>: the pipeline, a benchmark comparing the IPC mechanisms, plots, and a write-up (with a note on the shared-memory pitfalls).</p>
+<p>References: <a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.shared_memory.SharedMemory">multiprocessing.shared_memory</a>, <a href="https://zeromq.org/">ZeroMQ</a>, <a href="https://github.com/salvatore-giordano/py-sharedmemory">py-sharedmemory</a>, <a href="https://docs.python.org/3/library/socket.html#socket.socketpair">Unix domain sockets</a>.</p>
+<p><strong>Starter / concrete example</strong>: build a 3-stage pipeline (producer → transform → consumer) that moves numpy arrays / image frames between processes. Implement it four ways: <code>multiprocessing.Queue</code>, <code>Pipe</code>, <code>multiprocessing.shared_memory</code> (with a bounded ring buffer + <code>Semaphore</code>/<code>Lock</code>), and ZeroMQ (or Redis). Fix a payload size (e.g.&nbsp;1 MB frames) and measure throughput (frames/s) and latency for each mechanism. Add a slow-consumer scenario to show backpressure, and a multi-consumer fan-out (1 producer → N consumers). Report the shared-memory pitfalls (stale data, synchronization, cleanup).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>Producer → shared memory → consumers → aggregator, with backpressure.</figcaption>
+<p><img src="images/p24_ipc_pipeline.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="distributed-dask-and-ray" class="level3" data-number="14.2.5">
+<h3 data-number="14.2.5" class="anchored" data-anchor-id="distributed-dask-and-ray"><span class="header-section-number">14.2.5</span> Distributed: Dask and Ray</h3>
 <section id="synthetic-dask-dag-generator-for-evaluating-task-fusion-and-scheduling-strategies" class="level4">
 <h4 class="anchored" data-anchor-id="synthetic-dask-dag-generator-for-evaluating-task-fusion-and-scheduling-strategies">Synthetic Dask DAG generator for evaluating task fusion and scheduling strategies</h4>
 <div class="quarto-figure quarto-figure-center">
@@ -584,9 +764,28 @@ ul.task-list li input[type="checkbox"] {
 <p>A small starter script is provided: <a href="downloads/synthetic_dask_dag.py">synthetic_dask_dag.py</a> (builds a random acyclic task graph with <code>dask.delayed</code>, visualizes it with graphviz, and optionally runs it under different schedulers — it is a starting point, not the project).</p>
 <p>References: <a href="https://github.com/dask/dask-benchmarks">official Dask benchmarks</a>, <a href="https://docs.dask.org/en/latest/graphs.html">Dask graphs</a>, <a href="https://docs.dask.org/en/stable/optimize.html">Dask optimizations</a>.</p>
 </section>
+<section id="ray-distributed-training-of-small-llms" class="level4">
+<h4 class="anchored" data-anchor-id="ray-distributed-training-of-small-llms">Ray distributed training of small LLMs</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>Icon: Ray training.</figcaption>
+<p><img src="images/p25_ray_training.png" class="img-fluid figure-img" width="200"></p>
+</figure>
+</div>
+<p>Use Ray (Ray Train + Ray Data LLM / vLLM) to <strong>fine-tune a small model</strong> (QLoRA: 4-bit base + LoRA adapters) on a task, then parallelize batch inference across several GPU workers and compare with the sequential baseline (speedup, GPU utilization, quality). Optionally compare quantizations (FP16 vs GGUF Q4 vs NF4).</p>
+<p><strong>Deliverables</strong>: the training/inference scripts, a speedup report, a short quality comparison, and the reproducibility setup.</p>
+<p>References: <a href="https://docs.ray.io/en/latest/llm/">Ray: working with LLMs</a>, <a href="https://docs.ray.io/en/latest/train/train.html">Ray Train</a>, <a href="https://github.com/unslothai/unsloth">Unsloth</a>, <a href="https://docs.vllm.ai/">vLLM</a>, <a href="https://arxiv.org/abs/2305.14314">QLoRA</a>.</p>
+<p><strong>Starter / concrete example</strong>: fine-tune a small model (e.g.&nbsp;<code>Qwen3-0.6B</code> or <code>SmolLM2-360M</code>) with QLoRA (4-bit base + LoRA adapters) on a concrete task — e.g.&nbsp;a small code-instruction dataset or a math word-problem dataset. Use Ray Train + Ray Data for data loading and training, then parallelize batch inference with vLLM across 2–4 GPU workers. Measure wall-clock speedup vs the sequential baseline, GPU utilization (Ray dashboard), and quality (BLEU/accuracy on a small eval set). Optionally compare quantizations (FP16 vs GGUF Q4 vs NF4).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption>Ray scheduler → GPU workers → small model + LoRA → quantization comparison.</figcaption>
+<p><img src="images/p25_ray_training.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </section>
-<section id="webgpu" class="level3" data-number="14.2.4">
-<h3 data-number="14.2.4" class="anchored" data-anchor-id="webgpu"><span class="header-section-number">14.2.4</span> WebGPU</h3>
+</section>
+<section id="webgpu" class="level3" data-number="14.2.6">
+<h3 data-number="14.2.6" class="anchored" data-anchor-id="webgpu"><span class="header-section-number">14.2.6</span> WebGPU</h3>
 <section id="proof-of-concept-webgpu-for-olap-queries-in-the-browser" class="level4">
 <h4 class="anchored" data-anchor-id="proof-of-concept-webgpu-for-olap-queries-in-the-browser">Proof of concept: WebGPU for OLAP queries in the browser</h4>
 <div class="quarto-figure quarto-figure-center">
@@ -684,8 +883,8 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <p>The 30% share of the final grade is given by the instructor on this rubric, identically for tracks A and B.</p>
 </section>
-<section id="defense-s11-1811-13301530" class="level2" data-number="14.5">
-<h2 data-number="14.5" class="anchored" data-anchor-id="defense-s11-1811-13301530"><span class="header-section-number">14.5</span> Defense (S11, 18/11, 13:30–15:30)</h2>
+<section id="defense-s11-1911-13301530" class="level2" data-number="14.5">
+<h2 data-number="14.5" class="anchored" data-anchor-id="defense-s11-1911-13301530"><span class="header-section-number">14.5</span> Defense (S11, 19/11, 13:30–15:30)</h2>
 <ul>
 <li><strong>5–8 minute presentation</strong> + questions: what the project does, how it is parallelized, what gains were measured, what limits remain.</li>
 <li>The <strong>report</strong> is submitted before the session. Alternative arrangements (individual session, video submission) are planned if needed.</li>
@@ -707,15 +906,50 @@ ul.task-list li input[type="checkbox"] {
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-      const a = window.document.createElement('a');
-      a.classList.add('top-right');
-      a.classList.add('quarto-color-scheme-toggle');
-      a.href = "";
-      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const toggle = window.document.createElement('button');
+      toggle.type = "button";
+      toggle.setAttribute("role", "switch");
+      toggle.setAttribute("aria-checked", "false");
+      toggle.classList.add('top-right');
+      toggle.classList.add('quarto-color-scheme-toggle');
+      toggle.setAttribute("aria-label", "Toggle dark mode");
+      toggle.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
       const i = window.document.createElement("i");
       i.classList.add('bi');
-      a.appendChild(i);
-      window.document.body.appendChild(a);
+      toggle.appendChild(i);
+      // Put the toggle in a landmark of its own, so that landmark navigation
+      // can reach it.
+      //
+      // The container is always a fresh direct child of body, and the toggle is
+      // never moved into page furniture that the theme or the author controls.
+      // The toggle is positioned against the page, so any ancestor that
+      // establishes a containing block captures it: a positioned element or a
+      // grid for position: absolute, and transform, filter, will-change or
+      // contain for position: fixed. A direct child of body has none of these
+      // to inherit, and the shift when one appears is silent and visual.
+      //
+      // ARIA says a document should have at most one banner, and axe reports a
+      // duplicate whether or not the banners carry distinct labels. So use a
+      // header when the page has no banner yet, and a named region otherwise.
+      //
+      // A header is a banner wherever it sits, unless it is inside sectioning
+      // content, so this cannot just look at the children of body: a custom
+      // page layout wraps the title block header in a plain div. An explicit
+      // role="banner" always counts.
+      const sectioning = 'article, aside, main, nav, section, [role="article"], [role="complementary"], [role="main"], [role="navigation"], [role="region"]';
+      const hasBanner = Array.from(
+        window.document.querySelectorAll('header:not([role]), [role="banner"]')
+      ).some(function(el) {
+        return el.hasAttribute("role") || el.closest(sectioning) === null;
+      });
+      const container = window.document.createElement(hasBanner ? "div" : "header");
+      if (hasBanner) {
+        container.setAttribute("role", "region");
+        container.setAttribute("aria-label", "Toggle dark mode");
+      }
+      container.classList.add('quarto-color-scheme-toggle-container');
+      container.appendChild(toggle);
+      window.document.body.appendChild(container);
     }
     setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
@@ -794,7 +1028,8 @@ ul.task-list li input[type="checkbox"] {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -803,8 +1038,69 @@ ul.task-list li input[type="checkbox"] {
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -818,6 +1114,7 @@ ul.task-list li input[type="checkbox"] {
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -980,44 +1277,54 @@ ul.task-list li input[type="checkbox"] {
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -1116,7 +1423,10 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
-<nav class="page-navigation">
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+<nav class="page-navigation" aria-label="Page">
   <div class="nav-page nav-page-previous">
       <a href="./Courses/06_webgpu.html" class="pagination-link" aria-label="Module 6 — WebGPU">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Module 6 — WebGPU</span></span>

@@ -79,4 +79,4 @@ for the presenter notes — the notes include what to say and where to pause.
 - A quick mini-review, then the classic M4–M6 pitfalls (measuring the transfer, first-call
   compile, non-contiguous data, too-small workload).
 - The intermediate comparative report is handed out: reflective + observational parts, due
-  before S9 (20/10), graded 20 %.
+  before S9 (23/10), graded 20 %.
